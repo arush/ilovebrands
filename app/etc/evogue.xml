@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding="utf-8" ?>
+<config>
+    <global>
+        <cache>
+            <request_processors>
+                <evogue>Evogue_PageCache_Model_Processor</evogue>
+            </request_processors>
+        </cache>
+    </global>
+</config>

@@ -1,0 +1,50 @@
+<?php $_event = $this->getEvent(); ?>
+<?php if ($this->canDisplay()): ?>
+<div class="event-container container-<?php echo $_event->getStatus()?>">
+<div class="event <?php echo $_event->getStatus()?>">
+<div class="status">
+<?php echo $this->getStatusText($_event); ?>
+</div>
+<?php switch ($_event->getStatus()):
+        case 'upcoming': ?>
+        <div class="event-dates">
+        <div class="start">
+            <span class="date-part"><?php echo $this->getEventDate('start', $_event); ?></span>
+
+            <span class="time-part"><?php echo $this->getEventTime('start', $_event, 'hh a zzz'); ?></span>
+        </div>
+        <div class="end">
+            <span class="delimiter-part">-</span>
+            <span class="date-part"><?php echo $this->getEventDate('end', $_event); ?></span>
+            <span class="time-part"><?php echo $this->getEventTime('end', $_event, 'hh a zzz'); ?></span>
+        </div>
+        </div>
+    <?php break;
+        case 'open': ?>
+        <div class="event-ticker" id="event-ticker-<?php echo $_event->getId()?>">
+            <div class="container">
+                <span class="days">00</span><span class="delimiter">:</span><span class="hour">00</span><span class="delimiter">:</span><span class="minute">00</span><span class="delimiter">:</span><span class="second">00</span>
+            </div>
+        </div>
+        <script type="text/javascript">
+        new Evogue.CatalogEvent.Ticker('event-ticker-<?php echo $_event->getId()?>', <?php echo $this->getSecondsToClose($_event); ?>);
+        </script>
+    <?php break;
+        case 'closed': ?>
+        <div class="event-dates">
+        <div class="start">
+            <span class="date-part"><?php echo $this->getEventDate('start', $_event); ?></span>
+
+            <span class="time-part"><?php echo $this->getEventTime('start', $_event, 'hh a zzz'); ?></span>
+        </div>
+        <div class="end">
+            <span class="delimiter-part">-</span>
+            <span class="date-part"><?php echo $this->getEventDate('end', $_event); ?></span>
+            <span class="time-part"><?php echo $this->getEventTime('end', $_event, 'hh a zzz'); ?></span>
+        </div>
+        </div>
+    <?php break; ?>
+<?php endswitch; ?>
+</div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,26 @@
+<?php
+
+	$canShow = (bool)Mage::getStoreConfigFlag('payment/sagepaysuite/orphans_notification');
+
+	if(true === $canShow):
+
+	$goOrphan = $this->helper('sagepaysuite')->__('Click here to go to <a href="%s">Orphan Transactions List</a>.', $this->helper('adminhtml')->getUrl('sgpsSecure/adminhtml_transaction/orfan'));
+	$goOKOrphan = $this->helper('sagepaysuite')->__('Click here to go to <a href="%s">Orphan Transactions List</a>.', $this->helper('adminhtml')->getUrl('sgpsSecure/adminhtml_transaction/orfan', array('filter'=>base64_encode('status=OK'))));
+	$_orfans = $this->helper('sagepaysuite')->orfanTransactionsFlag();
+	$_OKorfans = $this->helper('sagepaysuite')->orfanOKTransactionsFlag();
+?>
+<?php if($_orfans):?>
+<div class="notification-global">
+    <img style="vertical-align: middle;" src="<?php echo $this->getSkinUrl('sagepaysuite/images/sagepay-section.png'); ?>" />&nbsp;<strong><?php echo $this->helper('sagepaysuite')->__('One or more transactions have no order associated.') ?></strong>
+    <?php echo $goOrphan;?>
+</div>
+<?php endif;?>
+
+<?php if($_OKorfans): ?>
+<div class="notification-global">
+    <img style="vertical-align: middle;" src="<?php echo $this->getSkinUrl('sagepaysuite/images/sagepay-section.png'); ?>" />&nbsp;<strong><?php echo $this->helper('sagepaysuite')->__('<span style="color:#FF0000">WARNING</span> - There are approved Sage Pay transactions that have no associated Magento orders.') ?></strong>
+    <?php echo $goOrphan;?>
+</div>
+<?php endif; ?>
+
+<?php endif;//$canShow ?>

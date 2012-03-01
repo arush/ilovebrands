@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<widgets>
+    <randomquote type="randomquote/randomquote">
+        <name>Random Quote</name>
+        <description type="desc">Adds a random quote to the page</description>
+		<parameters>
+            <template_path translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <inline translate="label">
+                        <value>vdh/randomquote/invite.phtml</value>
+                        <label>Invite</label>
+                    </inline>
+                    <block translate="label">
+                        <value>vdh/randomquote/footer.phtml</value>
+                        <label>Footer</label>
+                    </block>
+                    
+                </values>
+            </template_path>
+        </parameters>        
+    </randomquote>
+    <quickie type="randomquote/quickie">
+        <name>Fancy a Quickie</name>
+        <description type="desc">Adds a quickie carousel to the page</description>
+		<parameters>
+            <template_path translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <block translate="label">
+                        <value>vdh/randomquote/quickie.phtml</value>
+                        <label>Block</label>
+                    </block>
+                </values>
+            </template_path>
+        </parameters>        
+    </quickie>
+    <relationship type="randomquote/relationship">
+        <name>How about a steady relationship</name>
+        <description type="desc">Shows a block for the Plans</description>
+		<parameters>
+            <template_path translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <block translate="label">
+                        <value>vdh/randomquote/relationship.phtml</value>
+                        <label>Block</label>
+                    </block>
+                </values>
+            </template_path>
+        </parameters>        
+    </relationship>
+    <points type="randomquote/points">
+        <name>My points balance</name>
+        <description type="desc">Shows customer's points and an invite and earn link</description>
+		<parameters>
+            <template_path translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <block translate="label">
+                        <value>vdh/randomquote/points.phtml</value>
+                        <label>Block</label>
+                    </block>
+                </values>
+            </template_path>
+            <text translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>My points text</label>
+
+		        <type>textarea</type>                
+            </text>            
+        </parameters>        
+    </points> 
+    <titleblock type="randomquote/title">
+        <name>Red Title Block</name>
+        <description type="desc">Bold red title block</description>
+		<parameters>
+            <template translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <block translate="label">
+                        <value>vdh/randomquote/title.phtml</value>
+                        <label>Block</label>
+                    </block>
+                </values>
+            </template>
+            <title translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Title</label>
+		        <type>text</type>                
+            </title>
+			<block_id type="complex" translate="label">
+                <visible>1</visible>
+                <required>0</required>
+                <label>Block</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/cms_block_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Block...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>20</sort_order>
+            </block_id>
+        </parameters>        
+    </titleblock>
+    
+    <countdown type="randomquote/countdown">
+        <name>Next Delivery Drop</name>
+        <description type="desc">Counter to the next delivery drop</description>
+		<parameters>
+            <template translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+		        <type>select</type>
+                <values>
+                    <block translate="label">
+                        <value>vdh/randomquote/countdown.phtml</value>
+                        <label>Block</label>
+                    </block>
+                </values>
+            </template>
+            <title translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Title</label>
+		        <type>text</type>
+                <sort_order>10</sort_order>		                        
+            </title>
+            <content translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Content</label>
+		        <type>text</type>     
+                <sort_order>20</sort_order>		                   
+            </content>                           
+        </parameters>        
+    </countdown>     
+    
+    <gauge type="randomquote/gauge">
+        <name>Points Gauge</name>
+        <description type="desc">Displays points needed for next free gift</description>
+		<parameters>
+            <template translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+		        <type>select</type>
+                <values>
+                    <gauge translate="label">
+                        <value>vdh/randomquote/gauge.phtml</value>
+                        <label>Gauge	</label>
+                    </gauge>
+                </values>
+            </template>
+            <title translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Title</label>
+		        <type>text</type>
+                <sort_order>10</sort_order>		                        
+            </title>
+        </parameters>        
+    </gauge>                  
+</widgets> 

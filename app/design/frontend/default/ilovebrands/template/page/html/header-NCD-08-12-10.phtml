@@ -1,0 +1,111 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<script type="text/javascript" charset="utf-8">
+  jQuery(function(){
+      jQuery("#expires").each(function(){
+        if(UTCDate) {
+          //run the countdown thing
+          UTCDate = parseDate(UTCDate);
+          UTCDate = jQuery.date.addDays(UTCDate, 1);
+          setInterval(function(){
+            var vals = jQuery.date.timeSince(UTCDate);
+            updateDateVals(vals);
+          }, 1000);
+        }
+      });
+    });
+    
+    function parseDate(str) {
+      var v=str.split(' ');
+      return new Date(Date.parse(v[1]+" "+v[2]+", "+v[5]+" "+v[3]+" UTC"+v[4]));
+    }
+    
+    function updateDateVals(vals){
+      jQuery("#expires .dys").text(vals[0]);
+      jQuery("#expires .hrs").text(vals[1]);
+      jQuery("#expires .min").text(vals[2]);
+      jQuery("#expires .sec").text(vals[3]);
+    }
+  </script>
+
+<div class="header-container">
+    <div class="header">
+		<div class="header-panel">
+			<!-- REMOVING SEARCH -->
+			<?php //echo $this->getChildHtml('topSearch') ?>	
+			<div class="checkout-link"><?php echo $this->getChildHtml('checkoutLinks') ?></div>	
+			<?php echo $this->getChildHtml('topCart') ?>
+			<?php echo $this->getChildHtml('accountLinks') ?>	
+			<?php echo $this->getChildHtml('topLinks') ?>
+		</div>
+        <div class="branding">
+        <?php if ($this->getIsHomePage()):?>
+            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+            <?php else:?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        </div>		
+		<?php echo $this->getChildHtml('topMenu') ?>
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('content-menu')->toHtml() ?> 
+    </div>
+		<?php// if ($this->getIsHomePage()):?>
+			<!-- <div id="expires" class="expires">
+			    <div class="launchdate">
+				<h1>COLLECTIONS OPEN ON:</h1>
+				<h2>December 9th, 2010</h2>
+			    </div>
+				<ul class="timer">
+					<li id="days">
+					<span class="title">Days</span>
+					<span class="days">0</span>
+					</li>
+					<li id="hours">
+						<span class="title">Hours</span>
+						<span class="hrs">0</span>
+					</li>
+					<li id="minutes">
+						<span class="title">Minutes</span>
+						<span class="min">0</span>
+					</li>
+					<li id="seconds">
+						<span class="title">Seconds</span>
+						<span class="sec">0</span>
+					</li>
+				</ul>
+				<script type="text/javascript" charset="utf-8">
+					var UTCDate = "Wed Dec 08 13:00:00 +0000 2010";
+				</script>
+			    
+			    </div> -->
+		<?php //endif?>
+			
+</div>
+

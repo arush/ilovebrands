@@ -1,0 +1,91 @@
+<?xml version="1.0"?> 
+<config>
+  <modules>
+      <Innovate_Timer> 
+          <version>0.1.0</version>
+          <depends>
+              <!-- no dependencies --> 
+          </depends>
+      </Innovate_Timer> 
+  </modules>
+  <global> 
+   
+    <blocks>
+        <adminhtml>
+            <rewrite>
+            </rewrite>
+        </adminhtml>
+    </blocks>
+    
+    <blocks>
+        <timer> 
+            <class>Innovate_Timer_Block</class>
+        </timer> 
+    </blocks>
+    <helpers>
+        <timer>
+          <class>Innovate_Timer_Helper</class>
+        </timer>
+    </helpers>
+  </global>
+  <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <timer>
+                                          <title>Timer View Settings</title>
+                                      </timer>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  <frontend>
+      <routers></routers> 
+      <events></events> 
+      <translate></translate> 
+      <layout></layout>
+  </frontend>
+  <admin>
+       <routers>
+          <timer>
+              <use>admin</use>
+              <args>
+                  <module>Innovate_Timer</module>
+                  <frontName>timer</frontName>
+              </args>
+          </timer>
+      </routers>
+  </admin>
+  <!-- module defaults --> 
+  <default>
+      <!-- config values -->
+      <timer>
+          <view>
+            <timer_countdown_to><![CDATA[]]></timer_countdown_to>
+			<banner_closed><![CDATA[]]></banner_closed>
+			<category_anchor1><![CDATA[]]></category_anchor1>
+			<category_anchor2><![CDATA[]]></category_anchor2>
+          </view>
+      </timer> 
+  </default>
+  <!--<crontab>
+      <jobs>
+          <get_timer_view>
+              <schedule><cron_expr>*/2 * * * *</cron_expr></schedule>
+              <run><model>timer/observer::cacheFeeds</model></run>
+          </get_timer_view>
+      </jobs>
+  </crontab>-->
+</config>

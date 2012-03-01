@@ -1,0 +1,280 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see Mage_Customer_Block_Form_Register
+ */
+?>
+<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('login-bg')->toHtml() ?>
+
+<div class="carousel-header">
+    
+            <a href="<?php echo $this->getUrl('') ?>customer/account/create" title="evogue logo" class="logo"><img src="<?php echo $this->getSkinUrl('') ?>images/logo-ilovebrands-sml.png" alt="evogue logo" /></a>
+				
+	<div class="already-member">
+	    <a href="<?php echo $this->getUrl('') ?>" title="members log in">Already a Member? Click here to log in</a>
+		
+	</div>
+</div>
+			
+
+
+<div class="account-create">
+    
+    
+			
+
+<div class="image_carousel">
+
+	<div class="whatis">
+		<h1 class="cufon">What is evogue?</h1>
+		<p><span style="color: white; font-weight:400"><strong>evogue</strong></span> is an invitation-only shopping club where Members get access to <span style="color: white; font-weight:400">limited time sales</span> of the world&#39;s <span style="color: white; font-weight:400">top luxury brands</span> at up to <span style="color: white; font-weight:400">80% off retail</span>.<br><br>
+		We guarantee all our products are <span style="color: white; font-weight:400">100% genuine</span>, on-hand and ready for <span style="color: white; font-weight:400">same day dispatch</span> from Central London to the UK, Europe and selected destinations worldwide.</p>
+	</div>
+	
+	
+	<div class="carousel-title">
+		<h1 class="cufon">Luxury Menswear & Ladieswear up to 80% off</h1>
+	</div>
+		
+	<div id="foo4">
+		<div class="slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>editorial/wp-content/themes/manifesto/register/images/signup/img0.jpg" alt="Prada Bags up to 80% off." width="510" height="195" />
+			<div>
+				<p>Prada Bags up to 80% off.</p>
+		</div>
+		</div>        
+        <div class="slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>editorial/wp-content/themes/manifesto/register/images/live/img1.jpg" alt="Dolce & Gabbana Coats up to 80% off." width="510" height="195" />
+			<div>
+				<p>Dolce & Gabbana Coats up to 80% off.</p>
+			</div>
+		</div>
+		<div class="slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>editorial/wp-content/themes/manifesto/register/images/signup/img1.jpg" alt="Dolce & Gabbana Belts up to 80% off." width="510" height="195" />
+			<div>
+				<p>Dolce & Gabbana Belts up to 80% off.</p>
+			</div>
+		</div>
+		<div class="slide">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>editorial/wp-content/themes/manifesto/register/images/signup/img2.jpg" alt="Roberto Cavalli Accessories up to 80% off." width="510" height="195" />
+			<div>
+				<p>Roberto Cavalli Accessories up to 80% off.</p>
+			</div>
+		</div>
+		
+	</div>
+	<div class="clearfix"></div>
+	<div class="pagination" id="foo4_pag"></div>
+	
+	<div class="what-leftright">
+		<div class="what-left">
+			<h1 class="cufon">Elite Community.</h1>
+			<div class="whattext">
+				<p>Top luxury brands at 80% off<br><br>
+				Next day delivery<br><br>
+				Exhilarating limited time sales<br><br>
+				Hassle Free Refunds<br><br></p>
+			</div>
+		</div>
+		
+		<div class="what-right">
+			<h1 class="cufon">Invitation-only.</h1>
+			<div class="whattext">
+				<p style="line-height:1.2em;"><span style="color:#9d9d9d">To regulate demand for our limited stock and still maintain an excellent level of service, </span><strong>we can only accept Members up to a limited quota every month.</strong></p>
+			</div>
+		</div>
+		
+	</div>
+
+
+</div>
+
+<div class="wufoo-title">
+		<h1 class="cufon">Accept your invitation below</h1>
+		<div class="register-explanation">
+		    <p>Membership is free, but by invitation-only.<br>Complete the form below to accept your invitation.</p>
+		</div>
+</div>
+
+    <?php echo $this->getChildHtml('form_fields_before')?>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data">
+        <div class="fieldset">
+            <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <ul class="form-list">
+                <li class="fields">
+                <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->toHtml() ?>
+                </li>
+                <li>
+                    <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="email" id="email_address"
+ <?php /*?>value edited by flo<?php */?>
+                        value="<?php  
+							$flo_email = $this->htmlEscape($this->getFormData()->getEmail());
+							if ($flo_email) {
+  								echo $flo_email;
+							}
+							else {
+  								echo (isset($_GET['email']) ? $_GET['email'] : "");
+							}
+						
+						?>" 
+                        title="<?php echo $this->__('Email Address')?>"
+                        class="input-text validate-email required-entry" />
+                    </div>
+                </li>
+            <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+            <?php if ($_dob->isEnabled()): ?>
+                <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+            <?php endif ?>
+            <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+            <?php if ($_taxvat->isEnabled()): ?>
+                <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+            <?php endif ?>
+            <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+            <?php if ($_gender->isEnabled()): ?>
+                <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+            <?php endif ?>
+	    <?php $customerAttributes = $this->getChild('customer_form_user_attributes');?>
+            <?php if ($customerAttributes): ?>
+                <?php $customerAttributes->setShowContainer(false);?>
+                <?php $this->restoreSessionData($customerAttributes->getForm());?>
+                <?php echo $customerAttributes->toHtml()?>
+            <?php endif;?>
+	    
+	    <li class="passwords-fields">
+                    <div class="field">
+                        <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                        </div>
+                    </div>
+            </li>
+	    
+                <?php if ($this->isNewsletterEnabled()): ?>
+                <li class="control">
+                    <label for="is_subscribed"><?php echo $this->__('Email Reminders') ?></label>
+                    <div class="input-box">
+                        <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Email Reminders') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                    </div>
+					<p id="reminder-text">Send me Collection Email Alerts right before Collections open for purchase</p>
+
+     <!--************* MAILCHIMP PRO HERE ************************-->
+
+            		<?php echo $this->getChildHtml('generalNewsletter') ?>
+
+     <!--************* MAILCHIMP PRO HERE ************************-->
+                
+                </li>
+                <?php endif ?>
+			</ul>			
+			<div class="buttons-set form-buttons">
+				<p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+				<button type="submit" class="button" title="<?php echo $this->__('Become a Member') ?>"><span><span class="cufon"><?php echo $this->__('Become a Member') ?></span></span></button>
+				<p id="policy-text">By becoming a Member, you agree to our <a id="terms-service-box" href = "javascript:void(0)" onclick = "document.getElementById('light2').style.visibility='visible';document.getElementById('fade').style.display='block'"><strong>terms of service</strong></a> and <a id="privacy-box" href = "javascript:void(0)" onclick = "document.getElementById('light3').style.visibility='visible';document.getElementById('fade').style.display='block'"><strong>privacy policy</strong></a>.
+You also agree to receive Collection Email Alerts to tell you when our flash
+sales open for purchase. You can unsubscribe from Collection Email Alerts at any time.</p>
+			</div>
+			<p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        </div>
+    </form>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('form-validate', true);
+        <?php if($this->getShowAddressFields()): ?>
+        new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+        <?php endif; ?>
+
+        Form.getElements('form-validate').each(function(element) {
+            element.setAttribute('autocomplete', 'off');
+        });
+    //]]>
+    </script>
+    
+		<script type="text/javascript" language="javascript">
+
+
+jQuery(function() {
+jQuery("#foo4").carouFredSel({
+	items: {
+						visible: 1,
+						minimum: 1
+					},
+	circular	: true,
+	infinite	: true,
+	auto: {
+			pauseDuration: 3500,
+			delay: 1000,
+			easing		: "easeInOutExpo",
+			duration	: 500
+
+		},
+	prev : {
+		button		: "#foo4_prev",
+		key		: "left",
+		items		: 1,
+		easing		: "easeInOutExpo",
+		duration	: 500
+	},
+	next : {
+		button		: "#foo4_next",
+		key		: "right",
+		items		: 1,
+		easing		: "easeInOutExpo",
+		duration	: 500
+	},
+	pagination : {
+		container	: "#foo4_pag",
+		keys		: true,
+		easing		: "easeInOutExpo",
+		duration	: 500
+	}
+})/*.find(".slide").hover(
+function() { jQuery(this).find("div").slideDown(); },
+function() { jQuery(this).find("div").slideUp(); }
+)*/;
+
+
+
+			});
+		</script>
+		
+		
+	
+</div>

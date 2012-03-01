@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vdh_Randomquote>
+            <version>0.1.0</version>
+        </Vdh_Randomquote>
+    </modules>
+    <global>
+    
+		<events>
+			<customer_load_before>
+				<observers>
+                    <randomquote>
+                        <type>singleton</type>
+                        <class>Vdh_Randomquote_Model_Observer</class>
+                        <method>customerSave</method>
+                    </randomquote>
+                </observers>
+            </customer_load_before> 
+			<controller_action_predispatch_sales_recurring_profile_view>
+                <observers>
+                    <randomquote>
+                        <type>singleton</type>
+                        <class>Vdh_Randomquote_Model_Observer</class>
+                        <method>profileSave</method>
+                    </randomquote>
+                </observers>
+            </controller_action_predispatch_sales_recurring_profile_view>
+			<sales_order_save_after>
+                <observers>
+                    <randomquote>
+                        <type>singleton</type>
+                        <class>Vdh_Randomquote_Model_Observer</class>
+                        <method>orderSave</method>
+                    </randomquote>
+                </observers>
+            </sales_order_save_after>             
+        </events>    
+        <helpers>
+        	<randomquote>
+        		<class>Vdh_Randomquote_Helper</class>
+        	</randomquote>
+        </helpers>
+        <blocks>
+            <randomquote>
+            	<class>Vdh_Randomquote_Block</class>
+            </randomquote>
+            
+            <payment>
+            	<rewrite>
+            		<catalog_product_view_profile>Vdh_Randomquote_Block_Catalog_Product_View_Profile</catalog_product_view_profile>            		
+            	</rewrite>
+            </payment>
+        </blocks>            
+  		<models>
+            <randomquote>
+                <class>Vdh_Randomquote_Model</class>
+            </randomquote>
+            <core>
+            	<rewrite>
+					<email_template>Vdh_Randomquote_Model_Email_Template</email_template>            		
+            	</rewrite>
+            </core>
+        </models> 
+       
+		<page>
+			<layouts>            
+				<plan module="randomquote" translate="label">
+			        <label>Plans Layout</label>
+	        		<template>vdh/randomquote/product/plan.phtml</template>
+			        <layout_handle>product_plan</layout_handle>    	
+			    </plan>
+			</layouts>
+		</page>    	
+    </global> 
+    <frontend>
+    	<layout>
+            <updates>
+                <randomquote>
+                    <file>vdh/randomquote/layout.xml</file>
+                </randomquote>
+            </updates>
+    	</layout> 
+        <routers>
+            <randomquote>
+                <use>standard</use>
+                <args>
+                    <module>Vdh_Randomquote</module>
+                    <frontName>randomquote</frontName>
+                </args>
+            </randomquote>
+        </routers>
+
+    </frontend>      
+	<default>
+        <randomquote>
+        	<general>            
+            	<plans>a:3:{s:18:"_1321765976165_165";a:3:{s:8:"priority";s:1:"1";s:3:"sku";s:10:"brandid-10";s:17:"customer_group_id";s:1:"3";}s:18:"_1321765977829_829";a:3:{s:8:"priority";s:1:"2";s:3:"sku";s:10:"brandid-25";s:17:"customer_group_id";s:1:"4";}s:18:"_1321765978785_785";a:3:{s:8:"priority";s:1:"3";s:3:"sku";s:10:"brandid-42";s:17:"customer_group_id";s:1:"5";}}</plans>
+        	</general>                        
+        </randomquote>
+    </default>
+    
+</config>

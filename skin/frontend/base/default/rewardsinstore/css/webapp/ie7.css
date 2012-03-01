@@ -1,0 +1,9 @@
+
+div.faded {
+    filter: alpha(opacity=30);
+    zoom: 1;
+}
+
+div.mainFoot {
+    top: 0px;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <customer>
+                        <children>
+                            <attributes translate="title">
+                                <title>Attributes</title>
+                                <children>
+                                    <customer_attributes translate="title">
+                                        <title>Manage Customer Attributes</title>
+                                    </customer_attributes>
+                                    <customer_address_attributes translate="title">
+                                        <title>Manage Customer Address Attributes</title>
+                                    </customer_address_attributes>
+                                </children>
+                            </attributes>
+                        </children>
+                    </customer>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <customer>
+            <children>
+                <attributes translate="title" module="evogue_customer">
+                    <title>Attributes</title>
+                    <children>
+                        <customer_attributes translate="title" module="evogue_customer">
+                            <title>Manage Customer Attributes</title>
+                            <action>adminhtml/customer_attribute</action>
+                        </customer_attributes>
+                        <customer_address_attributes translate="title" module="evogue_customer">
+                            <title>Manage Customer Address Attributes</title>
+                            <action>adminhtml/customer_address_attribute</action>
+                        </customer_address_attributes>
+                    </children>
+                </attributes>
+            </children>
+        </customer>
+    </menu>
+</config>

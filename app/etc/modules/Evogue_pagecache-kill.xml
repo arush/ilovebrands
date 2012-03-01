@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Evogue_PageCache>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
+        </Evogue_PageCache>
+    </modules>
+</config>

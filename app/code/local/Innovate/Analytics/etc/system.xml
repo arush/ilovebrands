@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+	<innovate translate="label" module="analytics">
+	    <label>Innovate</label>
+	    <sort_order>100</sort_order>
+	</innovate>
+    </tabs>
+    <sections>
+        <analytics translate="label comment" module="analytics">
+            <tab>innovate</tab>
+            <label>Chartbeat and Other</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <chartbeat translate="label comment" module="analytics">
+                    <label>Chartbeat Snippets</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+		    <fields>
+                        <analytics_chartbeat_on translate="label">
+                            <label>Chartbeat On</label>
+                            <frontend_type>select</frontend_type>
+			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_chartbeat_on>
+			<analytics_chartbeat_head_code translate="label">
+                            <label>Chartbeat Head Snippet</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_chartbeat_head_code>
+			<analytics_chartbeat_foot_code translate="label">
+                            <label>Chartbeat Foot Snippet</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_chartbeat_foot_code>
+		    </fields>
+		</chartbeat>
+		
+                <track translate="label comment" module="analytics">
+                    <label>PPC Tracking Beacons</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <analytics_reg_confirm_on translate="label">
+                            <label>Registration Confirmed On</label>
+                            <frontend_type>select</frontend_type>
+			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This is on both the home page and my account page]]></comment>
+                        </analytics_reg_confirm_on>
+			<analytics_reg_confirm_code translate="label">
+                            <label>Registration Confirmed Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_reg_confirm_code>
+			<analytics_checkout_on translate="label">
+                            <label>Checkout Tracking On</label>
+                            <frontend_type>select</frontend_type>
+			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_checkout_on>
+			<analytics_checkout_started_code translate="label">
+                            <label>Checkout Started Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_checkout_started_code>
+			<analytics_checkout_success_code translate="label">
+                            <label>Checkout Success Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_checkout_success_code>
+                        <analytics_invitation_on translate="label">
+                            <label>Invitation Landing Page On</label>
+                            <frontend_type>select</frontend_type>
+			    <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[]]></comment>
+                        </analytics_invitation_on>
+			<analytics_invitation_landing_code translate="label">
+                            <label>Invitation Landing Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Landed on invitation page]]></comment>
+                        </analytics_invitation_landing_code>
+			<analytics_invitation_success_code translate="label">
+                            <label>Invitation Sent Success Code</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Successfully sent invitations]]></comment>
+                        </analytics_invitation_success_code>
+                    </fields>
+                </track>
+		
+            </groups>
+        </analytics>
+    </sections>
+</config>

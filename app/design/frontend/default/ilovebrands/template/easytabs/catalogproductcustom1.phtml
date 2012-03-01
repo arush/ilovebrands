@@ -1,0 +1,9 @@
+<?php
+if(Mage::getStoreConfig('easy_tabs/custom/customtabid1')){
+	$method = 'get' . ucfirst(Mage::getStoreConfig('easy_tabs/custom/customtabid1'));
+	$content = nl2br($this->getProduct()->$method());
+	if(!empty($content)){
+		echo '<div class="product-specs">'.$content.'</div>';
+	}
+}
+?>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?> 
+<config>
+  <modules>
+      <Innovate_Kissinsights> 
+          <version>0.1.0</version>
+          <depends>
+              <!-- no dependencies --> 
+          </depends>
+      </Innovate_Kissinsights> 
+  </modules>
+  <global> 
+   
+    <blocks>
+        <adminhtml>
+            <rewrite>
+            </rewrite>
+        </adminhtml>
+    </blocks>
+    
+    <blocks>
+        <kissinsights> 
+            <class>Innovate_Kissinsights_Block</class>
+        </kissinsights> 
+    </blocks>
+    <helpers>
+        <kissinsights>
+          <class>Innovate_Kissinsights_Helper</class>
+        </kissinsights>
+    </helpers>
+  </global>
+  <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <kissinsights>
+                                          <title>Kissinsights Survey Settings</title>
+                                      </kissinsights>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  <frontend>
+      <routers></routers> 
+      <events></events> 
+      <translate></translate> 
+      <layout></layout>
+  </frontend>
+  <admin>
+       <routers>
+          <kissinsights>
+              <use>admin</use>
+              <args>
+                  <module>Innovate_Kissinsights</module>
+                  <frontName>kissinsights</frontName>
+              </args>
+          </kissinsights>
+      </routers>
+  </admin>
+  <!-- module defaults --> 
+  <default>
+      <!-- config values -->
+      <kissinsights>
+          <survey>
+            <kissinsights_on><![CDATA[]]></kissinsights_on>
+            <kissinsights_code><![CDATA[]]></kissinsights_code>
+            <kissinsights_identify><![CDATA[]]></kissinsights_identify>
+          </survey>
+      </kissinsights>
+  </default>
+  <!--<crontab>
+      <jobs>
+          <get_kissinsights_view>
+              <schedule><cron_expr>*/2 * * * *</cron_expr></schedule>
+              <run><model>kissinsights/observer::cacheFeeds</model></run>
+          </get_kissinsights_view>
+      </jobs>
+  </crontab>-->
+</config>

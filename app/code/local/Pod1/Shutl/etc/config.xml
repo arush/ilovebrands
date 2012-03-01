@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Pod1 Shutl extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * @category   Pod1
+ * @package    Pod1_Shutl
+ * @copyright  Copyright (c) 2010 Pod1 (http://www.pod1.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Pod1_Shutl>
+            <version>0.1.0</version>
+            <depends><Mage_Shipping /></depends>
+        </Pod1_Shutl>
+    </modules>
+    <global>
+
+    	<events>
+			<admin_system_config_edit_section_carriers>
+                <observers>
+                    <mymodule>
+                        <type>singleton</type>
+                        <class>Pod1_Shutl_Model_Config_Observer</class>
+                        <method>checkApi</method>
+                    </mymodule>
+                </observers>
+            </admin_system_config_edit_section_carriers>
+			<checkout_type_onepage_save_order_after>
+				<observers>
+					<shutl_quote_observer>
+						<type>singleton</type>
+						<class>Pod1_Shutl_Model_Quote_Observer</class>
+						<method>save</method>
+					</shutl_quote_observer>    				
+				</observers>	
+			</checkout_type_onepage_save_order_after>    	
+            
+    	</events>
+
+        <models>
+			<shutl>
+				<class>Pod1_Shutl_Model</class>
+                <resourceModel>shutl_mysql4</resourceModel>
+			</shutl>
+            <shutl_mysql4>
+                <class>Pod1_Shutl_Model_Mysql4</class>
+                <entities>
+                    <shutl_stocklocation>
+                        <table>shutl_stocklocation</table>
+                    </shutl_stocklocation>
+                    <shutl_stocklevel>
+                        <table>shutl_stocklevel</table>
+                    </shutl_stocklevel>
+                </entities>
+            </shutl_mysql4>
+        </models>
+        <helpers>
+            <shutl>
+                <class>Pod1_Shutl_Helper</class>
+            </shutl>
+        </helpers>
+        <resources>
+            <shutl_setup>
+                <setup>
+                    <module>Pod1_Shutl</module>
+					<class>Pod1_Shutl_Model_Entity_Setup</class>                    
+					 <connection>
+                    	<use>core_setup</use>
+                	</connection>
+                </setup>
+            </shutl_setup>
+            <shutl_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </shutl_write>
+            <shutl_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </shutl_read>            
+        </resources>
+            
+        <blocks>
+            <shutl><class>Pod1_Shutl_Block</class></shutl>
+        </blocks>
+    </global>
+
+	 <default>
+        <carriers>
+            <shutl>
+				<model>shutl/carrier_shipping</model>
+            </shutl>
+        </carriers>
+    </default>
+
+    <frontend>
+        <routers>
+            <shutl>
+                <use>standard</use>
+                <args>
+                    <module>Pod1_Shutl</module>
+                    <frontName>shutl</frontName>
+                </args>
+            </shutl>
+        </routers>
+        <translate>
+            <modules>
+                <Pod1_Shutl>
+                    <files>
+                        <default>pod1/shutl/translate.csv</default>
+                    </files>
+                </Pod1_Shutl>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <shutl>
+                    <file>pod1/shutl/layout.xml</file>
+                </shutl>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Pod1_Shutl>
+                    <files>
+                        <default>Pod1_Shutl</default>
+                    </files>
+                </Pod1_Shutl>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <shutl>
+                    <file>pod1/shutl/layout.xml</file>
+                </shutl>
+            </updates>
+        </layout>
+    </adminhtml>
+    <pod1>
+        <shutl>
+            <verify_url>http://www.pod1.com/</verify_url>
+        </shutl>
+    </pod1>
+    
+    <default>
+		<time>
+			<quote_timeout>15</quote_timeout>
+		</time>
+		<text>
+			<shutl_about>http://cdn.shutl.co.uk/shutl-txt-top.html</shutl_about>
+			<shutl_now>http://cdn.shutl.co.uk/shutl-txt-now.html</shutl_now>			
+			<shutl_later>http://cdn.shutl.co.uk/shutl-txt-later.html</shutl_later>			
+		</text>
+    	<cdn>
+    		<logo_shutl>http://cdn.shutl.co.uk/Main-Logo-4-colour.png</logo_shutl>
+    		<logo_shutl_now>http://cdn.shutl.co.uk/shutl-now-small.png</logo_shutl_now>
+    		<logo_shutl_later>http://cdn.shutl.co.uk/shutl-later-small.png</logo_shutl_later>    		    		
+    	</cdn>
+    	<carriers>
+    		<shutl>
+    			<active>1</active>
+    			<title>Shutl</title>
+    			<apiurl>https://uat.shutl.co.uk/</apiurl>
+    			<clientid>72aec3be3d</clientid>
+    			<apikey>FD0E4385CB33B335C78CFC3D3D7361F7</apikey>
+    			<deliverywindow>20</deliverywindow>
+    			<error_message>Shutl was unable to generate a quote</error_message>
+    			<error_code_messages>a:6:{s:18:"_1295003938386_386";a:2:{s:10:"error_code";s:3:"401";s:13:"error_message";s:25:"Incorrect API credentials";}s:18:"_1295003945763_763";a:2:{s:10:"error_code";s:3:"500";s:13:"error_message";s:12:"Bad Postcode";}s:18:"_1297762327555_555";a:2:{s:10:"error_code";s:3:"431";s:13:"error_message";s:66:"Collect after time is greater than or equal to collect before time";}s:17:"_1297762328039_39";a:2:{s:10:"error_code";s:3:"462";s:13:"error_message";s:108:"Difference between collect before and current time is less than max of pickup sla and store collection delay";}s:18:"_1297762329435_435";a:2:{s:10:"error_code";s:3:"469";s:13:"error_message";s:72:"Difference of deliver before and collect after is less than delivery sla";}s:18:"_1297762346848_848";a:2:{s:10:"error_code";s:3:"513";s:13:"error_message";s:23:"Delivery is unavailable";}}</error_code_messages>
+    			<method_label>
+    				<![CDATA[
+    				<span class="{shutl_method}">
+						<span class="method_label">{shutl_method_label}</span>
+							<br />
+							<span class="date_label">Date: </span><span class="date">{shutl_date}</span>
+							<br />
+							<span class="time_label">Time: </span><span class="time">{shutl_deliver_after}-{shutl_deliver_before}</span>
+						</span>    	
+					</span>		
+					]]>
+    			</method_label>
+    			<store_closed_method_label>
+    				<![CDATA[
+    				<span class="{shutl_method}">
+						Your order is applicable for <span class="method_label">{shutl_method_label}</span>, but stores are currently closed.
+							<br />Your exact delivery timeslot is:
+							<br />
+							<span class="date">{shutl_date}</span>
+							<br />
+							between<span class="time">{shutl_deliver_after} - {shutl_deliver_before}</span>
+						</span>    	
+					</span>		
+					]]>    			
+    			</store_closed_method_label>
+    		</shutl>        	
+    	</carriers>
+    </default>
+</config>

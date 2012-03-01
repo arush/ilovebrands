@@ -1,0 +1,336 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct();
+?>
+<!-- BEGIN ARUSH EDIT 2/11/10 get category event -->
+<?php $currentCategory = Mage::registry('current_category'); ?>
+<?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+    <?php $_event = $currentCategory->getEvent(); ?>
+<?php endif;?>
+<!-- END ARUSH EDIT 2/11/10 get category event -->
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+        <div class="product-essential">
+					<div class="product-name">
+						<h1 class="cufon cufon-canvas"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+					</div>
+
+        <div class="product-collateral">
+
+            <?php $_additional = $this->getChildHtml('additional') ?>
+			<?php $_care_instructions = $this->htmlEscape($_product->getResource()->getAttribute('care_instructions')->getFrontend()->getValue($_product)); ?>
+			<?php $_return_policy = $this->htmlEscape($_product->getResource()->getAttribute('nonrefundable')->getFrontend()->getValue($_product)); ?>
+            <?php if($_additional || $_care_instructions || $_return_policy):?>
+                <dl id="collateral-tabs" class="collateral-tabs">
+                <?php if ($_additional):?>
+                    <dt class="tab"><span><?php echo $this->__('details') ?></span></dt>
+                    <dd class="tab-container">
+                       <div class="tab-content"><?php echo $_additional ?></div>
+                    </dd>
+                <?php endif;?>
+                <?php if ($_care_instructions):?>
+                    <dt class="tab"><span><?php echo $this->__('care') ?></span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content"><?php echo $_care_instructions ?></div>
+                    </dd>
+                <?php endif;?>
+                <?php if ($_return_policy):?>
+                    <dt class="tab"><span><?php echo $this->__('shipping &amp; returns') ?></span></dt>
+                    <dd class="tab-container">
+                        <div class="tab-content">
+                        
+                        <!-- ARUSH EDIT 30-10-10 -->
+                        <?php if(nl2br($this->getProduct()->getFreeshipping())): ?>
+                        	<?php $block1 = Mage::getModel('cms/block')->load('freeshipping');?>
+                        	<p><strong><?php echo $block1->getTitle(); ?></strong><br>
+                        	<?php echo $block1->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getStandardshipping())): ?>
+                        	<?php $block2 = Mage::getModel('cms/block')->load('standardshipping');?>
+                        	<p><strong><?php echo $block2->getTitle(); ?></strong><br>
+                        	<?php echo $block2->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getNextdayshipping())): ?>
+                        	<?php $block3 = Mage::getModel('cms/block')->load('nextdayshipping');?>
+                        	<p><strong><?php echo $block3->getTitle(); ?></strong><br>
+                        	<?php echo $block3->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getShutl())): ?>
+                        	<?php $block3 = Mage::getModel('cms/block')->load('shutl');?>
+                        	<p><strong><?php echo $block3->getTitle(); ?></strong><br>
+                        	<?php echo $block3->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+
+                        
+                        <?php if(nl2br($this->getProduct()->getSamedayshipping())): ?>
+                          	<?php $block4 = Mage::getModel('cms/block')->load('samedayshipping');?>
+                          	<p><strong><?php echo $block4->getTitle(); ?></strong><br>
+                          	<?php echo $block4->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                                      
+                        <?php /*?><div class="shutl-right-col">
+                        <?php echo $this->getChildHtml('shutl_service'); ?></div><?php */?>
+                        
+			<?php if(nl2br($this->getProduct()->getEushipping())): ?>
+                            <?php $block7 = Mage::getModel('cms/block')->load('eushipping');?>
+                          	<p><strong><?php echo $block7->getTitle(); ?></strong><br>
+                          	<?php echo $block7->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getWorldwideshipping())): ?>
+                          	<?php $block8 = Mage::getModel('cms/block')->load('worldwideshipping');?>
+                          	<p><strong><?php echo $block8->getTitle(); ?></strong><br>
+                          	<?php echo $block8->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                        
+                        <?php $_nonrefundable = $this->htmlEscape($_product->getResource()->getAttribute('nonrefundable')->getFrontend()->getValue($_product)); ?>
+                                                
+                        <?php if ($_nonrefundable === 'Yes'):?>
+                        	<?php $block1 = Mage::getModel('cms/block')->load('returns1-true');?>
+                        	<p><strong><?php echo $block1->getTitle(); ?></strong><br>
+                        	<?php echo $block1->getContent(); ?>
+                        	</p>
+                        <?php else:?>
+                        	<?php $block2 = Mage::getModel('cms/block')->load('returns1-false');?>
+                        	<p><strong><?php echo $block2->getTitle(); ?></strong><br>
+                        	<?php echo $block2->getContent(); ?>
+                        	</p>
+                       	<?php endif;?>
+                       	<!-- ARUSH EDIT 30-10-10 -->
+                       	
+                        </div>
+                    </dd>
+                <?php endif;?>
+                </dl>
+                <script type="text/javascript">new Enterprise.Tabs('collateral-tabs')</script>
+            <?php endif; ?>
+        </div>
+
+			<div class="product-shop">
+                <div class="shutl-right-col">
+                    <?php echo $this->getChildHtml('shutl_service'); ?></div>
+				<div class="product-main-info">
+					<p class="product-ids"><?php echo $this->__('SKU# %s', $this->htmlEscape($_product->getSku())); ?></p>
+					<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+					<?php /*?><?php echo $this->getChildHtml('alert_urls') ?><?php */?>
+					<?php echo $this->getChildHtml('product_type_data') ?>
+					<?php if($_product->getData('discount')): ?>
+					    <div id="discount"><p><?php echo $this->htmlEscape($_product->getData('discount')); ?></p></div>
+					<?php endif; ?>
+					
+					
+
+				</div>
+				
+				<?php echo $this->getChildHtml('tierprices') ?>
+				<?php echo $this->getChildHtml('extrahint') ?>
+			
+				<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2')):?>
+                
+				<?php /*WDCA CODE BEGINS*/ ?>
+				<?php echo $this->getChildHtml('points'); ?>
+				<?php /*WDCA CODE ENDS*/ ?>              
+                
+					<div class="options-container-big">
+					    <?php if ($_product->getTypeId() === 'configurable'): ?>
+						<a onclick="window.open('/index.php/sizing','popup','width=790,height=500,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=575,top=0'); return false" href="/index.php/sizing" id="my-size"><?php echo $this->__('What Is My Size?') ?></a>
+					    <?php endif; ?>
+						<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+					<?php if($_product->getData('promo_offer')): ?>
+					    <div id="promo-offer"><p><?php echo $this->htmlEscape($_product->getData('promo_offer')); ?></p></div>
+					<?php endif; ?>
+					</div>
+					
+				<?php endif;?>
+				
+				<?php if (!$this->hasOptions()):?>
+
+					<?php if($_product->isSaleable()): ?>
+						<?php /*WDCA CODE BEGINS*/ ?>
+                        <?php echo $this->getChildHtml('points'); ?>
+                        <?php /*WDCA CODE ENDS*/ ?>
+					<?php endif; ?>
+
+					<div class="options-container-big">
+					<div class="add-to-box">
+						<?php if($_product->isSaleable()): ?>
+							<?php echo $this->getChildHtml('addtocart') ?>
+						<?php elseif (!$_product->isSaleable()): ?>
+							<div class="availability out-of-stock detail-view">
+							    <?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+							    <?php switch ($_event->getStatus()):
+							    case 'upcoming': ?>
+								<p>You're early!<br>This Collection is not open yet.<br><br>Visit back as soon as you receive the Collection Email Alert to improve your chances of buying this item before it sells out!</p>
+							    <?php break;
+							    case 'open': ?>
+								<p>Too late!<br>This item is completely SOLD OUT<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+							    <?php break;
+							    default : ?>
+								<p>Too late!<br>This Collection is closed.<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+							    <?php break; ?>
+							    <?php endswitch; ?>
+							<?php else:?>
+							    <p>Too late!<br>This Collection is closed.<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+							<?php endif;?>    
+						    </div>
+						<?php endif; ?>
+						<?php //echo $this->getChildHtml('addto') ?>
+					</div>
+					<?php if($_product->getData('promo_offer')): ?>
+					    <div id="promo-offer"><p><?php echo $this->htmlEscape($_product->getData('promo_offer')); ?></p></div>
+					<?php endif; ?>
+					</div>
+				<?php else:?>
+
+				<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container1') ):?>
+					<div class="options-container-small">
+						<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+					</div>
+				<?php elseif (!$_product->isSaleable()): ?>
+					<div class="options-container-big">
+					<div class="add-to-box">
+					<div class="availability out-of-stock detail-view">
+					    <?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+						<?php switch ($_event->getStatus()):
+						case 'upcoming': ?>
+						    <p>You're early!<br>This Collection is not open yet.<br><br>Visit back as soon as you receive the Collection Email Alert to improve your chances of buying this item before it sells out!</p>
+						<?php break;
+						case 'open': ?>
+						    <p>Too late!<br>This item is completely SOLD OUT<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+						<?php break;
+						default : ?>
+						    <p>Too late!<br>This Collection is closed.<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+						<?php break; ?>
+						<?php endswitch; ?>
+					    <?php else:?>
+						<p>Too late!<br>This Collection is closed.<br><br>We have recorded your interest in this product, and will contact you if we receive any returns.</p>
+					    <?php endif;?>    
+					</div>
+					<?php if($_product->getData('promo_offer')): ?>
+					    <div id="promo-offer"><p><?php echo $this->htmlEscape($_product->getData('promo_offer')); ?></p></div>
+					<?php endif; ?>
+					</div>
+					</div>
+				<?php endif;?>
+
+				<?php //echo $this->getChildHtml('addto') ?>
+				<?php endif; ?>
+
+
+				<?php if ($_product->getShortDescription()):?>
+					<div class="short-description std">
+						<h2><?php echo $this->__('Quick Overview') ?></h2>
+						<?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+					</div>
+				<?php endif;?>
+
+				<?php echo $this->getChildHtml('other');?>
+                
+                
+                
+			</div>
+			<!-- original img code -->
+			<!--<div class="product-img-box">
+				<?php //echo $this->getChildHtml('media') ?>
+			</div>-->
+			
+			<div class="product-img-box">
+				<?php echo $this->getChildHtml('media') ?>
+				<?php //if($_product->isConfigurable()){$attribute='colour';$skinUrl=$this->getSkinUrl('js/colorThumbnails.js');$image=$this->getSkinUrl('images/catalog/product/placeholder/image.jpg');$thumbnail=$this->getSkinUrl('images/catalog/product/placeholder/thumbnail.jpg');require 'app/code/local/Temgra/ColorThumbnails/colorThumbnails.php';$x=colorThumbnails($attribute, $_product, $skinUrl, $image, $thumbnail);}?>
+				
+				<div id="social-buttons">
+					<!-- facebook like button -->
+					<?php echo $this->getChildHtml('likebutton') ?>			
+					<!-- email to a friend / tweetbox -->
+					<table border="0" cellspacing="0" cellpadding="0" id="social-btns">
+					  <tr>
+						<td class="email-btn" width="32" align="left">
+							<?php if ($this->canEmailToFriend()): ?>
+								<a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><span><?php echo $this->__('email to<br />a friend') ?></span></a>
+							<?php endif; ?>
+						</td>
+						<td width="50" align="left">
+							<?php if ($this->canEmailToFriend()): ?>
+								<a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('email to<br />a friend') ?></a>
+							<?php endif; ?>
+						</td>
+						<td class="twitter-btn" width="32" align="left"><p class="twitter"><span><?php echo $this->__('tweet<br />this') ?></span></p></td>
+						<td width="50" align="left"><p class="twitter"><?php echo $this->__('tweet<br />this') ?></p></td>
+					  </tr>
+					</table>
+				</div>
+
+
+			</div>
+        </div>
+    </form>
+        <?php echo $this->getChildHtml('relatedProducts') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('productTagList') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+        <?php echo $this->getChildHtml('reports.product.viewed') ?>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    var productAddToCartForm = new VarienForm('product_addtocart_form');
+    productAddToCartForm.submit = function() {
+            if (this.validator.validate()) {
+                    this.form.submit();
+            }
+    }.bind(productAddToCartForm);
+//]]>
+</script>
+<?php //if($_product->isConfigurable()){echo '<script type="text/javascript">colorThumbnails.y2("'.$x.'")</script>';} ?>

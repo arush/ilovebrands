@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <default>
+    	<reference name="head">
+    		
+    		<!-- block type="page/html_head" name="storerestriction" as="storerestriction" template="storerestriction/head.phtml" / -->
+    		<block type="core/text" name="fb-meta">
+				<action method="setText">
+					<text><![CDATA[
+					
+					<meta property="og:title" content="BRANDiD - Shop. Like a man."/>
+				    <meta property="og:type" content="website"/>
+				    <meta property="og:url" content="http://www.getbrandid.com/"/>
+				    <meta property="og:image" content="http://www.getbrandid.com/brandid-square-big.png"/>
+				    <meta property="fb:admins" content="202908185"/>
+				    <meta property="og:description"
+				          content="Designer essentials on subscription, so you never have to shop again. And everything's at least 30% off. Man up… sign up!"/>
+					]]></text>
+				</action>
+			</block> 
+    		<block type="page/html_head" name="typekit" template="typekit.phtml" />
+            <action method="addCss"><stylesheet>css/brandid.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/svdh.css</stylesheet></action>
+
+            <action method="addCss"><stylesheet>fonts/fonts.css</stylesheet></action>            
+			<action method="addItem"><type>skin_js</type><name>js/brandid.js</name></action>    
+			<action method="addItem"><type>skin_js</type><name>js/gauge.js</name></action>    			
+			<action method="addItem"><type>skin_js</type><name>js/flipcounter.min.js</name></action>    		
+			
+    	</reference>
+    	
+		<reference name="header">
+			<block type="cms/block" name="catalogLinks">
+				<action method="setBlockId"><block_id>catalogLinks</block_id></action>
+			</block>		
+		</reference>
+
+    </default>
+    
+
+	<customer_account_index>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>			
+		</reference>
+	</customer_account_index>
+    <customer_account_login>
+        <remove name="storerestriction"/>       
+    </customer_account_login>
+    <keep_calm_signmeup>
+        <remove name="storerestriction"/>       
+    </keep_calm_signmeup>
+    <customer_account_create>
+    	<remove name="header"/>
+    	<remove name="footer"/>
+        <remove name="storerestriction"/>       
+    </customer_account_create>
+    <customer_account_forgotpassword>
+        <remove name="storerestriction"/>       
+    </customer_account_forgotpassword>    
+    
+    <rewardsref_customer_index>
+    	<reference name="head">
+			<action method="setTitle"><title>BRANDiD | Invite and Earn</title></action>
+			<action method="addItem"><type>skin_js</type><name>js/jquery.color.js</name></action>    			
+    	</reference>
+    	<reference name="breadcrumbs.container">
+    		<remove name="customer_account_navigation" />
+    	</reference>
+    	<reference name="referral">
+    		<block type="cms/block" name="invitered">
+				<action method="setBlockId"><block_id>invite-red</block_id></action>
+			</block>
+    	</reference>
+    </rewardsref_customer_index>
+    
+    
+    <checkout_onepage_success>
+    	<reference name="head">
+			<block type="core/text" name="twitteranywhere.js">
+				<action method="setText">
+					<text><![CDATA[<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=rFclPwPvwaz6yJkaMVLbXQ&v=1"></script>]]></text>
+				</action>
+			</block> 
+    	</reference>
+    </checkout_onepage_success>
+    
+    <checkout_onepage_index>
+    	<reference name="head">
+	    	<action method="addJs"><script>jquery/jquery.localscroll-1.2.7-min.js</script></action>
+			<action method="addJs"><script>jquery/jquery.scrollTo-1.4.2-min.js</script></action>
+			<action method="addJs"><script>jquery/jquery.serialScroll-1.2.2-min.js</script></action>
+			<action method="addJs"><script>jquery/coda-slider.js</script></action>
+    	</reference>
+    </checkout_onepage_index>
+    
+    <checkout_cart_index>
+    	<reference name="head">
+			<action method="addJs"><script>jquery/jquery.tools.min.js</script></action>
+		</reference>
+	</checkout_cart_index>
+    
+    
+    <oneall_rpx_duplicate>
+    	<reference name="head">
+			<action method="addJs"><script>jquery/jScrollPane.js</script></action>
+			<action method="addJs"><script>jquery/jquery.em.js</script></action>
+			<action method="addJs"><script>jquery/jquery.mousewheel.js</script></action>
+			<action method="addJs"><script>jquery/jquery.localscroll-1.2.7-min.js</script></action>
+			<action method="addJs"><script>jquery/jquery.scrollTo-1.4.2-min.js</script></action>
+			<action method="addJs"><script>jquery/jquery.serialScroll-1.2.2-min.js</script></action>
+			<action method="addJs"><script>jquery/coda-slider.js</script></action>
+			<action method="addCss"><stylesheet>css/jScrollPane.css</stylesheet></action>
+        </reference>
+    </oneall_rpx_duplicate>   
+    
+       
+<customer_account_forgotpassword>
+		<reference name="root">
+			<action method="setTemplate"><template>page/empty.phtml</template></action>
+           	<remove name="head"/>
+        </reference>
+ 	   </customer_account_forgotpassword>
+
+	<catalog_product_view>
+        <!-- can't find the names
+<remove name="Product_list_Upsell"/>       
+        <remove name="reports_products_viewed"/>       
+        <remove name="product_list_related"/>
+-->       
+	</catalog_product_view>
+
+       
+</layout>

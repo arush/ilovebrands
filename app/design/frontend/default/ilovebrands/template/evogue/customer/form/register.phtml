@@ -1,0 +1,215 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see Mage_Customer_Block_Form_Register
+ */
+?>
+<?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('login-bg')->toHtml() ?>
+
+<div class="account-login account-register">
+	<div class="login-oneall">
+		
+		<h1>Login or connect</h1>
+	
+		<form action="<?php echo Mage::getUrl('oneall/rpx/loginpost') ?>" method="post" id="login-form">
+			<div class="fieldset" id="gigya-fieldset">
+				<div class="gigya-group">
+					<!--<div class="gigya-label"><p id="loginwith">login with</p><p id="connectwith">connect with</p></div>-->
+					<div class="gigya-block">
+						
+						<!-- The provider login will be embedded in this div //-->
+							
+							<div id="oa_social_login_container"></div>
+								
+							<script type="text/javascript">
+								 oneall.api.plugins.social_login.build("oa_social_login_container", {
+								  'providers' :  ['facebook', 'google', 'twitter', 'yahoo'], 
+								  'callback_uri': '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK); ?>arush-oneall/rpx/token_url/',
+								  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_vertical.css'
+								 });
+							</script>
+							
+					</div>
+				</div>	
+			</div>
+		</form>
+	
+		<p>We never post to your profile without your consent</p>
+	
+		<div id="panes">
+			
+			
+			<img src="<?php echo $this->getSkinUrl();?>images/login-line.jpg"/>
+			
+			<a href="/customer/account/login">Already a member?</a>
+		
+		</div> <!-- end panes -->
+	
+	
+	
+	</div>
+	<img class="divider" src="<?php echo $this->getSkinUrl();?>images/login-line.png"/>
+
+
+
+	<div class="account-create">
+		
+		<h1>Complete your registration</h1>
+		
+		<p>Register, earn points and shop for free!</p>
+
+		<?php echo $this->getChildHtml('form_fields_before')?>
+		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+		<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data">
+			<div class="fieldset">
+				<input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+				<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+				<ul class="form-list">
+					<li class="fields">
+					<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->toHtml() ?>
+					</li>
+					<li>
+						<label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+						<div class="input-box">
+							<input type="text" name="email" id="email_address"
+	 <?php /*?>value edited by flo<?php */?>
+							value="<?php  
+								$flo_email = $this->htmlEscape($this->getFormData()->getEmail());
+								if ($flo_email) {
+									echo $flo_email;
+								}
+								else {
+									echo (isset($_GET['email']) ? $_GET['email'] : "");
+								}
+							
+							?>" 
+							title="<?php echo $this->__('Email Address')?>"
+							class="input-text validate-email required-entry" />
+						</div>
+					</li>
+				<?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+				<?php /* if ($_dob->isEnabled()): ?>
+					<li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+				<?php endif */ ?>
+				<?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+				<?php if ($_taxvat->isEnabled()): ?>
+					<li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+				<?php endif ?>
+				<?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+				<?php /* if ($_gender->isEnabled()): ?>
+					<li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+				<?php endif */ ?>
+			<?php $customerAttributes = $this->getChild('customer_form_user_attributes');?>
+				<?php if ($customerAttributes): ?>
+					<?php $customerAttributes->setShowContainer(false);?>
+					<?php $this->restoreSessionData($customerAttributes->getForm());?>
+					<?php echo $customerAttributes->toHtml()?>
+				<?php endif;?>
+			
+			<li class="passwords-fields">
+						<div class="field">
+							<!--
+	<label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+							<div class="input-box">
+								<input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+							</div>
+						</div>
+						<div class="field">
+							<label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+							<div class="input-box">
+								<input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+							</div>-->
+							
+							<!-- Oneall -->  
+							
+							<label for="password" class="required"><em>*</em><?php echo $this->__('Choose a password') ?></label>
+							<div class="input-box">
+								<input type="password" name="password" id="password" title="<?php echo $this->__('Choose a password') ?>" class="input-text required-entry validate-password" />
+							</div>
+						</div>
+						<div class="field">
+							<label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+							<div class="input-box">
+								<input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+							</div>
+							<!-- End Oneall -->
+						</div>
+				</li>
+			
+					<?php /* if ($this->isNewsletterEnabled()): ?>
+					<li class="control">
+						<label for="is_subscribed"><?php echo $this->__('Email Reminders') ?></label>
+						<div class="input-box">
+							<input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Email Reminders') ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+						</div>
+						<p id="reminder-text">Send me Collection Email Alerts right before Collections open for purchase</p>
+
+		 <!--************* MAILCHIMP PRO HERE ************************-->
+
+						<?php echo $this->getChildHtml('generalNewsletter') ?>
+
+		 <!--************* MAILCHIMP PRO HERE ************************-->
+					
+					</li>
+					<?php endif */ ?>
+				</ul>			
+				<div class="buttons-set form-buttons">
+					<p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+					<button type="submit" class="button" title="<?php echo $this->__('Become a Member') ?>"><span><span class="cufon"><?php echo $this->__('Become a Member') ?></span></span></button>
+					<p id="policy-text">By clicking register you agree to our <a href="/terms-of-use">terms of use</a></p>
+				</div>
+				<?php /* ?><p class="required"><?php echo $this->__('* Required Fields') ?></p><?php */ ?>
+			</div>
+		</form>
+		
+		<script type="text/javascript">
+		//<![CDATA[
+			var dataForm = new VarienForm('form-validate', true);
+			<?php if($this->getShowAddressFields()): ?>
+			new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+			<?php endif; ?>
+
+			Form.getElements('form-validate').each(function(element) {
+				element.setAttribute('autocomplete', 'off');
+			});
+		//]]>
+		</script>
+		
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+    
+			
+		
+	</div>
+
+</div>

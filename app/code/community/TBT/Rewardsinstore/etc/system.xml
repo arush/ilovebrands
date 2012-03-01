@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+
+<config>
+   <sections>
+        <rewardsinstore translate="label" module="rewardsinstore">
+            <label><![CDATA[<span class="rewardsinstore-config_menu">Sweet Tooth Instore</span>]]></label>
+            <tab>tbtall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>150</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <about translate="label">
+                    <label>About This Extension</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <fields>
+                        <notice translate="label">
+                            <label>Extension Developed By WWW.WDCA.CA</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>rewardsinstore/system_config_html</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notice>
+                    </fields>
+                </about>
+                <customer_signup translate="label">
+                    <label>Customer Signup</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <customer_group translate="label comment">
+                            <label>Customer Group</label>
+                            <comment>Customers signed up in-store will be in this customer group.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>customer/entity_group_collection</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </customer_group>
+                        <email_template translate="label">
+                            <label>E-mail template for new customers</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email_template> 
+                    </fields>
+                </customer_signup>
+                <!-- Disabling for simplicity of initial release. Enable this configuration at a later date.
+                <general translate="label">
+                    <label>General Settings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <create_instore_orders translate="label comment">
+                            <label>Create Instore orders in Magento</label>
+                            <comment>If yes, orders from each storefront will be saved as real orders</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </create_instore_orders>
+                    </fields>
+                </general> -->
+                <!-- <initial_transfer_statuses translate="label">
+                    <label>Initial Transfer Statuses</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <AfterOrder translate="label">
+                            <label>After Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterOrder>
+                        <AfterSignup translate="label">
+                            <label>After Sign up</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>rewards/system_config_statuslist</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </AfterSignup>
+                    </fields>
+                </initial_transfer_statuses> -->
+                <!-- <custom_attributes translate="label">
+                    <label>Custom Attributes</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <cartrule_attributes translate="label comment">
+                            <label>Available Cart Attributes</label>
+                            <comment>Selected attributes will appear as fields to be entered at customer checkout.</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>rewardsinstore/cartrule_attribute</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cartrule_attributes>
+                    </fields>
+                </custom_attributes>
+                <dev translate="label">
+                    <label>Developer</label>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <instore_product_id translate="label comment">
+                            <label>Instore Product Id</label>
+                            <comment>Virtual product in catalog used for Instore orders</comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instore_product_id>
+                    </fields>
+                </dev>
+                -->
+                <advanced translate="label">
+                    <label>Advanced</label>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <custom_storefront_code translate="label comment">
+                            <label>Manually set Storefront Codes</label>
+                            <comment>If yes, a new field will be available when creating a storefront which allows you to specify the storefront code (generated automatically by default)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </custom_storefront_code>
+                    </fields>
+                </advanced>
+                <registration translate="label comment">
+                    <label>Registration Information</label>
+                    <comment><![CDATA[If you didn't install this module using CEM, this section is required.]]></comment>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <license_key translate="label">
+                            <label>License Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <backend_model>rewardsinstore/system_config_backend_license</backend_model>
+                        </license_key>
+                        <subscribed_storefronts translate="label comment">
+                            <label>Storefront usage</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>rewardsinstore/system_config_subscribedstorefronts</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </subscribed_storefronts>
+                    </fields>
+                </registration>
+            </groups>
+        </rewardsinstore>
+    </sections>
+</config>

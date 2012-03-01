@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+   <sections>
+        <rewards translate="label" module="rewardsonly">
+            <groups>
+            </groups>
+        </rewards>
+    </sections>
+</config>

@@ -1,0 +1,429 @@
+body {
+	background-image: url('../images/spry/pageBg.png');
+	background-color: #f5f5f5;
+	background-repeat: repeat-x;
+	background-position: 0px -225px;
+	font-family: HelveticaLT, Helvetica, Arial;
+	-webkit-font-smoothing: antialiased;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0px;
+}
+
+div#container {
+	width: 775px;
+	margin: auto;
+	margin-top: 75px;
+    /*margin-top: 300px;*/
+    /*margin-top: 150px;*/
+}
+
+div.break {
+	width: 100%;
+	background-image: url('../images/spry/break.png');
+	background-position: center;
+	height: 31px;
+	background-repeat: no-repeat;
+}
+
+div.centerPreLogin {
+	background-image: url('../images/spry/topPreLogin.png');
+	background-repeat: no-repeat;
+	width: 775px;
+	height: 37px;
+}
+
+div.centerPostLogin {
+	background-image: url('../images/spry/topPostLogin.png');
+	background-repeat: no-repeat;
+	width: 775px;
+	height: 37px;
+	padding: 0px 60px;
+	color: #fff;
+	font-size: 12px;
+}
+
+	div.centerPostLogin p {
+		padding-top: 16px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+}
+
+	div.centerPostLogin p #logoutBar {
+		float: right;
+		padding-right: 128px;
+	}
+	
+	a {
+		color: #b4e97b;
+		text-decoration: none;
+	}
+
+div.mainCenter {
+	background-image: url('../images/spry/mainBody.png');
+	background-repeat: no-repeat;
+	min-height: 300px;
+	padding: 24px 60px;
+}
+
+    div.mainCenter div#main {
+        top: -88px;
+    }
+
+	div.mainCenter h1 {
+		font-size: 24px;
+		color: #888888;
+		margin: 0px 0px;
+		padding: 0px 0px 16px 0px;
+		font-weight: normal;
+		-webkit-font-smoothing: antialiased;
+	}
+	
+	div.mainCenter input {
+		border-radius: 16px;
+		padding: 20px 16px;
+		border: 1px solid #cccac9;
+		font-size: 24px;
+		color: #000;
+		-webkit-box-shadow: inset 3px 3px 10px #f2f0f0;
+		-webkit-font-smoothing: antialiased;
+		font-family: HelveticaLT;
+		
+	}
+	
+	div.mainCenter input:focus {
+		outline: none;
+	}
+	
+	div.mainCenter input:disabled {
+        background-color: #fff;
+	}
+	
+	/*div.mainCenter div#rememberMe {
+		float: right;
+		width: 320px;
+		font-size: 18px;
+		margin-top: 24px;
+	}*/
+	
+    div.mainCenter input.continue {
+        padding: 6px 16px;
+        font-size: 24px;
+        border-radius: 12px;
+        border: 1px solid #6b9245;
+        -webkit-box-shadow: none;
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0px 1px #506f34;
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, #6C9245),
+            color-stop(0.73, #9DB681)
+        );
+        background-image: -moz-linear-gradient(
+            center bottom,
+            #6C9245 0%,
+            #9DB681 73%
+        );
+        background-color: #6A933E;
+        float: right;
+        cursor: pointer;
+    }
+
+div#storefrontSelector {
+    padding: 30px 35px;
+    text-align: left;
+}
+    
+    div#storefrontSelector h1 {
+        font-size: 24px;
+        color: #888888;
+        margin: 0px 0px 20px;
+        padding: 0px 0px 16px 0px;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    div#storefrontSelector input#locationBox {
+        border-radius: 16px;
+        padding: 20px 16px;
+        border: 1px solid #cccac9;
+        font-size: 24px;
+        color: #000;
+        -webkit-box-shadow: inset 3px 3px 10px #f2f0f0;
+        -webkit-font-smoothing: antialiased;
+        font-family: HelveticaLT;
+        margin-left: 30px;
+        width: 590px;
+        margin-bottom: 24px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    
+    div#storefrontSelector button#autocompleteArrow {
+        border-radius: 16px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        padding: 14px 6px;
+        padding-bottom: 25px;
+        border: 1px solid #6b9245;
+        -webkit-box-shadow: none;
+        background-color: #9DB681;
+        cursor: pointer;
+    }
+
+div.error {
+	background-image: url('../images/spry/errorBg.png');
+	background-repeat: no-repeat;
+	margin-left: -38px;
+	margin-top: -24px;
+	padding: 34px;
+	width: 663px;
+	color: #78252d;
+}
+
+div.error img {
+	float: left;
+	margin-right: 16px;
+	margin-top: -12px;
+}
+    
+div.faded {
+    opacity: 0.3;
+}
+
+div.mainFoot {
+    padding: 0px 60px;
+    margin-top: 36px;
+    color: #888888;
+    font-size: 12px;
+    top: -88px;
+}
+    
+    div.mainFoot a {
+        color: #6e9448;
+        text-decoration: none;
+    }
+    
+    div.mainFoot div.footRight {
+        width: 300px;
+        float: right;
+        text-align: right;
+    }
+    
+/* ===========================================
+   ===========================================
+   ====    HERE FOLLOWS JQUERY UI MODS    ====
+   ===========================================
+   =========================================== */
+    
+    .ui-autocomplete {
+        border: 1px solid #000000;
+        color: #000000;
+        background: #FFFFFF;
+        border-radius: 0px;
+    }
+    
+    .ui-menu .ui-menu-item a {
+        padding: 5px 0px 5px 40px;
+        border: none;
+    }
+    
+    .ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+        border: none;
+        color: #000000;
+        /*background: #9DB681;*/
+        background: #FAFAFA;
+        border-radius: 0px;
+        margin: 0px;
+    }
+    
+/* ===========================================
+   ===========================================
+   =======    HERE FOLLOWS MAIN.CSS    =======
+   ===========================================
+   =========================================== */
+    
+    div.mainCenter input#searchBox, div.mainCenter input#email {
+        width: 616px;   
+        margin-bottom: 24px;    
+    }
+    
+    div.mainCenter input#lastName {
+        width: 318px;
+        margin-left: 16px;
+    }
+    
+    div.mainCenter input#firstName {
+        width: 239px;
+        margin-bottom: 16px;
+    }
+    
+    /*div.mainCenter div#rememberMe {
+        float: right;
+        width: 320px;
+        font-size: 18px;
+        margin-top: 24px;
+    }*/
+    
+    div.mainCenter p.rewardNotice {
+        padding: 0px; 
+        margin: 0px 0px 16px 0px;
+    }
+    
+    div.mainCenter h1.user {
+        font-size: 48px;
+        font-weight: bold;
+        color: #000;
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    div.mainCenter p.info {
+        margin: 0px;
+        padding: 0px;
+        color: #888888;
+    }
+    
+    div.mainCenter h2 {
+        font-size: 18px;
+        color: #888888;
+        margin: 0px 0px;
+        padding: 0px 0px 16px 0px;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;    
+        margin-top: 24px;   
+    }
+    
+    div.mainCenter div.selectAnother {
+        float: right;
+        width: 213px;
+        margin-top: 24px;
+        
+    }
+    
+    div.mainCenter div.selectAnother img {
+        float: left;
+        margin-right: 8px;
+    }
+    
+    div.mainCenter div.selectAnother a {
+        color: #6a933e;
+    }
+    
+    div.mainCenter div.rewarded {
+        float: right;
+        width: 300px;
+        margin-top: 30px;
+    }
+
+div.reward img, div.reward input {
+    vertical-align: middle;
+}
+
+input#reward {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    margin: 0px;
+    width: 229px;
+    font-size: 36px;
+    padding: 13px 30px;
+}
+
+input#rewardButton {
+    border-radius: 16px;
+    -webkit-font-smoothing: antialiased;
+    font-family: HelveticaLT;
+    
+    /*border-radius: 16px;*/
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border: 1px solid #6b9245;
+    font-size: 36px;
+    color: #fff;
+    -webkit-box-shadow: none;
+    font-weight: bold;
+    text-shadow: 0px 1px #506f34;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #6C9245),
+        color-stop(0.73, #9DB681)
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        #6C9245 0%,
+        #9DB681 73%
+    );
+    background-color: #6A933E;
+    cursor: pointer;
+    margin-left: -6px;
+    padding: 13px 85px 12px;
+}
+
+div.mainCenter input.continue:disabled, input#rewardButton:disabled {
+    color: #fff;
+    cursor: default;
+}
+/*input#rewardButton {
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #6C9245),
+        color-stop(0.73, #9DB681)
+    );
+    background-image: -moz-linear-gradient(
+         center bottom,
+         #6C9245 0%,
+        #9DB681 73%
+    );
+    -webkit-box-shadow: none;
+    margin-left: -6
+}*/
+    
+    div.mainCenter div#rewardFloat {
+        width: 120px;
+        float: right;
+    }
+
+img.dollar {
+    padding: 0px;
+    margin: 0px;
+}
+
+div.createBar {
+    margin-bottom: 24px;
+}
+
+div.createBar a {
+    color: #6a933e;
+}
+
+div.createBar img {
+    float: left;
+    margin-left: 24px;
+    margin-right: 12px;
+}
+    
+div.createBg {
+    background-image: url('../images/spry/createBg.png');
+    background-repeat: no-repeat;
+    margin-left: -35px;
+    margin-top: -24px;
+    padding: 34px;
+    width: 656px;
+}
+
+

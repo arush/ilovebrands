@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<widgets>
+    <simple type="surveymonkey/simple">
+        <name>Surveymonkey: Simple Survey</name>
+        <description type="desc">Adds a simple embedded survey</description>
+        <parameters>
+            <template_path translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+
+		        <type>select</type>
+                
+                <values>
+                    <block translate="label">
+                        <value>arush/surveymonkey/simple.phtml</value>
+                        <label>Simple</label>
+                    </block>
+                </values>
+            </template_path>
+            <embed translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Survey HTML to embed</label>
+
+		        <type>textarea</type>                
+            </embed>            
+        </parameters>
+    </simple>
+</widgets>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<widgets>
+	<oneall_auth type="oneall/auth" translate="name description" module="oneall">
+		<name>Arush Oneall Login</name>
+		<description type="desc">Adds a link to open the Oneall authentication dialog</description>
+		<parameters>
+			<label_text>
+				<required>0</required>
+				<visible>1</visible>
+				<label>Label Text</label>
+				<description>The text to display before Provider Icons. Defaults to 'Or log in with'</description>
+				<type>text</type>
+			</label_text>
+			<size>
+				<required>0</required>
+				<visible>1</visible>
+				<label>Widget Style</label>
+				<type>select</type>
+				<value>large</value>
+				<values>
+					<default translate="label">
+						<value>large</value>
+						<label>Large Icons</label>
+					</default>
+					<small translate="label">
+						<value>small</value>
+						<label>Small Icons</label>
+					</small>
+                    <inline translate="label">
+						<value>inline</value>
+						<label>Inline</label>
+					</inline>
+				</values>
+			</size>
+		</parameters>
+	</oneall_auth>
+	<oneall_share type="oneall/share" translate="name description" module="oneall">
+		<name>Arush Oneall Social Sharing</name>
+		<description type="desc">Adds a links to share content via Oneall</description>
+		<parameters>
+			<share_text>
+				<required>0</required>
+				<visible>1</visible>
+				<label>Share Text</label>
+				<description>The default text to share in the Social Sharing widget (i.e. Check this out!)</description>
+				<type>text</type>
+			</share_text>
+		</parameters>
+	</oneall_share>
+</widgets>

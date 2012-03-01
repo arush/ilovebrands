@@ -1,0 +1,245 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<!-- BEGIN ARUSH EDIT 2/11/10 get category event -->
+<?php $currentCategory = Mage::registry('current_category'); ?>
+<?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+    <?php $_event = $currentCategory->getEvent(); ?>
+<?php endif;?>
+<!-- END ARUSH EDIT 2/11/10 get category event -->
+
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+
+	<div class="product-img-box">
+        <?php echo $this->getChildHtml('media') ?>
+    </div>
+
+    <div class="product-collateral">
+		<div class="cms-block1">
+        	<?php $block = Mage::getModel('cms/block')->load('prod-page-block');?>
+			<?php /*?><p><strong><?php echo $block8->getTitle(); ?></strong></p><?php */?>
+            <?php echo $block->getContent(); ?>
+        </div>
+        <div class="product-name">
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+        </div>
+		<?php /*?><?php if (!Mage::getStoreConfig('easy_tabs/general/descriptiontabbed')):?>
+	        <?php echo $this->getChildHtml('description') ?>
+        <?php endif;?><?php */?>
+        <?php echo $this->getChildHtml('additional') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+    </div>
+    
+    <div class="product-essential">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+			<div class="cms-block1">
+				<div class="shutl-right-col">
+                	<?php echo $this->getChildHtml('shutl_service'); ?>
+                </div>
+            </div>
+            
+        <div class="product-shop">
+            
+            <?php /*?><?php if ($this->canEmailToFriend()): ?>
+                <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+            <?php endif; ?><?php */?>
+
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            <?php /*?><?php echo $this->getChildHtml('alert_urls') ?><?php */?>
+            
+            <!-- this somehow makes the price box appear -->
+			<?php echo $this->getChildHtml('product_type_data') ?>
+       
+			<?php if($_product->isSaleable()): ?>
+				<?php /*WDCA CODE BEGINS*/ ?>
+				<?php echo $this->getChildHtml('points'); ?>
+				<?php /*WDCA CODE ENDS*/ ?>
+            <?php endif; ?>
+			
+            <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('extrahint') ?>
+
+			<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2')):?>
+                
+                <div class="container2">
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+                
+                <?php if ($_product->getTypeId() === 'configurable'): ?>
+                	<a onclick="window.open('/index.php/sizing','popup','width=790,height=500,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=575,top=0'); return false" href="/index.php/sizing" id="my-size"><?php echo $this->__('Whats My Size?') ?></a>
+				<?php endif; ?>
+				</div>
+				
+			<?php endif;?>
+                
+                
+
+            <?php if (!$this->hasOptions()):?>
+            
+            		<?php if($_product->isSaleable()): ?>
+						<?php /*WDCA CODE BEGINS*/ ?>
+                        <?php echo $this->getChildHtml('points'); ?>
+                        <?php /*WDCA CODE ENDS*/ ?>
+					<?php endif; ?>
+					
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    <?php elseif (!$_product->isSaleable()): ?>
+							<div class="availability out-of-stock detail-view">
+							<?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+							    <?php switch ($_event->getStatus()):
+							    case 'upcoming': ?>
+								<p>You're early!<br>This Collection is not open yet.</p>
+							    <?php break;
+							    case 'open': ?>
+								<p><br>SOLD OUT<br><br>Gotta be quicker next time!</p>
+							    <?php break;
+							    default : ?>
+								<p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
+							    <?php break; ?>
+							    <?php endswitch; ?>
+							<?php else:?>
+							    <p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
+							<?php endif;?>    
+						    </div>
+						    <div class="sold-out-wishlist"><?php echo $this->getChildHtml('addto') ?></div>
+                    <?php endif; ?>
+                </div>
+               
+               
+                
+            
+			<?php else:?>
+				
+				<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container1') ):?>
+                	<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+				<?php elseif (!$_product->isSaleable()): ?>
+					<div class="add-to-box">
+						<div class="availability out-of-stock detail-view">
+
+							<?php if($this->getProduct()->getCategory() ? $this->getProduct()->getCategory()->getName() : 'no category' !=='no category'): ?>
+								<?php switch ($_event->getStatus()):
+									case 'upcoming': ?>
+						    			<p>You're early!<br>This Collection is not open yet.</p>
+										<?php break;
+									case 'open': ?>
+										<p>SOLD OUT<br><br>Gotta be quicker next time!</p>
+										<?php break;
+									default : ?>
+										<p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
+										<?php break; ?>
+								<?php endswitch; ?>
+					    	<?php else:?>
+								<p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
+					    	<?php endif;?>
+					    	
+						</div>
+						<div class="sold-out-wishlist"><?php echo $this->getChildHtml('addto') ?></div>
+
+					</div>
+				
+				<?php endif;?>
+                
+			
+			<?php endif; ?>
+			            
+        <?php echo $this->getChildHtml('extra_buttons') ?>
+        <?php echo $this->getChildHtml('other');?>
+
+        </div>
+
+        <div class="clearer"></div>
+        
+		
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    </div>
+
+<?php echo $this->getChildHtml('recently_viewed') ?>
+</div>

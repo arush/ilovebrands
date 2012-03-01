@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div class="footer">
+	<div class="footer-container">		
+		<div class="footer-content">
+			<?php //echo $this->getChildHtml() ?>
+			<div id="social-links">
+			<p id="back-to-top"><a href="#top"><strong>Back to top</strong></a></p>
+			<script type="text/javascript">
+			$j = jQuery.noConflict();
+			$j(document).ready(function() {   
+				$j('a[href=#top]').click(function(){
+					$j('html, body').animate({scrollTop:0}, 'slow');
+					return false;
+				});
+			});
+			</script>
+			
+			<div id="twitter"><a href="http://twitter.com/evogue_uk" class="icon" target="_blank"><span>twitter</span></a></div>
+			<!-- facebook -->
+			<div id="facebook"><a href="http://www.facebook.com/evogue_uk" class="icon" target="_blank"><span>facebook</span></a></div>
+			<?php //echo $this->getChildHtml('info.likebutton') ?>
+			</div>
+			<div id="footer-links">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-service')->toHtml() ?>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-shop')->toHtml() ?>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-company')->toHtml() ?>				
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-account')->toHtml() ?>
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-events')->toHtml() ?>				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- start uservoice code -->
+
+<script type="text/javascript">
+  var uservoiceOptions = {
+    key: 'evogue',
+    host: 'evogue.uservoice.com', 
+    forum: '78723',
+    alignment: 'left',
+    background_color:'#ff0000', 
+    text_color: 'white',
+    hover_color: '#1100ff',
+    lang: 'en',
+    showTab: true
+  };
+  function _loadUserVoice() {
+    var s = document.createElement('script');
+    s.src = ("https:" == document.location.protocol ? "https://" : "http://") + "uservoice.com/javascripts/widgets/tab.js";
+    document.getElementsByTagName('head')[0].appendChild(s);
+  }
+  _loadSuper = window.onload;
+  window.onload = (typeof window.onload != 'function') ? _loadUserVoice : function() { _loadSuper(); _loadUserVoice(); };
+</script>
+
+<!-- end uservoice code -->

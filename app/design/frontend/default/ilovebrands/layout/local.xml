@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    	<reference name="head">
+    		<block type="page/html_head" name="storerestriction" as="storerestriction" template="storerestriction/head.phtml" />
+    	</reference>
+    </default>
+    <customer_account_login>
+        <remove name="storerestriction"/>       
+    </customer_account_login>
+    <customer_account_create>
+        <remove name="storerestriction"/>       
+    </customer_account_create>
+    <customer_account_forgotpassword>
+        <remove name="storerestriction"/>       
+    </customer_account_forgotpassword>    
+   
+</layout>

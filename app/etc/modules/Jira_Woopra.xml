@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Woopra plugin for Magento 
+ *
+ * @package     Jira_Woopra
+ * @author      Yireo (https://www.yireo.com/)
+ * @copyright   Copyright (c) 2009 Yireo (https://www.yireo.com/)
+ * @license     Open Software License
+ */
+-->
+<config>
+    <modules>
+        <Jira_Woopra>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Jira_Woopra>
+    </modules>
+</config>

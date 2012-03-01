@@ -1,0 +1,36 @@
+<label for="<?php echo $this->getHtmlId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->getLabel() ?></label>
+<div class="input-box customer-dob">
+<?php
+    $this->setDateInput('d',
+        '<span class="dob-day">
+             <input type="text" id="' . $this->getHtmlId('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="input-text" />
+             <label for="' . $this->getHtmlId('day') . '">' . $this->__('DD') . '</label>
+         </span>'
+    );
+
+    $this->setDateInput('m',
+        '<span class="dob-month">
+             <input type="text" id="' . $this->getHtmlId('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="input-text" />
+             <label for="' . $this->getHtmlId('month') . '">' . $this->__('MM')  . '</label>
+         </span>'
+    );
+
+    $this->setDateInput('y',
+        '<span class="dob-year">
+             <input type="text" id="' . $this->getHtmlId('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="input-text" />
+             <label for="' . $this->getHtmlId('year') . '">' . $this->__('YYYY')  . '</label>
+         </span>'
+    );
+?>
+    <?php echo $this->getSortedDateInputs() ?>
+    <span class="dob-full" style="display:none;">
+        <input type="hidden" id="<?php echo $this->getHtmlId('full')?>" name="<?php echo $this->getFieldName()?>" />
+    </span>
+
+    <div class="validation-advice" id="<?php echo $this->getHtmlId('advice')?>" style="opacity:0.999999; display:none;"></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    new Varien.DateElement('id', '<?php echo $this->getHtmlId('')?>', <?php echo ($this->isRequired() ? 'true' : 'false'); ?>, '<?php echo $this->getDateFormat() ?>');
+//]]>
+</script>

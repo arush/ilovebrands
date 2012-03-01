@@ -1,0 +1,8 @@
+<label for="<?php echo $this->getHtmlId()?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->getLabel() ?></label>
+<div class="input-box">
+    <select multiple="multiple" id="<?php echo $this->getHtmlId()?>" name="<?php echo $this->getFieldName('')?>"<?php if($this->getHtmlClass()):?> class="<?php echo $this->getHtmlClass();?>"<?php endif;?>>
+    <?php foreach ($this->getOptions() as $option):?>
+    <option value="<?php echo $option['value']?>"<?php if ($this->isValueSelected($option['value'])):?> selected="selected"<?php endif;?>><?php echo $this->htmlEscape($option['label'])?></option>
+    <?php endforeach;?>
+    </select>
+</div>

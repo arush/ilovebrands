@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<layout>
+	<popup_sagepay>
+		<update handle="default" />
+		<remove name="header" />
+		<remove name="menu" />
+		<reference name="root">
+			<action method="setTemplate">
+				<template>sagepaysuite/popup.phtml</template>
+			</action>
+		</reference>
+	</popup_sagepay>
+	<sagepaysuite_adminhtml_transaction_orfan>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+	</sagepaysuite_adminhtml_transaction_orfan>
+	<sagepaysuite_adminhtml_log_index>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="sagepaysuite/adminhtml_sales_sagepay_logs"
+				name="sagepaysuite.logs"
+				template="sagepaysuite/sales/sagepay/logs.phtml">
+			</block>
+		</reference>
+	</sagepaysuite_adminhtml_log_index>
+	<sagepayreporting_adminhtml_sagepayreporting_transactiondetailmodal>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+		</reference>
+		<reference name="left">
+			<block type="core/template"
+				template="sagepayreporting/logo.phtml" />
+			<block
+				type="sagepayreporting/adminhtml_sagepayreporting_transaction_tabs"
+				name="sagepayreporting.details.tabs">
+			</block>
+		</reference>
+	</sagepayreporting_adminhtml_sagepayreporting_transactiondetailmodal>
+	<sagepayreporting_adminhtml_sagepayreporting_avscvstatus>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+		</reference>
+	</sagepayreporting_adminhtml_sagepayreporting_avscvstatus>
+	<sagepayreporting_adminhtml_sagepayreporting_threedstatus>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+		</reference>
+	</sagepayreporting_adminhtml_sagepayreporting_threedstatus>
+	<default>
+		<reference name="notifications">
+			<block type="core/template"
+				name="sagepaysuite_index_notifications"
+				template="sagepaysuite/inbox/notifications.phtml">
+			</block>
+		</reference>
+	</default>
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+		</reference>
+	</adminhtml_system_config_edit>
+	<adminhtml_sales_order_create_index>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/direct.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite_CreateOrder.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+		<reference name="root">
+			<block before="footer" type="sagepaysuite/javascriptVars"
+				name="sagepaysuite.js.vars"
+				template="sagepaysuite/payment/SagePaySuiteVars.phtml"
+				output="toHtml" />
+		</reference>
+	</adminhtml_sales_order_create_index>
+	<adminhtml_sales_order_view>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+		<reference name="left">
+			<reference name="sales_order_tabs">
+				<action method="addTab"><name>sagepay_transactions</name><block>sagepaysuite/adminhtml_sales_order_view_tab_transactions</block></action>
+			</reference>
+		</reference>
+	</adminhtml_sales_order_view>
+	<adminhtml_sales_order_creditmemo_view>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+	</adminhtml_sales_order_creditmemo_view>
+	<adminhtml_sales_order_creditmemo_new>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+		<reference name="submit_before">
+			<block type="sagepaysuite/adminhtml_sales_order_creditmemo_invoices" name="sagepaysuite.refund.choser" template="sagepaysuite/sales/order/creditmemo/create/invoices.phtml" />
+		</reference>
+	</adminhtml_sales_order_creditmemo_new>
+	<adminhtml_sales_order_invoice_view>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+	</adminhtml_sales_order_invoice_view>
+	<adminhtml_sales_order_invoice_new>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/common.js</name>
+			</action>
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+		</reference>
+	</adminhtml_sales_order_invoice_new>
+</layout>

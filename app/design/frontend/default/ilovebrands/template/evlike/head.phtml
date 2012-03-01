@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+
+?>
+<?php if($_product = $this->getProduct()):?>
+<meta property="og:title" content="<?php echo htmlspecialchars($_product->getName()) ?>"/>
+<?php if(Mage::helper('evlike')->getLikeConfig('ev_facebook_app_id') && Mage::helper('evlike')->getLikeConfig('ev_enable_open_graph')): ?>
+<meta property="og:type" content="product"/>
+<meta property="og:url" content="<?php echo $this->getCurrentUrl() ?>"/>
+<?php endif; ?>
+<?php if($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<meta property="og:image" content="<?php echo Mage::helper('catalog/image')->init($_product, 'image') ?>"/>
+<?php endif; ?>
+<?php if(($_description = $_product->getShortDescription()) || ($_description = $_product->getDescription())):?>
+<meta property="og:description" content="<?php echo htmlspecialchars(strip_tags($_description)) ?>"/>
+<?php endif; ?>
+<?php elseif ($_category = Mage::registry('current_category')): ?>
+	<meta property="og:title" content="<?php echo htmlspecialchars($_category->getName()) ?>"/>
+	<?php if(Mage::helper('evlike')->getLikeConfig('ev_facebook_app_id') && Mage::helper('evlike')->getLikeConfig('ev_enable_open_graph')): ?>
+	<meta property="og:type" content="product"/>
+	<meta property="og:url" content="<?php echo $this->getCurrentUrl() ?>"/>
+	<?php endif; ?>
+	<?php if($_categoryImage = $_category->getImageUrl()): ?>
+	<meta property="og:image" content="<?php echo $_category->getImageUrl() ?>"/>
+	<?php endif; ?>
+	<?php if($_description = $_category->getDescription()):?>
+	<meta property="og:description" content="<?php echo htmlspecialchars(strip_tags($_description)) ?>"/>
+	<?php endif; ?>
+<?php elseif (Mage::getSingleton('cms/page')->getId()): ?>
+	<?php $_page = Mage::getSingleton('cms/page'); ?>
+	<meta property="og:title" content="<?php echo htmlspecialchars($_page->getTitle()) ?>"/>
+	<?php if(Mage::helper('evlike')->getLikeConfig('ev_facebook_app_id') && Mage::helper('evlike')->getLikeConfig('ev_enable_open_graph')): ?>
+	<meta property="og:type" content="article"/>
+	<meta property="og:url" content="<?php echo $this->getCurrentUrl() ?>"/>
+	<?php endif; ?>
+	<?php if($_description = $_page->getMetaDescription()):?>
+	<meta property="og:description" content="<?php echo htmlspecialchars(strip_tags($_description)) ?>"/>
+	<?php endif; ?>
+<?php endif; ?>

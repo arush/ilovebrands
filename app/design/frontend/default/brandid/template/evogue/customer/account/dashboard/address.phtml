@@ -1,0 +1,58 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<!--[if IE 7]>
+<style type="text/css">
+#address-book {
+	position:relative;
+	top:40px;
+	clear:both;
+    min-height: 40px;
+}
+</style>
+<![endif]-->
+<div class="black-title-bar" id="address-title">
+<?php echo $this->__('Address Book') ?> <a class="red-title-button" href="<?php echo $this->getAddressBookUrl() ?>"><?php echo $this->__('Manage Addresses') ?></a>
+</div>
+
+<div id="address-book" class="col2-set">
+    <div class="col-1">
+        <div class="info-box">
+            <span class="black-title-med"><?php echo $this->__('Default Billing') ?> <a class="red-title-med-button" href="<?php echo $this->getPrimaryBillingAddressEditUrl() ?>"><?php echo $this->__('Edit') ?></a></span>
+            <address class="box-content">
+                <?php echo $this->getPrimaryBillingAddressHtml() ?>
+            </address>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="info-box">
+            <span class="black-title-med"><?php echo $this->__('Default Shipping') ?> <a class="red-title-med-button" href="<?php echo $this->getPrimaryShippingAddressEditUrl() ?>"><?php echo $this->__('Edit') ?></a></span>
+            <address class="box-content">
+                <?php echo $this->getPrimaryShippingAddressHtml() ?>
+            </address>
+        </div>
+    </div>
+</div>

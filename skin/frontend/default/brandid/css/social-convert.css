@@ -1,0 +1,91 @@
+.plugin #providers .provider .button {
+	font-family: ff-enzo-web,ProximaNovaBold,arial,"lucida grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;
+	text-align: center;
+	box-shadow: 0pt 1px 0pt rgba(255, 255, 255, 0.5) inset, 0pt 1px 0pt rgba(255, 255, 255, 0.2);
+	background-clip:padding-box;
+	white-space: nowrap;
+	text-decoration: none;
+	font-weight: bold;
+	margin:0;
+	outline:0 none;
+	cursor:default;
+	border:none;
+	text-shadow: 0pt -1px 0pt rgb(0, 0, 0);
+	color:rgb(255, 255, 255);
+	background-image:-moz-linear-gradient(center top , #8ea9e0, #3b5998);
+	background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0, #8ea9e0),color-stop(1, #3b5998));
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#66b84a', EndColorStr='#51933a');
+	-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#66b84a', EndColorStr='#51933a')";
+	
+	background-color: rgb(81, 147, 58);
+	border-color: rgb(34, 34, 34);
+	vertical-align: middle;
+	padding:0;
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px 5px 5px 5px;
+	font-size:15px;
+	width:295px;
+	line-height: 43px;
+	text-transform: uppercase;
+	height:43px;
+}
+.plugin #providers .provider .button:hover {
+	color: white;
+	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 7px rgba(255,255,255,0.6);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 0 rgba(255,255,255,0.2), inset 0 1px 7px rgba(255,255,255,0.6);
+
+}
+.plugin #providers .provider .button:active {
+	-webkit-box-shadow: inset 0 3px 9px rgb(0,0,0), 0 1px 0 rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0 3px 9px rgb(0,0,0), 0 1px 0 rgba(255,255,255,0.2);
+	box-shadow: inset 0 3px 9px rgb(0,0,0), 0 1px 0 rgba(255,255,255,0.2);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	color: white;
+	background: #777;
+}
+
+#providers .name {display:none;}
+#social_login .footer {display:none;}
+
+.plugin #providers .provider {
+	width:304px;
+	padding:0;
+}
+
+#provider_facebook {
+	margin: 0 0 7px 0;
+}
+
+#provider_twitter {
+	margin: 7px 0 0 0;
+}
+
+.plugin #providers .provider #button_facebook {
+	background-color:#8ea9e0;
+	background-image:url('../images/social/social-convert.png');
+	background-position:0px 0px;
+}
+.plugin #providers .provider #button_facebook:hover {
+	background-position:0px -45px;
+}
+
+.plugin #providers .provider #button_facebook:active {
+	background-position:0px -90px;
+}
+
+.plugin #providers .provider #button_twitter {
+	background-color:#8cadf4;
+	background-image:url('../images/social/social-convert.png');
+	background-position:0px -138px;
+}
+.plugin #providers .provider #button_twitter:hover {
+	background-position:0px -184px;
+}
+
+.plugin #providers .provider #button_twitter:active {
+	background-position:0px -228px;
+}
+

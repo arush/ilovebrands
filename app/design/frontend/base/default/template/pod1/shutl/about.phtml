@@ -1,0 +1,20 @@
+<?php
+$about = Mage::helper('shutl')->getAboutHtml();
+if (strlen($about) > 0): ?>
+<div class="shutl about">
+<?php echo $about; ?>
+</div>
+<?php endif; ?>
+<div class="shutl quote">
+	<h1><?php echo $this->__('Enter a delivery postcode') ?></h1>
+	<form name="product_quote_form" action="<?php echo Mage::getUrl('shutl/quote/product/id/' . $this->getRequest()->getParam('id'))?>" method="post">
+
+		<input type="text" id="postcode" name="postcode" class="postcode" value="<?php echo $this->__('Enter postcode here'); ?>" />
+		<br />
+
+		<?php echo $this->getChildHtml('form'); ?>
+
+		<input type="submit" name="get_quote" class="get_quote" value="<?php echo $this->__('Get quote'); ?>" />
+	</form>
+	<div class="results"></div>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Evogue_CustomerSegment>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Customer/>
+                <Evogue_Customer/>
+                <Mage_Adminhtml/>
+                <Mage_Catalog/>
+                <Mage_CatalogRule/>
+            </depends>
+        </Evogue_CustomerSegment>
+    </modules>
+</config>

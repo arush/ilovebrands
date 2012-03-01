@@ -1,0 +1,445 @@
+.clear { clear: both; }
+
+#shutlService h3 {
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.shutl_service {
+	display: block;
+	height: 77px;
+	padding-top: 25px;
+	float: left;
+	text-decoration: none;
+}
+
+.shutl_service span, .shutl .get_quote {
+	color: #fff;
+	margin-left: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 9px 45px;
+	/*background: url('../../../images/pod1/shutl/get-quote.gif') 50% 100% no-repeat;	*/	
+	text-decoration: none;	
+}
+.shutl_service span{
+	background: url('../../../images/pod1/shutl/get-quote.gif') 50% 100% no-repeat;	
+}
+.shutl .get_quote {
+	/*margin-left: 0px;
+	margin-top: 20px;*/
+	font: 10px;
+	border: none;
+	margin: 20px;
+	/*flo add*/
+	width: 183px;
+	height: 37px;
+	color: #fff;
+	background: #B14E4E;
+	text-transform: uppercase;
+	font-family: Gotham-light;
+	
+}
+
+.shutl .get_quote:hover {
+	-moz-box-shadow: 0pt 0px 4px #acacac;
+	-webkit-box-shadow: 0pt 0px 4px #acacac;
+	-khtml-box-shadow: 0pt 0px 4px #acacac;
+}
+
+.shutl.about {
+	/*padding: 20px;*/
+	float: left;
+	width: 397px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+/* lightbox styles - DO NOT EDIT USELESS YOU KNOW WHAT YOU'RE DOING */
+.shutl.overlay {
+	/*background: #000;*/
+	background: #3f3f3f;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1500;
+}
+.shutl.overlay.loading {
+	/*background: #000 url('../../../images/pod1/shutl/ajax-loader.gif') 50% 50% no-repeat;*/
+	background: #3f3f3f url('../../../images/pod1/shutl/ajax-loader.gif') 50% 50% no-repeat;
+}
+.shutl.content {
+	/*width: 800px;*/
+	width: 735px;
+	/*height: 500px;*/
+	z-index: 1501;
+	position: absolute;
+	background: #F4F4ED;
+	text-align: left;
+	overflow-y: auto;
+
+	-moz-box-shadow: 0px 4px 30px #000;
+	-webkit-box-shadow: 0px 4px 30px #000;
+	box-shadow: 0px 4px 30px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	/*flo add*/
+	padding: 35px 35px 40px 30px;
+	overflow: hidden;
+}
+
+a.shutl.close {
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	text-align: center;
+	/*width: 60px;*/
+	width: 28px;
+	/*height: 20px;*/
+	height: 28px;
+	padding-top: 2px;
+	background: #000;
+	/*color: #fff;*/
+	color: transparent;
+	font-weight: bold;
+	cursor: pointer;
+	/*flo add*/
+	background: url("../../../images/shutl-close.png")	
+}
+
+.shutl.quote {
+	/*padding: 0 20px 20px 20px;*/
+}
+
+.shutl.quote h1 {
+	color: #000;
+	font-size: 18px;
+	/*font-weight: bold;*/
+	/*flo add*/
+	padding-bottom: 10px;
+	font-family: HelveticaNeueLight;
+}
+
+.shutl.quote ul {
+	list-style-type: none;
+}
+.shutl.quote ul li {
+	display: block;
+	clear: both;
+}
+.shutl.quote ul li div {
+	float: left;
+	padding-right: 20px;
+}
+.shutl.quote .price {
+	font-weight: bold;
+}
+
+#shutlLaterOptions {
+	/*margin-top: 10px;*/
+	/*margin-bottom: 10px;*/
+	margin-left: 70px;
+	padding-bottom: 15px;
+	padding-top: 10px;
+}
+
+#shutlLaterOptions a {
+	padding-left: 5px;
+}
+
+#shutlOptions legend {
+	display: inline;
+	font-weight:bold;
+	margin:3px 0;	
+}
+/*add later version 23-02-2011*/
+#shutlOptions button.button {
+	/*float:right;
+	margin-top: -30px;*/
+	position: relative;
+	left: 64px;
+	margin-bottom: 10px;
+	margin-top: 10px;	
+}
+/*add later version 23-02-2011 end*/
+
+#shutlOptions label.shutl_now {
+	/*padding: 20px 0px 20px 75px;*/
+	padding: 20px 0px 20px 100px;
+	/*flo add*/
+	color: #000000;
+	font-weight: bold;
+}
+
+#shutlOptions label.shutl_later {
+	/*padding: 20px 0px 20px 75px;*/
+	padding: 20px 0px 20px 100px;
+	/*flo add*/
+	color: #000000;
+	font-weight: bold;
+}
+
+#shipping-zip-form #shutlOptions label.shutl_later,
+#shipping-zip-form #shutlOptions label.shutl_now
+ {
+ 	display: block;
+ 	width: 150px;
+ 	float: left;
+	line-height:normal;
+	padding: 20px 0 20px 75px;
+}
+
+#shutlOptions input.method {
+	margin: 30px 25px;
+}
+#shutlOptions .shutl-now-div input.method {
+	margin: 25px;
+}
+#shipping-zip-form #shutlOptions #shutlLaterOptions {
+	margin-left: 30px;
+}
+#shipping-zip-form #shutlOptions input.method {
+	margin: 25px 10px;
+	display: block;
+	float: left;
+}
+
+.shutl.quote .results {
+	/*margin-top: 10px;*/
+}
+
+.shutl.quote .postcode {
+	font-size: 14px;
+	color: #717171;
+	padding: 8px;
+	/*border: 2px solid #D10610;*/
+	border: 1px solid #B14E4E;
+	margin-bottom: 10px;
+}
+
+.shutl.content .shutl.quote .results .rates .title {
+	display: none;
+}
+.shutl.content .shutl.quote .results .rates .price {
+	/*color: #d10610;*/
+	color: #000000;
+	/*font-size: 18px;*/
+	font-size: 20px;
+	font-weight: bold;	
+	/*background: url('../../../images/pod1/shutl/quote-bg.gif') 0% 50% no-repeat;*/
+	text-align: right;
+	padding: 28px 45px 28px 0;
+	/*width: 570px;*/
+	width: 530px;
+	position: relative;
+	/*margin-top: -70px;*/
+	margin-top: -78px;
+	margin-left: 160px;
+	/*add*/
+	letter-spacing: -1px;
+}
+
+dl.sp-methods label {
+	font-weight: normal;
+}
+
+#shutlLaterOptions #dateSelector table {
+	border-collapse:collapse;
+	background: #fff;
+}
+
+#shutlLaterOptions #dateSelector table td {
+	padding: 3px;
+	width: 20px;
+	text-align: center;
+	color: #ccc;
+	border: solid 1px #d10610;
+	background: #fff;
+}
+#shutlLaterOptions #dateSelector table thead td {
+	font-weight: bold;
+	color: #fff;
+	background: #d10610;
+	
+}
+#shutlLaterOptions #dateSelector table td span {
+	display: none;
+}
+#shutlLaterOptions #dateSelector table td.selectable {
+	cursor: pointer;
+	color: #666;
+}
+
+#shutlLaterOptions #dateSelector table td.today {
+	cursor: pointer;
+	font-weight: bold;
+	color: #000;
+}
+
+#shutlLaterOptions #dateSelector table td.selected {
+	background: #d10610;
+	color: #fff;
+
+}
+#shutlLaterOptions #dateSelector {
+	position: absolute;
+	z-index: 100;
+}
+
+#shutlLaterOptions #date {
+	cursor: pointer;
+	width: 65px;
+	/*border: 1px solid #B6B6B6;*/
+	border: 2px solid #E0D8BA;
+	padding: 2px;
+	/*flo add*/
+	height: 23px;
+	color: #000000;
+}
+#time {
+	/*width: 178px;*/
+}
+
+/*
+.checkout-onepage-index #co-shipping-method-form .sp-methods {
+	position:absolute; margin-top:70px;
+}
+.checkout-onepage-index #shipping-method-buttons-container {
+	position:absolute;
+	bottom:0px;
+	width:95%;
+}
+*/
+
+dl.sp-methods li {
+	clear: both;
+	height: 30px;
+	padding-top: 20px;
+	
+}
+#s_method_shutl_shutl_now {
+	display: block;
+	float: left;
+	margin-top: 18px;
+}
+#checkout-shipping-method-load dl.sp-methods label[for=s_method_shutl_shutl_now] {
+	/*display: block;*/
+	padding: 10px 0 41px 130px;
+	height: 50px;
+	/*margin-top: -20px;*/
+	background: url('http://cdn.shutl.co.uk/shutl-now-small.png') 20px 50% no-repeat;
+	/*margin-left: 20px;*/
+
+}
+#s_method_shutl_shutl_later {
+	display: block;
+	float: left;
+	margin-top: 18px;
+}
+#checkout-shipping-method-load dl.sp-methods .Shutl-shutl label[for=s_method_shutl_shutl_later] {
+	/*display: block;*/
+	padding: 10px 0 41px 130px;
+	height: 50px;
+	/*margin-top: -20px;	*/
+	background: url('http://cdn.shutl.co.uk/shutl-later-small.png') 20px 50% no-repeat;
+	/*margin-left: 20px;*/
+}
+.Shutl-shutl label img{
+	margin-top: -20px;
+}
+
+.shutl-about-header{
+	clear: left;
+	float: left;	
+}
+.shutl-london-pic{
+	width: 318px;
+	height: 141px;
+	float: right;
+}
+.shutl.about p{
+	color: #444;
+	font-size: 14px;
+}
+.shutl.quote fieldset{
+	background: #ffffff;
+	margin-top: 10px;
+}
+#shutlLaterOptions select{
+	background: #ffffff;
+	float: none;
+	height: 31px;
+	border: 2px solid #E0D8BA;
+	color: #000000;
+	margin-left: 20px;
+}
+#checkout-shipping-method-load #shutlLaterOptions select{
+	margin-left: 30px;
+}
+#shutlMessages{
+	padding: 0 20px;
+}
+.get-quote-div{
+	background: #ffffff;
+	/*border-top: 2px solid #000000;*/
+}
+.shutl-now-div{
+	border-bottom: 2px solid #666666;
+	padding: 5px 0;
+}
+#shutlOptions{
+	background: #ffffff;	
+}
+#checkout-shipping-method-load #shutlOptions .button span{
+	text-transform: none;
+	color: #000000;
+	text-decoration: underline;
+	font-size: 12px;
+	font-weight: bold;
+}
+#checkout-shipping-method-load #shutlOptions legend{
+	display: none;
+}
+#checkout-shipping-method-load #shutlLaterOptions{
+	margin-left: 64px;
+}
+.Shutl-shutl{
+	background: #ffffff;
+}
+.sp-methods .Shutl-shutl, .sp-methods .Shutl-shutl li{
+	margin: 0;
+}
+#checkout-shipping-method-load dl.sp-methods .Shutl-shutl li{
+	/*padding: 35px 0 20px 20px;
+	height: 30px;*/
+	padding: 20px 0 20px 20px;
+	height: 50px;
+}
+dl.sp-methods .Shutl-shutl label, dl.sp-methods .Shutl-shutl label span{
+	color: #555555;
+}
+.Shutl-shutl .price{
+	float: right;
+	letter-spacing: -0.5px;
+	font-size: 22px;
+	margin-top: -7px;
+	padding-right: 70px;
+}
+.Shutl-shutl .date_label{
+	padding-left: 130px;
+	*padding-left: 20px;
+}
+.Shutl-shutl .time_label{
+	padding-left: 152px;
+	*padding-left: 20px;
+}
+#checkout-shipping-method-load .sp-methods .Shutl-shutl .price {
+	margin-top: -39px;
+}
+.Shutl-shutl .shutl-checkout-datetime{
+	padding-left: 152px;
+	*padding-left: 49px;
+}

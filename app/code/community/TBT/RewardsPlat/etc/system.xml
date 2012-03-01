@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+   <sections>
+        <rewards translate="label" module="rewardsplat">
+            <groups>
+                <about translate="label">
+                    <fields>         
+                        <notice translate="label">
+                            <frontend_model>rewardsplat/system_html</frontend_model>
+                        </notice>          
+                    </fields>
+                </about>
+            </groups>
+        </rewards>
+    </sections>
+</config>

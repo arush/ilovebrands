@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Arush_Surveymonkey>
+            <version>0.0.1</version>
+        </Arush_Surveymonkey>
+    </modules>
+    <global>
+        <helpers>
+            <surveymonkey>
+                <class>Arush_Surveymonkey_Helper</class>
+            </surveymonkey>
+        </helpers>
+        <blocks>
+             <surveymonkey>
+                <class>Arush_Surveymonkey_Block</class>
+             </surveymonkey>
+        </blocks>
+    </global>
+</config>

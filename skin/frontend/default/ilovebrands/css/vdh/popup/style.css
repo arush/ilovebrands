@@ -1,0 +1,64 @@
+.vdh.overlay {
+	background: #000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1500;
+}
+.vdh.overlay.loading {
+	background: #000 url('../../../images/vdh/popup/loader.gif') 50% 50% no-repeat;
+}
+.vdh.content {
+	display: none;
+	width: 790px;
+	height: 395px;
+	z-index: 1501;
+	position: absolute;
+	background: #fff;
+	text-align: left;
+	overflow-y: auto;
+	-moz-box-shadow: 0px 4px 30px #000;
+	-webkit-box-shadow: 0px 4px 30px #000;
+	box-shadow: 0px 4px 30px #000;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	overflow: hidden;
+}
+
+a.vdh.close {
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	padding-top: 2px;
+	background: #000;
+	color: transparent;
+	font-weight: bold;
+	cursor: pointer;
+	background: url("../../../images/vdh/popup/close.png");
+}
+
+
+#popupMessages {
+	display: none;
+	cursor: pointer;
+
+	background: #FEEFB3 url(../images/message-bg.png) repeat-x 0 0;
+	color: #9F6000;
+	font-family: Gotham-light,Arial;
+	font-size: 18px;
+	height: 41px;
+	padding-top: 5px;
+	-moz-box-shadow: 0pt 0px 8px #ACACAC;
+	-webkit-box-shadow: 0pt 0px 8px #ACACAC;
+	-khtml-box-shadow: 0pt 0px 8px #ACACAC;
+	box-shadow: 0pt 0px 8px #ACACAC;	
+	
+}
+#popupCounter {
+	font-size: 26px;
+	font-family: Gotham-medium;
+}

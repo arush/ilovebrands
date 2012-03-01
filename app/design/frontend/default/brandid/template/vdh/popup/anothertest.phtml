@@ -1,0 +1,19 @@
+<?php 
+if ($this->getSuppresstest() == 'true'){
+	Mage::getModel('core/cookie')->set('suppresstest', true);
+	header('Location: '.Mage::getBaseUrl().'popup/form/page/index/onemoretest/'); // actually pulling this html via ajax
+?>
+<script type="text/javascript">document.location.href = '/rewardsref/customer/index';</script>
+<?php
+}
+if (Mage::getSingleton('customer/session')->isLoggedIn() && !Mage::getModel('core/cookie')->get('suppresstest')):
+?>
+
+Yowza
+<form name="customer_details" action="/popup/form/page/index/anothertest/suppresstest/true">
+	<input type="hidden" name="suppresstest" value="true" />
+	<!-- a id="5-next" class="done" href="/popup/form/page/index/beta/suppress/true">Send some invitations</a-->
+	<input id="5-next" class="done" type="submit" name="submit" value="don't show me this again" />
+</form>
+
+<?php endif; ?>

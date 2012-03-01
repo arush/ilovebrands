@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Innovate_Javascripthead>
+<active>true</active>
+<codePool>local</codePool>
+</Innovate_Javascripthead>
+</modules>
+</config>

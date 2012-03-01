@@ -1,0 +1,87 @@
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>    
+<?php if($_productCollection->count()): ?>
+<?php $counter = $_productCollection->count(); ?>
+<?php echo  $this->getLayout()->createBlock('cms/block')->setBlockId('next-delivery-drop')->toHtml() ; ?>
+
+<ul class="plans-list">
+	<?php foreach($_productCollection as $product):?>
+	<?php $counter--;?>
+	<li<?php echo ($counter == 0) ? ' class="last"': ''; ?>>
+		<div class="discount-triangle-container">
+			<span class="discount-number"><?php echo $product->getDiscount() ; ?> % off</span>
+			<span class="discount-label">RRP</span>
+		</div>
+
+		<div class="discount-triangle">
+		</div>		
+		
+		
+		<?php if($product->getTypeId() == 'giftcard') { ?>
+		
+			<h3><span class="plan-category-grid-title"><?php echo $product->getName(); ?></span></h3>
+			<span class="rrp">RRP <?php
+			
+ 			 $_rrp = $product->getGiftRrp();
+ 			 echo Mage::helper('core')->currency($_rrp,true,false);  
+			 ?></span>
+			<span class="special-price">Gift Price <?php
+			
+			 $_price = $product->getGiftSpecialPrice();
+ 			 echo Mage::helper('core')->currency($_price,true,false);  
+			 ?>
+			</span>
+
+			<div class="plan-checks clearfix">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-' . $product->getSku())->toHtml(); ?>
+			</div>
+
+		<?php } 
+		else { ?>
+				
+			<h3><span class="the"></span><span class="plan-category-grid-title"><?php echo $product->getName(); ?></span></h3>
+			<span class="rrp">RRP &pound;<?php echo number_format($product->getPrice(),0);?></span>
+			<span class="special-price">Only &pound;<?php echo number_format($product->getSpecialPrice(),0);?>
+				<span class="per-month">per delivery</span>
+			</span>
+		
+		<?php }	?>
+			
+		<a class="convert plan-button" href="<?php echo $product->getProductUrl(); ?>">
+			<span class="choose-plan-text"><?php echo $this->__('Choose plan'); ?></span>
+		</a>
+		
+		<!--
+<br/><br/>
+		<?php /* echo 'socks '. $product->getNumSocks(); echo 'tees '. $product->getNumTshirts(); echo 'boxers '. $product->getNumBoxers(); echo 'shirts '. $product->getNumShirts();   */ ?>
+		<br/><br/>
+-->
+		
+		<div class="plan-graphics">
+			
+			<?php if ($product->getNumSocks() && $product->getNumSocks() > 0): ?><div class="package-desc socks"><?php echo $product->getNumSocks(); ?>x</div><?php endif; ?>
+			<?php if ($product->getNumTshirts() && $product->getNumTshirts() > 0): ?><div class="package-desc tshirts"><?php echo $product->getNumTshirts(); ?>x</div><?php endif; ?>
+			<?php if ($product->getNumBoxers() && $product->getNumBoxers() > 0): ?><div class="package-desc boxers"><?php echo $product->getNumBoxers(); ?>x</div><?php endif; ?>
+			<?php if ($product->getNumShirts() && $product->getNumShirts() > 0): ?><div class="package-desc shirts"><?php echo $product->getNumShirts(); ?>x</div><?php endif; ?>		
+		</div>
+		
+		
+		<div class="plan-checks">
+		<?php if($product->getTypeId() == 'giftcard') { ?>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-gift')->toHtml(); ?>
+		<?php } 
+		else { ?>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-' . $product->getSku())->toHtml(); ?>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-common')->toHtml(); ?>
+		<?php }	?>
+		
+		</div>
+		
+	</li>
+	<?php endforeach;?>
+</ul>
+<?php endif; ?>
+
+

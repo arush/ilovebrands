@@ -1,0 +1,62 @@
+<?php $_helper = Mage::helper('shutl'); ?>
+<fieldset id="shutlOptions" style="display:<?php echo ($this->getPage() == 'checkout') ? 'none' : ''; ?>">
+		<?php echo $this->getBlockHtml('shutllegend'); ?>
+		<input type="hidden" name="id" id="id" value="<?php echo $this->getRequest()->getParam('id'); ?>" />
+			<?php
+				$today		= $this->getToday();
+				$startDate	= $this->getStartDate();
+				$endDate	= $this->getEndDate();						
+				$currentDate = $this->getCurrentDate();			
+				$lastSelectableDate = $this->getLastSelectableDate();
+				$selectedDate = $this->getSelectedDate();
+				$counter	= 0;						
+
+			?>
+		<div id="shutlLaterOptions">
+
+
+
+			<div id="dateSelector" style="display: none;">
+				<table>
+					<thead>
+						<tr>
+							<td><?php echo $this->__('Mon'); ?></td>
+							<td><?php echo $this->__('Tue'); ?></td>
+							<td><?php echo $this->__('Wed'); ?></td>
+							<td><?php echo $this->__('Thu'); ?></td>
+							<td><?php echo $this->__('Fri'); ?></td>
+							<td><?php echo $this->__('Sat'); ?></td>																												
+							<td><?php echo $this->__('Sun'); ?></td>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+					<?php while ($currentDate < $endDate): ?>
+							<?php
+							$info = $_helper->getCalendarInfo($startDate, $lastSelectableDate, $today, $counter);
+							$currentDate = $info['current_date'];
+							?>
+						<?php if ($counter > 0 && $counter % 7 == 0): ?>
+						</tr>
+						<tr>
+						<?php endif; ?>
+							<td<?php echo $info['class']; ?>>
+								<?php echo $info['day']; ?>
+								<span><?php echo $info['date']; ?></span>
+							</td>
+					<?php $counter++; endwhile; ?>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<input type="text" name="date" id="date" readonly="readonly" value="<?php echo ($selectedDate) ? $selectedDate : date($_helper->getDateFormat()); ?>" />
+			<select name="time" id="time">
+				<option value=""><?php echo $this->__('Select time'); ?></value>
+			</select>
+		</div>
+		<?php echo $this->getBlockHtml('shutlbutton'); ?>
+		<div id="shutlMessages">
+		<?php echo $this->getChildHtml('global_messages') ?>
+		</div>
+				
+</fieldset>

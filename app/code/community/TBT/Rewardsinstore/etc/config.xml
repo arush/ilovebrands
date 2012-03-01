@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_Rewardsinstore>
+            <version>1.0.0.0</version>
+        </TBT_Rewardsinstore>
+    </modules>
+    
+    <admin>
+        <routers>
+            <rewardsinstoreadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_Rewardsinstore</module>
+                    <frontName>rewardsinstoreadmin</frontName>
+                </args>
+            </rewardsinstoreadmin>
+        </routers>
+    </admin>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <rewardsinstore>
+                    <file>rewardsinstore.xml</file>
+                </rewardsinstore>
+            </updates>
+        </layout>
+        <routers>
+            <rewardsinstore>
+                <use>standard</use>
+                <args>
+                    <module>TBT_Rewardsinstore</module>
+                    <frontName>rewardsinstore</frontName>
+                </args>
+            </rewardsinstore>
+            <storefront>
+                <use>standard</use>
+                <args>
+                    <module>TBT_Rewardsinstore</module>
+                    <frontName>storefront</frontName>
+                </args>
+            </storefront>
+        </routers>
+    </frontend>
+    
+    <global>
+        <models>
+            <rewardsinstore>
+                <class>TBT_Rewardsinstore_Model</class>
+                <resourceModel>rewardsinstore_mysql4</resourceModel>
+            </rewardsinstore>
+            <rewardsinstore_mysql4>
+                <class>TBT_Rewardsinstore_Model_Mysql4</class>
+                <entities>
+                    <storefront>
+                        <table>rewardsinstore_storefront</table>
+                    </storefront>
+                    <cartrule>
+                        <table>rewardsinstore_cartrule</table>
+                    </cartrule>
+                    <cartrule_attribute>
+                        <table>rewardsinstore_cartrule_attribute</table>
+                    </cartrule_attribute>
+                    <order>
+                        <table>rewardsinstore_order</table>
+                    </order>
+                    <quote>
+                        <table>rewardsinstore_quote</table>
+                    </quote>
+                </entities>
+            </rewardsinstore_mysql4>
+            
+            <rewards>
+                <rewrite>
+                    <salesrule_rule>TBT_Rewardsinstore_Model_Rewards_Salesrule_Rule</salesrule_rule>
+                </rewrite>
+            </rewards>
+        </models>
+        
+        <resources>
+            <rewardsinstore_setup>
+                <setup>
+                    <module>TBT_Rewardsinstore</module>
+                    <class>TBT_Rewardsinstore_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </rewardsinstore_setup>
+            <rewardsinstore_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rewardsinstore_write>
+            <rewardsinstore_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rewardsinstore_read>
+        </resources>
+        <blocks>
+            <rewardsinstore>
+                <class>TBT_Rewardsinstore_Block</class>
+            </rewardsinstore>
+        </blocks>
+        <helpers>
+            <rewardsinstore>
+                <class>TBT_Rewardsinstore_Helper</class>
+            </rewardsinstore>
+        </helpers>
+        <events>
+            <salesrule_validator_process>
+                <observers>
+                    <tbt_rewardsinstore_model_salesrule_observer_process>
+                        <type>singleton</type>
+                        <class>rewardsinstore/salesrule_observer</class>
+                        <method>salesruleValidatorProcess</method>
+                    </tbt_rewardsinstore_model_salesrule_observer_process>
+                </observers>
+            </salesrule_validator_process>
+            <rewards_calculate_cart_points>
+                <observers>
+                    <tbt_rewardsinstore_model_rewards_calculate_cart_points>
+                        <type>singleton</type>
+                        <class>rewardsinstore/rewards_observer</class>
+                        <method>calculateCartPoints</method>
+                    </tbt_rewardsinstore_model_rewards_calculate_cart_points>
+                </observers>
+            </rewards_calculate_cart_points>
+            <rewards_customer_signup>
+                <observers>
+                    <tbt_rewardsinstore_model_rewards_customer_signup_action>
+                        <type>singleton</type>
+                        <class>rewardsinstore/observer_rewards_customer</class>
+                        <method>rewardsCustomerSignup</method>
+                    </tbt_rewardsinstore_model_rewards_customer_signup_action>
+                </observers>
+            </rewards_customer_signup>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <tbt_rewardsinstore_model_adminhtml_controller_action_predispatch>
+                        <type>singleton</type>
+                        <class>rewardsinstore/adminhtml_controller_observer</class>
+                        <method>actionPredispatch</method>
+                    </tbt_rewardsinstore_model_adminhtml_controller_action_predispatch>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+            <admin_session_user_login_success>
+                <observers>
+                    <tbt_rewardsinstore_model_admin_session_observer>
+                        <type>singleton</type>
+                        <class>rewardsinstore/admin_session_observer</class>
+                        <method>userLogin</method>
+                    </tbt_rewardsinstore_model_admin_session_observer>
+                </observers>
+            </admin_session_user_login_success>
+            <customer_save_before>
+                <observers>
+                    <tbt_rewardsinstore_model_observer_customer_save_before>
+                        <type>singleton</type>
+                        <class>rewardsinstore/observer_customer</class>
+                        <method>beforeSave</method>
+                    </tbt_rewardsinstore_model_observer_customer_save_before>
+                </observers>
+            </customer_save_before>
+            <customer_save_after>
+                <observers>
+                    <tbt_rewardsinstore_model_observer_customer_save_after>
+                        <type>singleton</type>
+                        <class>rewardsinstore/observer_customer</class>
+                        <method>afterSave</method>
+                    </tbt_rewardsinstore_model_observer_customer_save_after>
+                </observers>
+            </customer_save_after>
+        </events>
+        
+        <template>
+            <email>
+                <rewardsinstore_customer_signup_email_template translate="label" module="rewardsinstore">
+                    <label>Sweet Tooth Instore - New Customer Welcome</label>
+                    <file>rewardsinstore/account_new.html</file>
+                    <type>html</type>
+                </rewardsinstore_customer_signup_email_template>
+            </email>
+        </template>
+    </global>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <rewardsinstore>
+                                            <title>Sweet Tooth Instore Section</title>
+                                        </rewardsinstore>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <rewardsinstore>
+                    <file>rewardsinstore.xml</file>
+                </rewardsinstore>
+            </updates>
+        </layout>
+        <translate>
+              <modules>
+                  <TBT_Rewardsinstore>
+                      <files>
+                          <default>TBT_Rewardsinstore.csv</default>
+                      </files>
+                  </TBT_Rewardsinstore>
+              </modules>
+        </translate>
+        <menu>
+            <rewards>
+                <children>
+                    <instore translate="title" module="rewardsinstore">
+                        <title><![CDATA[<span class="rewardsinstore-menu_rules">Manage Instore</span>]]></title>
+                        <sort_order>55</sort_order>
+                        <children>
+                            <storefront translate="title" module="rewardsinstore">
+                                <title>Storefront Locations</title>
+                                <sort_order>10</sort_order>
+                                <action>rewardsinstoreadmin/manage_storefront</action>
+                            </storefront>
+                            <webapp translate="title" module="rewardsinstore">
+                                <title>Launch Rewards POS</title>
+                                <action>storefront</action>
+                                <sort_order>30</sort_order>
+                            </webapp>
+                            <reports translate="title" module="rewardsinstore">
+                                <title>Reports</title>
+                                <sort_order>40</sort_order>
+                                <action>rewardsinstoreadmin/reports</action>
+                            </reports>
+                            <config translate="title" module="rewardsinstore">
+                                <title>Configuration</title>
+                                <action>adminhtml/system_config/edit/section/rewardsinstore/</action>
+                                <sort_order>50</sort_order>
+                            </config>
+                        </children>
+                    </instore>
+                    <rules>
+                        <children>
+                            <instoredistribution>
+                                <title><![CDATA[<span class="rewardsinstore-menu_rules">Instore Earning Rules</span>]]></title>
+                                <sort_order>30</sort_order>
+                                <children>
+                                    <instorecart translate="title" module="rewardsinstore">
+                                        <title>Instore Cart</title>
+                                        <sort_order>10</sort_order>
+                                        <action>rewardsinstoreadmin/manage_earning_cart/index/type/1</action>
+                                    </instorecart>
+                                    <!-- TODO: move current instore behaviour rules into this menu item 
+                                    <instorebehavior translate="title" module="rewardsinstore">
+                                        <title>Instore Behaviour</title>
+                                        <sort_order>20</sort_order>
+                                        <action>rewardsinstoreadmin/manage_todo</action>
+                                    </instorebehavior>
+                                    -->
+                                </children>
+                            </instoredistribution>
+                        </children>
+                    </rules>
+                </children>
+            </rewards>
+        </menu>
+    </adminhtml>
+    
+    <crontab>
+        <jobs>
+            <rewardsinstore_emailcustomers>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
+                <run><model>rewardsinstore/observer_cron::emailCustomers</model></run>
+            </rewardsinstore_emailcustomers>
+        </jobs>
+    </crontab>
+    
+    <default>
+        <rewardsinstore>
+            <general>
+                <!-- Reward purchases on Quotes and not Orders by default -->
+                <create_instore_orders>0</create_instore_orders>
+            </general>
+            <customer_signup>
+                <!-- Default customer group is Magento's General group -->
+                <customer_group>1</customer_group>
+                <email_template>rewardsinstore_customer_signup_email_template</email_template>
+            </customer_signup>
+            <custom_attributes>
+                <!-- Subtotal only as default -->
+                <cartrule_attributes>1</cartrule_attributes>
+            </custom_attributes>
+            <dev>
+                <instore_product_id>0</instore_product_id>
+            </dev>
+        </rewardsinstore>
+        <rewards>
+            <InitialTransferStatus>
+                <AfterInstoreSignup>5</AfterInstoreSignup>
+            </InitialTransferStatus>
+            <transferComments>
+                <instoreSignup><![CDATA[Points received for signing up through Sweet Tooth Instore.]]></instoreSignup>
+            </transferComments>
+        </rewards>
+        <payment>
+            <rewardsinstore>
+                <active>1</active>
+                <model>rewardsinstore/payment_method_instore</model>
+                <title>Sweet Tooth Instore Payment</title>
+                <order_status>pending</order_status>
+                <payment_action>authorize</payment_action>
+                <allowspecific>0</allowspecific>
+            </rewardsinstore>
+         </payment>
+    </default>
+    
+    <rewards>
+        <special>
+            <instore_signup>
+                <config>rewardsinstore/special_signup</config>
+            </instore_signup>
+        </special>
+        <reports>
+            <rewardsinstore>
+                <!-- TODO: each instore reference should have its own entry and an is_instore flag -->
+                <transfer_references>50,51</transfer_references>
+            </rewardsinstore>
+        </reports>
+    </rewards>
+</config>

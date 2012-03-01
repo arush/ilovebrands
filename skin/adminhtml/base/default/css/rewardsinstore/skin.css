@@ -1,0 +1,23 @@
+
+.rewardsinstore-menu_rules {
+    background-image:url("../../images/rewardsinstore/micro_icon.png") !important;
+    background-position:0 0px !important;
+    background-repeat:no-repeat !important;
+    padding-left:18px !important;
+    padding-right:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+    width:100% !important;
+}
+
+.tabs.config-tabs span.rewardsinstore-config_menu,
+        .tabs a:hover.active span.rewardsinstore-config_menu, 
+        .tabs.config-tabs span.rewardsinstore-config_menu a.rewardsinstore-config_menu:hover {
+	padding: 0;
+	background-image:url("../../images/rewardsinstore/micro_icon.png");
+	background-position:3px 2px;
+	background-repeat:no-repeat;
+	color:#2f6d89;
+	padding-left:22px;
+	padding-right:0;
+}

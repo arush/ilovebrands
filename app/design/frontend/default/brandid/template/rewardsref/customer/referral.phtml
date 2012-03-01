@@ -1,0 +1,38 @@
+<!-- Innovate Analytics tracking beacon  -->
+
+<?php if(Mage::getStoreConfig('analytics/track/analytics_invitation_on')) {
+		echo Mage::getStoreConfig('analytics/track/analytics_invitation_landing_code');
+	}
+?>
+
+<!-- END Innovate Analytics tracking beacon  -->
+
+<div class="referrals">
+
+	
+	<div class="affiliate"><?php echo $this->getChildHtml('invitered'); ?></div>
+	
+	<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+	
+	<div class="affiliate"><?php echo $this->getChildHtml('affiliate'); ?></div>
+	
+	<div class="refer-form">
+		<?php echo $this->getChildHtml('refer_form'); ?>
+	</div>
+	<div class="history"><?php echo $this->getChildHtml('history'); ?></div>
+	<div class="preferences"><?php echo $this->getChildHtml('preferences'); ?></div>
+	
+</div>
+
+
+
+<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+    
+    if ($j('ul.messages').length > 0){
+    	$j('ul.messages').css({'margin-top' : '413px', 'width' : '960px'});
+	    $j('.rewardsref-customer-index .affiliate').css({'margin-top' : '0px', 'width' : '960px'});
+    }
+
+</script>

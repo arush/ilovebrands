@@ -1,0 +1,80 @@
+<?php
+	
+	$_category = false;
+	$_product = false;
+	
+    if(Mage::registry('current_product')) {
+    	$_product = Mage::registry('current_product');
+	    $_helper    = $this->helper('catalog/output');
+    	$_description = $_product->getDescription();
+    }
+    else if(Mage::registry('current_category')) {
+		$_category = Mage::registry('current_category');
+	    $_helper    = $this->helper('catalog/output');
+	    $_description = $_category->getDescription();
+	    $_imgHtml   = '';
+	    if ($_imgUrl = $_category->getImageUrl()) {
+	        $_imgHtml = '<p class="title-block-image"><img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($_category->getName()).'" title="'.$this->htmlEscape($_category->getName()).'" /></p>';
+	        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    	}
+    }
+?>
+
+<div class="title-block">
+	<div class="title-block-inner clearfix">
+		<div class="title">
+			
+			<?php if($_category) {?>
+				<div class="first-row">
+					<span class="page-title"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></span>
+				</div>
+				
+				<?php if ($_description) { ?>
+				<div class="second-row clearfix">
+					<div class="title-cms-block">
+						<div class="category-likebutton">
+	    	        		<?php echo Mage::helper('evlike')->getLikeHtml($this, $_category, true) ?>
+	        	    	</div>
+			
+			       	   	<p class="actual-category-text"><?php echo $_description; ?></p>
+			
+			       	</div>
+		       	<?php echo $_imgHtml;?>
+		       	</div>
+		       	<?php } ?>
+
+            <?php } else if($_product) { ?>
+				<div class="product-title-wrapper">
+
+	            	<div class="product-title">
+						<span class="page-title<?php if($_product->getTypeId() == 'giftcard') { echo ' gift'; } ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+					</div>
+				
+					<div class="product-description-block">
+						<div class="category-likebutton">
+	    	        		<?php echo $this->getBlockHtml('info.likebutton') ?>
+	        	    	</div>
+			
+			       	   	<p class="actual-category-text"><?php echo $_description; ?></p>
+			
+			       	</div>
+            	</div>
+            
+            <?php }
+            
+            
+            else { ?>
+            	
+        		<div class="first-row"><h1><span class="page-title">
+					<?php echo $this->getTitle(); ?></span></h1>
+				</div>
+				
+				<div class="title-cms-block">
+  					<?php echo $this->getText(); ?>
+  				</div>
+
+            <?php } ?>
+
+		</div>
+	</div>
+</div>

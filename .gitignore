@@ -1,0 +1,6 @@
+app/etc/local.xml
+media/*
+var/*
+magmi/*
+magmi_old/*
+index.php

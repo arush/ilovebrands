@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <arush_keep>
+            <version>0.0.1</version>
+        </arush_keep>
+    </modules>
+    <global>
+	    <blocks>
+	        <adminhtml>
+	            <rewrite>
+	            </rewrite>
+	        </adminhtml>
+	    </blocks>
+     	<helpers>
+        	<keep>
+        		<class>Arush_Keep_Helper</class>
+        	</keep>
+        </helpers>
+    </global>
+    <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <keep>
+                                          <title>Keep Calm</title>
+                                      </keep>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  
+    <frontend>
+     	<layout>
+            <updates>
+                <keep>
+                    <file>arush/keep.xml</file>
+                </keep>
+            </updates>
+        </layout>
+        <routers>
+            <keep>
+                <use>standard</use>
+                <args>
+                    <module>Arush_Keep</module>
+                    <frontName>keep</frontName>
+                </args>
+            </keep>
+        </routers>   
+    </frontend>
+    
+    <admin>
+       <routers>
+          <keep>
+              <use>admin</use>
+              <args>
+                  <module>Arush_Keep</module>
+                  <frontName>keep</frontName>
+              </args>
+          </keep>
+      </routers>
+  </admin>
+
+
+    <default>
+        <keep>
+            <options>
+                <!-- fbpageid></fbpageid-->
+            </options>
+        </keep>
+    </default>
+</config>

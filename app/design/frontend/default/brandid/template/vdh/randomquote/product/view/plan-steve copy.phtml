@@ -1,0 +1,183 @@
+<?php $_product = Mage::getModel('catalog/product')->load(Mage::registry('current_product')->getId());?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+
+
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="sliders">
+<div class="plan-explanation">
+	<?php $block = Mage::getModel('cms/block')->load('plan-randomness-explanation');?>
+    <?php echo $block->getContent(); ?>
+</div>
+<?php
+$pieces = array(
+	'Socks'		=> 'SOCKS',
+	'Boxers'	=> 'BOXERS',
+	'T-Shirts'	=> 'T-SHIRT',
+	'Shirts'	=> 'SHIRT'
+);
+$relatedProductIds = array();
+foreach($_product->getRelatedLinkCollection() as $related) 	{
+	$relatedProductIds[] = $related->getLinkedProductId();
+}
+?>
+<?php
+foreach ($pieces as $k => $v) {
+	$products = Mage::getModel('catalog/product')
+		->getCollection()
+		->addAttributeToSelect('*')
+		->addAttributeToFilter('rmscategory', $v)
+		->addAttributeToFilter('entity_id', array('in' => $relatedProductIds));	
+
+if ($products->count() > 0){ ?>
+<div id="planOther">
+	<h1 class="black-title-bar main-view"><?php echo $this->__($k);?></h1>	
+	<div class="holder">
+	
+		<div class="slider">
+			<ul>
+			<?php foreach($products as $product): ?>
+				<li>
+					<img src="<?php echo $this->helper('catalog/image')->init($product, 'image')->resize(191, 155);?>" width="191" height="155" />
+					<div class="plan-item-details">
+						<span class="black-title-small"><?php echo $product->getAttributeText('brand'); ?></span>
+						<span class="plan-item-rrp"><?php echo 'RRP &pound;' . number_format($product->getPrice(),0); ?></span>
+					</div>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+		<div class="left"></div>		
+		<div class="right"></div>	
+	</div>
+</div>
+<?php 
+	};
+}
+?>
+</div>
+<div class="plan product-info">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+		<div class="discount-triangle-container">
+			<span class="discount-number"><?php echo $_product->getDiscount() ; ?> % off</span>
+			<span class="discount-label">RRP</span>
+		</div>
+
+		<div class="discount-triangle">
+		</div>		
+		<div class="price-box">
+			<span class="price"><?php echo 'RRP &pound;' . number_format($_product->getPrice(), 0); ?></span>
+			<span class="special-price"><?php echo 'Plan Price &pound;' . number_format($_product->getSpecialPrice(), 0); ?></span>
+		</div>
+	
+	    <div class="container2">
+	    <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+	    </div>
+	    
+	    <div class="bottom-stuff">
+		    <div class="add-to-box">
+		        <?php echo $this->getChildHtml('addtocart') ?>
+		        <?php echo $this->getChildHtml('addto') ?>
+				<div class="delivery-date">
+					<?php $profile = Mage::helper('randomquote')->getProfileEasyDate(); /*remove Easy when enabling delivery drops*/?>
+					<?php echo $this->__('This plan delivers between <br/><span class="actual-date">') . $profile['delivery_date'] . $this->__('</span><br/>and<br/><span class="actual-date">') . $profile['delivery_date2'] . $this->__('</span><br/> and every month after that');?>	
+				</div>
+		    </div>
+		    <div class="extra-info">
+		       		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-' . $_product->getSku())->toHtml(); ?>
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('plan-text-common')->toHtml(); ?>
+		    </div>
+	    </div>
+    </form>
+    
+</div>
+<?php
+$upsells = $_product->getUpSellProductCollection()->addAttributeToSort('position', 'asc');
+if ($upsells->count() > 0):
+?>
+<div class="upsells">
+	<h1 class="black-title-bar"><?php echo $this->__('Our Plans'); ?></h1>
+	<ul>
+	<?php foreach($upsells as $upsell): ?>
+		<?php $upsellProduct = Mage::getModel('catalog/product')->load($upsell->getId()); ?>
+		<li>
+			<h3><span class="title">the</span><? echo $upsellProduct->getName(); ?></h3>
+			<span class="price"><?php echo Mage::helper('core')->currency($upsellProduct->getPrice());?></span><br />
+			<span class="special-price"><?php echo Mage::helper('core')->currency($upsellProduct->getSpecialPrice());?></span>
+			<button class="button"><span><span><?php echo $this->__('View plan'); ?></span></span></button>
+		</li>
+	<?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>
+
+
+<script type="text/javascript">
+
+    //<![CDATA[
+	$('product-options-wrapper').select('label').each(function(obj){
+		if (obj.innerHTML.toLowerCase().indexOf('shoe') >= 0) {
+			obj.up().next().addClassName('sock-bg');
+			obj.up().next().innerHTML += '<span class="option-number"><?php echo $_product->getNumSocks(); ?>x</span>';
+		} else if (obj.innerHTML.toLowerCase().indexOf('t-shirt') >= 0) {
+			obj.up().next().addClassName('tshirt-bg');	
+			obj.up().next().innerHTML += '<span class="option-number"><?php echo $_product->getNumTshirts(); ?>x</span>';			
+		} else if (obj.innerHTML.toLowerCase().indexOf('boxer') >= 0) {
+			obj.up().next().addClassName('boxer-bg');		
+			obj.up().next().innerHTML += '<span class="option-number"><?php echo $_product->getNumBoxers(); ?>x</span>';			
+		} else if (obj.innerHTML.toLowerCase().indexOf('shirt') >= 0) {
+			obj.up().next().addClassName('shirt-bg');	
+			obj.up().next().innerHTML += '<span class="option-number"><?php echo $_product->getNumShirts(); ?>x</span>';
+				
+		}
+	});
+
+
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>

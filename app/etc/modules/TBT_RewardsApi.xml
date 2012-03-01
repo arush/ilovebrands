@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_RewardsApi>
+            <active>true</active>
+            <codePool>community</codePool>
+            <!-- Dependent on TBT_Rewards (Sweet Tooth) -->
+            <depends>
+                <TBT_RewardsPlat/>
+            </depends>
+        </TBT_RewardsApi>
+    </modules>
+</config>

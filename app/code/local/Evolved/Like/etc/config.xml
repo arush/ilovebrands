@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.rtf.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+-->
+<config>
+	<modules>
+		<Evolved_Like>
+			<version>1.6.0</version>
+		</Evolved_Like>
+	</modules>
+	<global>
+		<blocks>
+			<evlike>
+				<class>Evolved_Like_Block</class>
+			</evlike>
+		</blocks>
+		<helpers>
+			<evlike>
+				<class>Evolved_Like_Helper</class>
+			</evlike>
+		</helpers>
+		<models>
+			<evlike>
+				<class>Evolved_Like_Model</class>
+			</evlike>
+		</models>
+	</global>
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<evlike translate="title">
+											<title>Facebook Like Button Section</title>
+										</evlike>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+    <default>
+		<evlike>
+			<evlike>
+				<ev_enable_open_graph>0</ev_enable_open_graph>
+				<ev_use_rewrite>1</ev_use_rewrite>
+				<ev_facebook_type>1</ev_facebook_type>
+				<ev_facebook_send>1</ev_facebook_send>
+				<ev_facebook_layout>standard</ev_facebook_layout>
+				<ev_show_faces>0</ev_show_faces>
+				<ev_like_width>450</ev_like_width>
+				<ev_like_height>30</ev_like_height>
+				<ev_facebook_verb>like</ev_facebook_verb>
+				<ev_facebook_font>arial</ev_facebook_font>
+				<ev_facebook_color>light</ev_facebook_color>
+				<ev_use_long>0</ev_use_long>
+			</evlike>
+			<evlike_grid>
+				<ev_like_grid_send>1</ev_like_grid_send>
+				<ev_like_grid_show_faces>0</ev_like_grid_show_faces>
+				<ev_like_grid_layout>button_count</ev_like_grid_layout>
+				<ev_like_grid_width>215</ev_like_grid_width>
+				<ev_like_grid_height>30</ev_like_grid_height>
+			</evlike_grid>
+			<evlike_list>
+				<ev_like_list_send>1</ev_like_list_send>
+				<ev_like_list_show_faces>0</ev_like_list_show_faces>
+				<ev_like_list_layout>standard</ev_like_list_layout>
+				<ev_like_list_width>450</ev_like_list_width>
+				<ev_like_list_height>30</ev_like_list_height>
+			</evlike_list>
+			<evlike_category>
+				<ev_like_category_send>1</ev_like_category_send>
+				<ev_like_category_show_faces>0</ev_like_category_show_faces>
+				<ev_like_category_layout>standard</ev_like_category_layout>
+				<ev_like_category_width>450</ev_like_category_width>
+				<ev_like_category_height>30</ev_like_category_height>
+			</evlike_category>
+			<evlike_cms>
+				<ev_like_cms_send>1</ev_like_cms_send>
+				<ev_like_cms_show_faces>0</ev_like_cms_show_faces>
+				<ev_like_cms_layout>standard</ev_like_cms_layout>
+				<ev_like_cms_width>450</ev_like_cms_width>
+				<ev_like_cms_height>30</ev_like_cms_height>
+			</evlike_cms>
+			<evlike_visibility>
+				<ev_like_visibility_product_default>0</ev_like_visibility_product_default>
+				<ev_like_visibility_category_default>0</ev_like_visibility_category_default>
+				<ev_like_visibility_cms_default>0</ev_like_visibility_cms_default>
+			</evlike_visibility>
+		</evlike>
+	</default>
+	<frontend>
+		<layout>
+			<updates>
+				<evlike>
+					<file>evlike.xml</file>
+				</evlike>
+			</updates>
+		</layout>
+	</frontend>
+</config>

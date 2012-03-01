@@ -1,0 +1,9 @@
+<span class="widget widget-category-link">
+	<a <?php echo $this->getLinkAttributes() ?>>
+	<span><?php echo $this->htmlEscape($this->getAnchorText()) ?></span>
+	<?php if ($this->getTitle()):?>
+	<br />
+	<span class="title"><?php echo $this->htmlEscape($this->getTitle()) ?></span>
+	<?php endif; ?>
+	</a>
+</span>

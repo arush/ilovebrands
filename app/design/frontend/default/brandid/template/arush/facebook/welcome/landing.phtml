@@ -1,0 +1,88 @@
+<!-- <div class="fb-like-box" data-href="http://www.facebook.com/pages/Brandid/282808678428182" data-width="300" data-show-faces="false" data-stream="false" data-header="false"></div> -->
+<div id="loadingGif" style="text-align:center"><img src="<?php echo $this->getSkinUrl(); ?>images/fb-loader.gif" alt="loading" /></div>
+
+<div class="fb-frame" style="display:none;">
+	
+	<div class="invite-gauge">
+		<!-- h3><?php echo $this->__('Live feed of BRANDiD invites'); ?></h3-->
+		<div id="inviteGauge"></div>
+	
+		<div class="gauge-bottom">
+			<div id="inviteCounter" class="flip-counter"></div>
+			<span class="text"><?php echo $this->__('beta invitations sent'); ?></span>
+			<!-- span class="total-signups">1000</span -->
+		</div>
+	
+	</div>	
+
+	<div class="small-spacer"></div>
+	
+	
+	
+	<?php if(!Mage::helper('facebook')->isFan()) { ?>
+		<div class="black-title-bar">'like' THIS PAGE TO GET STARTED</div>
+		<div class="small-spacer"></div>
+		<div class="fb-like-box" data-href="http://www.facebook.com/pages/Brandid/282808678428182" data-width="495" data-show-faces="true" data-border-color="#ffffff" data-stream="true" data-header="false"></div>
+	<?php } else if(!Mage::getSingleton('customer/session')->isLoggedIn()) { ?>
+		
+		
+		
+		<div class="black-title-bar">CLAIM YOUR FACEBOOK INVITATION</div>
+			<script type="text/javascript">var host = (("https:" == document.location.protocol) ? "https://secure." : "http://");document.write(unescape("%3Cscript src='" + host + "wufoo.com/scripts/embed/form.js' type='text/javascript'%3E%3C/script%3E"));</script>
+		
+			<script type="text/javascript">
+			var z7x0w7 = new WufooForm();
+			z7x0w7.initialize({
+			'userName':'evoguemembership', 
+			'formHash':'z7x0w7', 
+			'autoResize':true,
+			'height':'580',
+			'header':'show'});
+			z7x0w7.display();
+			</script>
+			
+							
+	<?php } else {
+		echo 'You are already a member';
+	} ?>
+	
+	<!--div class="fb-canvas-logo">
+		<img src="<?php // echo $this->getSkinUrl('images/logo.png'); ?>" alt="" />
+	</div-->
+	
+
+</div>
+
+<script type="text/javascript">
+
+
+function hideLoading(){ 
+try { 
+window.parent.document.getElementById('loadingGif').style.display = 'none'; 
+window.parent.document.getElementById('fb-frame').style.display = 'block'; 
+} catch (ex) {} 
+
+} 
+
+window.onload = hideLoading(); 
+</script>
+
+<script type='text/javascript'>
+	var inviteCounter = new flipCounter('inviteCounter', {value:0, inc:3, pace:15, tFH: 20, bFH: 34, fW: 28, bOffset: 200});
+	inviteCounter.incrementTo(<?php echo Mage::helper('randomquote')->getTotalInvitesSent(); ?>);	
+
+(function() {
+    var config = {
+        'api': '/randomquote/gauge/weekly',
+        'color': '#d2002b',  // Optional
+        'disableStyles': false,  // Optional
+        'element': 'inviteGauge',
+        'label': '',  // Optional
+        'width': 250,  // Optional
+        'refreshInterval': 3000  // Optional, milliseconds
+    };
+
+    new SiteTotal(config);
+})();
+</script>
+

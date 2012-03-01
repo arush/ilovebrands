@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <catalog>
+            <groups>
+                <evogue_catalogevent translate="label" module="evogue_catalogevent">
+                    <label>Catalog Events</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>800</sort_order>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Catalog Events Functionality</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>evogue_catalogevent/adminhtml_system_config_backend_cache</backend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <lister_output translate="label">
+                            <label>Enable Catalog Event Widget on the Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lister_output>
+                        <lister_widget_limit translate="label comment">
+                            <label>Number of Events to be Displayed in Event Slider Widget</label>
+                            <comment>Default value. Override in CMS using limit="x" variable. If empty, there will be no limitation.</comment>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lister_widget_limit>
+                        <lister_widget_scroll translate="label comment">
+                            <label>Events to Scroll per Click in Event Slider Widget</label>
+                            <comment>Default value. Override in CMS using scroll="x" variable.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lister_widget_scroll>
+                    </fields>
+                </evogue_catalogevent>
+            </groups>
+        </catalog>
+    </sections>
+</config>

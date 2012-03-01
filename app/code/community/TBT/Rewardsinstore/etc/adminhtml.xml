@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow everything</title>
+            </all>
+            <admin>
+                <children>
+                    <rewards>
+                        <children>
+                            <instore translate="title" module="rewardsinstore">
+                                <title>Manage Instore</title>
+                                <sort_order>55</sort_order>
+                                <children>
+                                    <storefront translate="title" module="rewardsinstore">
+                                        <title>Storefront Locations</title>
+                                        <sort_order>10</sort_order>
+                                    </storefront>
+                                    <webapp translate="title" module="rewardsinstore">
+                                        <title>Launch Rewards POS</title>
+                                        <sort_order>30</sort_order>
+                                    </webapp>
+                                    <config translate="title" module="rewardsinstore">
+                                        <title>Configuration</title>
+                                        <sort_order>40</sort_order>
+                                    </config>
+                                </children>
+                            </instore>
+                            <rules>
+                                <children>
+                                    <instoredistribution translate="title" module="rewardsinstore">
+                                        <title>Instore Earning Rules</title>
+                                        <sort_order>30</sort_order>
+                                        <children>
+                                            <instorecart translate="title" module="rewardsinstore">
+                                                <title>Instore Cart</title>
+                                                <sort_order>10</sort_order>
+                                            </instorecart>
+                                            <instorebehavior translate="title" module="rewardsinstore">
+                                                <title>Instore Behaviour</title>
+                                                <sort_order>20</sort_order>
+                                            </instorebehavior>
+                                        </children>
+                                    </instoredistribution>
+                                </children>
+                            </rules>
+                        </children>
+                    </rewards>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

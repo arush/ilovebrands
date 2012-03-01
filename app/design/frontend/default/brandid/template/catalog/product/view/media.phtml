@@ -1,0 +1,199 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if ($_product->getTypeId() != 'giftcard'): ?>
+	<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+	<!-- Instantiate Highslide -->
+	<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/highslide-full.js') ?>"></script>
+	<script type="text/javascript">
+		hs.graphicsDir = '<?php echo $this->getSkinUrl('js/graphics/') ?>';
+		hs.align = 'center';
+		hs.transitions = ['expand', 'crossfade'];
+		hs.wrapperClassName = 'dark borderless floating-caption';
+		hs.fadeInOut = true;
+		hs.dimmingOpacity = .75;
+		hs.cacheAjax = false;
+	
+	
+		// Add the controlbar
+		if (hs.addSlideshow) hs.addSlideshow({
+			//slideshowGroup: 'group1',
+			interval: 5000,
+			repeat: false,
+			useControls: true,
+			fixedControls: 'fit',
+			overlayOptions: {
+				opacity: .6,
+				position: 'bottom center',
+				hideOnMouseOut: true
+			}
+		});
+	</script>
+	<!-- Addition for Highslide -->
+	<div class="product-image">
+	    <?php
+	        $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="highslide" onclick="return hs.expand(this, {slideshowGroup: \'media-group\'})"><img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(436, 539).'"  height="539" width="436" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" /></a>';
+	        echo $_helper->productAttribute($_product, $_img, 'image');
+	    ?>
+		<div class="highslide-caption"><?php echo $this->htmlEscape($this->getImageLabel()); ?></div>
+	</div>
+	<?php else: ?>
+	<p class="product-image">
+	    <?php
+	        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(436, 539).'" height="539" width="436" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+	        echo $_helper->productAttribute($_product, $_img, 'image');
+	    ?>
+	</p>
+	<?php endif; ?>
+	<div class="zoom-text">Click any photo to zoom <img src="<?php echo $this->getSkinUrl();?>images/zoom.png" /></div>
+	
+	<?php if (count($this->getGalleryImages()) > 0): ?>
+	<div class="more-views">
+		<h2><?php echo $this->__('More Views') ?></h2>
+	    <ul>
+	    <?php foreach ($this->getGalleryImages() as $_image): ?>
+	        <li>
+	           <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), '', $_image->getFile()); ?>" class="highslide" onclick="return hs.expand(this, {slideshowGroup: 'media-group'})"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(108, 133); ?>" width="108" height="133" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+			   <div class="highslide-caption"><?php echo $this->htmlEscape($_image->getLabel()) ?></div>
+	        </li>
+	    <?php endforeach; ?>
+	    </ul>
+	</div>
+	<?php endif; ?>
+
+<?php else: ?>
+	
+	
+	<div class="gift-media">
+		<div class="plan-explanation">
+			<?php $block = Mage::getModel('cms/block')->load('plan-randomness-explanation');?>
+		    <?php echo $block->getContent(); ?>
+		</div>
+		
+		<?php /* the code below is also in the plans page, vdh/randomquote/product/view/plan.phtml */ ?>
+		
+		<?php if($_product->getData('num_socks') > 0)  { ?>
+		<div id="planOther" class="clearfix">
+	
+			<div class="item-pic-left"><img class="plans-item-img" src="<?php echo Mage::getDesign()->getSkinUrl('images/plans/socks.jpg');?>" />
+			</div>
+			
+			<div class="brands-list">
+				<span class="context"><?php echo $_product->getData('num_socks') . ' x ' ?>Socks From:</span><br/><br/>
+				<span class="brands">Armani</span><br/>
+				<span class="brands">Calvin Klein</span><br/>
+				<span class="brands">Hugo Boss</span><br/>
+				<span class="brands">Roberto Cavalli</span><br/>
+				<span class="brands">Belstaff</span><br/>
+				<span class="brands">…and more</span><br/><br/>
+				<span class="context">Minimum RRP: £10</span>
+			</div>
+		</div>
+			<?php 
+			};
+		
+		?>
+		
+		<?php if($_product->getData('num_boxers') > 0)  { ?>
+		<div id="planOther" class="clearfix">
+	
+			<div class="item-pic-left"><img class="plans-item-img" src="<?php echo Mage::getDesign()->getSkinUrl('images/plans/underwear.jpg');?>" />
+			</div>
+			
+			<div class="brands-list">
+				<span class="context"><?php echo $_product->getData('num_socks') . ' x ' ?>Boxers From:</span><br/><br/>
+				<span class="brands">Armani</span><br/>
+				<span class="brands">Calvin Klein</span><br/>
+				<span class="brands">Dolce & Gabbana</span><br/>
+				<span class="brands">Diesel</span><br/>
+				<span class="brands">Dior</span><br/>
+				<span class="brands">…and more</span><br/><br/>
+				<span class="context">Minimum RRP: £25</span>
+			</div>
+		</div>
+			<?php 
+			};
+		
+		?>
+		
+		<?php if($_product->getData('num_tshirts') > 0)  { ?>
+		<div id="planOther" class="clearfix">
+	
+			<div class="item-pic-left"><img class="plans-item-img" src="<?php echo Mage::getDesign()->getSkinUrl('images/plans/tee.jpg');?>" />
+			</div>
+			
+			<div class="brands-list">
+				<span class="context"><?php echo $_product->getData('num_socks') . ' x ' ?>T-shirts From:</span><br/><br/>
+				<span class="brands">Armani</span><br/>
+				<span class="brands">Belstaff</span><br/>
+				<span class="brands">Calvin Klein</span><br/>
+				<span class="brands">Dolce & Gabbana</span><br/>
+				<span class="brands">Dior</span><br/>
+				<span class="brands">…and more</span><br/><br/>
+				<span class="context">Minimum RRP: £40</span>
+			</div>
+		</div>
+			<?php 
+			};
+		
+		?>
+		
+		<?php if($_product->getData('num_shirts') > 0)  { ?>
+		<div id="planOther" class="clearfix">
+	
+			<div class="item-pic-left"><img class="plans-item-img" src="<?php echo Mage::getDesign()->getSkinUrl('images/plans/shirt.jpg');?>" />
+			</div>
+			
+			<div class="brands-list">
+				<span class="context"><?php echo $_product->getData('num_socks') . ' x ' ?>Shirts From:</span><br/><br/>
+				<span class="brands">Armani</span><br/>
+				<span class="brands">Calvin Klein</span><br/>
+				<span class="brands">Dolce & Gabbana</span><br/>
+				<span class="brands">Gucci</span><br/>
+				<span class="brands">Valentino</span><br/>
+				<span class="brands">…and more</span><br/><br/>
+				<span class="context">Minimum RRP: £125</span>
+			</div>
+		</div>
+			<?php 
+			};
+		
+		?>
+	</div>
+
+
+	
+<?php endif; ?>

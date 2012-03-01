@@ -1,0 +1,517 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+-->
+<config>
+	<tabs>
+		<evolved translate="label" module="evlike">
+			<label>Retail Evolved</label>
+			<sort_order>500</sort_order>
+		</evolved>
+	</tabs>
+    <sections>
+        <evlike translate="label" module="evlike">
+            <label>Facebook Like Button</label>
+            <tab>evolved</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <evlike translate="label">
+                    <label>Facebook Like Button Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<ev_enable_open_graph translate="label">
+                            <label>Enable Open Graph Protocol?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+							<comment>Allows you to manage fans for every page that is "liked". Note: Enabling this may make it appear that all of your "likes" have been erased. As soon as somebody clicks the Like button on a page, the "likes" will be restored as normal. This is an issue with Facebook...</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_enable_open_graph>
+						<ev_site_name translate="label">
+							<label>Site Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+							<comment>When a customer "likes" your product, it will read "[Customer] likes [product name] on [site name]." Leave this blank if you would like it to read "[Customer Name] likes [product name]".</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</ev_site_name>
+						<ev_use_rewrite translate="label">
+                            <label>Use Rewrites if Available?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+							<comment>Set to Yes to use the product rewrite created by Magento if it is available. Only set to No if you were using a version of this extension prior to 1.3.2 and are worried about losing a record of pages your customers liked.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_use_rewrite>
+						<ev_facebook_type translate="label">
+                            <label>Button Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>evlike/system_config_source_buttonType</source_model>
+                            <sort_order>3</sort_order>
+							<comment>Using the XFBML buttons requires a Facebook App ID. The benefit of XFBML buttons is that your customers can post comments at the time that they "like" your page.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_facebook_type>
+						<ev_facebook_app_id translate="label">
+							<label>App ID (optional)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+							<comment>Your Facebook App ID - only required if you are using XFBML buttons (required for the Send button) or Open Graph.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</ev_facebook_app_id>
+						<ev_facebook_send translate="label">
+                            <label>Send Button?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+														<comment>Show a Send Button next to the Like Button. Requires use of the XFBML button type and a valid Application ID.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+            </ev_facebook_send>
+						<ev_facebook_layout translate="label">
+                            <label>Layout Style</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>evlike/system_config_source_layout</source_model>
+                            <sort_order>5</sort_order>
+							<comment>Determines the size and amount of social context next to the button.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_facebook_layout>
+						<ev_show_faces translate="label">
+                            <label>Show Faces</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+							<comment>Show profile pictures below the button.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_show_faces>
+						<ev_like_width translate="label">
+                            <label>Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+							<comment>The width of the plugin, in pixels</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_like_width>
+						<ev_like_height translate="label">
+                            <label>Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+							<comment>The height of the plugin, in pixels</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_like_height>
+						<ev_like_ref translate="label">
+							<label>Ref</label>
+							<frontend_type>text</frontend_type>
+							<backend_model>evlike/system_config_backend_like_ref</backend_model>
+							<sort_order>7</sort_order>
+							<comment>If provided, Facebook will add two parameters to the shared URL: fb_ref and fb_source. fb_ref will contain the value specified here. fb_source will contain "the stream type ('home', 'profile', 'search', 'other') in which the click occurred and the story type ('oneline' or 'multiline'), concatenated with an underscore". This extension doesn't do anything with these currently, but you can use Google Analytics to get some valuable information.</comment>
+							<show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+						</ev_like_ref>
+						<ev_facebook_verb translate="label">
+                            <label>Verb to display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>evlike/system_config_source_verb</source_model>
+                            <sort_order>9</sort_order>
+							<comment>The verb to display in the button. Currently only 'like' and 'recommend' are supported.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_facebook_verb>
+						<ev_facebook_font translate="label">
+                            <label>Font</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>evlike/system_config_source_font</source_model>
+                            <sort_order>10</sort_order>
+							<comment>The font of the plugin.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_facebook_font>
+						<ev_facebook_color translate="label">
+                            <label>Color Scheme</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>evlike/system_config_source_color</source_model>
+                            <sort_order>11</sort_order>
+							<comment>The color scheme of the plugin.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_facebook_color>
+						<ev_use_long translate="label">
+                            <label>Use Categories in URLs?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+							<comment>CAUTION! Only set this to "Yes" if you have customized your site to use URLs that include categories as your canonical URLs. This will use the category in the shared URL. You must also set "Use categories path for product URLs" (System->Configuration->Catalog->Search Engine Optimizations) to "Yes".</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ev_use_long>
+                    </fields>
+                </evlike>
+				<evlike_grid translate="label">
+					<label>Category Grid View</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<ev_like_grid_send translate="label">
+                            <label>Send Button?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+														<comment>Show a Send Button next to the Like Button. Requires use of the XFBML button type and a valid Application ID.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+            </ev_like_grid_send>
+						<ev_like_grid_layout translate="label">
+	                        <label>Layout Style</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>evlike/system_config_source_layout</source_model>
+	                        <sort_order>3</sort_order>
+							<comment>Determines the size and amount of social context next to the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_grid_layout>
+						<ev_like_grid_show_faces translate="label">
+	                        <label>Show Faces</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>4</sort_order>
+							<comment>Show profile pictures below the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_grid_show_faces>
+						<ev_like_grid_width translate="label">
+	                        <label>Width</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>5</sort_order>
+							<comment>The width of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_grid_width>
+						<ev_like_grid_height translate="label">
+	                        <label>Height</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>6</sort_order>
+							<comment>The height of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_grid_height>
+						<ev_like_grid_ref translate="label">
+							<label>Ref</label>
+							<frontend_type>text</frontend_type>
+							<backend_model>evlike/system_config_backend_like_ref</backend_model>
+							<sort_order>7</sort_order>
+							<comment>If provided, Facebook will add two parameters to the shared URL: fb_ref and fb_source. fb_ref will contain the value specified here. fb_source will contain "the stream type ('home', 'profile', 'search', 'other') in which the click occurred and the story type ('oneline' or 'multiline'), concatenated with an underscore". This extension doesn't do anything with these currently, but you can use Google Analytics to get some valuable information.</comment>
+							<show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+						</ev_like_grid_ref>
+					</fields>
+				</evlike_grid>
+				<evlike_list translate="label">
+					<label>Category List View</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<ev_like_list_send translate="label">
+                            <label>Send Button?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+														<comment>Show a Send Button next to the Like Button. Requires use of the XFBML button type and a valid Application ID.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+            </ev_like_list_send>
+						<ev_like_list_layout translate="label">
+	                        <label>Layout Style</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>evlike/system_config_source_layout</source_model>
+	                        <sort_order>3</sort_order>
+							<comment>Determines the size and amount of social context next to the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_list_layout>
+						<ev_like_list_show_faces translate="label">
+	                        <label>Show Faces</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>4</sort_order>
+							<comment>Show profile pictures below the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_list_show_faces>
+						<ev_like_list_width translate="label">
+	                        <label>Width</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>5</sort_order>
+							<comment>The width of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_list_width>
+						<ev_like_list_height translate="label">
+	                        <label>Height</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>6</sort_order>
+							<comment>The height of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_list_height>
+						<ev_like_list_ref translate="label">
+							<label>Ref</label>
+							<frontend_type>text</frontend_type>
+							<backend_model>evlike/system_config_backend_like_ref</backend_model>
+							<sort_order>7</sort_order>
+							<comment>If provided, Facebook will add two parameters to the shared URL: fb_ref and fb_source. fb_ref will contain the value specified here. fb_source will contain "the stream type ('home', 'profile', 'search', 'other') in which the click occurred and the story type ('oneline' or 'multiline'), concatenated with an underscore". This extension doesn't do anything with these currently, but you can use Google Analytics to get some valuable information.</comment>
+							<show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+						</ev_like_list_ref>
+					</fields>
+				</evlike_list>
+				<evlike_category translate="label">
+					<label>Category View</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<ev_like_category_send translate="label">
+                            <label>Send Button?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+														<comment>Show a Send Button next to the Like Button. Requires use of the XFBML button type and a valid Application ID.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+            </ev_like_category_send>
+						<ev_like_category_layout translate="label">
+	                        <label>Layout Style</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>evlike/system_config_source_layout</source_model>
+	                        <sort_order>3</sort_order>
+							<comment>Determines the size and amount of social context next to the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_category_layout>
+						<ev_like_category_show_faces translate="label">
+	                        <label>Show Faces</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>4</sort_order>
+							<comment>Show profile pictures below the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_category_show_faces>
+						<ev_like_category_width translate="label">
+	                        <label>Width</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>5</sort_order>
+							<comment>The width of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_category_width>
+						<ev_like_category_height translate="label">
+	                        <label>Height</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>6</sort_order>
+							<comment>The height of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_category_height>
+						<ev_like_category_ref translate="label">
+							<label>Ref</label>
+							<frontend_type>text</frontend_type>
+							<backend_model>evlike/system_config_backend_like_ref</backend_model>
+							<sort_order>7</sort_order>
+							<comment>If provided, Facebook will add two parameters to the shared URL: fb_ref and fb_source. fb_ref will contain the value specified here. fb_source will contain "the stream type ('home', 'profile', 'search', 'other') in which the click occurred and the story type ('oneline' or 'multiline'), concatenated with an underscore". This extension doesn't do anything with these currently, but you can use Google Analytics to get some valuable information.</comment>
+							<show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+						</ev_like_category_ref>
+					</fields>
+				</evlike_category>
+				<evlike_cms translate="label">
+					<label>CMS Pages</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<ev_like_cms_send translate="label">
+                            <label>Send Button?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+														<comment>Show a Send Button next to the Like Button. Requires use of the XFBML button type and a valid Application ID.</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+            </ev_like_cms_send>
+						<ev_like_cms_layout translate="label">
+	                        <label>Layout Style</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>evlike/system_config_source_layout</source_model>
+	                        <sort_order>3</sort_order>
+							<comment>Determines the size and amount of social context next to the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_cms_layout>
+						<ev_like_cms_show_faces translate="label">
+	                        <label>Show Faces</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>4</sort_order>
+							<comment>Show profile pictures below the button.</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_cms_show_faces>
+						<ev_like_cms_width translate="label">
+	                        <label>Width</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>5</sort_order>
+							<comment>The width of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_cms_width>
+						<ev_like_cms_height translate="label">
+	                        <label>Height</label>
+	                        <frontend_type>text</frontend_type>
+	                        <sort_order>6</sort_order>
+							<comment>The height of the plugin, in pixels</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>Ba
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_cms_height>
+						<ev_like_cms_ref translate="label">
+							<label>Ref</label>
+							<frontend_type>text</frontend_type>
+							<backend_model>evlike/system_config_backend_like_ref</backend_model>
+							<sort_order>7</sort_order>
+							<comment>If provided, Facebook will add two parameters to the shared URL: fb_ref and fb_source. fb_ref will contain the value specified here. fb_source will contain "the stream type ('home', 'profile', 'search', 'other') in which the click occurred and the story type ('oneline' or 'multiline'), concatenated with an underscore". This extension doesn't do anything with these currently, but you can use Google Analytics to get some valuable information.</comment>
+							<show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+						</ev_like_cms_ref>
+					</fields>
+				</evlike_cms>
+				<evlike_visibility translate="label">
+					<label>Default Button Visibility</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<ev_like_visibility_product_default translate="label">
+	                        <label>Hide Default Product Button?</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>3</sort_order>
+							<comment>Set to "Yes" if you are going to customize button placement on product pages</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_visibility_product_default>
+						<ev_like_visibility_category_default translate="label">
+	                        <label>Hide Default Category Button?</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>4</sort_order>
+							<comment>Set to "Yes" if you are going to customize button placement on category pages</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_visibility_category_default>
+						<ev_like_visibility_cms_default translate="label">
+	                        <label>Hide Default CMS Button?</label>
+	                        <frontend_type>select</frontend_type>
+	                        <source_model>adminhtml/system_config_source_yesno</source_model>
+	                        <sort_order>5</sort_order>
+							<comment>Set to "Yes" if you are going to customize button placement on CMS pages</comment>
+	                        <show_in_default>1</show_in_default>
+	                        <show_in_website>1</show_in_website>
+	                        <show_in_store>1</show_in_store>
+	                    </ev_like_visibility_cms_default>
+					</fields>
+				</evlike_visibility>
+            </groups>
+        </evlike>
+    </sections>
+</config>

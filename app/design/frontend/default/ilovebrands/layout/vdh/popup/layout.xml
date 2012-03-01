@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+             <action method="addItem"><type>skin_js</type><name>js/vdh/popup/script.js</name></action>
+            <action method="addCss"><stylesheet>css/vdh/popup/style.css</stylesheet></action> 
+                        
+        </reference>
+		<reference name="after_body_start">			
+				<block type="core/template" name="popup_header" template="vdh/popup/header.phtml"/>			
+		</reference>        
+		<reference name="before_body_end">			
+				<block type="core/template" name="popup" template="vdh/popup/script.phtml"/>			
+		</reference> 
+
+    </default>
+    
+    <popup_index_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    
+    	<reference name="root">
+         	<action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    </popup_index_index>
+
+    <popup_index_first>
+    	<reference name="root">
+            <action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    </popup_index_first>
+    
+    <popup_form_page>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </popup_form_page>
+    
+
+   <customer_account_login>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_login>
+ 
+ 	<customer_account_create>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_create>
+ 	
+ 	<oneall_rpx_duplicate>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </oneall_rpx_duplicate>
+
+	<oneall_rpx_authenticate>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </oneall_rpx_authenticate>
+
+	<customer_account_forgotpassword>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_forgotpassword>
+ 
+ 	<customer_account_logout>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_logout>
+
+  	<customer_account_logoutsuccess>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_logoutsuccess>
+ 
+ 	<customer_onepage_index>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_onepage_index>
+
+ </layout>

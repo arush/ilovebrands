@@ -1,0 +1,15 @@
+<config>
+    <modules>
+        <Evogue_CatalogEvent>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Adminhtml/>
+                <Mage_Catalog/>
+                <Mage_Cms/>
+                <Mage_Sales/>
+                <Mage_Checkout/>
+            </depends>
+        </Evogue_CatalogEvent>
+    </modules>
+</config>

@@ -1,0 +1,256 @@
+<?xml version="1.0" ?>
+<config>
+	<sections>
+		<carriers>
+			<groups>
+				<shutl translate="label" module="shipping">
+					<label>Shutl</label>
+					<sort_order>550</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</active>
+						
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						
+						<apiurl translate="label">
+							<label>Shutl API Url</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</apiurl>
+						<clientid translate="label">
+							<label>Shutl Client ID</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</clientid>
+						<apikey translate="label">
+							<label>Shutl API Key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</apikey>
+						<error_message translate="label">
+							<label>API Default Error Message</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</error_message>
+						<error_code_messages translate="label comment">
+                            <label>Specific Error Code Messages</label>
+                            <frontend_model>shutl/system_config_form_field_array_message</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Define codes for specific API response code</comment>
+                        </error_code_messages>						
+
+						<services translate="label">
+							<label>Available Shutl Services</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>shutl/source_service</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</services>
+					
+						<defaultvehicle translate="label">
+							<label>Default Delivery Vehicle</label>
+							<frontend_type>select</frontend_type>
+							<source_model>shutl/source_vehicle</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+							<comment><![CDATA[<em>will only be populated after first save.</em>]]></comment>
+						</defaultvehicle>
+
+						<deliverywindow translate="label">
+							<label>Delivery Window</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment><![CDATA[<em>Specify in days (weekends are included in the count, max 28).</em>]]></comment>
+						</deliverywindow>
+						
+                        <stocklocation translate="label">
+                            <label>Import Stock Locations</label>
+                            <frontend_type>import</frontend_type>
+                            <backend_model>shutl/system_config_backend_stocklocation</backend_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stocklocation>
+                        
+                        <stocklocationexport translate="label">
+							<label>Export Stock Locations</label>
+							<frontend_type>export</frontend_type>
+                            <frontend_model>shutl/system_config_form_field_exportstocklocation</frontend_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stocklocationexport>
+                        
+                        <stocklevel translate="label">
+                            <label>Import Stock Level</label>
+                            <frontend_type>import</frontend_type>
+                          
+                            <backend_model>shutl/system_config_backend_stocklevel</backend_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stocklevel>
+                        
+                        <stocklevelexport translate="label">
+                            <label>Export Stock Level</label>
+							<frontend_type>export</frontend_type>
+                            <frontend_model>shutl/system_config_form_field_exportstocklevel</frontend_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stocklevelexport>
+                        
+
+                        <method_label translate="label">
+                            <label>Label Template for Shutl Services</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment><![CDATA[
+								<em>Available template variables are:<br />
+								<strong>{shutl_method}</strong>, rendered as "shutl_now"<br />
+								<strong>{shutl_method_label}</strong>, rendered as "Shutl Now"<br />
+								<strong>{shutl_date}</strong>, rendered as "Thu 7th April 2011"<br />								
+								<strong>{shutl_deliver_after}</strong> and <strong>{shutl_deliver_before}</strong>, rendered as "15:04"<br />								
+								</em>
+							]]></comment>
+                            
+                        </method_label>
+                        
+                        <store_closed_method_label translate="label">
+                            <label>Label Template for Shutl Now when stores are closed</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment><![CDATA[
+								<em>Available template variables are:<br />
+								<strong>{shutl_method}</strong>, rendered as "shutl_now"<br />
+								<strong>{shutl_method_label}</strong>, rendered as "Shutl Now"<br />
+								<strong>{shutl_date}</strong>, rendered as "Thu 7th April 2011"<br />								
+								<strong>{shutl_deliver_after}</strong> and <strong>{shutl_deliver_before}</strong>, rendered as "15:04"<br />								
+								</em>
+							]]></comment>                            
+                        </store_closed_method_label>                        
+
+                         <handling_type translate="label">
+                            <label>Calculate Handling Fee</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>shipping/source_handlingType</source_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_type>
+                        
+                        <handling_fee translate="label">
+                            <label>Handling Fee</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </handling_fee>
+						<sallowspecific translate="label">
+                            <label>Ship to applicable countries</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <frontend_class>shipping-applicable-country</frontend_class>
+                            <source_model>adminhtml/system_config_source_shipping_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sallowspecific>
+                        
+                        
+                        <specificcountry translate="label">
+                            <label>Ship to Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>70</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+                        
+                        <showmethod translate="label">
+                            <label>Show method if not applicable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>80</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showmethod>
+                        
+                        <specificerrmsg translate="label">
+                            <label>Displayed Error Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificerrmsg>
+                                              
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sort_order>
+
+					</fields>
+				</shutl>
+			</groups>
+		</carriers>
+	</sections>
+</config>

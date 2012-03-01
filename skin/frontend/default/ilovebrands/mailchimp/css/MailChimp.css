@@ -1,0 +1,54 @@
+
+.account-create .control fieldset select {width:250px;}
+.my-account .box .box-content img{padding:3px;float:right;}
+.account-box .box-title {background:url("../images/dotted_divider.gif") repeat-x scroll 0 100% transparent;margin-bottom:8px;padding-bottom:2px;text-align:left;}
+.account-box .box-title h3 {font-size:1.1em;margin:0;}
+
+.subscribed-additional {margin-top:15px;}
+.subscribed-additional .page-title {text-align:right;border-bottom:1px solid #CCCCCC;margin:0 0 25px;}
+.subscribed-additional .page-title h1 {font-size:1.7em !important;font-weight:normal !important;margin:0;text-align:left;text-transform:none !important;}
+.subscribed-additional .buttons-set {border-top:1px solid #E4E4E4;clear:both;margin-top:4em;padding-top:8px;text-align:right;}
+.subscribed-additional .buttons-set .back-link {display:none;}
+
+#additionalFieldset,
+#generalFieldset {margin:0 10px 5px;}
+#generalFieldset fieldset,
+#additionalFieldset fieldset {margin:0 10px 5px;}
+#generalFieldset .title,
+#additionalFieldset .title {font-size:13px;color:#666;margin-top:5px;}
+#generalFieldset input,
+#additionalFieldset input{margin-right:0px !important;}
+#generalFieldset label,
+#additionalFieldset label{margin-right:20px;float:none;}
+
+#checkoutSteps .block-subscribe {font-size:11px;line-height:1.5;border:1px solid #C4C1BC;margin:0 0 30px;width:255px;margin-left:8px;}
+.checkout-cart-index .col-1 .block-subscribe {margin:0 0 20px !important;}
+.checkout-cart-index .block-subscribe {font-size:11px;line-height:1.5;border:1px solid #C4C1BC;margin:0 20px 10px;width:290px;}
+
+.checkout-cart-index .block-subscribe div.validation-passed { background: url("../images/icon_ok.gif") no-repeat scroll 75% 8px transparent;}
+.checkout-cart-index .block-subscribe div.validation-error { background: url("../images/icon_error.gif") no-repeat scroll 75% 8px transparent !important;}
+.checkout-cart-index .block-subscribe .validation-advice {clear:none !important;}
+
+#checkoutSteps .block-subscribe .block-title,
+.checkout-cart-index .block-subscribe .block-title {background:url("../images/bkg_block-title.gif") repeat-x scroll 0 0 transparent;border-bottom:1px solid #DDDDDD;padding:2px 9px;}
+#checkoutSteps .block-subscribe .block-title strong,
+.checkout-cart-index .block-subscribe .block-title strong {background-image:url("../images/i_block-subscribe.gif");background-position:0 0;background-repeat:no-repeat;padding-left:21px;color:#E26703;display:block;min-height:16px;text-transform:uppercase;}
+#checkoutSteps .block-subscribe .actions button.button span,
+.checkout-cart-index .block-subscribe .actions button.button span {background:none repeat scroll 0 0 #618499;border-color:#406A83;color:#FFFFFF;display:block;font:bold 12px/19px Arial,Helvetica,sans-serif;height:19px;padding:0 8px;text-align:center;white-space:nowrap;}
+#checkoutSteps .block-subscribe .block-content .input-box,
+.checkout-cart-index .block-subscribe .block-content .input-box{ float:none !important;}
+#checkoutSteps .block-subscribe .block-content .actions,
+.checkout-cart-index .block-subscribe .block-content .actions{ padding:5px !important;}
+#checkoutSteps .block-subscribe .block-content,
+.checkout-cart-index .block-subscribe .block-content { min-height:100px;padding:5px 10px;background:none repeat scroll 0 0 #F8F7F5;}
+#checkoutSteps .block-subscribe label,
+.checkout-cart-index .block-subscribe label {color:#666666;font-weight:bold;}
+#checkoutSteps .block-subscribe input.input-text,
+.checkout-cart-index .block-subscribe input.input-text {display:block;margin:3px 0;width:167px;}
+#checkoutSteps .block-subscribe .actions button.button,
+.checkout-cart-index .block-subscribe .actions button.button {margin-top:10px;float:left;}
+#checkoutSteps .block-subscribe button.button,
+.checkout-cart-index .block-subscribe button.button {background:none repeat scroll 0 0 transparent;border:0 none;cursor:pointer;margin:0;overflow:visible;padding:0;width:auto;}
+.checkout-cart-index .block-content .input-box{padding:4px 10px 0;}
+
+.poweredByMailchimp {float:right;margin-top:40px;clear:both;}

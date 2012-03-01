@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_RewardsOnly>
+            <version>1.0.0.1</version>
+        </TBT_RewardsOnly>
+    </modules>
+    <admin>
+        <routers>
+            <rewardsonlyadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_RewardsOnly</module>
+                    <frontName>rewardsonlyadmin</frontName>
+                </args>
+            </rewardsonlyadmin>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <rewardsonly>
+                <use>standard</use>
+                <args>
+                    <module>TBT_RewardsOnly</module>
+                    <frontName>rewardsonly</frontName>
+                </args>
+            </rewardsonly>
+        </routers>
+        <layout>
+            <updates>
+                <rewardsonly>
+                    <file>rewardsonly.xml</file>
+                </rewardsonly>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <TBT_RewardsOnly>
+                    <files>
+                        <default>TBT_RewardsOnly.csv</default>
+                    </files>
+                </TBT_RewardsOnly>
+            </modules>
+        </translate>
+        
+        <events>
+        </events>
+    </frontend>
+	
+    <adminhtml>
+        <translate>
+            <modules>
+                <TBT_RewardsOnly>
+                    <files>
+                        <default>TBT_RewardsOnly.csv</default>
+                    </files>
+                </TBT_RewardsOnly>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <rewardsonly>
+                    <file>rewardsonly.xml</file>
+                </rewardsonly>
+            </updates>
+        </layout>
+    </adminhtml>   
+    
+    <global>
+        <models>
+            <rewardsonly>
+                <class>TBT_RewardsOnly_Model</class>
+                <resourceModel>rewardsonly_mysql4</resourceModel>
+            </rewardsonly>
+            <rewardsonly_mysql4>
+                <class>TBT_RewardsOnly_Model_Mysql4</class>
+                <entities>
+                </entities>
+            </rewardsonly_mysql4>
+            
+            <rewards>
+            	<rewrite>
+            		<catalog_product>TBT_RewardsOnly_Model_Catalog_Product</catalog_product>
+            		<catalogrule_rule>TBT_RewardsOnly_Model_Catalogrule_Rule</catalogrule_rule>
+            		<catalogrule_observer>TBT_RewardsOnly_Model_Catalogrule_Observer</catalogrule_observer>
+            		<redeem>TBT_RewardsOnly_Model_Redeem</redeem>
+            	</rewrite>
+            </rewards>
+        </models>
+        
+        <resources>
+            <rewardsonly_setup>
+                <setup>
+                    <module>TBT_RewardsOnly</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </rewardsonly_setup>
+            <rewardsonly_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rewardsonly_write>
+            <rewardsonly_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rewardsonly_read>
+        </resources>
+        <blocks>
+            <rewardsonly>
+                <class>TBT_RewardsOnly_Block</class>
+            </rewardsonly> 
+            
+            <catalog>
+            	<rewrite>
+            		<product_price>TBT_RewardsOnly_Block_Product_Price</product_price>
+            	</rewrite>
+            </catalog>
+                
+            <rewards>
+            	<rewrite>
+            		<manage_promo_catalog_edit_tab_main>TBT_RewardsOnly_Block_Manage_Promo_Catalog_Edit_Tab_Main</manage_promo_catalog_edit_tab_main>
+            		<product_predictpoints>TBT_RewardsOnly_Block_Product_Predictpoints</product_predictpoints>
+            		<product_view_points_redeemed>TBT_RewardsOnly_Block_Product_View_Points_Redeemed</product_view_points_redeemed>
+            	</rewrite>
+            </rewards>
+            
+            <!--  checkout>
+            	<rewrite>
+            		<cart_sidebar>TBT_RewardsOnly_Block_Checkout_Cart_Sidebar</cart_sidebar>
+            	</rewrite>
+            </checkout -->
+            
+                           
+        </blocks>
+        <helpers>
+            <rewardsonly>
+                <class>TBT_RewardsOnly_Helper</class>
+            </rewardsonly>
+            
+        </helpers>
+        
+        
+        <sales>
+            <quote>
+                <totals>
+                   	<!-- subtotal>
+                        <renderer>rewards/checkout_total_subtotal</renderer>
+                    </subtotal>
+                    <discount>
+                        <renderer>rewards/checkout_total_discount</renderer>
+                    </discount>
+                    <shipping>
+                        <renderer>rewards/checkout_total_tax</renderer>
+                    </shipping>
+                    <grand_total>
+                        <renderer>rewards/checkout_total_grand</renderer>
+                    </grand_total-->
+                 </totals>		
+             </quote>
+        </sales>
+        
+        
+      
+		<rewards>
+			<rule_selection_alogorithm>
+				<model>rewardsonly/catalogrule_selection_algorithm_highestpriority</model>
+			</rule_selection_alogorithm>
+		</rewards>
+        
+        
+    </global>
+	
+</config>

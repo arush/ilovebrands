@@ -1,0 +1,16 @@
+<?php if ($this->hasUserDefinedAttributes()): ?>
+    <?php if ($this->isShowContainer()): ?>
+<div>
+    <ul class="form-list">
+    <?php endif;?>
+    <?php foreach ($this->getUserDefinedAttributes() as $attribute):?>
+        <?php $attributeContent = $this->getAttributeHtml($attribute);?>
+        <?php //if ($attributeContent): ?>
+        <li><?php echo $attributeContent;?></li>
+        <?php //endif;?>
+    <?php endforeach;?>
+    <?php if ($this->isShowContainer()): ?>
+    </ul>
+</div>
+    <?php endif;?>
+<?php endif; ?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Innovate_Kissinsights>
+<active>true</active>
+<codePool>local</codePool>
+</Innovate_Kissinsights>
+</modules>
+</config>

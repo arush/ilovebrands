@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_catalog_event_index>
+        <reference name="content">
+            <block name="event_grid_container" type="evogue_catalogevent/adminhtml_event" />
+        </reference>
+    </adminhtml_catalog_event_index>
+    
+    <adminhtml_catalog_event_edit>
+        <reference name="content">
+            <block name="event_edit_page" type="evogue_catalogevent/adminhtml_event_edit" />
+        </reference>
+        <reference name="left">
+            <block before="-" type="adminhtml/store_switcher" name="store_switcher" template="store/switcher.phtml"></block>
+        </reference>
+    </adminhtml_catalog_event_edit>
+    
+    <adminhtml_catalog_category_edit>
+        <reference name="category.edit">
+            <block name="event.buttons" type="evogue_catalogevent/adminhtml_catalog_category_edit_buttons">
+                <action method="addButtons"></action>
+            </block>
+        </reference>
+    </adminhtml_catalog_category_edit>
+</layout>

@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+
+?>
+<?php 	
+	$_layout = $this->getLayoutStyle();
+	$_showSend = $this->getShowSend();
+	$_showFaces = $this->getShowFaces();
+	$_width = $this->getLikeWidth();
+	$_height = $this->getLikeHeight();
+	$_verb = Mage::helper('evlike')->getLikeConfig('ev_facebook_verb');
+	$_font = Mage::helper('evlike')->getLikeConfig('ev_facebook_font');
+	$_color = Mage::helper('evlike')->getLikeConfig('ev_facebook_color');
+	$_ref = $this->getLikeRef();
+?>
+<?php if (!$this->getHidden()): ?>
+	<?php if(Mage::helper('evlike')->getLikeConfig('ev_facebook_type')): ?>
+	<!-- Using the iFrame -->
+	<iframe src="http://www.facebook.com/plugins/like.php?href=<?php echo $this->getEncodedUrl() ?>&amp;layout=<?php echo $_layout ?>&amp;show_faces=<?php echo $_showFaces ?>&amp;width=<?php echo $_width ?>&amp;action=<?php echo $_verb ?>&amp;font=<?php echo $_font ?>&amp;colorscheme=<?php echo $_color ?>&amp;locale=<?php echo Mage::helper('evlike')->getFacebookLocale() ?><?php if($_ref) echo "&amp;ref=" . $_ref ?>" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:<?php echo $_width ?>px; height:<?php echo $_height ?>px"></iframe>
+	<?php else: ?>
+	<!-- Using the JavaScript SDK -->
+	<div style="width:<?php echo $_width ?>px;"><fb:like href="<?php echo $this->getCurrentUrl() ?>" send="<?php echo $_showSend ?>" layout="<?php echo $_layout ?>" show_faces="<?php echo $_showFaces ?>" width="<?php echo $_width ?>" action="<?php echo $_verb ?>" font="<?php echo $_font ?>" colorscheme="<?php echo $_color ?>" <?php if($_ref) echo "ref=\"" . $_ref . "\"" ?>></fb:like></div>
+	<?php endif; ?>
+<?php endif; ?>

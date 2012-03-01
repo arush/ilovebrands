@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Innovate_Timer>
+<active>true</active>
+<codePool>local</codePool>
+</Innovate_Timer>
+</modules>
+</config>

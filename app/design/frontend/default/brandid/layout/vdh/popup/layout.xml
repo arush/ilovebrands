@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+             <action method="addItem"><type>skin_js</type><name>js/vdh/popup/script.js</name></action>
+            <action method="addCss"><stylesheet>css/vdh/popup/style.css</stylesheet></action>
+        </reference>
+		<reference name="after_body_start">			
+				<block type="core/template" name="popup_header" template="vdh/popup/header.phtml"/>			
+		</reference>        
+		<reference name="before_body_end">			
+				<block type="core/template" name="popup" template="vdh/popup/script.phtml"/>			
+		</reference> 
+
+    </default>
+    
+    <popup_index_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    
+    	<reference name="root">
+         	<action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    </popup_index_index>
+
+    <popup_index_first>
+    	<reference name="root">
+            <action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    </popup_index_first>
+    
+    <popup_form_page>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </popup_form_page>
+    
+
+   <customer_account_login>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_login>
+ 
+ 	<customer_account_create>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_create>
+ 	
+ 	<oneall_rpx_duplicate>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </oneall_rpx_duplicate>
+
+	<oneall_rpx_authenticate>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </oneall_rpx_authenticate>
+
+	<customer_account_forgotpassword>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_forgotpassword>
+ 
+ 	<customer_account_logout>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_logout>
+
+  	<customer_account_logoutsuccess>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </customer_account_logoutsuccess>
+ 
+ 	<checkout_onepage_index>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </checkout_onepage_index>
+ 
+ 	<checkout_cart_index>
+        <remove name="popup" />
+        <remove name="popup_header" />
+    </checkout_cart_index>
+ 
+ 	<paypal_express_review>
+	 	<remove name="popup" />
+        <remove name="popup_header" />
+ 	</paypal_express_review>
+ 	
+ 
+	 <keep_calm_signmeup>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </keep_calm_signmeup>
+
+	<keep_calm_getgifted>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </keep_calm_getgifted>
+
+	<cms_page_view>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </cms_page_view>
+
+	<catalog_product_view>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </catalog_product_view>
+
+
+	<!-- hack because popup isnt looking up cookie properly -->
+	<rewardsref_customer_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </rewardsref_customer_index>
+
+	<customer_account_edit>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </customer_account_edit>
+
+	<sales_recurring_profile_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </sales_recurring_profile_index>
+
+	<customerbalance_info_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </customerbalance_info_index>
+
+	<rewards_customer_index>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </rewards_customer_index>
+    
+    <customer_address_form>
+    	<remove name="popup" />
+		<remove name="popup_header" />
+    </customer_address_form>
+
+	<!-- end hack because popup isnt looking up cookie properly -->
+
+
+ </layout>

@@ -1,0 +1,11 @@
+<?php
+	$gt = $this->getCreditMemo()->getGrandTotal();
+?>
+<p>
+	<label for="suite-invoices-selector"><?php echo $this->__('SagePay transaction to refund'); ?></label>
+	<select id="suite-invoices-selector" name="sagepaysuiterefundtrn">
+		<?php $sl = null; foreach($this->getPayments() as $_payment): ?>
+			<option value="<?php echo $_payment->getId(); ?>"<?php if($gt == $_payment->getAmount() && !$sl): $sl = true; ?> selected="selected"<?php endif; ?>><?php echo sprintf('%s - %s', strtoupper($_payment->getActionCode()), number_format($_payment->getAmount(), 2, '.', ',')); ?></option>
+		<?php endforeach; ?>
+	</select>
+</p>

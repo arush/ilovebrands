@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+-->
+<layout version="1.0.0">
+	<default>
+		<reference name="head">
+			<block type="core/template" name="likesite" as="likesite" template="evlike/sitename.phtml" />
+		</reference>
+		
+        <reference name="before_body_end">
+            <block type="core/template" name="ev_fb_init" as="ev_fb_init" template="evlike/fbinit.phtml" />
+        </reference>
+	</default>
+	
+	<catalog_category_default>
+		<reference name="head">
+			<block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml">
+				<action method="setIsCategoryButton"><value>1</value></action>
+			</block>
+		</reference>
+		<reference name="content">
+			<block type="evlike/like" name="defaultcat.likebutton" template="evlike/likebutton.phtml" before="category.products">
+				<action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_category_default"><value>1</value></action>
+				<action method="setIsCategoryButton"><value>1</value></action>
+			</block>
+		</reference>
+	</catalog_category_default>
+	
+	<catalog_category_layered>
+		<reference name="head">
+			<block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml">
+				<action method="setIsCategoryButton"><value>1</value></action>
+			</block>
+		</reference>
+		
+		<reference name="content">
+			<block type="evlike/like" name="defaultcat.likebutton" template="evlike/likebutton.phtml" before="category.products">
+				<action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_category_default"><value>1</value></action>
+				<action method="setIsCategoryButton"><value>1</value></action>
+			</block>
+		</reference>
+	</catalog_category_layered>
+	
+	<catalog_product_view>
+		<reference name="head">
+			<block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml" />
+		</reference>
+		
+		<reference name="content">
+			<block type="evlike/like" name="likebutton" as ="likebutton" template="evlike/likebutton.phtml" before="product.info">
+				<action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_product_default"><value>1</value></action>
+			</block>
+		</reference>
+		
+		<reference name="product.info">
+			<block type="evlike/like" name="info.likebutton" as ="info.likebutton" template="evlike/likebutton.phtml" />
+		</reference>
+	</catalog_product_view>
+	
+	<cms_page>
+		<reference name="head">
+			<block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml">
+				<action method="setIsCmsButton"><value>1</value></action>
+			</block>
+		</reference>
+		
+		<reference name="content">
+			<block type="evlike/like" name="defaultcms.likebutton" template="evlike/likebutton.phtml" before="cms_page">
+				<action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_cms_default"><value>1</value></action>
+				<action method="setIsCmsButton"><value>1</value></action>
+			</block>
+		</reference>
+	</cms_page>
+	
+	<cms_index_defaultindex>
+        <reference name="head">
+			<block type="evlike/like" name="likemeta" as="likemeta" template="evlike/head.phtml">
+				<action method="setIsCmsButton"><value>1</value></action>
+			</block>
+		</reference>
+		
+		<reference name="content">
+			<block type="evlike/like" name="defaultcms.likebutton" template="evlike/likebutton.phtml" before="cms_page">
+				<action method="setHidden" ifconfig="evlike/evlike_visibility/ev_like_visibility_cms_default"><value>1</value></action>
+				<action method="setIsCmsButton"><value>1</value></action>
+			</block>
+		</reference>
+    </cms_index_defaultindex>
+</layout>

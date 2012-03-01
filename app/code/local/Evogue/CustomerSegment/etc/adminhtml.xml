@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <customer>
+                        <children>
+                            <customersegment  translate="title" module="evogue_customersegment">
+                                <title>Customer Segments</title>
+                                <sort_order>20</sort_order>
+                            </customersegment>
+                        </children>
+                    </customer>
+                    <report>
+                        <children>
+                            <customers>
+                                <children>
+                                    <segment translate="title" module="evogue_customersegment">
+                                        <title>Customer Segments</title>
+                                        <sort_order>100</sort_order>
+                                    </segment>
+                                </children>
+                            </customers>
+                        </children>
+                    </report>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+    <menu>
+        <customer>
+            <children>
+                <customersegment translate="title" module="evogue_customersegment">
+                    <title>Customer Segments</title>
+                    <action>adminhtml/customersegment</action>
+                    <depends>
+                        <module>Evogue_CustomerSegment</module>
+                        <config>customer/evogue_customersegment/is_enabled</config>
+                    </depends>
+                    <sort_order>20</sort_order>
+                </customersegment>
+            </children>
+        </customer>
+        <report>
+            <children>
+                <customers>
+                    <children>
+                        <segment translate="title" module="evogue_customersegment">
+                            <title>Customer Segments</title>
+                            <action>adminhtml/report_customer_customersegment/segment</action>
+                            <depends>
+                                <module>Evogue_CustomerSegment</module>
+                                <config>customer/evogue_customersegment/is_enabled</config>
+                            </depends>
+                            <sort_order>100</sort_order>
+                        </segment>
+                    </children>
+                </customers>
+            </children>
+        </report>
+    </menu>
+</config>

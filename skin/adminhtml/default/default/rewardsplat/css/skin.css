@@ -1,0 +1,34 @@
+
+.stadmin-menu_main {
+	background-image:url("../images/st_micro_icon_plat.png") !important;
+}
+
+h3.head-manage-promo-quote-redemptions, 
+h3.head-manage-promo-quote-redemptions, 
+h3.head-manage-promo-catalog-redemptions, 
+h3.head-manage-special, 
+h3.head-manage-promo-quote-distributions, 
+h3.head-manage-promo-catalog-distributions, 
+h3.head-manage-currency,
+h3.head-manage-referrals,
+h3.head-manage-transfer-other,
+h3.head-manage-transfer-distribution,
+h3.head-manage-transfer-redemption,
+h3.head-manage-transfer,
+h3.head-manage-customer-points,
+h3.head-manage-promo-quote,
+h3.head-manage-promo-catalog
+{
+	background-image:url("../images/st_micro_icon_plat.png");
+	color:#4eb3ed;
+}
+
+.tabs.config-tabs span.stadmin-config_menu {
+	background-image:url("../images/st_micro_icon_plat.png");
+	color:#1aa2f0;
+}
+
+.content-header h3 span.stadmin-config_menu {
+	background-image:url("../images/st_micro_icon_plat.png");
+	color:#4eb3ed; 
+}

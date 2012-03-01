@@ -1,0 +1,45 @@
+<?php $element = $this->getElement();?>
+<?php $elementId = $element->getHtmlId();?>
+&nbsp;<span class="rule-param rule-param-new-child" <?php if ($element->getParamId()):  ?> id="<?php echo $element->getParamId();?>" <?php endif; ?> >
+<a href="javascript:void(0)" class="label">
+    <?php echo $element->getValueName();?>
+</a>
+<span class="element">
+    <?php echo Mage::helper('evogue_targetrule')->__('Please choose a condition to add...') ?>
+    <a href="javascript:setValueToElementValueChanger('<?php echo $elementId;?>', false);void(0)"><?php echo Mage::helper('evogues_targetrule')->__('Close') ?></a>
+
+    <?php echo $element->getElementHtml();?>
+    <?php if($values = $element->getValues()):?>
+        <?php foreach ($values as $key => $option): ?>
+            <dl>
+                <?php if(is_string($option['value'])):?>
+                        <dt>
+                            <a onclick="javascript:setValueToElementValueChanger('<?php echo $elementId;?>', '<?php echo $option['value']; ?>');void(0);"><?php echo $option['label']; ?></a>
+                        </dt>
+                <?php endif;?>
+                <?php if(is_array($option['value'])):?>
+                    <dt><?php echo $option['label']; ?></dt>
+                    <?php foreach ($option['value'] as $item): ?>
+                        <dd>
+                            <a onclick="javascript:setValueToElementValueChanger('<?php echo $elementId;?>', '<?php echo $item['value']; ?>');void(0);"><?php echo $item['label']; ?></a>
+                        </dd>
+                    <?php endforeach; ?>
+                <?php endif;?>
+            </dl>
+        <?php endforeach; ?>
+    <?php endif;?>
+</span></span>&nbsp;
+
+<script type="text/javascript">
+//<![CDATA[
+function setValueToElementValueChanger(changerId, value)
+{
+    elementValueChanger = $(changerId);
+    if (!value){
+        value = '';
+    }
+    elementValueChanger.value = value;
+    elementValueChanger.container.rulesObject.hideParamInputField(elementValueChanger.container);
+}
+//]]>
+</script>

@@ -1,0 +1,46 @@
+<?php 
+if ($this->getOnemoretest() == 'true'){
+	Mage::getModel('core/cookie')->set('onemoretest', true);
+	header('Location: '.Mage::getBaseUrl().'popup/form/page/index/onemoretest/'); // actually pulling this html via ajax
+} 
+
+if (Mage::getSingleton('customer/session')->isLoggedIn() && !Mage::getModel('core/cookie')->get('onemoretest')):
+?>
+
+
+last one dude
+<form name="customer_details" action="/popup/form/page/index/onemoretest/onemoretest/true">
+	<input type="hidden" name="onemoretest" value="true" />
+	This is popup number <span id="num"></span>
+	<!-- a id="5-next" class="done" href="/popup/form/page/index/beta/suppress/true">Send some invitations</a-->
+	<input id="5-next" class="done" type="submit" name="submit" value="don't show me this again" />
+</form>
+
+
+<!--
+
+<script type="text/javascript">
+Ajax.Responders.register({
+    onComplete: function(request) {
+        if (request.url.indexOf('popup/form/page/index/onemoretest/onemoretest/true') >= 0) {
+            document.location.href = request.transport.responseText;
+        }
+    }
+});
+</script>
+-->
+
+<script type="text/javascript">
+	
+	var pos = 0;
+	for (var i = 0; i < vdh.urls.length; i++) {
+		if (vdh.urls[i].url.indexOf('popup/form/page/index/onemoretest') >= 0) {
+			pos = i+1;
+			break;		
+		}
+	}
+	$('num').innerHTML = pos;
+		
+</script>
+
+<?php endif; ?>

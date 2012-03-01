@@ -1,0 +1,391 @@
+.vdh.overlay {
+	background: #000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1500;
+}
+.vdh.overlay.loading {
+	background: #000 url('../../../images/vdh/popup/loader.gif') 50% 50% no-repeat;
+}
+.vdh.content {
+	display: none;
+	width: 790px;
+	height: 438px;
+	z-index: 1501;
+	position: absolute;
+	background: #fff;
+	text-align: left;
+	overflow-y: auto;
+	-moz-box-shadow: 0px 4px 30px #000;
+	-webkit-box-shadow: 0px 4px 30px #000;
+	box-shadow: 0px 4px 30px #000;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+	overflow: hidden;
+}
+
+a.vdh.close {
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	text-align: center;
+	width: 28px;
+	height: 28px;
+	padding-top: 2px;
+	color: transparent;
+	font-weight: bold;
+	cursor: pointer;
+	/*background: url("../../../images/vdh/popup/close.png");*/
+}
+
+
+#popupMessages {
+	display: none;
+	cursor: pointer;
+
+	background: #FEEFB3;
+	color: #9F6000;
+	font-family: Gotham-light,Arial;
+	font-size: 18px;
+	height: 41px;
+	padding-top: 5px;
+	-moz-box-shadow: 0pt 0px 8px #ACACAC;
+	-webkit-box-shadow: 0pt 0px 8px #ACACAC;
+	-khtml-box-shadow: 0pt 0px 8px #ACACAC;
+	box-shadow: 0pt 0px 8px #ACACAC;	
+	
+}
+#popupCounter {
+	font-size: 26px;
+	font-family: Gotham-medium;
+}
+
+.popup-title {
+	margin: 40px auto;
+	text-align: center;
+}
+
+.popup-title span {
+	padding:10px 17px;
+	font-family: ProximaNovaBold;
+	font-size:24px;
+	background-color:#000;
+	color:#fff;
+	text-transform: uppercase;
+	clear:both;
+	letter-spacing: -1px;
+}
+
+.big-fuckoff.logo {
+	background: url('../../../images/brandid-huge-beta.png');
+	width:441px;
+	height:140px;
+	margin: 60px auto 48px;
+
+}
+
+.getstarted .sliders .holder .slider {
+	height: 438px;
+	width: 3950px;
+	margin:0;
+}
+
+.getstarted .sliders .holder .slider ul li {
+	width: 790px;
+	height: 438px;
+	position: relative;
+}
+
+.getstarted .sliders .holder {
+	width: 790px;
+	height: 546px;
+}
+
+.getstarted .sliders {
+	width: 790px;
+}
+
+.vdh.content .control-box {
+	position: absolute;
+	bottom: 20px;
+	right:20px;
+}
+
+.vdh.content .explain {
+	font-family: ProximaNovaLight;
+	font-size:18px;
+	color:#595959;
+	text-transform: none;
+	letter-spacing: -1px;
+	margin: 18px 45px;
+}
+
+.vdh.content .explain-bold {
+	font-family: ProximaNovaBold;
+}
+
+
+.gettingstarted.getstarted a.popup-next, .gettingstarted.getstarted a.done, .gettingstarted.getstarted .done, .vdh.content input[type="submit"] {
+	float:right;
+	margin:0;
+}
+
+.gettingstarted.getstarted a.popup-prev {
+	float:left;
+	margin:0;
+	background: none;
+	color: #595959;
+	text-decoration: underline;
+	font-weight: normal;
+	text-transform: none;
+}
+
+li.plans .popup-title {
+	margin-bottom:0;
+}
+
+.popup-col {
+	float:left;
+	padding:20px;
+}
+
+.getstarted .lucky-dip-img {
+	background: url("../../../images/lightbox/beta/lucky-dip.jpg");
+	width:226px;
+	height:248px;
+	margin-right:30px;
+}
+
+.getstarted .tie-img {
+	background: url("../../../images/lightbox/beta/tie.png");
+	width:233px;
+	height:251px;
+	margin:17px 0 0 286px;
+	position:absolute;
+}
+
+
+.tie-details {
+	text-align: left;
+	line-height: 2em;
+	margin:13px 0 0 0;
+	position:absolute;
+	margin:42px 0 0 417px;
+}
+
+.tie-details span.detail {
+	background-color: #000;
+	text-align: left;
+	font-family: ProximaNovaBold;
+	text-transform: uppercase;
+	color: white;
+	font-size: 12px;
+	padding:4px;
+}
+
+.tie-details span.detail.red {
+	background-color:#d2002b;
+}
+
+.vdh.content .plans .explain {
+	margin: 10px 10px;
+}
+
+.vdh.content input[type="submit"]
+{
+    background  : none;
+    border  : none;
+
+    background-color: #D2002B;
+    color: white;
+    cursor: pointer;
+    font-family: proximanovabold;
+    margin-top: 0;
+    padding: 14px 17px;
+    text-transform: uppercase;
+    font-size:12px;
+}
+
+
+.vdh.content .plans .explain span.explanation {
+	display:block;
+	float:left;
+	width:244px;
+	margin:10px;
+}
+
+li.boosters .popup-col.explain {
+	margin: 25px 0 25px 40px;
+	padding-left:0;
+	padding-right:0;
+	width:500px;
+	
+}
+
+li.loyalty .popup-title {
+	margin-bottom:10px;
+}
+
+li.loyalty .popup-col.explain {
+	padding:0;
+	margin:40px;
+}
+
+.popup-col.brands-list {
+	text-align: center;
+	margin-top:60px;
+}
+.popup-col.brands-list span.brands {
+	background-color: #000;
+	text-align: center;
+	font-family: ProximaNovaBold;
+	text-transform: uppercase;
+	color: white;
+	font-size: 15px;
+	padding:6px;
+}
+
+li.loyalty .popup-col.explain.friends {
+	position:absolute;
+	margin:150px 0 0 522px;
+	width:246px;
+}
+
+li.loyalty .popup-col.explain .brands-list span.brands {
+	font-size:14px;
+}
+
+li.loyalty .popup-col.explain .brands-list span.brands.red {
+	background-color:#d2002b;
+}
+
+img.plans-img, img.boosters-img {
+	width:446px;
+	float:left;
+	margin: 10px 20px 0 0;
+}
+
+img.boosters-img {
+	margin: 10px 10px 10px 0;
+}
+
+#lightbox-close {
+	position:absolute;
+	z-index: 3000;
+	/* hack to hide button text */
+	
+}
+
+.lightbox-close form{
+}
+
+.lightbox-close form input{
+	background  : none;
+    border  : none;
+    color: white;
+    cursor: pointer;
+}
+
+
+#lightbox-close-button {
+	background: url('../../../images/lightbox_close.png');
+	height: 25px;
+	width: 25px;
+	background-repeat: no-repeat;
+
+}
+
+.popover {
+  position: absolute;
+  z-index: 5000;
+  display: block;
+  padding: 5px;
+}
+.popover.top {
+  margin-top: -5px;
+}
+.popover.right {
+  margin-left: 5px;
+}
+.popover.bottom {
+  margin-top: 5px;
+}
+.popover.left {
+  margin-left: -5px;
+}
+.popover.top .arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000000;
+}
+.popover.right .arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #000000;
+}
+.popover.bottom .arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #000000;
+}
+.popover.left .arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #000000;
+}
+.popover .arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.popover-inner {
+  padding: 3px;
+  width: 280px;
+  overflow: hidden;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+.popover-title {
+  padding: 9px 15px;
+  line-height: 1;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #eee;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  color: #111;
+}
+.popover-content {
+  padding: 14px;
+  background-color: #ffffff;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.popover-content p, .popover-content ul, .popover-content ol {
+  margin-bottom: 0;
+  color:#AAA;
+}

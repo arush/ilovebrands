@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<widgets>
+    <event_lister type="evogue_catalogevent/widget_lister" translate="name description" module="evogue_catalogevent">
+        <name>Catalog Events Carousel</name>
+        <description>List all open Catalog Events as a Paginated Carousel</description>
+        <parameters>
+            <limit translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <value>5</value>
+                <label>Frame Size</label>
+                <description>Number of Items to display at once</description>
+                <type>text</type>
+            </limit>
+            <scroll translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <value>2</value>
+                <label>Scroll</label>
+                <description>Number of Items to scroll per click</description>
+                <type>text</type>
+            </scroll>
+            <width translate="label description">
+                <visible>1</visible>
+                <label>Block Custom Width</label>
+                <description>Width in Pixels. If empty, will be determined automatically</description>
+                <type>text</type>
+            </width>
+            <template>
+                <required>1</required>
+                <value>evogue/catalogevent/widget/lister.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>evogue/catalogevent/widget/lister.phtml</value>
+                        <label>Catalog Events Carousel Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+        <supported_blocks>
+            <left_column>
+                <block_name>left</block_name>
+                <template>
+                    <lister>default</lister>
+                </template>
+            </left_column>
+            <main_content>
+                <block_name>content</block_name>
+                <template>
+                    <lister>default</lister>
+                </template>
+            </main_content>
+            <right_column>
+                <block_name>right</block_name>
+                <template>
+                    <lister>default</lister>
+                </template>
+            </right_column>
+        </supported_blocks>
+    </event_lister>
+</widgets>

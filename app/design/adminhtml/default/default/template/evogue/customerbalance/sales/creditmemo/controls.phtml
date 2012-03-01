@@ -1,0 +1,15 @@
+<input type="hidden" name="creditmemo[refund_customerbalance]" value="0">
+<?php if ($this->canRefundToCustomerBalance()): ?>
+    <p>
+        <label for="creditmemo_refund_customerbalance"><?php echo Mage::helper('evogue_customerbalance')->__('Refund Store Credit to Store Credit') ?></label>
+        <input type="checkbox" name="creditmemo[refund_customerbalance]" value="1" id="creditmemo_refund_customerbalance">
+    </p>
+<?php endif; ?>
+
+<input type="hidden" name="creditmemo[refund_real_customerbalance]" value="0">
+<?php if ($this->canRefundMoneyToCustomerBalance()): ?>
+    <p>
+        <label for="creditmemo_refund_real_customerbalance"><?php echo Mage::helper('evogue_customerbalance')->__('Refund Money to Store Credit') ?></label>
+        <input type="checkbox" name="creditmemo[refund_real_customerbalance]" value="1" id="creditmemo_refund_real_customerbalance">
+    </p>
+<?php endif; ?>

@@ -1,0 +1,59 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div class="footer">
+	<div class="footer-container">		
+		<div class="footer-content">
+			<div id="footer-links">
+				<div class="footer-block-right-line"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-cms-block')->toHtml() ?></div>
+				<div class="footer-block-padder">
+					<div class="footer-block footer-block-middle"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-all-links')->toHtml() ?></div>
+					<div class="footer-block footer-block-right"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('brandid-copyright')->toHtml() ?></div>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+			
+		</div>
+	</div>
+</div>
+<div class="footer absolute-foot">
+	<div class="footer-container">		
+		<div class="footer-content">
+				<div class="footer-block footer-madein"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-madein')->toHtml() ?></div>
+				<div class="footer-block footer-joinus"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer-joinus')->toHtml() ?></div>
+				<div class="footer-html5-img"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Chartbeat module -->
+
+<?php 	if(Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_on')) {
+		echo Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_foot_code');
+	}
+?>
+
+<!-- END Chartbeat module -->

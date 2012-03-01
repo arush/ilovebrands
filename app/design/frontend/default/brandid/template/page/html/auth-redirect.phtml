@@ -1,0 +1,15 @@
+<?php /*?>
+// This file has been created by Flo on 09/02/2011
+// Purpose of this file is the following
+// When the website is set to no access restrictions
+// the User will be redirected to the LogIn page as soon as he navigates to the homepage /index.php
+// All other pages on the site will be freely accessible
+// derived from http://www.chilipepperdesign.com/2009/07/08/magento-how-to-protect-pages-so-only-logged-in-users-can-view-them
+<?php */?>
+
+<?php Mage::getSingleton('customer/session')->setBeforeAuthUrl($this->getBaseUrl());  //save requested URL for later redirection
+if (!Mage::getSingleton('customer/session')->isLoggedIn()) {  // if not logged in
+    header("Status: 301");
+    header('Location: '.$this->getUrl('customer/account/login')) ;  // send to the login page
+    exit; 
+} ?>

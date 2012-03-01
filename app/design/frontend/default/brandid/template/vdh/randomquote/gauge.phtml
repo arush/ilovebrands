@@ -1,0 +1,25 @@
+<div class="invite-gauge">
+	<h3><?php echo $this->getTitle(); ?></h3>
+	<div id="inviteGauge"></div>
+	<div id="inviteCounter" class="flip-counter"></div>
+	<span class="text"><?php echo $this->__('invitations to converted signups'); ?></span>
+	<span class="text total-signups">50 signups</span>
+</div>	
+<script type='text/javascript'>
+	var inviteCounter = new flipCounter('inviteCounter', {value:0, inc:3, pace:15, tFH: 20, bFH: 34, fW: 28, bOffset: 200});
+	inviteCounter.incrementTo(<?php echo (Mage::helper('randomquote')->getInvitesConverted()); ?>);	
+
+(function() {
+    var config = {
+        'api': '/randomquote/gauge/points',
+        'color': '#d2002b',  // Optional
+        'disableStyles': false,  // Optional
+        'element': 'inviteGauge',
+        'label': '',  // Optional
+        'width': 250,  // Optional
+        'refreshInterval': 2500  // Optional, milliseconds
+    };
+
+    new SiteTotal(config);
+})();
+</script>

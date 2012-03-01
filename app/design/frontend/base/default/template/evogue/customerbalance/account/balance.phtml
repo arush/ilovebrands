@@ -1,0 +1,6 @@
+<div class="account-balance">
+<h2 class="sub-title"><?php echo Mage::helper('evogue_customerbalance')->__('Balance'); ?></h2>
+<?php echo Mage::helper('evogue_customerbalance')->__('Your current balance is:'); ?>
+
+<?php echo Mage::helper('core')->currency($this->getBalance()); ?>
+</div>

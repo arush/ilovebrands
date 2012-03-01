@@ -1,0 +1,22 @@
+<?php if ($this->hasItems()): ?>
+<div class="box-collateral box-up-sell">
+    <div class="box-title">
+        <h2><?php echo $this->__('You may also be interested in the following product(s)') ?></h2>
+    </div>
+    <?php $i=0; foreach ($this->getItemCollection() as $_item): ?>
+        <?php if ($i++ % $this->getColumnCount() == 0): ?>
+            <ul class="products-grid">
+        <?php endif ?>
+                <li class="item<?php if (($i - 1) % $this->getColumnCount() == 0):?> first<?php elseif ($i % $this->getColumnCount() == 0):?> last<?php endif;?>">
+                    <a href="<?php echo $this->getProductUrl($_item) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(135) ?>" width="135" height="135" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+                    <h3 class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                    <?php echo $this->getReviewsSummaryHtml($_item) ?>
+                    <?php echo $this->getPriceHtml($_item, true, '-upsell') ?>
+                </li>
+        <?php if ($i % $this->getColumnCount() == 0 || $i == $this->getItemsCount()): ?>
+            </ul>
+        <?php endif ?>
+    <?php endforeach; ?>
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+</div>
+<?php endif ?>

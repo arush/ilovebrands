@@ -1,0 +1,38 @@
+<div id="loadingGif" style="margin:100px 0 0 260px"><img src="<?php echo $this->getSkinUrl(); ?>images/fb-loader.gif" alt="loading" /></div>
+
+<div id="fb-frame"></div>
+
+<script type="text/javascript">
+/*
+
+function hideLoading(){ 
+try { 
+// window.parent.document.getElementById('loadingGif').style.display = 'none'; 
+// window.parent.document.getElementById('fb-frame').style.display = 'block'; 
+} catch (ex) {} 
+
+} 
+
+window.onload = hideLoading(); 
+*/
+</script>
+
+
+<script>
+(function(d){
+  var iframe = d.body.appendChild(d.createElement('iframe')),
+  doc = iframe.contentWindow.document;
+
+  // style the iframe with some CSS
+  iframe.style.cssText = "position:absolute;width:520px;height:600px;left:0px;";
+  
+  doc.open().write('<body onload="' + 
+  'var d = document;d.getElementsByTagName(\'head\')[0].' + 
+  'appendChild(d.createElement(\'script\')).src' + 
+  '=\'<?php echo $this->getBaseUrl(); ?>facebook\/welcome\/landing\'">');
+  
+  doc.close(); //iframe onload event happens
+//window.parent.document.getElementById('loadingGif').style.display = 'none';
+	
+  })(document);
+</script>

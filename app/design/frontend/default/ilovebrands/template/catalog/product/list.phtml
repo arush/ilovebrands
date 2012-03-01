@@ -1,0 +1,234 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<?php echo $this->getToolbarHtml() ?>
+<div class="category-products">
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ol class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <?php // Product Image ?>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+    
+<!-- BEGIN ARUSH EDIT 2/11/10 get category event -->
+<?php $currentCategory = Mage::registry('current_category'); ?>
+<?php 
+	$currentUrl = $this->helper('core/url')->getCurrentUrl();
+	$searchFind = strpos($currentUrl,'catalogsearch');
+	if($searchFind === false) {
+		$_event = $currentCategory->getEvent();
+	} else {
+		$_event = false;
+	}
+ ?>
+<!-- END ARUSH EDIT 2/11/10 get category event -->
+
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+    	<?php /*?>The following line defines how many items are displayed on one row in the grid listing<?php */?>
+		<?php $_columnCount = 3; ?>
+		<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <?php $_brand = $_product->getAttributeText('designer'); ?>
+                <?php // $_brand =  $this->htmlEscape($_product->getResource()->getAttribute('designer')->getFrontend()->getValue($_product)); ?>
+				<?php /*?><?php $_discount = $this->htmlEscape($_product->getResource()->getAttribute('discount')->getFrontend()->getValue($_product)); ?><?php */?>
+                <div class="product-brand"><h2><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_brand ?></a></h2>
+                    <?php /*?><div class="discount"><?php echo $_discount ?></div><?php */?>
+                </div>
+				
+				<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(246,369); ?>" width="246" height="369" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+				<div class="product-name"><h2><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2></div>
+                <?php if($_product->getRatingSummary()): ?>
+                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                <?php endif; ?>
+                
+                <?php echo $this->getPriceHtml($_product, true) ?>
+				
+				<!-- ARUSH 28/7/11 ADDED DIV FOR SOLD OUT IMAGE -->
+				<?php /*?>FLO ADD ROLLOVER START<?php */?>
+					<?php if ($_product->isSalable()): ?>    
+							
+							<div class="ProdImgRollover">
+								<?php /*WDCA CODE BEGINS*/ ?>
+								<?php if(!Mage::getStoreConfigFlag('advanced/modules_disable_output/TBT_Rewards') && Mage::getConfig()->getModuleConfig('TBT_Rewards')->is('active', 'true')) : ?>
+									<?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?> 
+									<?php $predict_points_block->setProduct($_product);?> 
+									<?php echo $predict_points_block->toHtml()?>
+								<?php endif; ?>
+								<?php /*WDCA CODE ENDS*/ ?>
+								<a class="cat-view-now" href="<?php echo $_product->getProductUrl() ?>">View now</a>    
+							</div>
+						<!--/a-->
+					
+					<?php else: ?>
+               		
+               <div class="out-of-stock-image">
+                    
+                    <?php
+                    
+					if($_event) {
+                     switch ($_event->getStatus()):
+                        case 'upcoming': ?>
+                            <a href="<?php echo $_product->getProductUrl() ?>"><img class="PREVIEWNOW-img" src="<?php echo $this->getSkinUrl(); ?>/images/PREVIEWNOW.png" alt="PREVIEW NOW"></a>
+                           <!-- <p class="availability out-of-stock upcoming"><span><?php// echo $this->__('PREVIEW NOW') ?></span></p> -->
+                        <?php break;
+                        case 'open': ?>
+                            <!-- <a href="<?php // echo $_product->getProductUrl() ?>"><img class="SOLDOUT-img" src="<?php // echo $this->getSkinUrl(); ?>/images/SOLDOUT.png" alt="SOLD OUT"></a> -->
+                        	<?php if ($this->helper('wishlist')->isAllow()):?>	
+									<div class="ProdImgRollover-static-wl">
+										<div class="list-soldout">SOLD OUT</div>
+										<div class="cat-view-now"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></div>
+									</div>
+							<?php else:?>
+									<div class="ProdImgRollover-static">
+										<div class="list-soldout">SOLD OUT</div>
+									</div>
+								<!-- /a -->
+							<?php endif; ?>
+						<?php /*?>FLO ADD ROLLOVER END<?php */?>
+				
+                        <?php break;
+                        case 'closed': ?>
+                            <a href="<?php echo $_product->getProductUrl() ?>"><img class="NOWCLOSED-img" src="<?php echo $this->getSkinUrl(); ?>/images/NOWCLOSED.png" alt="COLLECTION CLOSED"></a>
+                        <?php break; ?>
+                    <?php endswitch; 
+                    
+                    } else {
+ 					?>
+                    	<!-- <a href="<?php // echo $_product->getProductUrl() ?>"><img class="SOLDOUT-img" src="<?php // echo $this->getSkinUrl(); ?>/images/SOLDOUT.png" alt="SOLD OUT"></a> -->
+                        	<?php if ($this->helper('wishlist')->isAllow()):?>	
+									<div class="ProdImgRollover-static-wl">
+										<div class="list-soldout">SOLD OUT</div>
+										<div class="cat-view-now"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></div>
+									</div>
+							<?php else:?>
+									<div class="ProdImgRollover-static">
+										<div class="list-soldout">SOLD OUT</div>
+									</div>
+								<!-- /a -->
+							<?php endif; ?>
+                    <?php }
+                    ?>
+               </div>
+				
+						<?php endif; ?>
+				
+				<!-- END ARUSH 2/11/10 ADDED DIV FOR SOLD OUT IMAGE -->
+
+					
+					
+					
+					<div class="only-left"><?php 
+                        $qtyLeft = (int) Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getQty();    
+                        if ($qtyLeft == 2)
+                            echo "Only 2 left!";
+						if ($qtyLeft == 1)
+                            echo "Only 1 left!";
+                    ?></div>
+                
+                <?php /*?><div class="actions">
+                    <?php if($_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                    <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div><?php */?>
+
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+    <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+</div>
+<div class="toolbar-bottom">
+    <?php echo $this->getToolbarHtml() ?>
+</div>
+<?php endif; ?>

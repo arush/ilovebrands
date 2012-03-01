@@ -1,0 +1,4 @@
+<label for="<?php echo $this->getHtmlId()?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->getLabel() ?></label>
+<div class="input-box">
+    <textarea id="<?php echo $this->getHtmlId()?>" name="<?php echo $this->getFieldName()?>" rows="5" cols="25" class="input-text<?php echo $this->getHtmlClass(); ?>"><?php echo $this->getEscapedValue() ?></textarea>
+</div>

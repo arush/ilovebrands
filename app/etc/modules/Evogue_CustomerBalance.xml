@@ -1,0 +1,11 @@
+<config>
+    <modules>
+        <Evogue_CustomerBalance>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Customer/>
+            </depends>
+        </Evogue_CustomerBalance>
+    </modules>
+</config>

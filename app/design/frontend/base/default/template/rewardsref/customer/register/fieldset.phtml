@@ -1,0 +1,23 @@
+<div class="fieldset rewards_referral_information">
+    <h2 class="legend"><?php echo $this->__('Referral Information') ?></h2>
+    <ul class="form-list">
+        <li class="fields">
+            <div class="field">
+                <label for="rewards_referral">
+                    <?php
+                    if($this->showReferralEmail() && ! $this->showReferralCode() ) {
+                        echo $this->__('Referral E-mail');
+                    }elseif(!$this->showReferralEmail() && $this->showReferralCode()  ) {
+                        echo $this->__('Referral Code');
+                    } else {
+                        echo $this->__('Referral E-mail or Code');
+                    }
+                    ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" name="rewards_referral" id="rewards_referral" class="input-text" value="<?php echo $this->getCurrentAffiliate(); ?>" />
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

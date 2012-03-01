@@ -1,0 +1,151 @@
+<?php
+/**
+ * WDCA - Sweet Tooth Instore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the SWEET TOOTH (TM) INSTORE
+ * License, which extends the Open Software License (OSL 3.0).
+ * The Sweet Tooth Instore License is available at this URL: 
+ * http://www.sweettoothrewards.com/instore/sweet_tooth_instore_license.txt
+ * The Open Software License is available at this URL: 
+ * http://opensource.org/licenses/osl-3.0.php
+ * 
+ * DISCLAIMER
+ * 
+ * By adding to, editing, or in any way modifying this code, WDCA is 
+ * not held liable for any inconsistencies or abnormalities in the 
+ * behaviour of this code. 
+ * By adding to, editing, or in any way modifying this code, the Licensee
+ * terminates any agreement of support offered by WDCA, outlined in the 
+ * provided Sweet Tooth Instore License. 
+ * Upon discovery of modified code in the process of support, the Licensee 
+ * is still held accountable for any and all billable time WDCA spent 
+ * during the support process.
+ * WDCA does not guarantee compatibility with any other framework extension. 
+ * WDCA is not responsbile for any inconsistencies or abnormalities in the
+ * behaviour of this code if caused by other framework extension.
+ * If you did not receive a copy of the license, please send an email to 
+ * support@wdca.ca or call 1-888-699-WDCA(9322), so we can send you a copy 
+ * immediately.
+ * 
+ * @category   [TBT]
+ * @package    [TBT_Rewardsinstore]
+ * @copyright  Copyright (c) 2011 Sweet Tooth (http://www.sweettoothrewards.com)
+ * @license    http://www.sweettoothrewards.com/instore/sweet_tooth_instore_license.txt
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    var setStorefrontUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/setStorefront') ?>";
+    var autocompleteUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/fetchCustomers') ?>";
+    var rewardUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/rewardCustomer') ?>";
+    var createUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/createCustomer') ?>";
+    var pingUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/keepAlive') ?>";
+    var logoutUri = "<?php echo $this->getUrl('rewardsinstoreadmin/webapp_ajax/logout') ?>";
+    
+    var cookieLifetime = <?php echo $this->getCookieLifetime() ?>;
+    var pingDelay = cookieLifetime * 0.8 * 1000; // 80% of session lifetime, in milliseconds
+
+    var userFullName = "<?php echo $this->getUserFullName() ?>";
+    var storefrontName = "<?php echo $this->getStorefrontName() ?>";
+
+    storefrontId = <?php echo $this->getStorefrontId() ?>;
+//]]>
+</script>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('tbt/rewardsinstore/flipcounter.js') ?>" />
+<script type="text/javascript" src="<?php echo $this->getJsUrl('tbt/rewardsinstore/webapp/main.js') ?>" />
+<!--
+<script type="text/javascript" src="<?php echo $this->getJsUrl('tbt/rewardsinstore/webapp/main/ie7.js') ?>" />
+-->
+
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/rewardsinstore/flip-counter.css') ?>" />
+<!-- <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/rewardsinstore/main.css') ?>" /> -->
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/rewardsinstore/main/ie7.css') ?>" />
+<![endif]-->
+
+<input type="hidden" class="pageIdentifier" value="main" />
+
+<div class="error" style="position:relative; top:-88px;">
+    <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/alert.png') ?>" />
+    <span id="msg"><?php echo $this->__("There has been an error.") ?></span>
+</div>
+<div id="main" style="position:relative; margin-top:24px; width:689px;">
+    <div class="customerArea" style="overflow:hidden; position:relative; width:724px; height:254px; margin-left:-35px; margin-top:-24px;">
+        <div class="wide">
+            <div class="selectCustomer" style="position:relative; width:656px; float:left; left:0px; padding:34px;">
+                <h1><?php echo $this->__("Search by Name or Email") ?>:</h1>
+                <input type="text" id="searchBox" />
+                <div class="createBar">
+                    <a href="javascript:openCreate()">
+                        <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/add.png') ?>" border="0" />
+                        <?php echo $this->__("Create a new user") ?>
+                    </a>
+                </div>
+            </div>
+            <div class="createBg" style="display:none; position:relative; float:left; margin:0px; left:-724px;">
+                <h1><?php echo $this->__("Create a New Customer") ?>:</h1>
+                <label for="firstName"><?php echo $this->__("First Name") ?></label>
+                <label for="lastName"><?php echo $this->__("Last Name") ?></label>
+                <label for="email"><?php echo $this->__("email@address.com") ?></label>
+                <input type="text" id="firstName" class="createInput" name="firstName" />
+                <input type="text" id="lastName" class="createInput" name="lastName" />
+                <input type="email" id="email" class="createInput" name="email" />
+                <input type="button" class="continue" id="createCustomer" value="Create" />
+                <div class="createBar">
+                    <a href="javascript:closeCreate()">
+                        <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/select.png') ?>" border="0" />
+                        <?php echo $this->__("Back") ?>
+                    </a>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="infoCustomer" style="display:none; position:relative; width:656px; float:left; left:0px; padding:34px;">
+                <div class="selectAnother">
+                    <a href="javascript:closeCustomer()">
+                        <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/select.png') ?>" border="0" />
+                        <?php echo $this->__("Select Another Customer") ?>
+                    </a>
+                </div>
+                
+                <h1 class="user"></h1>
+                <p class="info">
+                    <!-- Loyalty Number: <span id="loyaltyNum"></span><br/> -->
+                    Email: <span id="emailLabel"></span>
+                </p>
+                
+                <h2>Total Points:</h2>
+                <div class="rewarded" style="position:relative; top:15px; opacity:0;">
+                    <strong id="rewardedValue"></strong>&nbsp;<span id="rewardMessage"></span>
+                </div>
+                <div id="flip-counter" class="flip-counter"></div>
+                
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="break"></div>
+    
+    <div id="rewardArea">
+        <h1 style="padding-bottom: 0px;"><?php echo $this->__("Reward this Customer") ?></h1>
+        <p class="rewardNotice">
+            <?php echo $this->__("Enter the customer's purchase subtotal (before tax).")?>
+        </p>
+        <div class="reward">
+            <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/dollar.png') ?>" />
+            <input type="text" id="reward" class="rewardInput" />
+            <input type="button" id="rewardButton" value="<?php echo $this->__("Reward") ?>" tabindex="-1" />
+        </div>
+    </div>
+    
+    <div class="break"></div>
+    
+    <input class="continue" id="newSearch" type="button" value="<?php echo $this->__("New Search") ?>" style="margin-right: 35px;" />
+</div>
+
+<div id="storefrontSelector" style="display:none;">
+    <h1>Choose your location:</h1>
+    <input id="locationBox" /><button id="autocompleteArrow" tabindex="-1"><img src="<?php echo $this->getSkinUrl('images/rewardsinstore/white_down_arrow.png') ?>" style="width:45px; height:40px; margin-bottom:-11px;" /></button>
+</div>

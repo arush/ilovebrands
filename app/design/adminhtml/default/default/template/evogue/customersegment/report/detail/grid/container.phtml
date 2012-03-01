@@ -1,0 +1,41 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td style="<?php echo $this->getHeaderWidth() ?>"><?php echo $this->getHeaderHtml() ?></td>
+            <td class="form-buttons"><?php echo $this->getButtonsHtml() ?></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <?php echo $this->getGridHtml() ?>
+
+    <script type="text/javascript">
+        function setFilterValue(obj) {
+            <?php echo $this->getChild('grid')->getJsObjectName() ?>.addVarToUrl("website_ids", obj);
+        }
+
+        function refreshValues(obj) {
+            var elements = $('websites').select('input');
+            var serialized = Form.serializeElements(elements, true);
+            if (!serialized.website_ids) {
+                serialized.website_ids = [];
+            }
+            setFilterValue(serialized.website_ids);
+        }
+    </script>
+</div>
+<div>
+    <?php if ($websites = $this->getWebsites()): ?>
+        <div class="switcher">
+            <h3><?php echo $this->__('Website Filter values') ?></h3>
+            <ul id="websites">
+                <?php foreach ($websites as $website): ?>
+                    <li>
+                        <input type="checkbox" id="website_<?php echo $website->getId() ?>" name="website_ids" value="<?php echo $website->getId() ?>" onchange="return refreshValues(this)" />
+                        <label for="website_<?php echo $website->getId() ?>"><?php echo $website->getName() ?></label>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+</div>

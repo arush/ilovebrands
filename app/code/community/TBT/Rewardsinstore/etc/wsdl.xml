@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <complexType name="rewardsinstoreStorefrontEntity">
+                <all>
+                    <element name="storefront_id" type="xsd:int" minOccurs="0" />
+                    <element name="code" type="xsd:string" minOccurs="0" />
+                    <element name="website_id" type="xsd:int" minOccurs="0" />
+                    <element name="name" type="xsd:string" minOccurs="0" />
+                    <element name="description" type="xsd:string" minOccurs="0" />
+                    <element name="sort_order" type="xsd:int" minOccurs="0" />
+                    <element name="is_active" type="xsd:boolean" minOccurs="0" />
+                    <element name="country_id" type="xsd:string" minOccurs="0" />
+                    <element name="region_id" type="xsd:int" minOccurs="0" />
+                    <element name="region" type="xsd:string" minOccurs="0" />
+                    <element name="postcode" type="xsd:string" minOccurs="0" />
+                    <element name="street" type="xsd:string" minOccurs="0" />
+                    <element name="city" type="xsd:string" minOccurs="0" />
+                    <element name="telephone" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+            <complexType name="rewardsinstoreStorefrontEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:rewardsinstoreStorefrontEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+        </schema>
+    </types>
+    <message name="rewardsinstoreStorefrontListRequest">
+        <part name="filters" type="typens:filters" />
+    </message>
+    <message name="rewardsinstoreStorefrontListResponse">
+        <part name="storefronts" type="typens:rewardsinstoreStorefrontEntityArray" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="rewardsinstoreStorefrontList">
+            <documentation>Retrieve list of storefronts</documentation>
+            <input message="typens:rewardsinstoreStorefrontListRequest" />
+            <output message="typens:rewardsinstoreStorefrontListResponse" />
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="rewardsinstoreStorefrontList">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

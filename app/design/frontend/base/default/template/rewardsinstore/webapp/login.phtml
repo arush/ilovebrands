@@ -1,0 +1,75 @@
+<?php
+/**
+ * WDCA - Sweet Tooth Instore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the SWEET TOOTH (TM) INSTORE
+ * License, which extends the Open Software License (OSL 3.0).
+ * The Sweet Tooth Instore License is available at this URL: 
+ * http://www.sweettoothrewards.com/instore/sweet_tooth_instore_license.txt
+ * The Open Software License is available at this URL: 
+ * http://opensource.org/licenses/osl-3.0.php
+ * 
+ * DISCLAIMER
+ * 
+ * By adding to, editing, or in any way modifying this code, WDCA is 
+ * not held liable for any inconsistencies or abnormalities in the 
+ * behaviour of this code. 
+ * By adding to, editing, or in any way modifying this code, the Licensee
+ * terminates any agreement of support offered by WDCA, outlined in the 
+ * provided Sweet Tooth Instore License. 
+ * Upon discovery of modified code in the process of support, the Licensee 
+ * is still held accountable for any and all billable time WDCA spent 
+ * during the support process.
+ * WDCA does not guarantee compatibility with any other framework extension. 
+ * WDCA is not responsbile for any inconsistencies or abnormalities in the
+ * behaviour of this code if caused by other framework extension.
+ * If you did not receive a copy of the license, please send an email to 
+ * support@wdca.ca or call 1-888-699-WDCA(9322), so we can send you a copy 
+ * immediately.
+ * 
+ * @category   [TBT]
+ * @package    [TBT_Rewardsinstore]
+ * @copyright  Copyright (c) 2011 Sweet Tooth (http://www.sweettoothrewards.com)
+ * @license    http://www.sweettoothrewards.com/instore/sweet_tooth_instore_license.txt
+ */
+?>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/rewardsinstore/login.css') ?>" />
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/rewardsinstore/login/ie7.css') ?>" />
+<![endif]-->
+
+<script type="text/javascript">
+//<![CDATA[
+    var storefrontCode = <?php echo $this->getSelectedStorefront()?>;
+//]]>
+</script>
+
+<input type="hidden" class="pageIdentifier" value="login" />
+
+<div id="errorWrapper" style="margin-left:-38px; margin-top:-53px; overflow:hidden; border-top-left-radius:16px; border-top-right-radius:16px;">
+    <div class="error" style="position:relative; top:-88px; margin-top:0px; margin-left:0px;">
+        <img src="<?php echo $this->getSkinUrl('images/rewardsinstore/alert.png') ?>" />
+        <span id="msg"><?php echo $this->__("There has been an error.") ?></span>
+    </div>
+</div>
+<div id="main" style="position:relative; margin-top:53px; width:689px;">
+    <h1>Choose your location:</h1>
+    <input id="locationBox" /><button id="autocompleteArrow" tabindex="-1"><img src="<?php echo $this->getSkinUrl('images/rewardsinstore/white_down_arrow.png') ?>" style="width:45px; height:40px; margin-bottom:-11px;" /></button>
+    
+    <div class="break"></div>
+    
+    <div id="loginForm" class="faded">
+        <h1>Login using your Magento account information.</h1>
+        <label for="username">Username</label>
+        <label for="passwordLabel">Password</label>
+        <input type="text" class='loginInput' id="username" name="username" />
+        <input type="text" id="passwordLabel" name="passwordLabel" />
+        <input type="password" class='loginInput' id="password" name="password" style="display: none;" /> 
+        
+        <div class="break" style="margin-top: 24px"></div>
+        
+        <input type="button" class="continue" value="Continue" style="margin-right:32px;" />
+    </div>
+</div>

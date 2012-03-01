@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_targetrule_index>
+        <reference name="content">
+            <block type="evogue_targetrule/adminhtml_targetrule" name="evogue.targetrule.targetrule" template="widget/grid/container.phtml">
+                <block type="evogue_targetrule/adminhtml_targetrule_grid" name="evogue.targetrule.grid"/>
+                <action method="setHeaderText" translate="text">
+                    <text>Rule-Based Product Relations</text>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_targetrule_index>
+
+    <adminhtml_targetrule_grid>
+        <block type="evogue_targetrule/adminhtml_targetrule_grid" name="root"/>
+    </adminhtml_targetrule_grid>
+
+    <adminhtml_catalog_product_related>
+        <reference name="root">
+            <block type="evogue_targetrule/adminhtml_product" name="targetrule.adminhtml.product" template="evogue/targetrule/product.phtml" before="catalog.product.edit.tab.related">
+                <action method="setFormPrefix"><params>related</params></action>
+            </block>
+        </reference>
+    </adminhtml_catalog_product_related>
+
+    <adminhtml_catalog_product_upsell>
+        <reference name="root">
+            <block type="evogue_targetrule/adminhtml_product" name="targetrule.adminhtml.product" template="evogue/targetrule/product.phtml" before="catalog.product.edit.tab.upsell">
+                <action method="setFormPrefix"><params>upsell</params></action>
+            </block>
+        </reference>
+    </adminhtml_catalog_product_upsell>
+</layout>

@@ -1,0 +1,13 @@
+
+<?php $alias = 'methods' ?>
+<?php if ($this->hasPrefix()): ?>
+    <?php $alias = $this->getPrefix() . $alias ?>
+<?php endif ?>
+
+<ul class="checkout-types">
+<?php foreach ($this->getMethods($alias) as $method): ?>
+    <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+    <li><?php echo $methodHtml; ?></li>
+    <?php endif; ?>
+<?php endforeach; ?>
+</ul>

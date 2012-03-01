@@ -1,0 +1,49 @@
+
+<?php if ($this->showSendReferralForm()): ?>
+<div class="send-now"><h4 class="legend"><?php echo $this->__('Send Invitations now') ?></h4></div>
+   <div class="send-now-box"> 
+    <form action="<?php echo $this->getUrl('rewardsref/customer/invites/') ?>" method="post" id="form-validates">
+        <?php /*?><?php if ($this->hasPredictedSignupPoints()): ?>
+            <?php echo $this->__("You could earn up to %s when your referral signs up.", $this->getPredictedSignupPoints()); ?>
+        <?php endif; ?>
+        <?php if ($this->hasPredictedFirstOrderPoints()): ?>
+            <?php echo $this->__("You could earn up to %s when your referral makes their first order.", $this->getPredictedFirstOrderPoints()); ?>
+        <?php endif; ?><?php */?>
+
+        <fieldset class="group-select" style="margin-bottom: 0px;">
+            <input type="hidden" value="Il1NwrpfsCuSmp03" name="form_key"/>
+
+               		<div class="send-now-box-left">
+                    	<div class="send-header-left"><img src="<?php echo $this->getSkinUrl(); ?>images/sendinvitationsleft.png" width="301" height="44" /></div>
+                        <div class="plaxo"><?php echo $this->getChildHtml('plaxo_contact_chooser'); ?></div>
+                        <div class="providers"><img src="<?php echo $this->getSkinUrl(); ?>images/emailproviders.png" width="122" height="193" /></div>
+                        <div class="secure-image"><img src="<?php echo $this->getSkinUrl(); ?>images/secure.png" width="75" height="27" /></div>
+                        <div class="secure">You will be asked to enter your email address and password, but don't worry, it is made over a secure connection, and your password is never stored.</div>
+                    </div>
+                    <div class="send-now-box-middle"><img src="<?php echo $this->getSkinUrl(); ?>images/line.png" width="1" height="331" /></div>
+                    <div class="send-now-box-right">
+                    	<div class="send-header-right"><img src="<?php echo $this->getSkinUrl(); ?>images/sendinvitationsright.png" width="282" height="44" /></div>
+                        <div class="send-addresses">
+                            <label><?php echo $this->__('To:') ?></label><br/>
+                            <textarea name="contacts" id="recipient_list" style="width:418px;" rows="4" cols="80" ></textarea>
+                        </div>
+                        <div class="send-message">
+                            <label><?php echo $this->__('Message:') ?> </label><br/>
+                            <textarea name="message" id="message" class="required-entry textarea" style="width:418px;" rows="6" cols="80" title="<?php echo $this->__('Short Message') ?>"  >I'm a Member of evogue, an invitation-only shopping club for everything luxury - at private sale prices. New Collections go live a few times each month - but are available only for a short time. Sign up now with this invitation!</textarea>
+                        </div>
+                        <div class="button-set" style="margin-top:0px">
+                            <!--<a href="<?php echo $this->getBackUrl() ?>" class="left">&laquo; <?php echo $this->__('Back') ?></a>-->
+                            <button class="form-button rewardsref-button sendinvitations" type="submit">Send invitations</button>
+                        </div>                                              
+					</div>
+               
+        </fieldset>
+    </form>
+   </div>
+   
+    <script type="text/javascript">
+        var dataForm = new VarienForm('form-validate', true);
+    </script>
+
+
+<?php endif; ?>

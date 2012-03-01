@@ -1,0 +1,133 @@
+<script type="text/javascript">
+    
+    /**
+     * 
+     * @param rule_id
+     * @return
+     */
+    function feignPriceChange(rule_id) {
+        var newPrice = $(new_price_dom_id);
+        var oldPrice = $(old_price_dom_id);
+        var numUses = getRedemptionUses();
+        numUses = (numUses == "") ? 1 : parseInt(numUses);
+        if(rule_id == null) {
+            rule_id = $('redemption_rule').value;
+        }
+    
+        if(!show_lowest_price) { return; }
+
+        var isShowingTwoPrices = (newPrice == null);
+        if(isShowingTwoPrices) {
+            var newPriceExclTax = $(new_price_excl_tax_dom_id);
+            var newPriceInclTax = $(new_price_incl_tax_dom_id);
+            var oldPriceExclTax = $(old_price_excl_tax_dom_id);
+            var oldPriceInclTax = $(old_price_incl_tax_dom_id);
+        }
+    	
+        if(!isShowingTwoPrices && oldPrice == null) {
+            oldPrice = newPrice.cloneNode(true);
+            newPrice.up().insertBefore(oldPrice, newPrice);
+            oldPrice.id = old_price_dom_id;
+            oldPrice.removeClassName('price');
+            oldPrice.addClassName('old-price');
+            do_hide_old_price = true;
+        } else if (isShowingTwoPrices && oldPriceExclTax == null) {
+            oldPriceExclTax = newPriceExclTax.cloneNode(true);
+            newPriceExclTax.up().insertBefore(oldPriceExclTax, newPriceExclTax);
+            oldPriceExclTax.id = old_price_excl_tax_dom_id;
+            oldPriceExclTax.removeClassName('price');
+            oldPriceExclTax.addClassName('old-price');
+            
+            oldPriceInclTax = newPriceInclTax.cloneNode(true);
+            newPriceInclTax.up().insertBefore(oldPriceInclTax, newPriceInclTax);
+            oldPriceInclTax.id = old_price_incl_tax_dom_id;
+            oldPriceInclTax.removeClassName('price');
+            oldPriceInclTax.addClassName('old-price');
+
+            do_hide_old_price = true;
+        }
+        
+        var finalPrice = getProductPriceBeforeRedemptions();
+         
+        if(rule_id == "") {
+            if(do_hide_old_price) {
+                if(!isShowingTwoPrices) {
+                	oldPrice.hide();
+                } else {
+                    oldPriceExclTax.hide();
+                    oldPriceInclTax.hide();
+                }
+            }
+                
+            optionsPrice.productPrice = optionsPrice.productPriceBeforeRedemptions;
+            optionsPrice.reload();
+        } else {
+            if(do_hide_old_price) {
+                if(!isShowingTwoPrices) {
+                    oldPrice.show();
+                } else {
+                    oldPriceExclTax.show();
+                    oldPriceInclTax.show();
+                }
+            }
+            var price_disposition = rule_options[rule_id]['price_disposition'];
+            //Edited 2/24/2010 7:41:46 AM : prices that set "to_fixed" discount should also 
+            if(rule_options[rule_id]['discount_action'] == 'by_fixed' && rule_options[rule_id]['new_price_flt'] <= 0.0000) {
+                optionsPrice.productPrice = 0;
+                optionsPrice.minusDisposition = 9999999999; // hack to make sure the price stays at 0;
+            } else {
+                
+                var discount = price_disposition * numUses;                
+                optionsPrice.productPrice = finalPrice - discount;
+                
+                // Magento 1.4.2 keeps optionsPrice.productPrice at the base price
+                // this fix brings the price back to the base amount
+                if(optionsPrice.optionPrices.config != undefined) {
+                    if(optionsPrice.optionPrices.config.price != undefined) {
+                        optionsPrice.productPrice = optionsPrice.productPriceBeforeRedemptions - discount;
+                    } else {
+                        optionsPrice.productPrice = optionsPrice.productPriceBeforeRedemptions - discount;
+                    }
+                }
+                
+            }
+                        
+            points_amount = rule_options[rule_id]['amount'];
+            points_currency_id = rule_options[rule_id]['currency_id'];
+            points_caption = getPointsString(points_amount*numUses, points_currency_id);
+    		
+            optionsPrice.reload();
+    	    
+            var points_with = " " + CAPTION_WITH + " " + points_caption;
+            if (!isShowingTwoPrices) {
+	       	    if(newPrice.down() != null) {
+	                newPrice.down().innerHTML =  newPrice.down().innerHTML  + points_with ;
+	       	    } else if(newPrice.down() == null && newPrice != null) {
+	                newPrice.innerHTML =  newPrice.innerHTML  + points_with;
+	       	    } else { /*don't know where it is so just don't show the points thing.*/ }
+            } else {
+	       	    if(newPriceExclTax.down() != null) {
+	                newPriceExclTax.down().innerHTML =  newPriceExclTax.down().innerHTML  + points_with ;
+	       	    } else if(newPriceExclTax.down() == null && newPriceExclTax != null) {
+	                newPriceExclTax.innerHTML =  newPriceExclTax.innerHTML  + points_with;
+	       	    } else { /*don't know where it is so just don't show the points thing.*/ }
+
+	       	    if(newPriceInclTax.down() != null) {
+	                newPriceInclTax.down().innerHTML =  newPriceInclTax.down().innerHTML  + points_with ;
+	       	    } else if(newPriceInclTax.down() == null && newPriceInclTax != null) {
+	                newPriceInclTax.innerHTML =  newPriceInclTax.innerHTML  + points_with;
+	       	    } else { /*don't know where it is so just don't show the points thing.*/ }
+            }
+        }
+    }
+    
+    function getRedemptionUses() {
+        var uses;
+        if(slider_mode) {
+            uses = rSlider.getUses();
+        } else {
+            uses = $('redemption_rule_uses').value;
+        }
+        return uses;
+    }
+</script>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+	<arush translate="label" module="keep">
+	    <label>Arush</label>
+	    <sort_order>200</sort_order>
+	</arush>
+    </tabs>
+    <sections>
+        <keep translate="label" module="keep">
+            <label>Keep Calm and Sign Me Up</label>
+            <tab>arush</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <options translate="label">
+                    <label>Calm</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                       
+                        
+                        <!-- fbpageid translate="label">
+                            <label>Facebook Page ID</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Get this from your Facebook Page URL]]></comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fbpageid-->
+                    </fields>
+                </options>
+            </groups>
+       </keep>
+    </sections>
+</config>

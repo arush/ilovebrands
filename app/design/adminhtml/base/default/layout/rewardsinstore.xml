@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><name>css/rewardsinstore/skin.css</name></action>
+        </reference>
+    </default>
+    
+    <rewardsinstoreadmin_manage_storefront_index>
+        <reference name="content">
+            <block type="rewardsinstore/manage_storefront" name="manage_storefront" />
+        </reference>
+    </rewardsinstoreadmin_manage_storefront_index>
+    
+    <rewardsinstoreadmin_manage_storefront_edit>
+        <reference name="content">
+            <block type="rewardsinstore/manage_storefront_edit_address" name="manage_storefront_edit_address" />
+        </reference>
+    </rewardsinstoreadmin_manage_storefront_edit>
+    
+    <rewardsinstoreadmin_reports_index>
+        <reference name="content">
+            <block type="rewardsinstore/reports" name="reports">
+                <block type="rewardsinstore/reports_storefront_switcher" name="storefront_switcher" as="storefront_switcher" template="rewardsinstore/reports/storefront/switcher.phtml">
+                    <action method="setUseConfirm"><params>0</params></action>
+                </block>
+            </block>
+        </reference>
+    </rewardsinstoreadmin_reports_index>
+    
+    <rewardsinstoreadmin_webapp_ajax_main>
+        <block name="root" type="rewardsinstore/webapp_ajax_main" template="rewardsinstore/webapp/main.phtml" />
+    </rewardsinstoreadmin_webapp_ajax_main>
+</layout>

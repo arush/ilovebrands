@@ -1,0 +1,48 @@
+<?php
+/**
+ * @see Ebizmarts_SagePaySuite_Block_Adminhtml_System_Config_Fieldset_Hint
+ */
+?>
+<div class="sagepay-payment-notice">
+    <h4>
+        <?php echo Mage::helper('sagepaysuite')->__('<strong style="color:#EA7601;">Sage Pay Suite PRO v%s by</strong> <a target="_blank" href="http://ebizmarts.com"><strong>ebizmarts</strong></a>', $this->getSagePaySuiteVersion())?>
+    </h4>
+    <p>
+        <a target="_blank" href="http://ebizmarts.com"><strong>ebizmarts</strong></a>  is a <strong>Sage Pay</strong> Approved Partner <a target="_blank" href="https://support.sagepay.com/apply/default.aspx?partnerID=01bf51f9-0dcd-49dd-a07a-3b1f918c77d7">Get a Sage Pay Account Now!</a>
+    </p>
+</div>
+
+<?php
+	$notloaded = null;
+	foreach($this->getCheckExtensions() as $_ext):
+?>
+<?php if(!extension_loaded($_ext)): ?>
+		<?php $notloaded .= '<li class="error-msg">PHP extension <strong>'.$_ext.'</strong> is missing on your server.</li>'; ?>
+<?php endif; ?>
+<?php endforeach; ?>
+
+<?php if(!is_null($notloaded)): ?>
+	<ul id="not-loaded-exts" class="messages"><?php echo $notloaded; ?></ul>
+<?php endif; ?>
+<script type="text/javascript">
+	handleLowRiskChange = function(evt){
+		var sl = Event.element(evt);
+		var suite_riskTr = $('row_sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn_value');
+		var suite_riskElement = $('sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn_value');
+
+		if(parseInt(sl.getValue()) === 1){
+			suite_riskTr.show();
+			suite_riskElement.disabled = false;
+		}else{
+			suite_riskTr.hide();
+			suite_riskElement.disabled = true;
+		}
+	}
+	Event.observe(window, 'load', function() {
+		if(parseInt($('sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn').getValue()) == 0){
+			$('row_sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn_value').hide();
+			$('sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn_value').disabled = true;
+		}
+		Element.observe('sagepaysuite_sagepaysuite_auto_fulfill_low_risk_trn', 'change', handleLowRiskChange);
+	});
+</script>

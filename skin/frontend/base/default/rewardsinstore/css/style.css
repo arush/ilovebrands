@@ -1,0 +1,673 @@
+body{
+	/* Setting Background Color is Super Easy. */
+	color:#444444;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+
+	/* Change the line below to the Hexidecimal Color Value and save the file and re-upload. */
+	/* e.g. #000; = BLACK | #FFF = WHITE | #069; = BLUE etc. */	
+	background-color:#E1E1E1;
+}
+
+/* ---------------------                       ---------------------------------- */
+/* --------------------- QUICK MENU STARTS HERE ---------------------------------- */
+/* ---------------------                       ---------------------------------- */
+
+#buyButton {
+	height: 32px;
+	width: 125px;
+	margin: auto;
+	right: 135px;
+	position:absolute;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	text-transform:lowercase;
+	z-index: 3;	
+	top:13px;
+	border:1px #CCC solid;	
+}
+#menuButton {
+	height: 32px;
+	width: 125px;
+	margin: auto;
+	float:right;
+	position:relative;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	text-transform:lowercase;
+	z-index: 3;	
+	top:13px;
+}
+ul, li {
+	margin:0; 
+	padding:0; 
+	list-style:none;
+}
+.menu_class {
+	border:1px #CCC solid;
+}
+.the_menu {
+	display:none;
+	width:125px;
+	border: 1px solid #fff;
+	position:absolute;
+	top:33px;
+	left:0;
+}
+.the_menu li {
+	background-color: #ffffff;
+	display:block;
+	float:left;
+	width:100%;
+}
+.the_menu li a {
+	color:#888888;
+	text-decoration:none;
+	text-align:right;
+	padding:7px;
+	display:block;
+	background-image: url(quickMenu_images/menuButton.png);
+	outline:none;
+	border:1px #f2f2f2 solid;
+}
+.the_menu li a:hover {
+	color:#333333;
+	text-decoration:none;
+	padding:7px;
+	background-image: url(quickMenu_images/menuButtonHover.png);
+	outline:none;
+	border:1px #fff solid;	
+}
+
+/* ---------------------                       ---------------------------------- */
+/* --------------------- QUICK MENU STOPS HERE ---------------------------------- */
+/* ---------------------                       ---------------------------------- */
+
+/*HEAD AREA*/
+
+#head{
+height:110px;
+}
+
+#top .logo, .logo a{
+background: transparent url(../img/logo.png) no-repeat left top;
+display:block;
+height:29px;
+width:350px;
+position:absolute;
+left:0px;
+top:15px;
+border: none;
+padding: 0;
+margin:0;
+}
+
+#top .logo a, .logo a:hover{
+top:0;
+left:0;
+text-indent:-9999px;
+outline:none;
+border: none;
+}
+
+#top .logo a:hover{
+background: transparent url(../img/logoHover.png) no-repeat left top;	
+}
+
+body,h1,h2,h3,p,quote,small,form,input,ul,li,ol,label{
+	/* Page reset */
+	margin:0; 
+	padding:0; 
+	list-style:none;
+}
+
+.wrapper{ 
+width:100%;
+position:relative;
+display:table;
+}
+
+#top{
+position:relative;
+width:920px;
+margin:0 auto;
+}
+
+/* ISLIDER GALLERY STYLING */
+
+#gallery{
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:12px;
+	-webkit-border-bottom-left-radius:12px;
+	border-bottom-left-radius:12px;
+	
+	-moz-border-radius-bottomright:12px;
+	-webkit-border-bottom-right-radius:12px;
+	border-bottom-right-radius:12px;
+	
+	-moz-border-radius-topleft:6px;
+	-webkit-border-top-left-radius:6px;
+	border-top-left-radius:6px;
+	
+	-moz-border-radius-topright:6px;
+	-webkit-border-top-right-radius:6px;
+	border-top-right-radius:6px;	
+	
+	border:1px solid white;
+	
+	background:url(../slideshow_images/panel.jpg) repeat-x bottom center #ffffff;
+	
+	/* The width of the gallery */
+	width:920px;
+	overflow:hidden;
+	margin-top:-50px;
+}
+
+#slides{
+	/* This is the slide area */
+	height:400px;
+	
+	/* jQuery changes the width later on to the sum of the widths of all the slides. */
+	width:920px;
+	overflow:hidden;
+}
+
+.slide li{
+	float:left;
+}
+
+#menu{
+	/* This is the container for the thumbnails */
+	height:45px;
+}
+
+#menu ul{
+	margin:0px;
+	padding:0px;
+	white-space:nowrap;
+}
+
+#menu li{
+	/* Every thumbnail is a li element */
+	width:60px;
+	display:inline-block;
+	list-style:none;
+	height:45px;
+	overflow:hidden;
+}
+
+#menu li.inact:hover{
+	/* The inactive state, highlighted on mouse over */
+	background:url(../slideshow_images/pic_bg.png) repeat;
+}
+
+#menu li.act,li.act:hover{
+	/* The active state of the thumb */
+	background:url(../slideshow_images/active_bg.png) no-repeat;
+}
+
+#menu li.act a{
+	cursor:default;
+}
+
+.fbar{
+	/* The left-most vertical bar, next to the first thumbnail */
+	width:2px;
+	background:url(../slideshow_images/divider.png) no-repeat right;
+}
+
+#menu li a{
+	display:block;
+	background:url(../slideshow_images/divider.png) no-repeat right;
+	height:35px;
+	padding-top:10px;
+}
+
+a img{
+	border:none;
+}
+
+body a, a:visited {
+	color:#0196e3;
+	text-decoration:none;
+	outline:none;
+}
+
+body a:hover{
+	text-decoration:underline;
+}
+
+p{
+	padding:10px;
+	text-align:center;
+}
+
+
+#main{
+	/* The main container */
+	margin:0px auto;
+	text-align:center;
+	width:920px;
+	position:relative;
+}
+
+/* FULL-WIDTH POD */
+
+#fullWidth{
+	/* The width of the pod */
+	margin-top:350px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	width:920px;	
+	background-color:#ffffff;
+	
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:6px;
+	-webkit-border-bottom-left-radius:6px;
+	border-bottom-left-radius:6px;
+	
+	-moz-border-radius-bottomright:6px;
+	-webkit-border-bottom-right-radius:6px;
+	border-bottom-right-radius:6px;
+	
+	-moz-border-radius-topleft:6px;
+	-webkit-border-top-left-radius:6px;
+	border-top-left-radius:6px;
+	
+	-moz-border-radius-topright:6px;
+	-webkit-border-top-right-radius:6px;
+	border-top-right-radius:6px;	
+	
+	border:1px solid white;
+}
+
+#fullWidth h1, h2, h3, h4, h5{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align:left;
+}
+
+#fullWidth h1{
+	font-size:64px;
+}
+
+#fullWidth h2{
+	font-size:48px;
+}
+
+#fullWidth h3{
+	font-size:36px;
+}
+
+#fullWidth h4{
+	font-size:24px;
+}
+
+#fullWidth h5{
+	padding-top:0;
+	font-size:9px;
+}
+
+#fullWidth p{
+	padding-top:0;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:left;	
+}
+
+#fullWidth p.right {
+	text-align:right;
+}
+#fullWidth p.left {
+	text-align:left;
+}
+#fullWidth p.center {
+	text-align:center;
+}
+
+#fullWidth.img a{
+	margin-bottom:0px;
+}
+
+#fullWidth.img {
+	margin-top:10px;
+	margin-bottom:0;
+	float:left;
+}
+
+/* 2 Column Left POD */
+
+#twoColumnLeft{
+	/* The width of the pod */
+	margin-top:0;
+	margin-left:0;
+	margin-right:0;
+	margin-bottom:20px;
+	width:640px;	
+	background-color:#ffffff;
+	float:left;
+	
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:6px;
+	-webkit-border-bottom-left-radius:6px;
+	border-bottom-left-radius:6px;
+	
+	-moz-border-radius-bottomright:6px;
+	-webkit-border-bottom-right-radius:6px;
+	border-bottom-right-radius:6px;
+	
+	-moz-border-radius-topleft:6px;
+	-webkit-border-top-left-radius:6px;
+	border-top-left-radius:6px;
+	
+	-moz-border-radius-topright:6px;
+	-webkit-border-top-right-radius:6px;
+	border-top-right-radius:6px;	
+	
+	border:1px solid white;
+}
+
+#twoColumnLeft h1, h2, h3, h4, h5{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align:left;
+}
+
+#twoColumnLeft h1{
+	font-size:64px;
+}
+
+#twoColumnLeft h2{
+	font-size:48px;
+}
+
+#twoColumnLeft h3{
+	font-size:36px;
+}
+
+#twoColumnLeft h4{
+	font-size:24px;
+}
+
+#twoColumnLeft h5{
+	padding-top:0;
+	margin:0;
+	font-size:9px;
+}
+
+#twoColumnLeft p{
+	padding-top:0;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:left;
+}
+#twoColumnLeft p.readMore{
+	padding-top:0;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:right;
+}
+#twoColumnLeft.img a{
+	margin-bottom:0;
+	float:left;
+}
+
+#twoColumnLeft.img {
+	margin-bottom:0;
+	float:left;
+}
+
+#twoColumnRight.img {
+	margin-bottom:0;
+	float:left;
+}
+
+/* Right Sidebar POD */
+
+#rightSideBar{
+	/* The width of the pod */
+	margin-top:0;
+	margin-left:0;
+	margin-right:0;
+	margin-bottom:20px;
+	width:240px;	
+	background-color:#ffffff;
+	
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:6px;
+	-webkit-border-bottom-left-radius:6px;
+	border-bottom-left-radius:6px;
+	
+	-moz-border-radius-bottomright:6px;
+	-webkit-border-bottom-right-radius:6px;
+	border-bottom-right-radius:6px;
+	
+	-moz-border-radius-topleft:6px;
+	-webkit-border-top-left-radius:6px;
+	border-top-left-radius:6px;
+	
+	-moz-border-radius-topright:6px;
+	-webkit-border-top-right-radius:6px;
+	border-top-right-radius:6px;	
+	
+	border:1px solid white;
+}
+
+#rightSideBar h1, h2, h3, h4, h5{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:10px;
+	padding-bottom:10px;
+	text-align:left;
+}
+
+#rightSideBar h1{
+	font-size:64px;
+}
+
+#rightSideBar h2{
+	font-size:48px;
+}
+
+#rightSideBar h3{
+	font-size:36px;
+}
+
+#rightSideBar h4{
+	font-size:24px;
+}
+
+#rightSideBar h5{
+	padding-top:0;
+	margin:0;
+	font-size:9px;
+}
+
+#rightSideBar p{
+	padding-top:0;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:left;
+}
+#rightSideBar.img a{
+	margin-bottom:0;
+	float:left;
+}
+
+#rightSideBar.img {
+	margin-bottom:0;
+	float:left;
+}
+
+/* THREE COLUMN POD */
+
+#threeColumnOne{
+	/* The width of the pod */
+	margin-left:0px;
+	margin-right:22px;
+	margin-top:25px;
+	margin-bottom:20px;	
+	float:left;
+	width:290px;
+	background-color:#ffffff;
+	
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:6px;
+	-webkit-border-bottom-left-radius:6px;
+	border-bottom-left-radius:6px;
+	
+	-moz-border-radius-bottomright:6px;
+	-webkit-border-bottom-right-radius:6px;
+	border-bottom-right-radius:6px;
+	
+	-moz-border-radius-topleft:12px;
+	-webkit-border-top-left-radius:12px;
+	border-top-left-radius:12px;
+	
+	-moz-border-radius-topright:12px;
+	-webkit-border-top-right-radius:12px;
+	border-top-right-radius:12px;	
+	
+	border:1px solid white;
+}
+
+#threeColumnOne h1, h2, h3, h4, h5{
+	padding-top:20px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:0px;
+	text-align:left;
+}
+
+#threeColumnOne h3{
+	font-size:24px;
+}
+
+#threeColumnOne h5{
+	padding-top:0;
+	margin:0;
+	font-size:9px;
+}
+
+#threeColumnOne img{
+	margin-bottom:0px;
+}
+
+#threeColumnOne p{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:left;
+}
+
+/* THREE COLUMN POD 3rd (THE ONE ON THE RIGHT) */
+
+#threeColumnThree{
+	/* The width of the pod */
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:25px;
+	margin-bottom:20px;	
+	float:left;
+	width:290px;	
+	background-color:#ffffff;
+	
+	/* CSS3 Box Shadow */
+	-moz-box-shadow:0 0 3px #AAAAAA;
+	-webkit-box-shadow:0 0 3px #AAAAAA;
+	box-shadow:0 0 3px #AAAAAA;
+	
+	/* CSS3 Rounded Corners */
+	
+	-moz-border-radius-bottomleft:6px;
+	-webkit-border-bottom-left-radius:6px;
+	border-bottom-left-radius:6px;
+	
+	-moz-border-radius-bottomright:6px;
+	-webkit-border-bottom-right-radius:6px;
+	border-bottom-right-radius:6px;
+	
+	-moz-border-radius-topleft:12px;
+	-webkit-border-top-left-radius:12px;
+	border-top-left-radius:12px;
+	
+	-moz-border-radius-topright:12px;
+	-webkit-border-top-right-radius:12px;
+	border-top-right-radius:12px;	
+	
+	border:1px solid white;
+}
+
+#threeColumnThree h1, h2, h3, h4{
+	padding-top:20px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:0px;
+	text-align:left;
+}
+
+#threeColumnThree h3{
+	font-size:24px;
+}
+
+#threeColumnThree h5{
+	padding-top:0;
+	margin:0;
+	font-size:9px;	
+}
+
+#threeColumnThree img{
+	margin-bottom:0px;
+}
+
+#threeColumnThree p{
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:20px;
+	text-align:left;
+}
+
+
+
+/* -----------------  End Footer ------------------- */

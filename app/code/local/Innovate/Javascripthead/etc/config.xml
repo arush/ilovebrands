@@ -1,0 +1,95 @@
+<?xml version="1.0"?> 
+<config>
+  <modules>
+      <Innovate_Javascripthead> 
+          <version>0.1.0</version>
+          <depends>
+              <!-- no dependencies --> 
+          </depends>
+      </Innovate_Javascripthead> 
+  </modules>
+  <global> 
+   
+    <blocks>
+        <adminhtml>
+            <rewrite>
+            </rewrite>
+        </adminhtml>
+    </blocks>
+    
+    <blocks>
+        <javascripthead> 
+            <class>Innovate_Javascripthead_Block</class>
+        </javascripthead> 
+    </blocks>
+    <helpers>
+        <javascripthead>
+          <class>Innovate_Javascripthead_Helper</class>
+        </javascripthead>
+    </helpers>
+  </global>
+  <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <javascripthead>
+                                          <title>Javascripthead Script Settings</title>
+                                      </javascripthead>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  <frontend>
+      <routers></routers> 
+      <events></events> 
+      <translate></translate> 
+      <layout></layout>
+  </frontend>
+  <admin>
+       <routers>
+          <javascripthead>
+              <use>admin</use>
+              <args>
+                  <module>Innovate_Javascripthead</module>
+                  <frontName>javascripthead</frontName>
+              </args>
+          </javascripthead>
+      </routers>
+  </admin>
+  <!-- module defaults --> 
+  <default>
+      <!-- config values -->
+      <javascripthead>
+          <script>
+            <javascripthead_on1><![CDATA[]]></javascripthead_on1>
+            <javascripthead_code1><![CDATA[]]></javascripthead_code1>
+            <javascripthead_on2><![CDATA[]]></javascripthead_on2>
+            <javascripthead_code2><![CDATA[]]></javascripthead_code2>
+            <javascripthead_on3><![CDATA[]]></javascripthead_on3>
+            <javascripthead_code3><![CDATA[]]></javascripthead_code3>
+            <javascripthead_on4><![CDATA[]]></javascripthead_on4>
+            <javascripthead_code4><![CDATA[]]></javascripthead_code4>
+          </script>
+      </javascripthead>
+  </default>
+  <!--<crontab>
+      <jobs>
+          <get_javascripthead_view>
+              <schedule><cron_expr>*/2 * * * *</cron_expr></schedule>
+              <run><model>javascripthead/observer::cacheFeeds</model></run>
+          </get_javascripthead_view>
+      </jobs>
+  </crontab>-->
+</config>

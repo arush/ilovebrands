@@ -1,0 +1,39 @@
+
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('rewardsinstore/css/login.css') ?>" />
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('rewardsinstore/css/login/ie7.css') ?>" />
+<![endif]-->
+
+<script type="text/javascript">
+//<![CDATA[
+    var storefrontCode = <?php echo $this->getSelectedStorefront()?>;
+//]]>
+</script>
+
+<input type="hidden" class="pageIdentifier" value="login" />
+
+<div id="errorWrapper" style="margin-left:-38px; margin-top:-53px; overflow:hidden; border-top-left-radius:16px; border-top-right-radius:16px;">
+    <div class="error" style="position:relative; top:-88px; margin-top:0px; margin-left:0px;">
+        <img src="<?php echo $this->getSkinUrl('rewardsinstore/images/spry/alert.png') ?>" />
+        <span id="msg"><?php echo $this->__("There has been an error.") ?></span>
+    </div>
+</div>
+<div id="main" style="position:relative; margin-top:53px; width:689px;">
+    <h1>Choose your location:</h1>
+    <input id="locationBox" /><button id="autocompleteArrow" tabindex="-1"><img src="<?php echo $this->getSkinUrl('rewardsinstore/images/white_down_arrow.png') ?>" style="width:45px; height:40px; margin-bottom:-11px;" /></button>
+    
+    <div class="break"></div>
+    
+    <div id="loginForm" class="faded">
+        <h1>Login using your Magento account information.</h1>
+        <label for="username">Username</label>
+        <label for="passwordLabel">Password</label>
+        <input type="text" class='loginInput' id="username" name="username" />
+        <input type="text" id="passwordLabel" name="passwordLabel" />
+        <input type="password" class='loginInput' id="password" name="password" style="display: none;" /> 
+        
+        <div class="break" style="margin-top: 24px"></div>
+        
+        <input type="button" class="continue" value="Continue" style="margin-right:32px;" />
+    </div>
+</div>

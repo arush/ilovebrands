@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<!-- Instantiate Highslide -->
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/highslide-full.js') ?>"></script>
+<script type="text/javascript">
+	hs.graphicsDir = '<?php echo $this->getSkinUrl('js/graphics/') ?>';
+	hs.align = 'center';
+	hs.transitions = ['expand', 'crossfade'];
+	hs.wrapperClassName = 'dark borderless floating-caption';
+	hs.fadeInOut = true;
+	hs.dimmingOpacity = .75;
+	hs.cacheAjax = false;
+
+
+	// Add the controlbar
+	if (hs.addSlideshow) hs.addSlideshow({
+		//slideshowGroup: 'group1',
+		interval: 5000,
+		repeat: false,
+		useControls: true,
+		fixedControls: 'fit',
+		overlayOptions: {
+			opacity: .6,
+			position: 'bottom center',
+			hideOnMouseOut: true
+		}
+	});
+</script>
+<!-- Addition for Highslide -->
+<div class="product-image">
+    <?php
+        $_img = '<a href="'.$this->helper('catalog/image')->init($_product, 'image').'" class="highslide" onclick="return hs.expand(this, {slideshowGroup: \'media-group\'})"><img id="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(380, 450).'" height="450" width="360" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" /></a>';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+	<div class="highslide-caption"><?php echo $this->htmlEscape($this->getImageLabel()); ?></div>
+</div>
+<?php else: ?>
+<p class="product-image">
+    <?php
+        $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(380, 450).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</p>
+<?php endif; ?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+	<h2><?php echo $this->__('More Views') ?></h2>
+    <ul>
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <li>
+           <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), '', $_image->getFile()); ?>" class="highslide" onclick="return hs.expand(this, {slideshowGroup: 'media-group'})"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(80, 100); ?>" width="80" height="100" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+		   <div class="highslide-caption"><?php echo $this->htmlEscape($_image->getLabel()) ?></div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

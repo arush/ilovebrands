@@ -1,0 +1,241 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see Mage_Customer_Block_Form_Login
+ */
+?>
+<!--[if IE 7]>
+<style type='text/css'>
+	.account-login .btn-only {
+		top:10px;
+		margin: 0 0 0 123px;
+	}
+</style>
+<![endif]-->
+<?php 
+/*
+
+Mage::getSingleton('customer/session')->setBeforeAuthUrl(Mage::getUrl("plans.html"));
+*/
+
+?>
+<div class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>" />
+
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        
+			
+			<div class="login-oneall">
+				
+				<div class="black-title-med">Connect via social account</div>
+			
+				<form action="<?php echo Mage::getUrl('arush-oneall/rpx/loginpost', array('_nosid' => true, '_forced_secure' => true)); ?>" method="post" id="login-form">
+					<div class="fieldset" id="gigya-fieldset">
+						<div class="gigya-group">
+							<!--<div class="gigya-label"><p id="loginwith">login with</p><p id="connectwith">connect with</p></div>-->
+							<div class="gigya-block">
+								
+								<!-- The provider login will be embedded in this div //-->
+									<div id="oa_social_login_container"></div>
+								
+									<script type="text/javascript">
+										 oneall.api.plugins.social_login.build("oa_social_login_container", {
+										  'providers' :  ['facebook', 'google', 'twitter', 'yahoo'], 
+										  
+										  'callback_uri': '<?php echo $this->getUrl('arush-oneall/rpx/token_url', array('_forced_secure' => true)) ?>',
+										  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_vertical.css'
+										 });
+									</script>
+									
+							</div>
+						</div>	
+					</div>
+				</form>
+			
+				<p>We never post to your profile without your consent</p>
+			
+				
+			
+			
+			
+			</div>
+		
+			<img class="divider" src="<?php echo $this->getSkinUrl();?>images/login-line.png"/>
+		
+			<div class="col-1 registered-users">
+			
+				<div class="black-title-med">Login via email</div>
+								
+				<div id="register">
+				
+				<div id="panes">
+					
+					
+					<div id="slider">
+
+						
+					<!-- element with overflow applied -->
+						<div class="scroll">
+							<!-- the element that will be scrolled during the effect -->
+							<div class="scrollContainer">
+								<!-- our individual panels -->
+															
+								<div class="panel" id="login">
+															
+								<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+								<div class="fieldset">
+									<div class="login-normal">
+										<ul class="form-list">
+											<li>
+												<label for="email" class="required"><span class="black-title-small"><?php echo $this->__('email') ?></span></label>
+												<div class="input-box">
+													<input name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="text" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+												</div>
+											</li>
+											<li>
+												<label for="pass" class="required"><span class="black-title-small"><?php echo $this->__('password') ?></span></label>
+												<div class="input-box">
+													<input name="login[password]" type="password" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+												</div>
+											</li>
+										</ul>
+										<div class="buttons-set form-buttons btn-only">
+											<button type="submit" class="button" name="send" id="send2"><span><span class="cufon"><?php echo $this->__('Sign in') ?></span></span></button>
+											<div class="forgotpass-back-link"><a href="#forgotpass">Forgot your password?</a></div>
+										</div>
+										
+										<div style="clear: both;"><!-- --></div>
+										
+										<!-- <a href="#forgotpass<?php // echo $this->getForgotPasswordUrl() ?>"><?php // echo $this->__('Forgot Your Password?') ?></a> -->
+									</div>
+								</div> <!-- end fieldset -->
+								</form>
+								</div> <!-- end panel -->
+								
+								
+								
+								<div class="panel" id="forgotpass">
+									<form action="<?php echo $this->getUrl('customer/account/forgotpasswordpost') ?>" onsubmit="return false" method="post" id="form-validate">
+										<fieldset>
+											<div class="field set">
+												<div class="password-message"><?php echo $this->__('Please enter your email below and we\'ll send you a new password.') ?></div>
+													<ul class="form-list">
+														<li>
+															<label for="email_address" class="required"><span class="black-title-small"><?php echo $this->__('email') ?></span></label>
+															<div class="input-box">
+																<input type="text" name="email" alt="email" id="forgotpass_address" class="input-text required-entry validate-email" value="<?php echo $this->htmlEscape($this->getEmailValue()) ?>" />
+															</div>
+														</li>
+													</ul>
+													<div class="buttons-set form-buttons">
+														<button type="submit" name="submit" class="button" id="submit_btn" value="Send"><span><span class="cufon"><?php echo $this->__('Reset Password') ?></span></span></button>
+														
+														<div id="forgotpass-response"></div>
+										
+														<div class="forgotpass-back-link"><a href="#login">return to login</a></div>
+
+														<div style="clear: both;"><!-- --></div>
+													
+
+												</div>
+											</div>
+										</fieldset>
+									</form>
+								</div>
+								
+							</div> <!-- end scrollContainer -->
+						</div> <!-- end scroll -->
+					</div> <!-- end slider -->
+				
+				</div> <!-- end panes -->
+				
+				
+					<div class="not-member">
+						<div class="not-member-text">
+							<span>Not a Member?</span>
+						</div>
+						<a href="<?php echo $this->getUrl('customer/account/create') ?>" class="red-title-button">Register</a>
+					</div>
+												
+				</div>
+
+			
+			
+			
+			</div> <!-- end col-1 registered-users -->
+			  
+        
+    
+
+	
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+		$('submit_btn').observe('click', function(){
+		    
+		    $('forgotpass-response').addClassName('loading');
+			$('forgotpass-response').innerHTML = 'Resetting your password…';
+		    
+		    var ajax = this.form.request({
+		        onSuccess: function(transport) {
+		        
+					
+		            if(transport.responseText.indexOf('customer-account-login') >= 0) {
+          				$('forgotpass-response').removeClassName('loading');
+						$('forgotpass-response').innerHTML="Done - check your email";
+		            }
+		            else if(transport.responseText.indexOf('Invalid email address.') >= 0) {
+          				$('forgotpass-response').removeClassName('loading');
+						$('forgotpass-response').innerHTML="Invalid email address";
+		            }
+		            else if(transport.responseText.indexOf('Please enter your email.') >= 0) {
+          				$('forgotpass-response').removeClassName('loading');
+						$('forgotpass-response').innerHTML="Please enter an email address";
+		            }
+		            else {
+		            
+          				$('forgotpass-response').removeClassName('loading');
+						$('forgotpass-response').innerHTML="Address not found";
+		            }
+
+
+		            
+		        }
+		    });
+		});
+    //]]>
+    </script>
+  
+            
+</div>

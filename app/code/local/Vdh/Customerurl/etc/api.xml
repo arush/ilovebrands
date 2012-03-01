@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <customerurl translate="title" module="customerurl">
+                <model>customerurl/customer_observer</model>
+                <title>CustomerUrl API</title>
+                <acl>customerurl</acl>
+                <methods>
+                    <createUnique translate="title" module="customerurl">
+                    	<acl>customerurl/createunique</acl>
+                        <title>Create Unique Url</title>
+                        <method>createUniqueFromId</method>
+                    </createUnique>
+                    <addRewrites translate="title" module="customerurl">
+                    	<acl>customerurl/addrewrites</acl>                    
+                        <title>Add Rewrites</title>
+                        <method>addRewritesFromId</method>
+                    </addRewrites>
+                    
+                </methods>
+            </customerurl>
+        </resources>
+        <acl>
+            <resources>
+                <customerurl translate="title" module="customerurl">
+                    <title>Customer Url</title>
+                    <sort_order>500</sort_order>
+                    <createunique translate="title" module="customerurl">
+                        <title>Create Unique Url</title>
+                    </createunique>
+                    <addrewrites translate="title" module="customerurl">
+                        <title>Add Rewrites</title>
+                    </addrewrites>                    
+                </customerurl>
+            </resources>
+        </acl>
+    </api>
+</config>

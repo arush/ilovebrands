@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<shutl_quote_time>
+		<reference name="root">
+            <action ifconfig="carriers/shutl/active" method="setTemplate"><template>pod1/shutl/time.phtml</template></action>
+		</reference>		
+	</shutl_quote_time>
+
+	<catalog_product_view>
+		<reference name="head">
+            <action ifconfig="carriers/shutl/active" method="addCss"><stylesheet>css/pod1/shutl/style.css</stylesheet></action>
+			<action ifconfig="carriers/shutl/active" method="addItem"><type>skin_js</type><name>js/pod1/shutl/script.js</name></action>
+		</reference>
+		
+		<reference name="product.info">
+
+			<block ifconfig="carriers/shutl/active" type="shutl/service" name="shutl_service" template="pod1/shutl/service.phtml" after="-">
+                <action ifconfig="carriers/shutl/active" method="addToParentGroup"><group>detailed_info</group></action>
+                <action ifconfig="carriers/shutl/active" method="setTitle" translate="value"><value>Shipping Options</value></action>
+            </block>	
+		</reference>
+	</catalog_product_view>
+	
+	<shutl_message_index>
+		<reference name="root">
+            <action ifconfig="carriers/shutl/active" method="setTemplate"><template>pod1/shutl/message.phtml</template></action>
+		</reference>
+	</shutl_message_index>
+
+	<shutl_about_index>
+		<reference name="root">
+            <action ifconfig="carriers/shutl/active" method="setTemplate"><template>pod1/shutl/about.phtml</template></action>
+            <block ifconfig="carriers/shutl/active" type="page/html" name="form" template="pod1/shutl/form.phtml" />
+		</reference>
+		
+	</shutl_about_index>
+	
+	<shutl_quote_product>
+		<reference name="root">
+            <action ifconfig="carriers/shutl/active" method="setTemplate"><template>pod1/shutl/quote.phtml</template></action>
+		</reference>
+	</shutl_quote_product>
+
+	<shutl_quote_form>
+		<reference name="root">
+            <action ifconfig="carriers/shutl/active" method="setTemplate"><template>pod1/shutl/form_cart.phtml</template></action>
+    	   	<block ifconfig="carriers/shutl/active" type="page/html" name="shutllegend" alias="shutllegend" template="pod1/shutl/legend.phtml" />       	     	   	            
+		</reference>
+	</shutl_quote_form>
+	
+	<checkout_cart_index>
+		<reference name="head">
+            <action ifconfig="carriers/shutl/active" method="addCss"><stylesheet>css/pod1/shutl/style.css</stylesheet></action>
+			<action ifconfig="carriers/shutl/active" method="addItem"><type>skin_js</type><name>js/pod1/shutl/script.js</name></action>
+		</reference>
+	</checkout_cart_index>	
+	
+
+	<checkout_onepage_index>
+		<reference name="head">
+            <action ifconfig="carriers/shutl/active" method="addCss"><stylesheet>css/pod1/shutl/style.css</stylesheet></action>
+			<action ifconfig="carriers/shutl/active" method="addItem"><type>skin_js</type><name>js/pod1/shutl/script.js</name></action>
+		</reference>
+	</checkout_onepage_index>	
+
+	
+	<checkout_onepage_shippingmethod>
+		<reference name="root">
+	        <block ifconfig="carriers/shutl/active" type="shutl/form" name="form" before="-" output="toHtml" template="pod1/shutl/form_cart.phtml">
+				<action method="setData">
+					<name>page</name>
+					<value>checkout</value>
+				</action>
+	        </block>
+    	   	<block ifconfig="carriers/shutl/active" type="page/html" name="shutllegend" alias="shutllegend" template="pod1/shutl/legend.phtml" />       	     	   	
+	    </reference>
+	</checkout_onepage_shippingmethod>
+</layout>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/evogue/scripts.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/evogue/catalogevent.js</name></action>
+        </reference>
+    </default>
+    
+    <catalog_category_view>
+        <reference name="top.container">
+            <block after="-" name="catalog_category_event" type="evogue_catalogevent/catalog_category_event" template="evogue/catalogevent/catalog/category/event.phtml"/>
+        </reference>
+    </catalog_category_view>
+    
+    <catalog_product_view>
+        <reference name="top.container">
+            <block after="-" name="product_category_event" type="evogue_catalogevent/catalog_product_event" template="evogue/catalogevent/catalog/product/event.phtml"/>
+        </reference>
+    </catalog_product_view>
+    
+    <review_product_list>
+        <reference name="top.container">
+            <block after="-" name="product_category_event" type="evogue_catalogevent/catalog_product_event" template="evogue/catalogevent/catalog/product/event.phtml"/>
+        </reference>
+    </review_product_list>
+    
+    <review_product_view>
+        <reference name="top.container">
+            <block after="-" name="product_category_event" type="evogue_catalogevent/catalog_product_event" template="evogue/catalogevent/catalog/product/event.phtml"/>
+        </reference>
+    </review_product_view>
+    
+</layout>

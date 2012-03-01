@@ -1,0 +1,142 @@
+<div class="dashboard">
+	<div class="box-account box-info">
+		<div class="page-title">
+			<h4>My Social Identities</h4>
+		</div>
+		
+		<div class="col2-set">
+			<div class="col-1">
+				<div class="box">
+					<div class="box-title">
+						<h3>Identities</h3>
+					</div>
+					<div class="box-content">
+						<ul>
+						<?php
+							$identifiers = Mage::helper('oneall/identifiers')->get_identifiers(
+								Mage::getSingleton('customer/session')->getCustomer()->getId()
+							);
+
+							foreach($identifiers as &$identifier) {
+								echo '<li style="clear:both;"><div class="rpx_icon_small rpx_'
+									. $identifier->getProvider()
+									. '_small"></div><span class="rpx_profile_label">'
+									. $identifier->getProvider()
+									. ' <small>(<a href="'
+									. Mage::getUrl('oneall/rpx/removeid', array('identifier' => $identifier->getId()))
+									. '">remove</a>)</small></span></li>';
+							}
+
+						?>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-2">
+				<div class="box">
+					<div class="box-title">
+						<h3>Add Identity</h3>
+					</div>
+					<div class="box-content">
+						<?php
+							/*
+$providers = Mage::helper('oneall')->getRpxProviders();
+							if (is_array($providers)) {
+								$size = "30";
+								$wrap_open = '<a class="rpxnow rpx_link_wrap" onclick="return false;" href="'
+										. Mage::helper('oneall')->getRpxAuthUrl(true)
+										. '">';
+								$wrap_close = '</a>';
+
+								$rpx_buttons = '';
+								foreach ($providers as $val) {
+									$rpx_buttons .= '<div class="jn-icon jn-size' . $size . ' jn-' . $val . '" title="' . htmlentities($val) . '"></div>';
+								}
+								$buttons = '<div class="rpx_button">' . $rpx_buttons . '</div><div class="rpx_clear"></div>';
+
+								echo $wrap_open . $buttons . $wrap_close;
+							}
+*/
+						?>
+						
+						<div id="social_link_container"></div>		
+		
+						<script type="text/javascript">
+						
+							function social_link_onload (){
+								if (typeof console !== 'undefined'){
+									console.log('social_link_onload hook: provider selection ready');
+								}
+							}
+							
+							function social_link_onopen (){
+								if (typeof console !== 'undefined'){
+									console.log('social_link_onopen hook: provider login dialog opened');
+								}
+							}
+							
+							function social_link_onclose(){
+								if (typeof console !== 'undefined'){
+									console.log('social_link_onclose hook');
+								}
+							}
+							
+							function social_link_onerror(response){
+								if (typeof console !== 'undefined'){
+									console.log('social_link_onerror', response);
+								}
+							}
+						
+							function social_link_onsuccess (response){
+								if (typeof console !== 'undefined'){
+									console.log('social_link_onsuccess hook', response);
+								}
+							}
+						
+							
+							
+							oneall.api.plugins.social_link.build("social_link_container", {
+								providers : ["Facebook", "google", "twitter", "yahoo"], 
+								
+								/* If the uuid is set, new identities will be attached to this user */
+								
+								/* If the uuid is not set, a new one will be created if the identity does not exist yet */
+								/* If the identity already exists, the corresponding user will be used and returned */
+								
+								<?php if (Mage::getSingleton('customer/session')->getCustomer()->getOnealluuid()) {
+									echo 'uuid: "' . Mage::getSingleton('customer/session')->getCustomer()->getOnealluuid() . '",';
+									} ?>
+								
+										
+								options:{
+									'callback_redirect_uri': '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK); ?>arush-oneall/rpx/token_url_add/',			
+									
+									/* Redirect only on success + condition redirect_if_new_user/redirect_if_returning_user */
+									'redirect_onsuccess' : true,
+									
+									/* No need to redirect, if there is an error, there will be nothing to retrieve */
+									'redirect_onerror' : true,
+									
+									/* If the user is new, you can retrieve his profile trough the callback */
+									'redirect_if_new_user' : true,
+									
+									/* If the user already exists, you probably have his data and do not need to make a request to retrieve the profile */
+									'redirect_if_returning_user' : true
+								},
+								
+								/* Events are optional, can just be dropped if not needed */
+								events: {
+									'unload': social_link_onload,
+									'onopen': social_link_onopen,
+									'on close': social_link_onclose,
+									'on success': social_link_onsuccess,
+									'on error': social_link_onerror					
+								}
+							});
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

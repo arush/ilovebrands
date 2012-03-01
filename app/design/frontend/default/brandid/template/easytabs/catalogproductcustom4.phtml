@@ -1,0 +1,67 @@
+<?php if(Mage::getStoreConfig('easy_tabs/custom/customtabid4')):?>
+                        <?php if(nl2br($this->getProduct()->getFreeshipping())): ?>
+                        	<?php $block1 = Mage::getModel('cms/block')->load('freeshipping');?>
+                        	<p><strong><?php echo $block1->getTitle(); ?></strong><br>
+                        	<?php echo $block1->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getStandardshipping())): ?>
+                        	<?php $block2 = Mage::getModel('cms/block')->load('standardshipping');?>
+                        	<p><strong><?php echo $block2->getTitle(); ?></strong><br>
+                        	<?php echo $block2->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getNextdayshipping())): ?>
+                        	<?php $block3 = Mage::getModel('cms/block')->load('nextdayshipping');?>
+                        	<p><strong><?php echo $block3->getTitle(); ?></strong><br>
+                        	<?php echo $block3->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getShutl())): ?>
+                        	<?php $block3 = Mage::getModel('cms/block')->load('shutl');?>
+                        	<p><strong><?php echo $block3->getTitle(); ?></strong><br>
+                        	<?php echo $block3->getContent(); ?>
+                        	<br><br></p>
+                        <?php endif; ?>
+
+                        
+                        <?php if(nl2br($this->getProduct()->getSamedayshipping())): ?>
+                          	<?php $block4 = Mage::getModel('cms/block')->load('samedayshipping');?>
+                          	<p><strong><?php echo $block4->getTitle(); ?></strong><br>
+                          	<?php echo $block4->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                                      
+                        <?php /*?><div class="shutl-right-col">
+                        <?php echo $this->getChildHtml('shutl_service'); ?></div><?php */?>
+                        
+						<?php if(nl2br($this->getProduct()->getEushipping())): ?>
+                            <?php $block7 = Mage::getModel('cms/block')->load('eushipping');?>
+                          	<p><strong><?php echo $block7->getTitle(); ?></strong><br>
+                          	<?php echo $block7->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                        
+                        <?php if(nl2br($this->getProduct()->getWorldwideshipping())): ?>
+                          	<?php $block8 = Mage::getModel('cms/block')->load('worldwideshipping');?>
+                          	<p><strong><?php echo $block8->getTitle(); ?></strong><br>
+                          	<?php echo $block8->getContent(); ?>
+                          	<br><br></p>
+                          <?php endif; ?>
+                        
+                                                
+                        <?php if(nl2br($this->getProduct()->getNonrefundable())): ?>
+                        	<?php $block1 = Mage::getModel('cms/block')->load('returns1-true');?>
+                        	<p><strong><?php echo $block1->getTitle(); ?></strong><br>
+                        	<?php echo $block1->getContent(); ?>
+                        	</p>
+                        <?php else:?>
+                        	<?php $block2 = Mage::getModel('cms/block')->load('returns1-false');?>
+                        	<p><strong><?php echo $block2->getTitle(); ?></strong><br>
+                        	<?php echo $block2->getContent(); ?>
+                        	</p>
+                       	<?php endif;?>
+				<?php endif;?>

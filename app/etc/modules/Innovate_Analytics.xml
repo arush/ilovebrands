@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+<Innovate_Analytics>
+<active>true</active>
+<codePool>local</codePool>
+</Innovate_Analytics>
+</modules>
+</config>

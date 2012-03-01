@@ -1,0 +1,11 @@
+<config>
+	<modules>
+		<Arush_Oneall>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+                <Mage_Cms />
+            </depends>
+		</Arush_Oneall>
+	</modules>
+</config>

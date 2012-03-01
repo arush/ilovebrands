@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="evogue_customerbalance">
+                <name>evogue_customerbalance</name>
+                <path>evogue_customerbalance/info/</path>
+                <label>Store Credit</label>
+            </action>
+        </reference>
+    </customer_account>
+
+    <evogue_customerbalance_info_index translate="label">
+        <label>Customer My Account Store Credit</label>
+        <update handle="customer_account"/>
+
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="customerbalance.wrapper" template="evogue/customerbalance/account/wrapper.phtml" translate="label">
+                <label>Store Credit Balance and History Wrapper</label>
+                <block type="evogue_customerbalance/account_balance" name="balance" template="evogue/customerbalance/account/balance.phtml" before="-" />
+                <block type="evogue_customerbalance/account_history" name="history" template="evogue/customerbalance/account/history.phtml" after="-" />
+            </block>
+        </reference>
+    </evogue_customerbalance_info_index>
+
+    <checkout_onepage_index>
+        <reference name="checkout.onepage.payment.methods_additional">
+            <block type="evogue_customerbalance/checkout_onepage_payment_additional" template="evogue/customerbalance/checkout/onepage/payment/additional.phtml" name="customerbalance" />
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_paymentmethod>
+        <reference name="checkout.onepage.payment.methods.scripts">
+            <block type="evogue_customerbalance/checkout_onepage_payment_additional" template="evogue/customerbalance/checkout/onepage/payment/scripts.phtml" name="customerbalance_scripts" />
+        </reference>
+    </checkout_onepage_paymentmethod>
+
+    <sales_order_view>
+        <reference name="order_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_order_view>
+    <sales_order_print>
+        <reference name="order_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_order_print>
+    <sales_email_order_items>
+        <reference name="order_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_email_order_items>
+
+
+    <sales_order_invoice>
+        <reference name="invoice_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+        </reference>
+    </sales_order_invoice>
+    <sales_order_printinvoice>
+        <reference name="invoice_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+        </reference>
+    </sales_order_printinvoice>
+    <sales_email_order_invoice_items>
+        <reference name="invoice_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+        </reference>
+    </sales_email_order_invoice_items>
+
+    <sales_order_creditmemo>
+        <reference name="creditmemo_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_order_creditmemo>
+    <sales_order_printcreditmemo>
+        <reference name="creditmemo_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_order_printcreditmemo>
+    <sales_email_order_creditmemo_items>
+        <reference name="creditmemo_totals">
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance" template="evogue/customerbalance/order/customerbalance.phtml" />
+            <block type="evogue_customerbalance/sales_order_customerbalance" name="customerbalance_total_refunded" template="evogue/customerbalance/order/customerbalance_refunded.phtml" after="-">
+                <action method="setAfterTotal"><value>grand_total</value></action>
+            </block>
+        </reference>
+    </sales_email_order_creditmemo_items>
+
+
+    <checkout_multishipping_billing>
+        <reference name="payment_methods_before">
+            <block type="evogue_customerbalance/checkout_onepage_payment_additional" template="evogue/customerbalance/checkout/multishipping/payment.phtml" name="customerbalance" />
+        </reference>
+    </checkout_multishipping_billing>
+</layout>

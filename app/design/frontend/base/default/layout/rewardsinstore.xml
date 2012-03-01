@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <storefront_index_index>
+        <block name="root" type="rewardsinstore/webapp" template="rewardsinstore/webapp.phtml">
+            <block name="head" type="page/html_head">
+                <!-- jQuery files, jQuery UI files, and jQuery plugins -->
+                <action method="addJs"><script>tbt/rewardsinstore/jquery/jquery-1.6.1.js</script></action>
+                <action method="addJs"><script>tbt/rewardsinstore/jquery/plugins/labelintoinput.js</script></action>
+                <action method="addJs"><script>tbt/rewardsinstore/jquery/plugins/blockUI.js</script></action>
+                <action method="addJs"><script>tbt/rewardsinstore/jquery/plugins/numeric.js</script></action>
+                <action method="addJs"><script>tbt/rewardsinstore/jquery-ui/jquery-ui-1.8.13.custom.js</script></action>
+                <action method="addJs"><script>tbt/rewardsinstore/jquery-ui/plugins/autocomplete.html.js</script></action>
+                <action method="addCss"><stylesheet>css/rewardsinstore/jquery-ui/sunny/jquery-ui-1.8.13.custom.css</stylesheet></action>
+                
+                <!-- Blackbird javascript-debugger files -->
+                <action method="addJs"><script>tbt/rewardsinstore/blackbird.js</script></action>
+                <action method="addCss"><stylesheet>css/rewardsinstore/blackbird.css</stylesheet></action>
+                
+                <!-- Instore-specific files -->
+                <action method="addJs"><script>tbt/rewardsinstore/webapp.js</script></action>
+                <action method="addCss"><script>css/rewardsinstore/webapp.css</script></action>
+            </block>
+        </block>
+    </storefront_index_index>
+    
+    <rewardsinstore_index_login>
+        <block name="root" type="rewardsinstore/webapp_login" template="rewardsinstore/webapp/login.phtml" />
+    </rewardsinstore_index_login>
+</layout>

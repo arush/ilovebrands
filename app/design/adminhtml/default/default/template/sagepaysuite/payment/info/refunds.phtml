@@ -1,0 +1,32 @@
+<?php
+
+    $refunds = $this->getParentBlock()->getRefundsCollection();
+
+    if($refunds->getSize()):
+?>
+<div class="grid" id="sagepay-refunds-table">
+    <?php echo $this->__('<strong>REFUND</strong>s'); ?>
+    <table class="data" cellspacing="0">
+        <thead>
+            <tr class="headings">
+                <th><?php echo $this->__('Status'); ?></th>
+                <th><?php echo $this->__('Amount'); ?></th>
+                <th><?php echo $this->__('VPS Tx Id'); ?></th>
+                <th><?php echo $this->__('Auth No'); ?></th>
+                <th><?php echo $this->__('Date'); ?></th>
+            </tr>
+        </thead>
+        <tbody class="even">
+            <?php foreach($refunds as $rfnd): ?>
+            <tr class="border">
+                <td><?php echo $rfnd->getStatus(); ?></td>
+                <td><?php echo $this->helper('core')->currency($rfnd->getAmount()); ?></td>
+                <td><?php echo $this->getParentBlock()->detailLink($rfnd->getVpsTxId()); ?></td>
+                <td><?php echo $rfnd->getTxAuthNo(); ?></td>
+                <td><?php echo $this->formatDate(new Zend_Date(strtotime($rfnd->getActionDate())), 'short', true); ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<?php endif; ?>

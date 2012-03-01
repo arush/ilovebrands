@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vdh_Randomquote>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Aschroder_SMTPPro/>
+            </depends>            
+        </Vdh_Randomquote>
+    </modules>
+	<frontend>
+		<product>
+			<collection>
+				<attributes>
+					<num_socks/>
+				</attributes>
+			</collection>
+		</product>
+	</frontend>    
+</config>

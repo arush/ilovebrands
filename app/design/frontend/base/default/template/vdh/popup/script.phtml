@@ -1,0 +1,23 @@
+<?php
+$helper = Mage::helper('popup');
+$currentUrl = str_replace(Mage::getBaseUrl(), '/', $this->helper('core/url')->getCurrentUrl());
+if (trim($currentUrl, '\/') == trim($helper->getTriggerUrl(), '\/') && (trim($helper->getTriggerUrl(), '\/') != '') || $helper->getTriggerUrl() == '*'): ?>
+<script type="text/javascript">
+	vdh.trigger = '<?php echo $helper->getTriggerUrl(); ?>';
+	vdh.loggedIn = <?php echo (Mage::getSingleton('customer/session')->isLoggedIn()) ? 'true' : 'false'; ?>;
+	vdh.urls = new Array();
+	<?php $i=0;foreach($helper->getUrls() as $url):?>
+	vdh.urls[<?php echo $i; $i++ ?>] = { url: '<?php echo $url; ?>', loaded: false };
+	<?php endforeach;?>
+	vdh.count();
+	 function delayPopup() {
+        if (vdh.popupCount > 0) {
+            vdh.popup(false);            
+        } else {
+            vdh.popup(true);            
+        }
+
+    }
+    // setTimeout('delayPopup()', <?php echo $helper->getDelay(); ?>); prevents autopop
+</script>
+<?php endif; ?>

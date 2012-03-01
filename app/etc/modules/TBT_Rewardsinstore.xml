@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <TBT_Rewardsinstore>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <TBT_Rewards/>
+                <Mage_Payment/>
+            </depends>
+        </TBT_Rewardsinstore>
+    </modules>
+</config>

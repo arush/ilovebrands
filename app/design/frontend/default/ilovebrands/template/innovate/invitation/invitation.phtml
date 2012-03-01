@@ -1,0 +1,83 @@
+<TABLE BORDER=1>
+<?php
+
+$invitations_collection = Mage::getModel('enterprise_invitation/invitation')
+->getCollection();
+//->addFieldToFilter('status','sent')
+//->addFieldToFilter('status','accepted');
+
+$excelstring = "";
+$excelstring = implode('|',
+                            array("Invited email",
+                                  "Invitation url",
+                                  "Inviter fullname",
+                                  "Inviter ID",
+                                  "Invitation status",
+                                  "Referral ID",
+                                  "Referral fullname",
+                                  "Invitation message"
+                                 ));
+
+
+foreach($invitations_collection as $invitation)
+{
+  $item = $invitation->getData();
+  
+    // get invitation url
+    $code = implode(':', array($invitation->getId(), $invitation->getProtectionCode()));
+    $invitationModel = Mage::getModel('enterprise_invitation/invitation')->loadByInvitationCode($code);
+    $url = Mage::helper('enterprise_invitation')->getInvitationUrl($invitationModel);
+
+    // get inviter details
+    $inviterId = $invitation->getCustomerId();
+    $inviter = Mage::getModel('customer/customer')->load($inviterId);
+    $inviterFirstname = $inviter->getFirstname();
+    $inviterLastname = $inviter->getLastname();
+    $inviterFullname = implode(' ', array($inviterFirstname, $inviterLastname));
+    
+    // get invited details if invited exists
+    if($invitation->getReferralId()) {
+      $invitedId = $invitation->getReferralId();
+      $invited = Mage::getModel('customer/customer')->load($invitedId);
+      $invitedFirstname = $invited->getFirstname();
+      $invitedLastname = $invited->getLastname();
+      $invitedFullname = implode(' ', array($invitedFirstname, $invitedLastname));
+    }
+    else {
+      $invitedID = "";
+      $invited = "";
+      $invitedFullname = "";
+    }
+    
+    // make table
+    echo "<TR><TD>".$invitation->getEmail()."</TD>";
+    echo "<TD>$url</TD>";
+    echo "<TD>".$inviterFullname."</TD>";
+    echo "<TD>".$inviterId."</TD>";
+    echo "<TD>".$invitation->getStatus()."</TD>";
+    echo "<TD>".$invitation->getReferralId()."</TD>";
+    echo "<TD>".$invitedFullname."</TD>";
+    echo "<TD>".$invitation->getMessage()."</TD></TR>";
+
+
+    $newline = implode('|',
+                            array(
+                                  $invitation->getEmail(),
+                                  $url,
+                                  $inviterFullname,
+                                  $inviterId,
+                                  $invitation->getStatus(),
+                                  $invitation->getReferralId(),
+                                  $invitedFullname,
+                                  $invitation->getMessage()
+                                 )
+                      );
+    $excelstring = implode('<br />', array($excelstring, $newline));
+
+}
+
+echo "<br /><br />";
+echo $excelstring;
+
+?>
+</table>

@@ -1,0 +1,100 @@
+
+
+<?php
+/*
+<script type="text/javascript">
+//<![CDATA[
+
+function setGenderTwo(gender) {
+	document.getElementById('gender_two').value = gender.value;
+}
+//]]>
+</script>
+*/
+
+if ($this->getSuppressPopup() == '1') {
+	Mage::getModel('core/cookie')->set('suppress_popup', true);
+}
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$email = $customer->getEmail();
+$firstname = $customer->getFirstname();
+$lastname= $customer->getLastname();
+$gender= $customer->getGender();
+if ($this->getDob()) {
+	$customer->setDob($this->getDob());
+	$customer->save();
+}
+//Only render if the Customer's DOB is not set and we have not yet submitted this form
+if (!$customer->getDob() && !$this->getDob() && $customer->getId()):
+?>
+<div class="popup-top">
+
+		<!--oneall thumbnail -->
+		<?php // TODO put this in the module code
+		$customerID = Mage::getSingleton('customer/session')->getId();
+		//check if user has a Facebook ID or twitter ID
+		$model = Mage::getModel('oneall/identifiers');
+		$collection = $model->getCollection()
+			->addFieldToFilter('customer_id',$customerID)
+			->addFieldToFilter('provider',array('in' => array('facebook','twitter')));
+		foreach($collection as $item) {
+		   if($item['provider'] === 'facebook') {
+				$facebookID = $item['identifier'];
+			}
+			else if($item['provider'] === 'twitter') {
+				$twitterID = $item['profile_name'];
+			};
+		}
+		if(isset($facebookID)) { ?>
+			<img class="oaimg" width="50" height="50" src="http://graph.facebook.com/<?php echo $facebookID ?>/picture?type=square" />
+		<?php  } else if(isset($twitterID)) { ?>
+			<img class="oaimg" width="50" height="50" src="http://api.twitter.com/1/users/profile_image?screen_name=<?php echo $twitterID ?>&size=normal" />
+		<?php
+		} 
+		?>
+		<?php // Mage::helper('oneall')->getThumbnailUrl(); ?>
+		<!--oneall thumbnail -->
+
+	<h1>Complete your profile to earn 500 points!</h1>
+	<div class="popup-points">500 points</div>
+	<div class="earn">Earn</div>
+</div>
+<div class="popup-form">
+	<form name="customer_details" action="/popup/form/page/index/completecustomerdetails">
+		<div class="left">
+			<div class="firstname">
+				<label><?php echo $this->__('Firstname'); ?></label><input type="text" name="firstname" value="<?php echo $firstname ?>" />
+			</div>
+			<div class="lastname">
+				<label><?php echo $this->__('Lastname'); ?></label><input type="text" name="lastname" value="<?php echo $gender ?>" />
+			</div>
+			<div class="email">
+				<label><?php echo $this->__('Email'); ?></label><input type="text" name="email" value="<?php echo $email ?>" />
+			</div>
+		</div>
+		<div class="right">
+			<div class="dob">
+				<label><?php echo $this->__('Date of birth'); ?></label><input type="text" name="dob" value="" />
+			</div>
+			<div class="gender">
+				<label><?php echo $this->__('Gender'); ?></label>
+				<select id="gender" name="gender" onchange="setGenderTwo(this);">
+					<option value=""></option>
+					<option value="1">Male</option>
+					<option value="2">Female</option>
+				</select>
+			</div>
+			<div style="display:none;" class="gender">
+				<select id="gender_two" name="gender">
+					<option value=""></option>
+					<option value="1">Male</option>
+					<option value="2">Female</option>
+				</select>
+			</div>
+			<div class="submit">	
+				<input type="submit" name="submit" value="submit" />
+			</div>
+		</div>
+	</form>
+</div>
+<?php endif; ?>

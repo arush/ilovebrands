@@ -1,0 +1,72 @@
+<?php
+if ($this->getSuppressPopup() == '1') {
+	Mage::getModel('core/cookie')->set('suppress_popup', true);
+}
+if ($this->getSubmit()) {
+	Mage::getModel('core/cookie')->set('getting_started', true);
+}
+if (!Mage::getModel('core/cookie')->get('getting_started') && !Mage::getSingleton('customer/session')->isLoggedIn()):
+?>
+<div class="gettingstarted">
+	<div class="popup-top">
+		<h1>Become a member, start earning points and shop for FREE!</h1>
+	</div>
+	<div class="popup-form">
+		<div class="left">
+			<h2>Connect via social account</h2>
+			<form action="<?php echo Mage::getUrl('oneall/rpx/loginpost') ?>" method="post" id="login-form">
+				<div class="fieldset" id="gigya-fieldset">
+					<div class="gigya-group">
+						<!--<div class="gigya-label"><p id="loginwith">login with</p><p id="connectwith">connect with</p></div>-->
+						<div class="gigya-block">
+							
+							<!-- The plugin will be embedded into this div //-->
+								<div id="lightbox_social_login_container"></div>
+								
+								<script type="text/javascript">
+								 oneall.api.plugins.social_login.build("lightbox_social_login_container", {
+								  'providers' :  ['facebook', 'google', 'twitter', 'yahoo'], 
+								  'callback_uri': '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK); ?>arush-oneall/rpx/token_url/',
+								  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_vertical.css'
+								 });
+								</script>
+						</div>
+					</div>	
+				</div>
+			</form>
+			<p>We never post to your profile without your consent</p>
+		</div>
+		<img class="divider" src="<?php echo $this->getSkinUrl();?>images/popupline.png"/>
+		<div class="right">
+			<h2>Register without social account</h2>
+			<a href="/customer/account/login">Already a member?</a>
+			<form name="getting_started" action="/popup/form/page/index/gettingstarted">
+				<div class="firstname">
+					<label><?php echo $this->__('Firstname'); ?></label><input type="text" name="firstname" value="" />
+				</div>
+				<div class="lastname">
+					<label><?php echo $this->__('Lastname'); ?></label><input type="text" name="lastname" value="" />
+				</div>
+				<div class="email">
+					<label><?php echo $this->__('Email'); ?></label><input type="text" name="email" value="" />
+				</div>
+								
+				<div class="submit">	
+					<input type="submit" name="submit" value="submit" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="popup-bottom">
+	<form name="nevershow" action="/popup/form/page/index/gettingstarted">
+			<div style="display:none;" class="suppress">
+					<input type="checkbox" name="suppress_popup" checked="checked" value="1"<?php if (Mage::getModel('core/cookie')->get('suppress_popup')) { echo ' checked="checked"'; }?> />
+					<label><?php echo $this->__('Never show me this again');?></label>
+			</div>
+			<div>	
+				<input class="buttonAsLink" type="submit" name="submit" value="Never show me this again"/>
+			</div>
+		</form>
+	</div>
+</div>
+<?php endif; ?>

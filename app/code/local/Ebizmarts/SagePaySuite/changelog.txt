@@ -1,0 +1,44 @@
+24-Jun-2011
+	- Version 1.0.34
+		* Correcting typos on system.xml
+		* PayPal import ISO-8859-15 encoded chars fix
+		* SagePayReporting 3rdman CRON fix
+		* SERVER when cancelling order if message is blank, don't show alert box
+		* Fix MAC bug when no token is enabled
+		* PayPal fix redirection urls bug
+		* PayPal title fix show correct method title on emails, backend, etc.
+		* Added 3rdman breakdown
+
+07-Jun-2011
+	- Version 1.0.33
+		* Adding check to not break API calls on sagepay orders not placed with suite.
+		* Fix MOTO SERVER long url
+		* Added checking for Idev_OneStepCheckout module when importing OSC information to quote
+
+30-May-2011
+	- Version 1.0.32
+		* PayPal bugfix for currency on completing order.
+		* Changing orphans row click to view sagepay detail.
+		* PayPal secure url fix on review post.
+		* PayPal don't check for shipping estimate on checkout button
+
+26-May-2011
+	- Version 1.0.31
+		* PayPal bugfix for incheckout, billing address was overwritten.
+
+24-May-2011
+	- Version 1.0.30
+		* PayPal incheckout sending customer billing and shipping address
+		* Bug fix on authorises request, was not saving amount
+		* Bug fix on get transaction details for related transactions such as AUTHORISES
+		* Adding icons for NOTMATCHED, OK, NOTCHECKED, etc. flags
+
+16-May-2011
+	- Version 1.0.29
+		* Reward points for Enterprise edition, SERVER integration bug fix.
+		* Bug fix on PaymentController when compilation enabled.
+		* Bug fix on 3D secure lightbox on IE7 and below.
+
+09-May-2011
+    - Version 1.0.28
+        * Added specific payment information template for PDF printing in admin panel.

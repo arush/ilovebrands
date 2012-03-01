@@ -1,0 +1,23 @@
+<layout version="0.1.0">
+    <catalog_product_view>
+        <reference name="additional_products">
+            <!-- remove name="product.info.upsell" / -->
+            <block type="evogue_targetrule/catalog_product_list_upsell" name="product.info.upsell" as="upsell_products" template="evogue/targetrule/catalog/product/list/upsell.phtml">
+                <action method="setColumnCount"><columns>4</columns></action>
+            </block>
+            <!-- remove name="catalog.product.related"/ -->
+            <block type="evogue_targetrule/catalog_product_list_related" name="catalog.product.related" as="relatedProducts" template="evogue/targetrule/catalog/product/list/related.phtml">
+                <action method="setColumnCount"><columns>3</columns></action>
+            </block>
+
+        </reference>
+    </catalog_product_view>
+    
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <!-- remove name="checkout.cart.crosssell" / -->
+            <block type="evogue_targetrule/checkout_cart_crosssell" name="checkout.cart.crosssell" as="crosssell" template="evogue/targetrule/checkout/cart/crosssell.phtml">
+            </block>
+        </reference>
+    </checkout_cart_index>
+</layout>

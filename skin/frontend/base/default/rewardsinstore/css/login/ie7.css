@@ -1,0 +1,17 @@
+
+div.mainCenter input#locationBox {
+    margin-bottom: 0px;
+    width: 540px;
+}
+
+div.mainCenter button#autocompleteArrow {
+    padding-top: 13px;
+}
+
+div#errorWrapper {
+    display: none;
+}
+
+div#loginDiv div#main {
+    top: 0px;
+}

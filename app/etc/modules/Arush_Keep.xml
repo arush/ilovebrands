@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Arush_Keep>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Arush_Keep>
+    </modules>
+</config>

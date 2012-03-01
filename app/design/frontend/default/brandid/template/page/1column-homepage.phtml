@@ -1,0 +1,144 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--[if lt IE 7]>  <html class="iescrollbarfix ie ie6 lte9 lte8 lte7" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 7]>     <html class="iescrollbarfix ie ie7 lte9 lte8 lte7" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 8]>     <html class="iescrollbarfix ie ie8 lte9 lte8" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 9]>     <html class="iescrollbarfix ie ie9 lte9" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if gt IE 9]>  <html class="iescrollbarfix" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if !IE]><!--> <html class="iescrollbarfix" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"xmlns:og="http://opengraph.org/schema/" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">             <!--<![endif]-->
+
+<head>
+<!-- Chartbeat module -->
+<?php 	if(Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_on')) {
+		echo Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_head_code'); }?>
+<!-- END Chartbeat module -->
+
+<?php echo $this->getChildHtml('head') ?>
+<script type="text/javascript">
+$j = jQuery.noConflict();
+$j(function()
+{
+	$j('.white_content').jScrollPane();
+});
+</script>
+
+<!-- Javascripthead module -->
+
+<?php 	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on1')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code1');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on2')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code2');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on3')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code3');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on4')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code4');
+	}
+?>
+
+<!-- END Javascripthead module -->
+
+
+</head>
+<body onload = "document.getElementById('light1').style.display='none';document.getElementById('light2').style.display='none';document.getElementById('light3').style.display='none';" <?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+
+
+<!-- Innovate Analytics tracking beacon  -->
+
+<?php if(Mage::getStoreConfig('analytics/track/analytics_reg_confirm_on')) {
+		echo Mage::getStoreConfig('analytics/track/analytics_reg_confirm_code');
+	}
+?>
+
+<!-- END Innovate Analytics tracking beacon  -->
+
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+		<?php echo $this->getChildHtml('topContainer') ?>
+        <?php echo $this->getChildHtml('global_messages') ?>
+        <?php echo $this->getChildHtml('breadcrumbsContainer') ?>
+        <div class="main col1-layout">
+            <div class="col-main">
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+        <div class="clear"><!-- --></div>
+		<?php echo $this->getAbsoluteFooter() ?>
+		</div>
+		<div class="main-bottom"></div>
+        <?php echo $this->getChildHtml('footer_before') ?>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+	<div class="clear"><!-- --></div>
+    </div>
+</div>
+
+    <div id="bg">
+
+        <div>
+            <table cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <img id="random" src="<?php echo $this->getSkinUrl(); ?>/images/bg-eros.png" alt="evogue - luxury brands. by invitation." />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+	
+	<div id="light1"><div class="content-box white_content"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('about')->toHtml() ?><a href = "javascript:void(0)" onclick = "document.getElementById('light1').style.visibility='hidden';document.getElementById('fade').style.display='none'">Close</a></div></div>
+	<div id="light2"><div class="content-box white_content"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('terms-service')->toHtml() ?><a href = "javascript:void(0)" onclick = "document.getElementById('light2').style.visibility='hidden';document.getElementById('fade').style.display='none'">Close</a></div></div>
+	<div id="light3"><div class="content-box white_content"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('privacy-policy')->toHtml() ?><a href = "javascript:void(0)" onclick = "document.getElementById('light3').style.visibility='hidden';document.getElementById('fade').style.display='none'">Close</a></div></div>
+	<div id="fade" class="black_overlay" onclick = "document.getElementById('light1').style.visibility='hidden';document.getElementById('light2').style.visibility='hidden';document.getElementById('light3').style.visibility='hidden';document.getElementById('fade').style.display='none'"></div>
+
+<!-- Chartbeat module -->
+
+<?php 	if(Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_on')) {
+		echo Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_foot_code');
+	}
+?>
+
+<!-- END Chartbeat module -->
+</body>
+</html>

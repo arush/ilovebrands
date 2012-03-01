@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TBT_RewardsPlat>
+            <version>1.6.0.6</version>
+        </TBT_RewardsPlat>
+    </modules>
+    <admin>
+        <routers>
+            <rewardsplatadmin>
+                <use>admin</use>
+                <args>
+                    <module>TBT_RewardsPlat</module>
+                    <frontName>rewardsplatadmin</frontName>
+                </args>
+            </rewardsplatadmin>
+        </routers>
+    </admin>
+    <frontend>
+        <routers>
+            <rewardsplat>
+                <use>standard</use>
+                <args>
+                    <module>TBT_RewardsPlat</module>
+                    <frontName>rewardsplat</frontName>
+                </args>
+            </rewardsplat>
+        </routers>
+        <layout>
+            <updates>
+                <rewardsplat>
+                    <file>rewardsplat.xml</file>
+                </rewardsplat>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <TBT_RewardsPlat>
+                    <files>
+                        <default>TBT_RewardsPlat.csv</default>
+                    </files>
+                </TBT_RewardsPlat>
+            </modules>
+        </translate>
+        
+        <events>
+        </events>
+    </frontend>
+	
+    <adminhtml>
+        <translate>
+            <modules>
+                <TBT_RewardsPlat>
+                    <files>
+                        <default>TBT_RewardsPlat.csv</default>
+                    </files>
+                </TBT_RewardsPlat>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <rewardsplat>
+                    <file>rewardsplat.xml</file>
+                </rewardsplat>
+            </updates>
+        </layout>
+    </adminhtml>   
+    
+    <global>
+        <resources>
+            <rewardsplat_setup>
+                <setup>
+                    <module>TBT_RewardsPlat</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </rewardsplat_setup>
+            <rewardsplat_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </rewardsplat_write>
+            <rewardsplat_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </rewardsplat_read>
+        </resources>
+        <blocks>
+            <rewardsplat>
+                <class>TBT_RewardsPlat_Block</class>
+            </rewardsplat> 
+        </blocks>
+        <helpers>
+            <rewardsplat>
+                <class>TBT_RewardsPlat_Helper</class>
+            </rewardsplat>
+            
+        </helpers>
+        
+        <models>
+            <rewardsplat>
+                <class>TBT_RewardsPlat_Model</class>
+            </rewardsplat> 
+        </models>
+        
+        <events>
+        
+            <!-- // BEGIN: // Module warning if you have other rewards modules installed -->
+            <controller_action_predispatch_rewardsadmin_manage_promo_catalog_index>
+                <observers>
+                    <rewardsplat_diagnostics_module_warning>
+                        <type>singleton</type>
+                        <class>rewardsplat/diagnostics_observer</class>
+                        <method>onPreDispatch</method>
+                    </rewardsplat_diagnostics_module_warning>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_promo_catalog_index>
+            <controller_action_predispatch_rewardsadmin_manage_promo_quote_index>
+                <observers>
+                    <rewardsplat_diagnostics_module_warning>
+                        <type>singleton</type>
+                        <class>rewardsplat/diagnostics_observer</class>
+                        <method>onPreDispatch</method>
+                    </rewardsplat_diagnostics_module_warning>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_promo_quote_index>
+            <controller_action_predispatch_rewardsadmin_manage_special_index>
+                <observers>
+                    <rewardsplat_diagnostics_module_warning>
+                        <type>singleton</type>
+                        <class>rewardsplat/diagnostics_observer</class>
+                        <method>onPreDispatch</method>
+                    </rewardsplat_diagnostics_module_warning>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_special_index>
+            <!-- // END: // Module warning if you have other rewards modules installed -->
+            
+            
+            <controller_action_predispatch_rewardsadmin_manage_diagnostics_reinstalldb>
+                <observers>
+                    <rewardsplat_diagnostics_reinstalldb>
+                        <type>singleton</type>
+                        <class>rewardsplat/diagnostics_observer</class>
+                        <method>reinstalldb</method>
+                    </rewardsplat_diagnostics_reinstalldb>
+                </observers>
+            </controller_action_predispatch_rewardsadmin_manage_diagnostics_reinstalldb>
+            
+        </events>
+    </global>
+	
+</config>

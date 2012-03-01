@@ -1,0 +1,99 @@
+<?xml version="1.0"?> 
+<config>
+  <modules>
+      <Innovate_Analytics> 
+          <version>0.1.0</version>
+          <depends>
+              <!-- no dependencies --> 
+          </depends>
+      </Innovate_Analytics> 
+  </modules>
+  <global> 
+   
+    <blocks>
+        <adminhtml>
+            <rewrite>
+            </rewrite>
+        </adminhtml>
+    </blocks>
+    
+    <blocks>
+        <analytics> 
+            <class>Innovate_Analytics_Block</class>
+        </analytics> 
+    </blocks>
+    <helpers>
+        <analytics>
+          <class>Innovate_Analytics_Helper</class>
+        </analytics>
+    </helpers>
+  </global>
+  <adminhtml>
+      <acl>
+          <resources>
+              <admin>
+                  <children>
+                      <system>
+                          <children>
+                              <config>
+                                  <children>
+                                      <analytics>
+                                          <title>Analytics View Settings</title>
+                                      </analytics>
+                                  </children>
+                              </config>
+                          </children>
+                      </system>
+                  </children>
+              </admin>
+          </resources>
+      </acl>
+      <events></events> 
+      <translate></translate>
+  </adminhtml> 
+  <frontend>
+      <routers></routers> 
+      <events></events> 
+      <translate></translate> 
+      <layout></layout>
+  </frontend>
+  <admin>
+       <routers>
+          <analytics>
+              <use>admin</use>
+              <args>
+                  <module>Innovate_Analytics</module>
+                  <frontName>analytics</frontName>
+              </args>
+          </analytics>
+      </routers>
+  </admin>
+  <!-- module defaults --> 
+  <default>
+      <!-- config values -->
+      <analytics>
+          <track>
+            <analytics_reg_confirm_on><![CDATA[]]></analytics_reg_confirm_on>
+            <analytics_reg_confirm_code><![CDATA[]]></analytics_reg_confirm_code>
+            <analytics_checkout_on><![CDATA[]]></analytics_checkout_on>
+            <analytics_checkout_started_code><![CDATA[]]></analytics_checkout_started_code>
+            <analytics_checkout_success_code><![CDATA[]]></analytics_checkout_success_code>
+            <analytics_invitation_on><![CDATA[]]></analytics_invitation_on>
+            <analytics_invitation_landing_code><![CDATA[]]></analytics_invitation_landing_code>
+          </track>
+          <chartbeat>
+            <analytics_chartbeat_on><![CDATA[]]></analytics_chartbeat_on>
+            <analytics_chartbeat_head_code><![CDATA[]]></analytics_chartbeat_head_code>
+            <analytics_chartbeat_foot_code><![CDATA[]]></analytics_chartbeat_foot_code>
+          </chartbeat>
+      </analytics>
+  </default>
+  <!--<crontab>
+      <jobs>
+          <get_analytics_view>
+              <schedule><cron_expr>*/2 * * * *</cron_expr></schedule>
+              <run><model>analytics/observer::cacheFeeds</model></run>
+          </get_analytics_view>
+      </jobs>
+  </crontab>-->
+</config>

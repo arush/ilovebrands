@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * Retail Evolved - Facebook Like Button
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA that is bundled with this
+ * package in the file EVOLVED_EULA.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://retailevolved.com/eula-1-0
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to service@retailevolved.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * You may edit this file, but only at your own risk, as long as it is within
+ * the constraints of the license agreement. Before upgrading the module (not Magento), 
+ * be sure to back up your original installation as the upgrade may override your
+ * changes.
+ *
+ * @category   Evolved
+ * @package    Evolved_Like
+ * @copyright  Copyright (c) 2010 Kaelex Inc. DBA Retail Evolved (http://retailevolved.com)
+ * @license    http://retailevolved.com/eula-1-0 (Retail Evolved EULA 1.0)
+ */
+
+?>
+<?php if(!Mage::helper('evlike')->getLikeConfig('ev_facebook_type')): ?>
+<?php $_locale = Mage::helper('evlike')->getFacebookLocale(); ?>
+
+<!-- Using the JavaScript SDK -->
+<div id="fb-root"></div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({appId: '<?php echo Mage::helper("evlike")->getLikeConfig("ev_facebook_app_id") ?>',
+    		Status: true,
+        	Cookie: true,
+            xfbml: true
+    });
+   	
+   	
+  	
+  	FB.Event.subscribe('edge.remove', function(href, widget) {
+    	alert('You unliked ' + href, widget);
+  	}); 
+    
+  	FB.Event.subscribe('edge.create', function(href, widget) {
+    	var dataSend = 'hello';
+                jQuery.ajax({
+                    type: 'POST',
+                    url: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB); ?>test.php',
+                    data: dataSend,
+                    success: function(data) {
+                        var notice = '<div class="notice">'
+								  + '<div class="notice-body">' 
+									  + '<img src="<?php echo $this->getSkinUrl('');?>images/info.png" alt="" />'
+									  + '<h3>+3 points!</h3>'
+									  + '<p>You liked something and earned points</p>'
+								  + '</div>'
+								  + '<div class="notice-bottom">'
+								  + '</div>'
+							  + '</div>';
+							  
+						jQuery( notice ).purr(
+							{
+								usingTransparentPNG: true
+							}
+						);
+						
+						return false;
+                    },
+                    error: function(data) {
+                        var notice = '<div class="notice">'
+								  + '<div class="notice-body">' 
+									  + '<img src="<?php echo $this->getSkinUrl('');?>images/info.png" alt="" />'
+									  + '<h3>Sorry!</h3>'
+									  + '<p>This is a test. Sorry dude.</p>'
+								  + '</div>'
+								  + '<div class="notice-bottom">'
+								  + '</div>'
+							  + '</div>';
+							  
+						jQuery( notice ).purr(
+							{
+								usingTransparentPNG: true
+							}
+						);
+						
+						return false;
+
+                    }
+                });
+   	
+  	});
+  	
+  };
+  
+  
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/<?php echo $_locale ?>/all.js#appId=<?php echo Mage::helper("evlike")->getLikeConfig("ev_facebook_app_id") ?>';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+  
+  
+</script>
+
+<?php endif; ?>

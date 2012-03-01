@@ -1,0 +1,24 @@
+
+div.mainCenter input#firstName {
+    margin-bottom: 0px;
+}
+
+div.mainCenter input#email {
+    margin-top: 16px;
+}
+
+div.centerPostLogin p #logoutBar {
+    margin-top: -16px;
+}
+
+div.mainCenter div#main {
+    top: -98px;
+}
+
+input#reward {
+    width: 263px;
+}
+
+input#rewardButton {
+    padding: 5px 27px 4px;
+}

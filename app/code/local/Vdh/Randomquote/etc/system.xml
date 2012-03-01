@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+        <brandid translate="label">
+            <label>BRANDiD</label>
+            <sort_order>250</sort_order>
+        </brandid>
+    </tabs>
+    <sections>
+		<randomquote translate="label" module="randomquote">
+            <label>Random Quotes</label>
+            <tab>brandid</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<billing_date translate="label">
+                            <label>Billing Date</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[Date that customers are billed]]></comment>
+                        </billing_date>                    
+						<delivery_date translate="label">
+                            <label>Delivery Date</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[Date that deliveries are dispatched]]></comment>
+                        </delivery_date>	                                       
+						<cutoff translate="label">
+                            <label>Cutoff</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[Defines the amount of days prior to the first of every month, when purchases can no longer be made for the next delivery cycle]]></comment>
+                        </cutoff>	
+						
+						
+						<delivery_time translate="label">
+                            <label>Delivery Time</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[Defines the amount of days after the order day above (auto excludes weekends), that it takes to deliver from the moment of dispatch. (excluding margin of error)]]></comment>
+                        </delivery_time>
+                    
+                    	<delivery_margin translate="label">
+                            <label>Delivery Margin</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[Defines the amount of days margin included in the delivery date. Must be > 0 in order to give a spread, e.g. between Thurs and Fri = 1 day of margin]]></comment>
+                        </delivery_margin>
+                        
+                    	<cutoff_hour translate="label">
+                            <label>Cutoff Hour</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[What hour of the day do you stop processing new orders? (24h clock, so 3pm = 15)]]></comment>
+                        </cutoff_hour>
+                        
+                        <cutoff_min translate="label">
+                            <label>Cutoff Minute</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <comment><![CDATA[What minute of the hour do you stop processing new orders? (out of 60)]]></comment>
+                        </cutoff_min>
+                        
+						<quotes translate="label">
+                            <label>Random quotes</label>
+                            <frontend_model>randomquote/system_config_form_field_array_quote</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quotes>	
+						<styles translate="label">
+                            <label>Invite Styles</label>
+                            <frontend_model>randomquote/system_config_form_field_array_style</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </styles>
+						<plans translate="label">
+                            <label>Plans / Customer Group Relations</label>
+                            <frontend_model>randomquote/system_config_form_field_array_plan</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </plans>                                                
+                    </fields>
+                </general>
+
+			</groups>
+		</randomquote>
+    </sections>
+</config>
+    

@@ -1,0 +1,14 @@
+<?php
+$_helper = Mage::helper('shutl');
+$_product = $this->_getProduct();
+if ($_product->getPod1Shutl()):
+?>
+	<div class="clear"></div>
+	<div id="shutlService">
+		<h3><?php echo $this->__('Get a quote for Shutl Delivery'); ?></h3>
+		<a href="<?php echo $this->getUrl('shutl/about') . '?id=' . $_product->getId(); ?>" class="shutl_service" alt="Shutl is available" style="background: url('<?php echo $_helper->getLogo(); ?>') 0% 0% no-repeat">
+			<span><?php echo $this->__('Get quote'); ?></span>
+		</a>
+	</div>
+	<div class="clear"></div>		
+<?php endif; ?>

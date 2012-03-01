@@ -1,0 +1,168 @@
+<?php
+
+?>
+
+<div class="header-container">
+    <div class="header">
+	
+		<div class="top-header">
+			<div class="store-language"><?php echo $this->getChildHtml('store_language') ?></div>
+			<img src="<?php echo $this->getSkinUrl();?>images/thline.jpg"/>
+			<div class="facebook-header"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-fb-like')->toHtml() ?></div>
+			<?php /* echo $this->getChildHtml('topLinks') */ ?>
+		    
+			<?php if (Mage::getSingleton('customer/session')->isLoggedIn()):?> 
+				<div class="top-name">
+					
+					<!--oneall thumbnail -->
+					<?php // TODO put this in the module code
+					
+					$customerID = Mage::getSingleton('customer/session')->getId();
+					//check if user has a Facebook ID or twitter ID
+					$model = Mage::getModel('oneall/identifiers');
+					$collection = $model->getCollection()
+						->addFieldToFilter('customer_id',$customerID)
+						->addFieldToFilter('provider',array('in' => array('facebook','twitter')));
+					foreach($collection as $item) {
+					   if($item['provider'] === 'facebook') {
+			   				$facebookID = $item['identifier'];
+			   			}
+			   			else if($item['provider'] === 'twitter') {
+			   				$twitterID = $item['profile_name'];
+			   			};
+					   
+					}
+					
+					
+					if(isset($facebookID)) { ?>
+						<img class="oaimg" width="30" height="30" src="http://graph.facebook.com/<?php echo $facebookID ?>/picture?type=square" />
+					<?php  } else if(isset($twitterID)) { ?>
+						<img class="oaimg" width="30" height="30" src="http://api.twitter.com/1/users/profile_image?screen_name=<?php echo $twitterID ?>&size=normal" />
+					<?php
+					} 
+					?>
+					
+					<?php // Mage::helper('oneall')->getThumbnailUrl(); ?>
+					<!--oneall thumbnail -->
+					
+					<?php $customerName = Mage::helper('customer')->getCustomerName(); ?> 
+					<a class="flname" href="#"><?php echo $customerName; ?></a>
+					<img class="grey" src="<?php echo $this->getSkinUrl();?>images/arrowgrey.png" />
+					<img class="black" src="<?php echo $this->getSkinUrl();?>images/arrowblack.png" />
+					<div class="my-account-links">
+						<?php echo $this->getChildHtml('accountLinks') ?>
+					</div>
+				</div>
+			
+				<script>
+					jQuery(document).ready(function () { 
+		 
+						jQuery('.top-name').hover(
+							function () {
+								//show its submenu
+								jQuery('div', this).slideDown(100);
+					 
+							}, 
+							function () {
+								//hide its submenu
+								jQuery('div', this).slideUp(100);         
+							}
+						);
+									jQuery('.top-name').hover(
+										function() {
+										  jQuery(this).addClass('light');
+											},
+										function() {
+										  jQuery(this).removeClass('light');
+									});
+					});
+				</script>
+
+				
+					<img class="rt" src="<?php echo $this->getSkinUrl();?>images/thline.jpg"/>
+				<div class="account-link"><a href="/customer/account/index/">My Account</a></div>
+					<img class="rt" src="<?php echo $this->getSkinUrl();?>images/thline.jpg"/>
+					
+				<?php /*WDCA CODE BEGIN*/ ?>
+				<?php echo $this->getChildHtml('rewardsHeader') ?>
+				<?php /*WDCA CODE END*/ ?>
+
+				<div id="nav-invite"><a href="/index.php/rewardsref/customer/index/">Invite and earn credit</a></div>
+				<div class="tooltip">
+					<div class="nav-invite">
+					<p>Invite a friend</p>
+					<form action="<?php echo $this-> getBaseUrl(); ?>rewardsref/customer/invites/" method="post" id="form-validates">
+					<input type="hidden" value="Il1NwrpfsCuSmp03" name="form_key">
+					 <textarea type="hidden" name="message" style="display: none;" >I'm a Member of evogue, an invitation-only shopping club for everything luxury - at private sale prices. New Collections go live a few times each month - but are available only for a short time. Sign up now with this invitation!</textarea>
+					<input type="text" name="contacts"  id="recipient_list" value="Invitee's email address" onFocus=this.value="">
+					<button type="submit">SEND</button>
+					</form>
+					<img src="<?php echo $this->getSkinUrl();?>images/points.jpg"/ width="44" height="41">
+					<span>Earn &pound;15 (1500 points) for each referral</span>
+					</div>
+				</div>
+				<script>
+				jQuery(document).ready(function() {
+					jQuery("#nav-invite").tooltip({
+						offset: [25, 0],
+						position: 'bottom center',
+						relative: true,
+						effect: 'slide'
+						})
+					;});
+				</script>
+			
+			<?php else:?>
+			
+				<?php /*WDCA CODE BEGIN*/ ?>
+				<?php echo $this->getChildHtml('rewardsHeader') ?>
+				<?php /*WDCA CODE END*/ ?>
+				
+				<p>and start earning</p>	
+
+						<!-- The provider login will be embedded in this div //-->
+						
+						<div id="oa_social_login_header"></div>
+											
+						<script type="text/javascript">
+							 oneall.api.plugins.social_login.build("oa_social_login_header", {
+							  'providers' :  ['facebook', 'google', 'twitter', 'yahoo'], 
+							  'callback_uri': '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK); ?>arush-oneall/rpx/token_url/',
+							  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_horizontal_small.css'
+							 });
+							</script>	
+						
+				<div class="connect"> or </div>
+				<div class="login-header">
+					<?php echo $this->getChildHtml('accountLinks') ?>
+				</div>
+			
+			<?php endif;?>
+			
+		</div>
+		
+		<div class="branding">
+        <?php if ($this->getIsHomePage()):?>
+            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+            <?php else:?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        </div>	         
+	
+		<div class="header-middle">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-contact')->toHtml() ?>
+		</div>
+	
+		<div class="header-panel">
+				<div class="checkout-link"><?php echo $this->getChildHtml('checkoutLinks') ?></div>	
+				<?php echo $this->getChildHtml('topCart') ?>
+				<?php echo $this->getChildHtml('topSearch') ?>
+				<a class="help" href="/help">help</a>				
+		</div>
+		 
+		<?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+    
+    
+</div>
+

@@ -1,0 +1,52 @@
+<?php if($this->showReferralUrl() ||  $this->showReferralCode() ||  $this->showReferralEmail()): ?>
+<!-- @nelkaake Added on Saturday June 26, 2010: BEGIN referral code/url/email fieldset -->
+<div class="share-invitation-link"><h4 class="legend"><?php echo $this->__('Share your personal invitation link'); ?></h4></div>
+<div class="share-invitation-link-box">
+<div class="invitation-link">
+<fieldset class="group-select my_referrals-urlcode_group">
+    <ul>
+        <?php if($this->showReferralUrl()): ?>
+        <li>
+            <div class="urlcode-input-box">
+                <?php /*?><label for="referral_url"><?php echo $this->__('Your Referral URL') ?></label><br /><?php */?>
+                <input style="width: 625px;" type="text" readonly name="referral_url" value="<?php echo $this->getReferralUrl(); ?>" 
+                    title="<?php echo $this->__('Your Referral URL') ?>" class="input-text" id="referral_url" />
+            </div>
+            <?php /*?><div id="copy-link"><img src=<?php echo $this->getSkinUrl(); ?>/images/copylink.png width="161" height="38" /></div><?php */?>
+            <?php /*?>Once this div is included into the template file, delete the inline style width for the id="referral_url"<?php */?>
+        </li>
+        <?php endif; ?>
+        <?php if($this->showReferralCode()): ?>
+        <li>
+            <div class="urlcode-input-box">
+                <label for="referral_url"><?php echo $this->__('Your Referral Code') ?></label><br />
+                <input type="text" readonly name="referral_code" value="<?php echo $this->getReferralCode(); ?>" 
+                    title="<?php echo $this->__('Your Referral Code') ?>" class="input-text" id="referral_code" /> <BR />
+            </div> <BR />
+            <div class="urlcode_comment"><?php echo $this->__("If you're referral is using your code, they should enter the code at checkout or signup."); ?></div>
+        </li>
+        <?php endif; ?>
+        <?php if($this->showReferralEmail()): ?>
+        <li>
+            <div class="urlcode-input-box">
+                <label for="referral_url"><?php echo $this->__('Your Referral Email') ?></label><br />
+                <input type="text" readonly name="referral_email" value="<?php echo $this->getReferralEmail(); ?>" 
+                    title="<?php echo $this->__('Your Referral Email') ?>" class="input-text" id="referral_email" /> <BR />
+            </div> <BR />
+            <div class="urlcode_comment"><?php echo $this->__("If you're referral is using your e-mail, they should enter your e-mail address at checkout or signup."); ?></div>
+        </li>
+        <?php endif; ?>
+    </ul>
+</fieldset>
+</div>
+Share it anywhere you can to start earning - blogs, forums, facebook, twitter, email it to your friends, anywhere!
+        <div class="social-share">
+        	<div class="social-share-text">Click to share</div>
+            <div class="social-share-images">
+            <?php /*?><a href="http://www.facebook.com/sharer.php?u=<?php echo $this->getReferralUrl(); ?>" target="_blank"><img class="facebook" src="<?php echo $this-> getSkinUrl(); ?>images/facebook.png" width="48" height="48" title="post this on facebook"/></a><?php */?>
+            <a target="_blank" href="http://twitter.com/home?status=Sign up for evogue with this link: <?php echo $this->getReferralUrl(); ?>"><img class="twitter" src="<?php echo $this-> getSkinUrl(); ?>images/twitter.png" width="48" height="48" title="post this on twitter" /></a>
+            <a href="mailto:?subject=Sign up for evogue &body=I'm a Member of evogue, an invitation-only shopping club for everything luxury - at private sale prices. New Collections go live a few times each month - but are available only for a short time. Sign up now with this link: <?php echo $this->getReferralUrl(); ?>" target="_blank"><img class="email" src="<?php echo $this-> getSkinUrl(); ?>images/email.png" width="48" height="48" title="email to friend" /></a></div>
+        </div>
+</div>
+<?php endif; ?>
+<!-- @nelkaake Added on Saturday June 26, 2010: END referral code/url/email fieldset -->

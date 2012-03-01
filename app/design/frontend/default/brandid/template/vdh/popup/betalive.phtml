@@ -1,0 +1,234 @@
+<?php 
+
+/*
+* the system checks if 'suppress' is set and if so, then none of the popups pop automatically
+*
+*/
+
+/*
+* redirect the whole page
+*
+*/
+
+
+
+
+if ($this->getSuppressbeta() == 'true'){
+	Mage::getModel('core/cookie')->set('suppressbeta', true); ?>
+	
+<script type="text/javascript">document.location.href = '/plans.html';</script>
+<?php 
+}
+
+/*
+* phtml condition check
+*
+*/
+
+if (!Mage::getModel('core/cookie')->get('suppressbeta')):
+?>
+
+<div class="gettingstarted getstarted">
+	 
+				<div id="panels">
+					
+					
+					<div class="sliders" id="mother">
+						
+						
+						<div class="holder">
+							<!-- the element that will be scrolled during the effect -->
+							<div id="popup-slide" class="slider">
+							
+								<!-- our individual panels -->
+								<ul>													
+									
+									<li class="panel">
+										<div class="popup-title">
+								 			<span class="revolutionary">Welcome to the BRANDiD Beta</span><br/>
+								 			<span class="revolutionary">BETA? WTF?</span>
+								 		</div>
+
+								 
+								 		<div class="explain">
+								 			<span class="explain-bold">Rome wasn't built in a day. And BRANDiD won't be either.</span><br/>
+								 		</div>
+								 		<div class="explain">
+								 			<span class="explanation">
+								 				We want to build something that men can be proud of, so we need you to tell us what you rate, what you hate and what you’d like us to create. Plans, products, packaging. The lot.
+											</span><br/>
+										</div>
+										<div class="explain">
+											<span class="explanation">
+												You are one of 300 pioneers (kind of like The Spartans but with better underwear) chosen to get involved early doors to help make buying garms online awesome. 
+											</span><br/>
+										</div>
+										<div class="explain">
+											<span class="explanation">
+											Not for chicks. For men. Finally.
+											</span><br/>
+								 		</div>
+									
+										<div class="control-box">
+											<a id="1-next" class="popup-next" href="#">Ready for War</a>
+										</div>
+									</li>
+									
+									
+									
+									<li class="panel plans">
+										<div class="popup-title fadein">
+								 			<span class="revolutionary">Every man needs a plan.</span><br/>
+								 			<span class="revolutionary">We have three.</span>
+								 		</div>
+								 		<div class="popup-col explain fadein">
+								 			<img class="plans-img" src="<?php echo Mage::getDesign()->getSkinUrl('images/lightbox/beta/plans-preview-lightbox.png');?>" />
+											
+											
+											<span class="explanation">Each plan is a selection of designer shirts, tees, pants and socks at awesome prices.
+											<br/><br/>
+											It gets dropped to your door every month so you won’t have to waste your time shopping this month.
+											<br/>Or the next.
+											<br/><br/>Or ever again. 
+											
+											</span>
+								 		</div>
+								 		
+										<div class="control-box fadein">
+											<a id="2-prev" class="popup-prev" href="#">go back</a>
+											<a id="2-next" class="popup-next" href="#">That's not all</a>
+										</div>
+
+									</li>
+									
+									
+									<li class="panel loyalty">
+										<div class="popup-title fadein">
+								 			<span class="revolutionary">Loyalty. Done Properly.</span>
+								 		</div>
+										<div class="popup-col explain">
+								 			<span class="explain-bold fadein">You already earned 100 points<br/> when you signed up.</span><br/><br/>
+								 			<span class="explanation fadein">You earn points for all kinds of things<br/>
+												on BRANDiD, you can even earn double<br/>
+												and triple points for really ballsy moves.<br/>
+												[HINT: the easiest way is to invite your friends.]<br/><br/>
+												Points can be spent on our already discounted Boosters,<br/>
+												its pretty much like stealing.</span><br/>
+										</div>
+										<div class="tie-container fadein">
+								 			<div class="tie-img"></div>
+											<div class="tie-details">
+												<span class="detail">Giorgio Armani Tie</span><br/>
+												<span class="detail">RRP £110</span><br/>
+												<span class="detail red">FREE WITH 5000 POINTS</span>
+											</div>
+										</div>
+										<div class="popup-col explain friends fadein">Or, get 50 friends to sign up, and we’ll send you a free designer tie, no points needed.</div>
+										<div class="control-box fadein">
+											<a id="3-prev" class="popup-prev" href="#">go back</a>
+ 											<!--a id="3-next" class="done" href="/plans.html">Enough jibber jabber, take me to the plans</a-->
+											
+											<form name="customer_details" action="/popup/form/page/index/betalive/suppressbeta/true">
+												<input type="hidden" name="suppress" value="true" />
+
+												<input id="3-next" class="done" type="submit" name="submit" value="Take me to the plans, and don't show me this again" />
+
+											</form>
+										</div>
+									</li>
+								</ul>
+								
+							</div> <!-- end scrollContainer -->
+							
+							
+						</div> <!-- end scroll -->
+					</div> <!-- end slider -->
+				
+				</div> <!-- end panes -->
+
+
+
+ 	
+</div>
+<script type="text/javascript">
+
+Ajax.Responders.register({
+    onComplete: function(request) {
+
+        if (request.url.indexOf('popup/form/page/index/betalive/suppressbeta/true') >= 0) {
+
+			 document.location.href = request.transport.responseText;
+        }
+    }
+});
+
+</script>
+
+
+<script type="text/javascript">
+	
+	
+	var $j = jQuery.noConflict();
+    
+    	$j(document).ready(function () {
+			init();
+			
+			$j('.popup-next').each(function(index) {
+				$j(this).click(function() {
+					var left = parseInt($j("#popup-slide").css("margin-left"));
+					$j('#popup-slide').animate({
+						marginLeft: left - 790},
+						{
+						duration:  200,
+						easing: 'easeInExpo'
+					});
+					var name = $j(this).attr('id');
+					var delay = function() { doFade(name); };
+					setTimeout(delay,200);
+				});
+			});
+			
+			$j('.popup-prev').click(function() {
+				$j(this).click(function() {
+					var left = parseInt($j("#popup-slide").css("margin-left"));
+					$j('#popup-slide').animate({
+						marginLeft: left + 790},
+						{
+						duration:  200,
+						easing: 'easeInExpo'
+						});
+				});
+			});
+	
+	
+		});
+		
+	function init() {
+
+		$j(".fadein").each(function(){
+		    $j(this).css('opacity','0');
+/* 		    $j(this).data("visible","false"); */
+		  });
+		
+		var counter = 0;
+		var obj = $j("#popup-slide").children("ul").children("li").eq(0);
+		var numFades = $j(obj).find(".fadein").size();
+		var target;
+		timer1 = setInterval(function() {
+			if(counter >= numFades) { 
+				clearInterval(timer1);
+			 }
+			 else {
+			 	target = jQuery(obj).find(".fadein").eq(counter);
+			 	startFade(target);
+				counter++;
+			 }
+		}, 200);
+		
+	}
+
+</script>
+
+
+
+<?php endif; ?>

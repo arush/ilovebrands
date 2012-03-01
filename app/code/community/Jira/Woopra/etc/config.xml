@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Woopra plugin for Magento 
+ *
+ * @category    design_default
+ * @package     Jira_Woopra
+ * @author      Yireo
+ * @copyright   Copyright (c) 2009 Yireo (http://www.yireo.com/)
+ * @license     Open Software License
+ */
+-->
+<config>
+    <modules>
+        <Jira_Woopra>
+            <version>1.0.7</version>
+        </Jira_Woopra>
+    </modules>
+
+    <global>
+        <blocks>
+            <woopra>
+                <class>Jira_Woopra_Block</class>
+            </woopra>
+        </blocks>
+        <helpers>
+            <woopra>
+                <class>Jira_Woopra_Helper</class>
+            </woopra>
+        </helpers>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <woopra>
+                    <file>woopra.xml</file>
+                </woopra>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <woopra translate="title" module="woopra">
+                                            <title>Woopra</title>
+                                        </woopra>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>
