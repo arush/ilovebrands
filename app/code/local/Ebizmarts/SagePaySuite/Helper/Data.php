@@ -14,7 +14,47 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_ccCards = array();
     protected $_sageMethods = array('sagepayserver', 'sagepayserver_moto',
 									'sagepaydirectpro', 'sagepaydirectpro_moto',
-									'sagepaypaypal', 'sagepayform');
+									'sagepaypaypal', 'sagepayform', 'sagepayrepeat');
+
+	/**
+	 * Return module User-Agent string
+	 * @return string User agent
+	 */
+	public function getUserAgent()
+	{
+		$v = (string)Mage::getConfig()->getNode('modules/Ebizmarts_SagePaySuite/version');
+		return "Ebizmarts/SagePaySuite (v{$v})";
+	}
+
+	public function voidTransaction($vendorTxCode, $integration)
+	{
+		$trn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
+				->loadByVendorTxCode($vendorTxCode);
+
+		if( ($integration == 'sagepayserver') && !$trn->getTxAuthNo() ){
+			$trn->setTxAuthNo(Mage::app()->getRequest()->getParam('TxAuthNo'));
+		}
+
+		Mage::getModel('sagepaysuite/api_payment')
+												->setMcode($integration)
+												->voidPayment($trn);
+	}
+
+	/**
+	 * Cancel a Magento order based on Sage Pay transaction object
+	 *
+	 * @param  Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction $transaction
+	 * @return null|Mage_Sales_Model_Order
+	 */
+	public function cancelTransaction(Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction $transaction)
+	{
+		$orderId = $transaction->getOrderId();
+		if(!$orderId){
+			return;
+		}
+		$order = Mage::getModel('sales/order')->load($orderId);
+		return $order->cancel();
+	}
 
 	public function mageVersionIs($version)
 	{
@@ -93,7 +133,7 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::helper('core/http')->getServerAddr() == '127.0.0.1';
     }
 
-    public function orfanTransactionsFlag()
+    public function orphanTransactionsFlag()
     {
         /**
          * Show only transactions that are not VOIDED
@@ -104,14 +144,14 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
          * account, across to your merchant account.  The bank will charge you for this
          * process, the exact amount depending on the type of card and the details of your mechant agreement.
          */
-    	return (bool)Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrfans()->getSize();
+    	return (bool)Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrphans()->getSize();
     }
 
-    public function orfanOKTransactionsFlag()
+    public function orphanOKTransactionsFlag()
     {
         $okOrhpans = false;
 
-        $trns = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrfans();
+        $trns = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrphans();
         if($trns->getSize()){
 			foreach($trns as $trn){
 				#if($trn->getStatus() == 'OK'){
@@ -246,7 +286,7 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
             if($quoteID){
                 try {
                     Mage::getModel('sales/quote')->load($quoteID)->setIsActive(false)
-                    ->delete();
+                    ->save();
                 } catch(Exception $e) {
                     Mage::logException($e);
                 }
@@ -273,6 +313,151 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
 		$paypal     = Mage::getStoreConfigFlag('payment/sagepaypaypal/active');
 
 		return ($server || $serverMoto || $directMoto || $direct || $form || $paypal);
+	}
+
+	public function logprofiler($action)
+	{
+		$suiteLogPath = Mage::getBaseDir('var') . DS . 'log' . DS . 'SagePaySuite';
+		$profilerPath = $suiteLogPath . DS . 'PROFILER';
+
+        if (!is_dir($suiteLogPath)) {
+            mkdir($suiteLogPath, 0777);
+        }
+		if (!is_dir($profilerPath)) {
+			mkdir($profilerPath, 0777);
+		}
+
+		$timers = Varien_Profiler::getTimers();
+
+		$request = $action->getRequest();
+		$prefix = $request->getParam('VPSTxId', $request->getParam('vtxcode', null));
+		$prefix = ($prefix ? $prefix . '_' : '');
+
+		$longest = 0;
+		$rows = array();
+		foreach ($timers as $name=>$timer) {
+
+		    $sum = Varien_Profiler::fetch($name,'sum');
+		    $count = Varien_Profiler::fetch($name,'count');
+		    $realmem = Varien_Profiler::fetch($name,'realmem');
+		    $emalloc = Varien_Profiler::fetch($name,'emalloc');
+		    if ($sum<.0010 && $count<10 && $emalloc<10000) {
+				continue;
+		    }
+
+		    $rows []= array((string)$name, (string)number_format($sum, 4), (string)$count, (string)number_format($emalloc), (string)number_format($realmem));
+		    $thislong = strlen($name);
+		    if($thislong > $longest){
+		    	$longest = $thislong;
+		    }
+
+		}
+
+		//Create table
+		$table = new Zend_Text_Table(array('columnWidths' => array($longest, 10, 6, 12, 12), 'decorator'=>'ascii'));
+
+		//Memory
+		$preheader = new Zend_Text_Table_Row();
+		$real = memory_get_usage(true);
+		$emalloc = memory_get_usage();
+		$preheader->appendColumn(new Zend_Text_Table_Column('real Memory usage: '.$real .' '. ceil($real/1048576) .'MB', 'center', 1));
+		$preheader->appendColumn(new Zend_Text_Table_Column('emalloc Memory usage: '.$emalloc .' '. ceil($emalloc/1048576) .'MB', 'center', 4));
+		$table->appendRow($preheader);
+
+		//Append Header
+		$header = new Zend_Text_Table_Row();
+		$header->appendColumn(new Zend_Text_Table_Column('Code Profiler', 'center'));
+		$header->appendColumn(new Zend_Text_Table_Column('Time', 'center'));
+		$header->appendColumn(new Zend_Text_Table_Column('Cnt', 'center'));
+		$header->appendColumn(new Zend_Text_Table_Column('Emalloc', 'center'));
+		$header->appendColumn(new Zend_Text_Table_Column('RealMem', 'center'));
+		$table->appendRow($header);
+
+		foreach($rows as $row){
+			$table->appendRow($row);
+		}
+
+		//SQL profile
+		$dbprofile = print_r(Varien_Profiler::getSqlProfiler(Mage::getSingleton('core/resource')->getConnection('core_write')), TRUE);
+		$dbprofile = substr($dbprofile, 0, -4);
+		$dbprofile = str_replace('<br>', "\n", $dbprofile);
+
+		$preheaderlabel = new Zend_Text_Table_Row();
+		$preheaderlabel->appendColumn(new Zend_Text_Table_Column('DATABASE', 'center', 5));
+		$table->appendRow($preheaderlabel);
+		$preheader = new Zend_Text_Table_Row();
+		$preheader->appendColumn(new Zend_Text_Table_Column($dbprofile, 'left', 5));
+		$table->appendRow($preheader);
+
+		//Request
+		$rqlabel = new Zend_Text_Table_Row();
+		$rqlabel->appendColumn(new Zend_Text_Table_Column('REQUEST', 'center', 5));
+		$table->appendRow($rqlabel);
+		$inforqp = new Zend_Text_Table_Row();
+		$inforqp->appendColumn(new Zend_Text_Table_Column($this->_filterRequest($request), 'left', 5));
+		$table->appendRow($inforqp);
+
+		$date = Mage::getModel('core/date')->date('Y-m-d\.H-i-s');
+
+		$file = new SplFileObject($profilerPath . DS . $prefix . $date . '_' . $action->getFullActionName() . '.txt', 'w');
+		$file->fwrite($table);
+	}
+
+	/**
+	 * Filter sensitive data on REQUEST
+	 *
+	 * @param Mage_Core_Controller_Request_Http $request
+	 * @return array
+	 */
+	protected function _filterRequest($request)
+	{
+		$request = print_r($request, TRUE);
+
+		$patterns = array();
+		$patterns[0] = '/\[cc_number\] \=\> [0-9+](.*)/';
+		$patterns[1] = '/\[cc_cid\] \=\> [0-9+](.*)/';
+		$replacements = array();
+		$replacements[2] = '[cc_number] => XXXXXXXXXXXXX';
+		$replacements[1] = '[cc_cid] => XXX';
+
+		return preg_replace($patterns, $replacements, $request);
+	}
+
+	public function validateQuote()
+	{
+		$quote = Mage::getSingleton('sagepaysuite/api_payment')->getQuote();
+
+        if ($quote->getIsMultiShipping()) {
+            Mage::throwException($this->__('Invalid checkout type.'));
+        }
+
+        if (!$quote->isVirtual()) {
+            $address = $quote->getShippingAddress();
+            $addressValidation = $address->validate();
+            if ($addressValidation !== true) {
+                Mage::throwException($this->__("\nPlease check shipping address information. \n%s", implode("\n", $addressValidation)));
+            }
+            $method= $address->getShippingMethod();
+            $rate  = $address->getShippingRateByCode($method);
+            if (!$quote->isVirtual() && (!$method || !$rate)) {
+                Mage::throwException($this->__('Please specify shipping method.'));
+            }
+        }
+
+        $addressValidation = $quote->getBillingAddress()->validate();
+        if ($addressValidation !== true) {
+            Mage::throwException($this->__("\nPlease check billing address information. \n%s", implode("\n", $addressValidation)));
+        }
+
+        if (!($quote->getPayment()->getMethod())) {
+            Mage::throwException($this->__('Please select valid payment method.'));
+        }
+
+	}
+
+	public function moneyFormat($number)
+	{
+		return number_format($number, 2, '.', '');
 	}
 
 }

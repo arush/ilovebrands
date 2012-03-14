@@ -19,7 +19,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
      * Availability options
      */
     protected $_isGateway               = true;
-    protected $_canAuthorize            = false;
+    protected $_canAuthorize            = true;
     protected $_canCapture              = true;
     protected $_canCapturePartial       = true;
     protected $_canRefund               = true;
@@ -167,7 +167,12 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
 		}
 
 		if ($data['DeliveryCountry'] == 'US') {
-			$data['DeliveryState'] = $shipping->getRegionCode();
+			if($quoteObj->getIsVirtual()){
+				$data['DeliveryState'] = $billing->getRegionCode();
+			}else{
+				$data['DeliveryState'] = $shipping->getRegionCode();
+			}
+
 		}
 		if ($data['BillingCountry'] == 'US') {
 			$data['BillingState'] = $billing->getRegionCode();
@@ -180,7 +185,13 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
 		}
 
 		$data['AllowGiftAid'] = (int)$this->getConfigData('allow_gift_aid');
-		$data['ApplyAVSCV2'] = $this->getConfigData('avscv2');
+		$data['ApplyAVSCV2']  = $this->getConfigData('avscv2');
+        $data['SendEMail']    = (int)$this->getConfigData('send_email');
+
+        $vendorEmail = (string)$this->getConfigData('vendor_email');
+        if($vendorEmail){
+			$data['VendorEMail']  = $vendorEmail;
+        }
 
 		$dataToSend = '';
 		foreach($data as $field => $value) {
@@ -189,7 +200,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
 			}
 		}
 
-		Sage_Log::log($data);
+		Sage_Log::log($data, null, 'SagePaySuite_REQUEST.log');
 
 		$trn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
             ->loadByVendorTxCode($data['VendorTxCode'])
@@ -206,4 +217,13 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
 
 		return $dataCrypt;
 	}
+
+    public function capture(Varien_Object $payment, $amount)
+    {
+        #Process invoice
+        if(!$payment->getRealCapture()){
+            return $this->captureInvoice($payment, $amount);
+        }
+    }
+
 }

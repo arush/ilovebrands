@@ -10,7 +10,29 @@
 			</action>
 		</reference>
 	</popup_sagepay>
-	<sagepaysuite_adminhtml_transaction_orfan>
+    <adminhtml_customer_edit>
+    	<reference name="head">
+			<action method="addItem">
+				<type>skin_css</type>
+				<name>sagepaysuite/css/sagePaySuite.css</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/livepipe.js</name>
+			</action>
+			<action method="addItem">
+				<type>js</type>
+				<name>sagepaysuite/livepipe/window.js</name>
+			</action>
+    	</reference>
+        <reference name="customer_edit_tabs">
+            <action method="addTab">
+            	<name>customer_edit_tab_sagepay_tokens</name>
+            	<block>sagepaysuite/adminhtml_customer_edit_tab_token</block>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+	<sagepaysuite_adminhtml_transaction_orphan>
 		<reference name="head">
 			<action method="addItem">
 				<type>skin_css</type>
@@ -29,7 +51,7 @@
 				<name>sagepaysuite/livepipe/window.js</name>
 			</action>
 		</reference>
-	</sagepaysuite_adminhtml_transaction_orfan>
+	</sagepaysuite_adminhtml_transaction_orphan>
 	<sagepaysuite_adminhtml_log_index>
 		<reference name="head">
 			<action method="addItem">
@@ -48,6 +70,14 @@
 			</block>
 		</reference>
 	</sagepaysuite_adminhtml_log_index>
+	<sagepaysuite_adminhtml_repeatpayment_index>
+		<reference name="head">
+			<action method="addItem">
+				<type>skin_js</type>
+				<name>sagepaysuite/js/sagePaySuite.js</name>
+			</action>
+		</reference>
+	</sagepaysuite_adminhtml_repeatpayment_index>
 	<sagepayreporting_adminhtml_sagepayreporting_transactiondetailmodal>
 		<reference name="head">
 			<action method="addItem">

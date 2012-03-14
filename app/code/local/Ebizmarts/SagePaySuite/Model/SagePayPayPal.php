@@ -48,10 +48,4 @@ class Ebizmarts_SagePaySuite_Model_SagePayPayPal extends Mage_Payment_Model_Meth
         return Mage::getUrl('sgps/paypalexpress/go', array('_secure' => true));
     }
 
-    public function getTitle()
-    {
-    	return '<img src="'.Mage::getModel('core/design_package')->getSkinUrl('sagepaysuite/images/paypal-mark.gif').'" alt="'.Mage::helper('sagepaysuite')->__('PayPal').'" class="v-middle" />&nbsp;
-<a href="https://www.paypal.com/uk/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside" onclick="javascript:window.open(\'https://www.paypal.com/uk/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside\',\'olcsagepaywhatispaypal\',\'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=0, top=0, width=400, height=350\'); return false;">'.Mage::helper('sagepaysuite')->__('What is PayPal?').'</a>';
-    }
-
 }

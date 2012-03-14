@@ -69,6 +69,7 @@ class Ebizmarts_SagePaySuite_FormPaymentController extends Mage_Core_Controller_
     private function _initCheckout()
     {
         $quote = $this->_getQuote();
+
         if (!$quote->hasItems() || (int)$this->getFormModel()->getConfigData('active') !== 1) {
             $this->getResponse()->setHeader('HTTP/1.1','403 Forbidden');
             Mage::throwException(Mage::helper('sagepaysuite')->__('Unable to initialize FORM Checkout.'));
@@ -101,6 +102,8 @@ class Ebizmarts_SagePaySuite_FormPaymentController extends Mage_Core_Controller_
 	{
 		$_r = $this->getRequest();
 
+		Sage_Log::log($_r->getPost(), null, 'SagePaySuite_FORM_Callback.log');
+
 		if($_r->getParam('crypt') && $_r->getParam('vtxc')){
 
 			$strDecoded = $this->getFormModel()->decrypt($_r->getParam('crypt'));
@@ -112,13 +115,26 @@ class Ebizmarts_SagePaySuite_FormPaymentController extends Mage_Core_Controller_
 
 			# Add data to DB transaction
 			$trn = $this->_getTransaction()->loadByVendorTxCode($_r->getParam('vtxc'));
+
 			$trn->addData($db);
-			$trn->setPostcodeResult($db['post_code_result'])
-			->setCv2result($db['cv2_result'])
-			->setThreedSecureStatus($db['3_d_secure_status'])
-			->setLastFourDigits($db['last4_digits'])
-			->setGiftAid($db['gift_aid'])
-			->save();
+
+			if(isset($db['post_code_result'])){
+				$trn->setPostcodeResult($db['post_code_result']);
+			}
+			if(isset($db['cv2_result'])){
+				$trn->setCv2result($db['cv2_result']);
+			}
+			if(isset($db['3_d_secure_status'])){
+				$trn->setThreedSecureStatus($db['3_d_secure_status']);
+			}
+			if(isset($db['last4_digits'])){
+				$trn->setLastFourDigits($db['last4_digits']);
+			}
+			if(isset($db['gift_aid'])){
+				$trn->setGiftAid($db['gift_aid']);
+			}
+
+			$trn->save();
 
 			Mage::register('sageserverpost', new Varien_Object($token));
 
@@ -161,3 +177,4 @@ class Ebizmarts_SagePaySuite_FormPaymentController extends Mage_Core_Controller_
 		return;
 	}
 }
+

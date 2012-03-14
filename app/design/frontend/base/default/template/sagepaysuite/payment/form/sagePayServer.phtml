@@ -24,6 +24,13 @@
 	            ?>
 	        </span>
 	    </li>
-	</ul>
 
+	<?php if($this->canUseToken()): ?>
+		<li<?php echo $sageStyle; ?>>
+			<label for="remembertoken-<?php echo $_code; ?>"><?php echo $this->__('Do you wish to have your credit card details remembered for faster checkout next time?'); ?></label>&nbsp;
+			<input checked="checked" type="checkbox" name="payment[remembertoken]" value="" id="remembertoken-<?php echo $_code; ?>" />
+		</li>
+	<?php endif; ?>
+
+	</ul>
 </div>

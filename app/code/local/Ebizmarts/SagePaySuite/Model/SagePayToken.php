@@ -79,12 +79,17 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 
 	protected function _getNotificationUrl()
 	{
-	  return Mage::getUrl('sgps/card/registerPost', array('_secure'=>true, '_nosid'=>true))  . '?' . $this->getSidParam();
+		$adminId = Mage::registry('admin_tokenregister');
+
+		$frontendUrl = Mage::getUrl('sgps/card/registerPost', array('_secure'=>true, '_nosid'=>true))  . '?' . $this->getSidParam();
+		$backendUrl  = Mage::getModel('adminhtml/url')->addSessionParam()->getUrl('sgpsSecure/adminhtml_token/registerPost', array('cid' => $adminId, 'form_key' => Mage::getSingleton('core/session')->getFormKey()));
+
+	    return ($adminId ? $backendUrl : $frontendUrl);
 	}
 
-	public function removeCard($token)
+	public function removeCard($token, $protocol = 'direct')
 	{
-		return $this->_postRemove($token);
+		return $this->_postRemove($token, $protocol);
 	}
 
 	public function tokenTransaction(Varien_Object $info)
@@ -101,7 +106,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 
 	  $postData                   = array();
 	  $postData                  += $this->_getGeneralTrnData($info->getPayment())->getData();
-	  $postData['vendortxcode']   = $postData['vendor_tx_code'];
+	  $postData['vendortxcode']   = substr($postData['vendor_tx_code'], 0, 40);
 	  $postData['txtype']         = $info->getPayment()->getTransactionType();
 	  $postData['InternalTxtype'] = $postData['txtype'];
 	  $postData['token']          = $_t->getToken();
@@ -112,6 +117,10 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 
 	  if(array_key_exists('integration', $postData) && strtolower($postData['integration']) == 'server'){
 	  	$postData['Profile'] = 'LOW';
+	  }
+
+	  if(isset($postData['c_v2']) && empty($postData['CV2'])){
+	  	$postData['CV2'] = $postData['c_v2'];
 	  }
 
 	  self::log($postData);
@@ -154,7 +163,17 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 	  $postData['VPSProtocol']      = $this->getVpsProtocolVersion();
 	  $postData['TxType']           = 'TOKEN';
       $postData['Vendor']           = $this->getConfigData('vendor');
-	  $postData['Currency']    	    = Mage::app()->getStore()->getCurrentCurrencyCode();
+
+	  if( $this->_getQuote()->hasItems() ){//Checkout
+		  if((string)$this->getConfigData('trncurrency') == 'store'){
+			$postData['Currency'] = $this->_getQuote()->getQuoteCurrencyCode();
+		  }else{
+		  	$postData['Currency'] = $this->_getQuote()->getBaseCurrencyCode();
+		  }
+	  }else{//Customer account
+		  $postData['Currency'] = Mage::app()->getStore()->getCurrentCurrencyCode();
+	  }
+
 	  $postData['VendortxCode']  	= $this->getNewTxCode();
 	  $postData['NotificationURL']	= $this->_getNotificationUrl();
 
@@ -189,7 +208,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 		return (bool)(Mage::getStoreConfig('payment/sagepaysuite/token_integration') != 'false');
 	}
 
-	protected function _postRemove($token)
+	protected function _postRemove($token, $protocol)
 	{
 		$rqData = array();
 		$rqData['VPSProtocol'] = $this->getVpsProtocolVersion();
@@ -197,7 +216,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 		$rqData['Vendor']      = $this->getConfigData('vendor');
 		$rqData['Token']       = $token;
 
-	  return $this->requestPost($this->getTokenUrl('removecard', 'direct'), $rqData);
+	  return $this->requestPost($this->getTokenUrl('removecard', $protocol), $rqData);
 	}
 
 }

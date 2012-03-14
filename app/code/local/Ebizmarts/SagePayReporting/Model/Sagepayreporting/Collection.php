@@ -1,7 +1,7 @@
 <?php
 
 class Ebizmarts_SagePayReporting_Model_Sagepayreporting_Collection
-	extends Varien_Data_Collection
+extends Varien_Data_Collection
 {
 
 	protected $_relatedTransactions = null;
@@ -39,13 +39,13 @@ class Ebizmarts_SagePayReporting_Model_Sagepayreporting_Collection
 			return $this;
 		}
 
-        foreach ($this->_relatedTransactions as $row) {
-            $item = new Varien_Object;
-            $item->addData($row);
-            $this->addItem($item);
-        }
+		foreach ($this->_relatedTransactions as $row) {
+			$item = new Varien_Object;
+			$item->addData($row);
+			$this->addItem($item);
+		}
 
-        $this->_setIsLoaded();
+		$this->_setIsLoaded();
 
 		return $this;
 	}

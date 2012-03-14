@@ -47,7 +47,6 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 		$pdata ['TxType']= 'COMPLETE';
 		$pdata ['VPSTxId']= $request['VPSTxId'];
 
-		//$pdata ['Amount']= number_format($quote->getGrandTotal(), 2, '.', '');
 		if((string)$this->getConfigData('trncurrency') == 'store'){
         	$pdata ['Amount']= number_format($quote->getGrandTotal(), 2, '.', '');
         }else{
@@ -60,26 +59,27 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 			$pdata ['Accept']= 'NO';
 		}
 
-		$_res  = $this->requestPost($this->getUrl('paypalcompletion'), $pdata);
+		$mode = Mage::getModel('sagepaysuite/sagePayPayPal')->getConfigData('mode');
+		$_res  = $this->requestPost($this->getUrl('paypalcompletion', false, null, $mode), $pdata);
 
 		$vtx = $this->getSageSuiteSession()->getLastVendorTxCode();
 		$saveData = Mage::helper('sagepaysuite')->arrayKeysToUnderscore($_res);
 
 		if($_res['Status'] == 'OK'){
-		Mage::getModel('sagepaysuite2/sagepaysuite_paypaltransaction')
-		->loadByVendorTxCode($vtx)
-		->addData($saveData)
-		->setVpsTxId($_res['VPSTxId'])
-		->setTrndate(Mage::getModel('sagepaysuite/api_payment')->getDate())
-		->save();
+			Mage::getModel('sagepaysuite2/sagepaysuite_paypaltransaction')
+			->loadByVendorTxCode($vtx)
+			->addData($saveData)
+			->setVpsTxId($_res['VPSTxId'])
+			->setTrndate(Mage::getModel('sagepaysuite/api_payment')->getDate())
+			->save();
 
-		Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
-		->loadByVendorTxCode($vtx)
-		->addData($saveData)
-		->setPostcodeResult($_res['PostCodeResult'])
-		->setVpsTxId($_res['VPSTxId'])
-		->setThreedSecureStatus($_res['3DSecureStatus'])
-		->save();
+			Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
+			->loadByVendorTxCode($vtx)
+			->addData($saveData)
+			->setPostcodeResult($_res['PostCodeResult'])
+			->setVpsTxId($_res['VPSTxId'])
+			->setThreedSecureStatus($_res['3DSecureStatus'])
+			->save();
 
 
 			$this->getSageSuiteSession()->setInvoicePayment(true);
@@ -87,7 +87,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 			Mage::throwException($_res['StatusDetail']);
 		}
 
-		Ebizmarts_SagePaySuite_Log::w($_res);
+		Sage_Log::log($_res);
 
 		return $_res;
 	}
@@ -130,12 +130,23 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 
     /**
      * Register DIRECT transation.
+     *
+     * @param array $params
+     * @param bool $onlyToken
+     * @param float $macOrder MAC single order
      */
-     public function registerTransaction($params = null, $onlyToken = false)
+     public function registerTransaction($params = null, $onlyToken = false, $macOrder = null)
      {
         $quoteObj = $this->_getQuote();
 
-        $amount = number_format($quoteObj->getGrandTotal(), 2, '.', '');
+		if(is_null($macOrder)){
+			$amount = $this->_sageHelper()->moneyFormat($quoteObj->getGrandTotal());
+		}else{
+			$amount = $this->_sageHelper()->moneyFormat($macOrder->getGrandTotal());
+			$baseAmount = $this->_sageHelper()->moneyFormat($macOrder->getBaseGrandTotal());
+			$quoteObj->setMacAmount($amount);
+			$quoteObj->setBaseMacAmount($baseAmount);
+		}
 
 		if(!is_null($params)){
 			$payment = $this->_getBuildPaymentObject($quoteObj, $params);
@@ -443,6 +454,13 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 			$request->setData('GiftAidPayment', 1);
 		}
 
+        if(!$request->getDeliveryPostCode()){
+        	$request->setDeliveryPostCode('000');
+        }
+        if(!$request->getBillingPostCode()){
+        	$request->setBillingPostCode('000');
+        }
+
         return $request;
     }
 
@@ -745,11 +763,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
         $this->getSageSuiteSession()->setMd($md);
 
 		$quote = Mage::getSingleton('checkout/type_onepage')->getQuote();
-
-		$this->directCallBack3D($quote->getPayment(), $pares, $md);
-
-		$quote->collectTotals();
-		$order = Mage::getSingleton('checkout/type_onepage')->saveOrder();
+		$order = $this->directCallBack3D($quote->getPayment(), $pares, $md);
 
         $this->getSageSuiteSession()
                                              ->setAcsurl(null)
@@ -823,3 +837,4 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
     }
 
 }
+

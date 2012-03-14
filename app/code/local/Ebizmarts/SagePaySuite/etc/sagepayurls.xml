@@ -47,6 +47,7 @@
             <directpost><![CDATA[https://test.sagepay.com/gateway/service/vspdirect-register.vsp]]></directpost>
         </test>
         <live>
+			<serverremovecard><![CDATA[https://live.sagepay.com/gateway/service/removetoken.vsp]]></serverremovecard>
             <directremovecard><![CDATA[https://live.sagepay.com/gateway/service/removetoken.vsp]]></directremovecard>
             <serverregister><![CDATA[https://live.sagepay.com/gateway/service/token.vsp]]></serverregister>
             <directregister><![CDATA[https://live.sagepay.com/gateway/service/directtoken.vsp]]></directregister>

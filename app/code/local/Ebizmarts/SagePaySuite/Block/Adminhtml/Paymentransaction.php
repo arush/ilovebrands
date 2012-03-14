@@ -25,7 +25,7 @@ class Ebizmarts_SagePaySuite_Block_Adminhtml_Paymentransaction extends Mage_Admi
 
     public function getHeaderCssClass()
     {
-        return 'icon-head head-adminhtml-sagepayorfantrns';
+        return 'icon-head head-adminhtml-sagepayorphantrns';
     }
 
 }

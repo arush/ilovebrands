@@ -39,15 +39,15 @@ class Ebizmarts_SagePayReporting_Model_Cron
 					# Update Thirdman score on DB
 					Mage::getModel('sagepayreporting/fraud')->updateThirdMan($_order->getId(), $rs);
 
-					$dbtrn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->loadByVendorTxCode($_order->getSagepayInfo()->getVendorTxCode());
+				$dbtrn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->loadByVendorTxCode($_order->getSagepayInfo()->getVendorTxCode());
 
-					$canAuthorise = ($dbtrn->getTxType() == 'AUTHENTICATE' && !$dbtrn->getAuthorised());
-					$canRelease = ($dbtrn->getTxType() == 'DEFERRED' && !$dbtrn->getReleased());
-					$rank = ( $this->_getCanRank() && ($this->_getRank() <= (int)$rs->getT3mscore()) );
+				$canAuthorise = ($dbtrn->getTxType() == 'AUTHENTICATE' && !$dbtrn->getAuthorised());
+				$canRelease = ($dbtrn->getTxType() == 'DEFERRED' && !$dbtrn->getReleased());
+				$rank = ( $this->_getCanRank() && ($this->_getRank() <= (int)$rs->getT3mscore()) );
 
-					if(($canAuthorise || $canRelease) && $rank){
-						Mage::getModel('sagepaysuite/api_payment')->invoiceOrder($_order->getId(), Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
-					}
+				if(($canAuthorise || $canRelease) && $rank){
+					Mage::getModel('sagepaysuite/api_payment')->invoiceOrder($_order->getId(), Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+				}
 
 				}
 				/**

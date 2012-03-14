@@ -18,9 +18,7 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
         'DeliveryState'    => 'region',
         'DeliveryCity'     => 'city',
         'DeliveryAddress1'   => 'street',
-        'DeliveryAddress2'  => 'street2',
-        'DeliveryPostCode'      => 'postcode',
-        'DeliveryPhone' => 'telephone',
+        'DeliveryPostCode'      => 'postcode'
     );
 
     /**
@@ -136,6 +134,7 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
      */
     public function start()
     {
+
         $this->_quote->collectTotals();
         $this->_quote->reserveOrderId()->save();
 
@@ -164,21 +163,32 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
 		$billingAddress = $this->_quote->getBillingAddress();
         $baddressValidation = $billingAddress->validate();
         if ($baddressValidation !== true) {
-
 			foreach ($this->_billingAddressMap as $key=>$value) {
-            	$billingAddress->setDataUsingMethod($value, mb_convert_encoding($paypalData->getPost($key), 'UTF-8', 'ISO-8859-15'));
+
+				$arvalue = $paypalData->getPost($key);
+				if( $value == 'street' ){
+					$arvalue = $paypalData->getPost('DeliveryAddress1') ."\n". $paypalData->getPost('DeliveryAddress2');
+				}
+
+            	$billingAddress->setDataUsingMethod($value, mb_convert_encoding($arvalue, 'UTF-8', 'ISO-8859-15'));
         	}
 
         }
 
         // import shipping address
-        if (!$this->_quote->getIsVirtual()) {
+        if (!$this->_quote->getIsVirtual() && ($paypalData->getPost('AddressStatus') != 'NONE') ) {
             $shippingAddress = $this->_quote->getShippingAddress();
             if ($shippingAddress) {
                     foreach ($this->_billingAddressMap as $key=>$value) {
-                        $shippingAddress->setDataUsingMethod($value, mb_convert_encoding($paypalData->getPost($key), 'UTF-8', 'ISO-8859-15'));
+
+						$arvalue = $paypalData->getPost($key);
+						if( $value == 'street' ){
+							$arvalue = $paypalData->getPost('DeliveryAddress1') ."\n". $paypalData->getPost('DeliveryAddress2');
+						}
+
+                        $shippingAddress->setDataUsingMethod($value, mb_convert_encoding($arvalue, 'UTF-8', 'ISO-8859-15'));
                     }
-                    $shippingAddress->setCollectShippingRates(true)->collectShippingRates();
+                    $this->_quote->getShippingAddress()->setCollectShippingRates(true);
             }
         }
         $this->_ignoreAddressValidation();
@@ -214,7 +224,8 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
     public function prepareOrderReview()
     {
         $payment = $this->_quote->getPayment();
-        if (!$payment || !$this->_quote->getBillingAddress()->getEmail()) {
+
+        if (!$payment || (!$this->_quote->getCustomerEmail())) {
             Mage::throwException(Mage::helper('sagepaysuite')->__('Payer is not identified.'));
         }
         $this->_ignoreAddressValidation();
@@ -276,17 +287,118 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
     }
 
     /**
+     * Prepare quote for customer registration and customer order submit
+     *
+     * @return Mage_Checkout_Model_Type_Onepage
+     */
+    protected function _prepareNewCustomerQuote()
+    {
+        $quote      = $this->_quote;
+        $billing    = $quote->getBillingAddress();
+        $shipping   = $quote->isVirtual() ? null : $quote->getShippingAddress();
+
+        //$customer = Mage::getModel('customer/customer');
+        $customer = $quote->getCustomer();
+        /* @var $customer Mage_Customer_Model_Customer */
+        $customerBilling = $billing->exportCustomerAddress();
+        $customer->addAddress($customerBilling);
+        $billing->setCustomerAddress($customerBilling);
+        $customerBilling->setIsDefaultBilling(true);
+        if ($shipping && !$shipping->getSameAsBilling()) {
+            $customerShipping = $shipping->exportCustomerAddress();
+            $customer->addAddress($customerShipping);
+            $shipping->setCustomerAddress($customerShipping);
+            $customerShipping->setIsDefaultShipping(true);
+        } else {
+            $customerBilling->setIsDefaultShipping(true);
+        }
+
+        Mage::helper('core')->copyFieldset('checkout_onepage_quote', 'to_customer', $quote, $customer);
+        $customer->setPassword($customer->decryptPassword($quote->getPasswordHash()));
+        $customer->setPasswordHash($customer->hashPassword($customer->getPassword()));
+        $quote->setCustomer($customer)
+            ->setCustomerId(true);
+    }
+
+    /**
+     * Involve new customer to system
+     *
+     * @return Mage_Checkout_Model_Type_Onepage
+     */
+    protected function _involveNewCustomer()
+    {
+        $customer = $this->_quote->getCustomer();
+        if ($customer->isConfirmationRequired()) {
+            $customer->sendNewAccountEmail('confirmation');
+            $url = Mage::helper('customer')->getEmailConfirmationUrl($customer->getEmail());
+            Mage::getSingleton('checkout/type_onepage')->getCustomerSession()->addSuccess(
+                Mage::helper('customer')->__('Account confirmation is required. Please, check your e-mail for confirmation link. To resend confirmation email please <a href="%s">click here</a>.', $url)
+            );
+        } else {
+            $customer->sendNewAccountEmail();
+            Mage::getSingleton('checkout/type_onepage')->getCustomerSession()->loginById($customer->getId());
+        }
+        return $this;
+    }
+
+    /**
      * Place the order and recurring payment profiles when customer returned from paypal
      * Until this moment all quote data must be valid
      */
     public function place()
     {
+		$isNewCustomer = false;
+        if( $this->_quote->getCheckoutMethod() == 'register' ){
 
-        if (!$this->_quote->getCustomerId()) {
+			$this->_prepareNewCustomerQuote();
+			$isNewCustomer = true;
+
+        }elseif ( !$this->_quote->getCustomerId() ) {
             $this->_quote->setCustomerIsGuest(true)
                 ->setCustomerGroupId(Mage_Customer_Model_Group::NOT_LOGGED_IN_ID)
                 ->setCustomerEmail($this->_quote->getBillingAddress()->getEmail());
         }
+		elseif($this->_quote->getCustomerId()) {
+			if (! $this->_quote->getBillingAddress()->getCustomerAddressId()) {
+				$billingAddress = Mage::getModel('customer/address');
+				$billingAddress->setData($this->_quote->getBillingAddress()->getData())
+							->setCustomerId($this->_quote->getCustomerId())
+							->setSaveInAddressBook('1')
+							->setIsDefaultBilling('1');
+
+				if ($this->_quote->getShippingAddress()->getData('same_as_billing')) {
+					$billingAddress->setIsDefaultShipping('1');
+				}
+				else {
+					$shippingAddress = Mage::getModel('customer/address');
+					$shippingAddress->setData($this->_quote->getShippingAddress()->getData())
+								->setCustomerId($this->_quote->getCustomerId())
+								->setSaveInAddressBook('1')
+								->setIsDefaultShipping('1');
+
+					$shippingAddress->save();
+				}
+				$billingAddress->save();
+			}
+			else {
+				if ($this->_quote->getBillingAddress()->getSaveInAddressBook()) {
+
+					$newAddress = Mage::getModel('customer/address');
+					$newAddress->setData($this->_quote->getBillingAddress()->getData())
+							->setCustomerId($this->_quote->getCustomerId())
+							->setSaveInAddressBook('1')
+							->save();
+				}
+				if ($this->_quote->getShippingAddress()->getSaveInAddressBook() && !$this->_quote->getShippingAddress()->getData('same_as_billing')) {
+
+					$newAddress = Mage::getModel('customer/address');
+					$newAddress->setData($this->_quote->getShippingAddress()->getData())
+							->setCustomerId($this->_quote->getCustomerId())
+							->setSaveInAddressBook('1')
+							->save();
+				}
+			}
+		}
 
         $this->_ignoreAddressValidation();
         $this->_quote->collectTotals();
@@ -297,6 +409,14 @@ class Ebizmarts_SagePaySuite_Model_Paypal_Checkout
         $service = Mage::getModel('sales/service_quote', $this->_quote);
         $service->submitAll();
         $this->_quote->save();
+
+        if ($isNewCustomer) {
+            try {
+                $this->_involveNewCustomer();
+            } catch (Exception $e) {
+                Mage::logException($e);
+            }
+        }
 
         $order = $service->getOrder();
         if (!$order) {

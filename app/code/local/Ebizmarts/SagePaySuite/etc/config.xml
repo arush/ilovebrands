@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Ebizmarts_SagePaySuite>
-            <version>1.0.34</version>
+            <version>1.1.7</version>
         </Ebizmarts_SagePaySuite>
     </modules>
     <adminhtml>
@@ -89,11 +89,15 @@
         <fieldsets>
         	<sales_convert_order_payment>
                 <cc_gift_aid><to_quote_payment>*</to_quote_payment></cc_gift_aid>
+                <remembertoken><to_quote_payment>*</to_quote_payment></remembertoken>
+                <repeat_code><to_quote_payment>*</to_quote_payment></repeat_code>
         	</sales_convert_order_payment>
             <sales_convert_quote_payment>
                 <sagepay_token_cc_id><to_order_payment>*</to_order_payment></sagepay_token_cc_id>
                 <save_token_cc><to_order_payment>*</to_order_payment></save_token_cc>
                 <cc_gift_aid><to_order_payment>*</to_order_payment></cc_gift_aid>
+                <remembertoken><to_order_payment>*</to_order_payment></remembertoken>
+                <repeat_code><to_quote_payment>*</to_quote_payment></repeat_code>
             </sales_convert_quote_payment>
         </fieldsets>
         <payment>
@@ -264,6 +268,7 @@
                 <connection_timeout>90</connection_timeout>
                 <max_token_card>6</max_token_card>
                 <logs>0</logs>
+                <profile_request>0</profile_request>
                 <vendor>testebizmarts</vendor>
                 <token_integration><![CDATA[false]]></token_integration>
                 <cms_index_logo>1</cms_index_logo>
@@ -275,6 +280,7 @@
                 <auto_fulfill_low_risk_trn>0</auto_fulfill_low_risk_trn>
                 <auto_fulfill_low_risk_trn_value>30</auto_fulfill_low_risk_trn_value>
                 <send_basket>1</send_basket>
+                <deferred_capture>0</deferred_capture>
             </sagepaysuite>
             <sagepaydirectpro>
                 <active>0</active>
@@ -365,6 +371,7 @@
             </sagepayserver_moto>
             <sagepayform>
             	<active>0</active>
+            	<send_email>1</send_email>
             	<payment_action>payment</payment_action>
             	<mode>test</mode>
             	<title>Sage Pay (FORM)</title>
@@ -379,6 +386,11 @@
             	<title>PayPal via SagePay</title>
             	<model>sagepaysuite/sagePayPayPal</model>
             </sagepaypaypal>
+            <sagepayrepeat>
+            	<active>0</active>
+            	<title>Repeat Payments</title>
+            	<model>sagepaysuite/sagePayRepeat</model>
+            </sagepayrepeat>
         </payment>
     </default>
     <frontend>
@@ -392,8 +404,11 @@
             </modules>
         </translate>
         <secure_url>
-            <sagepaysuite_payment>/sgps/payment</sagepaysuite_payment>
+            <sagepaysuite>/sgps/</sagepaysuite>
         </secure_url>
+        <!--<secure_url>
+            <sagepaysuite_payment>/sgps/payment</sagepaysuite_payment>
+        </secure_url>-->
         <routers>
             <sagepaysuite>
                 <use>standard</use>
@@ -443,6 +458,14 @@
                     </onepage_sagepay_clear_session>
                 </observers>
             </controller_action_predispatch_checkout_onepage_success>
+	        <checkout_onepage_controller_success_action>
+	           	<observers>
+	               <sagepay_deferred_capture>
+	                   <class>sagepaysuite/observer_checkout</class>
+	                   <method>deferredCapture</method>
+	               </sagepay_deferred_capture>
+	         	</observers>
+	        </checkout_onepage_controller_success_action>
             <core_layout_update_updates_get_after>
                 <observers>
                     <sagepaysuite_core_layout_update_updates_get_after>
@@ -485,6 +508,22 @@
                     </multishipping_sagepay_clear_session>
                 </observers>
             </controller_action_predispatch_checkout_multishipping_index_index>
+            <controller_action_predispatch>
+                <observers>
+                    <profilerequestpre>
+                        <class>sagepaysuite/observer</class>
+                        <method>profilePre</method>
+                    </profilerequestpre>
+                </observers>
+            </controller_action_predispatch>
+            <controller_action_postdispatch>
+                <observers>
+                    <profilerequestpost>
+                        <class>sagepaysuite/observer</class>
+                        <method>profilePost</method>
+                    </profilerequestpost>
+                </observers>
+            </controller_action_postdispatch>
         </events>
     </frontend>
     <admin>
@@ -499,3 +538,4 @@
         </routers>
     </admin>
 </config>
+

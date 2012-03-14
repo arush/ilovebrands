@@ -3,13 +3,18 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
+  <?php
+		$leftcontent = $this->getChildHtml('left');
+  ?>
 <body id="html-body"<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
 		<div class="middle" id="anchor-content">
         <div id="page:main-container">
           <div id="messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-          <div class="columns">
-          	<div class="side-col" id="page:left"><?php echo $this->getChildHtml('left') ?></div>
-          	<div class="main-col" id="content"><?php echo $this->getChildHtml('content') ?></div>
+          <div<?php if($leftcontent): ?> class="columns"<?php endif; ?>>
+          	<?php if($leftcontent): ?>
+          	<div class="side-col" id="page:left"><?php echo $leftcontent ?></div>
+          	<?php endif; ?>
+          	<div<?php if($leftcontent): ?> class="main-col"<?php endif; ?> id="content"><?php echo $this->getChildHtml('content') ?></div>
           </div>
          </div>
          </div>

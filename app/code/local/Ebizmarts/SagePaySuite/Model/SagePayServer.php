@@ -92,7 +92,6 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 
 	public function registerTransaction($params = null)
 	{
-
 		if ($this->_getIsAdmin()) {
 
 			$err = new Varien_Object;
@@ -110,7 +109,8 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 					if ((int) $this->_getAdminQuote()->getCustomerId() === 0) {
 
 						//Check if customer exists
-						$cs = Mage::getModel('customer/customer')->setWebsiteId(0)->loadByEmail($this->_getAdminQuote()->getCustomerEmail());
+						$cs = Mage::getModel('customer/customer')->setWebsiteId($this->_getAdminQuote()->getStore()->getWebsite()->getId())
+																 ->loadByEmail($this->_getAdminQuote()->getCustomerEmail());
 						if ($cs->getId()) {
 							$err['response_status_detail'] = $this->_sageHelper()->__('Customer already exists.');
 						}
@@ -122,7 +122,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 			}
 		}
 
-		$this->_getSagePayServerSession()->setRemoteAddr($_SERVER['REMOTE_ADDR']);
+		$this->_getSagePayServerSession()->setRemoteAddr($this->getClientIp());
 
 
         $quoteObj = $this->_getQuote();
@@ -297,17 +297,6 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 		$billing = $quoteObj->getBillingAddress();
 		$shipping = $quoteObj->getShippingAddress();
 
-		/*if($this->_isMultishippingCheckout()){
-
-			foreach($shipping->getTotals() as $t){
-				if ($t->getCode() == 'grand_total') {
-					$msGrandTotal = $t->getValue();
-					break;
-				}
-			}
-
-		}*/
-
 		$request = new Varien_Object;
 
 		$vendor = $this->getConfigData('vendor');
@@ -322,7 +311,6 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 			$confParam .= '&l=' . $adminParams['order']['account']['email'];
 		}
 		if(isset($adminParams['order']['account']['group_id'])){
-			//$confParam .= '&group_id='.$adminParams['order']['account']['group_id'];
 			$confParam .= '&g='.$adminParams['order']['account']['group_id'];
 		}
 
@@ -355,18 +343,9 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
         }
 
 		$data['Description'] = $this->ss($this->cleanInput($this->getConfigData('purchase_description') . ' User: ', 'Text') . $data['User'], 100);
-		#$data['NotificationURL'] = $this->getNotificationUrl() . $msParam . $confParam . $stId;
 		$data['NotificationURL'] = $this->getNotificationUrl() . $confParam;
-		/*$data['SuccessURL'] = Mage::getUrl('sgps/ServerPayment/success', array (
-			'_secure' => true,
-			'_nosid' => true
-		)) . '?' . $this->getSidParam() . $msParam . $confParam . $stId;*/
 		$data['SuccessURL'] = $this->getSuccessUrl() . $confParam;
 		$data['RedirectURL'] = $this->getRedirectUrl() . $confParam;
-		/*$data['FailureURL'] = Mage::getUrl('sgps/ServerPayment/failure', array (
-			'_secure' => true,
-			'_nosid' => true
-		)) . '?' . $this->getSidParam() . $msParam . $confParam . $stId;*/
 		$data['FailureURL'] = $this->getFailureUrl() . $confParam;
 		$data['BillingSurname'] = $this->ss($billing->getLastname(),20);
 		$data['BillingFirstnames'] = $this->ss($billing->getFirstname(),20);
@@ -399,7 +378,11 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 		}
 
 		if ($data['DeliveryCountry'] == 'US') {
-			$data['DeliveryState'] = $shipping->getRegionCode();
+		    if($quoteObj->getIsVirtual()){
+		        $data['DeliveryState'] = $billing->getRegionCode();
+		    }else{
+		        $data['DeliveryState'] = $shipping->getRegionCode();
+		    }
 		}
 		if ($data['BillingCountry'] == 'US') {
 			$data['BillingState'] = $billing->getRegionCode();
@@ -502,6 +485,8 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 				$data = array ();
 				$data['method'] = $this->_code;
 
+
+				//TODO: not use this on admin panel
 				if ($this->_isMultishippingCheckout()) {
 					$this->getMultishipping()->setPaymentMethod($data);
 				} else {
@@ -509,7 +494,12 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 				}
 
 				// Set values on SagePayServer session's namespace
-				$this->_getSagePayServerSession()->setSecurityKey($r['SecurityKey'])->setVendorTxCode($this->_vendorTxC)->setTrnDoneStatus($r['Status'] . '_' . strtoupper($requestData['TxType']))->setVpsTxId($r['VPSTxId'])->setTxAuthNo((isset ($r['TxAuthNo']) ? $r['TxAuthNo'] : null))->setNextUrl($r['NextURL']);
+				$this->_getSagePayServerSession()
+					->setSecurityKey($r['SecurityKey'])
+					->setVendorTxCode($this->_vendorTxC)->setTrnDoneStatus($r['Status'] . '_' . strtoupper($requestData['TxType']))
+					->setVpsTxId($r['VPSTxId'])
+					->setTxAuthNo((isset ($r['TxAuthNo']) ? $r['TxAuthNo'] : null))
+					->setNextUrl($r['NextURL']);
 
 			}
 
@@ -556,3 +546,4 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 	}
 
 }
+

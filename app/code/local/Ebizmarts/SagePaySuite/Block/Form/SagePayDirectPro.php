@@ -105,7 +105,7 @@ class Ebizmarts_SagePaySuite_Block_Form_SagePayDirectPro extends Ebizmarts_SageP
     {
         $types = Mage::getModel('sagepaysuite/config')->getCcTypesSagePayDirect();
 
-        $availableTypes = Mage::getStoreConfig('payment/sagepaydirectpro/cctypesSagePayDirectPro');
+        $availableTypes = Mage::getStoreConfig('payment/' . $this->getMethodCode() . '/cctypesSagePayDirectPro');
 
         if ($availableTypes) {
             $availableTypes = explode(',', $availableTypes);

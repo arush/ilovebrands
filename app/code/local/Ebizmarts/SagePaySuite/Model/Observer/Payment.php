@@ -95,14 +95,14 @@ class Ebizmarts_SagePaySuite_Model_Observer_Payment extends Ebizmarts_SagePaySui
 				->setLastSavedTokenccid($_paymentPost['sagepay_token_cc_id'])
 				->setTokenCvv($_paymentPost['token_cvv']);
 
-				$this->_directMultiShippingTrn($_post);
+				$this->_directMultiShippingTrn($_post, $order);
 				return $observer;
 
 			}else{ //Register token for use below
 
 				// Subsequent orders with same token (do not register a new one everytime)
 				if(Mage::registry('ms_token_reguse')){
-					$this->_directMultiShippingTrn($_post);
+					$this->_directMultiShippingTrn($_post, $order);
 					return $observer;
 				}
 
@@ -117,21 +117,21 @@ class Ebizmarts_SagePaySuite_Model_Observer_Payment extends Ebizmarts_SagePaySui
 					->setLastSavedTokenccid($tokenDb->getId())
 					->setTokenCvv($_paymentPost['cc_cid']);
 
-					$this->_directMultiShippingTrn($_post);
+					$this->_directMultiShippingTrn($_post, $order);
 				}
 			}
 
 			return $observer;
 		}
 
-		$this->_directMultiShippingTrn($_post);
+		$this->_directMultiShippingTrn($_post, $order);
 
     }
 
 
-    protected function _directMultiShippingTrn($_post)
+    protected function _directMultiShippingTrn($_post, $order)
     {
-		$result = Mage::getModel('sagepaysuite/sagePayDirectPro')->registerTransaction($_post);
+		$result = Mage::getModel('sagepaysuite/sagePayDirectPro')->registerTransaction($_post, FALSE, $order);
 
 		if($result->getResponseStatus() != Ebizmarts_SagePaySuite_Model_Api_Payment::RESPONSE_CODE_APPROVED &&
                  $result->getResponseStatus() != Ebizmarts_SagePaySuite_Model_Api_Payment::RESPONSE_CODE_REGISTERED){

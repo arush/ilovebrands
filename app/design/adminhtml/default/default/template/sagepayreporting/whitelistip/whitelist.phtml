@@ -2,7 +2,7 @@
 $ips = $this->getValidIPs();
 ?>
 
-<?php if(get_class($ips) == 'SimpleXMLElement'): ?>
+<?php if(is_object($ips) AND get_class($ips) == 'SimpleXMLElement'): ?>
 <div class="entry-edit-head">
     <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('IPs on Whitelist'); ?></h4>
 </div>

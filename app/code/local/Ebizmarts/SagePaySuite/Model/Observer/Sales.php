@@ -73,7 +73,7 @@ class Ebizmarts_SagePaySuite_Model_Observer_Sales extends Ebizmarts_SagePaySuite
         	if(!$dbtrn->getId()){
 
 				#For empty payments or old orders (standalone payment methods).
-				if( (Mage::app()->getRequest()->getControllerModule() == 'Mage_Api') || Mage::registry('current_shipment') || Mage::registry('sales_order') || Mage::registry('current_creditmemo') || Mage::registry('current_invoice')){
+				if( (Mage::app()->getRequest()->getControllerModule() == 'Mage_Api') || Mage::registry('current_shipment') || Mage::registry('sales_order') || Mage::registry('current_creditmemo') || Mage::registry('current_invoice') || ($order->getPayment()->getMethod() == 'sagepayrepeat')){
 					return $o;
 				}
 
@@ -115,10 +115,15 @@ class Ebizmarts_SagePaySuite_Model_Observer_Sales extends Ebizmarts_SagePaySuite
 
 		}
 
+		// Ip address for SERVER method
+		if( $this->getSession()->getRemoteAddr() ){
+        	$order->setRemoteIp($this->getSession()->getRemoteAddr());
+		}
+
         # Invoice automatically PAYMENT transactions
         if($this->getSession()->getInvoicePayment() || (!is_null($reg) && $tran->getTxType() == 'PAYMENT')){
             $this->getSession()->unsetData('invoice_payment');
-            Mage::getModel('sagepaysuite/api_payment')->invoiceOrder($order->getId());
+            Mage::getModel('sagepaysuite/api_payment')->invoiceOrder($order);
         }
 	}
 
@@ -168,7 +173,9 @@ class Ebizmarts_SagePaySuite_Model_Observer_Sales extends Ebizmarts_SagePaySuite
 	{
 		$sessionOrderId = $this->getSession()->getReservedOrderId();
 
-		if(!$sessionOrderId){
+		$orderExists = Mage::getModel('sales/order')->loadByIncrementId($sessionOrderId);
+
+		if(!$sessionOrderId || ($orderExists->getId())){
 			return $observer;
 		}
 
@@ -176,8 +183,10 @@ class Ebizmarts_SagePaySuite_Model_Observer_Sales extends Ebizmarts_SagePaySuite
 		$quote = $observer->getEvent()->getQuote();
 
 		$order->setIncrementId($sessionOrderId);
-		$quote->setIncrementId($sessionOrderId);
+		//$quote->setIncrementId($sessionOrderId);
+		$quote->setReservedOrderId($sessionOrderId)->save();
 	}
+
 
 	/**
 	 * Handle OneStepCheckout callbacks

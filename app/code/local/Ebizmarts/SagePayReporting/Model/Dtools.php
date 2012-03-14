@@ -12,7 +12,7 @@ class Ebizmarts_SagePayReporting_Model_Dtools
 	{
 		try{
 			/*$xml = file_get_contents('http://ip-address.domaintools.com/myip.xml');
-			$xml = new Varien_Simplexml_Element($xml);
+			 $xml = new Varien_Simplexml_Element($xml);
 
 			$ip = (string)$xml->ip_address;*/
 			$ip = explode('.', file_get_contents('http://ebizmarts.com/magento/ipcheck.php'));

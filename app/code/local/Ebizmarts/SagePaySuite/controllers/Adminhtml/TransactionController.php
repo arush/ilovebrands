@@ -145,6 +145,53 @@ class Ebizmarts_SagePaySuite_Adminhtml_TransactionController extends Mage_Adminh
         return;
     }
 
+	public function addApiDataAction()
+	{
+		$id = $this->getRequest()->getParam('order_id');
+		Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->addApiDetails($id);
+
+        $this->_redirectReferer();
+        return;
+	}
+
+	/**
+	 * Delete TRN from sagepaysuite_transactions table
+	 */
+	public function removetrnAction()
+	{
+		$trns = $this->getRequest()->getParam('ids');
+
+		if(count($trns)){
+
+			foreach($trns as $id){
+				$trn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->load($id);
+
+				if($trn->getId()){
+					$action = Mage::getModel('sagepaysuite2/sagepaysuite_action')->getCollection()->addFieldToFilter('parent_id', $trn->getId());
+
+					if($action->getSize()){
+						foreach($action as $_a){
+							$_a->delete();
+						}
+					}
+
+					$paypal = Mage::getModel('sagepaysuite2/sagepaysuite_paypaltransaction')->loadByParent($trn->getId());
+					if($paypal->getId()){
+						$paypal->delete();
+					}
+
+					$trn->delete();
+
+					$this->_getSession()->addSuccess($this->__('Transaction #%s deleted.', $id));
+				}else{
+					$this->_getSession()->addError($this->__('Transaction #%s does not exist.', $id));
+				}
+			}
+
+		}
+		$this->_redirectReferer();
+	}
+
 	public function paymentsAction()
 	{
         $this->_title($this->__('Sales'))->_title($this->__('Sage Pay Transactions'));
@@ -162,7 +209,7 @@ class Ebizmarts_SagePaySuite_Adminhtml_TransactionController extends Mage_Adminh
         );
 	}
 
-	public function orfanAction()
+	public function orphanAction()
 	{
         $this->_title($this->__('Sales'))->_title($this->__('Sage Pay Orphan Transactions'));
 

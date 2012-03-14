@@ -1,3 +1,99 @@
+24-Feb-2012
+	- Version 1.1.7
+		* Payment System details on Transaction Details (API)
+		* Fixing error on SERVER integration (cant delete token card)
+		* Fixing typo "orfans"
+		* Add PaymentSystemDetails and ECI value to transaction data (From API)
+		* Fixing OSC compatibility issues with Shipping Address
+		* Adding square brackets on SKU items on Basket
+		* Fixing REFUND error when refunding order TOTAL
+		* Change deletquote to set it as notactive instead of deleting
+
+
+04-Jan-2011
+	- Version 1.1.5
+		* Fix token issue with CV2 when default token is loaded (happens because of radiobutton enabling payment method JS stuff)
+		* Fix for error 3021 on Basket for Bundle items
+		* Fix amount sent on Multiple address checkout with DIRECT integration
+		* Added product options to Sage Pay Basket field
+		* Reset OSC button and loading spinner for SERVER integration when transaction fails for whatever reason
+		* Validate quote object before sending transaction to Sage Pay, mostly to fix OSC related issues
+		* Fixed OrderCurrency code on Basket field when in STORE scope
+		* Check for duplicates before reserving order id
+		* Perform a VOID operation if refunding full order amount
+		* Fix issue when REPEAT payments fail that creates order with no payment details
+		* Added Deferred-Capture option, automatically RELEASES a DEFERRED transaction when reached the SUCCESS page
+		* Do not import PAYPAL callback shipping details if AddressStatus is NONE to prevent errors when completing transaction
+		* Adding possibility to Invoice FORM integration orders to RELEASE or AUTHORISE transactions from Magento backend
+		* Fixing data issues not saved when registering Token Card
+		* Show correct currency code on Refunds grid
+
+11-Nov-2011
+	- Version 1.1.3
+		* Fix OSC issue when logged in customer checksout with new address
+		* Showing PayPal additional information on order view page ADMIN
+		* PayPal method title on checkout radiobutton title fix
+		* Fix TOKEN issue on Magento 1.5+
+		* PayPal express fix for AddressStatus = NONE
+		* Check for existing email on MOTO orders SERVER
+		* Fixing PostCode for Ireland addresses on DIRECT integration
+		* Token cards in customer edit tab and availability to add token from admin panel
+		* Truncate basket field to max allowed by sagepay
+		* Fixed JS error on iphone/ipod touch with lightbox
+		* OSC disabled button fix, need to edit OSC template to change variable scope
+		* REPEAT payments for ADMIN
+		* Requests PROFILER
+
+06-Oct-2011
+	- Version 1.1.1
+		* Fix thirdman id error on backend.
+		* Fix secure URL on frontend
+		* Invoice order email config option
+		* Adding vendor_email to FORM integration
+
+03-Oct-2011
+	- Version 1.1.0
+		* Fix backend create order form validation
+		* Adding DELETE options on transactions listed under Sales - SagePay - Payment Transactions
+		* Magento EE 1.11 compatibility
+		* Send invoice email when creating it automatically (PAYMENT)
+		* Fix virtual order FORM integration
+		* Adding 3D Secure column to fraud information grid
+		* Fixing data issues on "Sage Pay Fraud Information"
+		* Adding "sort order" to PayPal integration
+		* Option to save token card or not
+
+24-Aug-2011
+	- Version 1.0.37
+		* Fix REGISTER TOKEN currency in checkout
+		* Fix IE bug on window.js
+		* Adding required-entry class for cv2 and cc number for direct form (OSC issue)
+		* Fix DIRECT 3D payment not creating invoice if on PAYMENT mode
+		* Fixed TOKEN issue with CV2 when registering token
+		* Magento CE 1.6 compatibility
+		* Fix for PayPal and FORM on OSC
+
+02-Aug-2011
+	- Version 1.0.36
+		* Fix street2 import on PayPal payments
+		* SERVER protocol RemoteIpFix
+		* FORM fix on OSC
+		* Fixing overflow auto on IE8 3D lightbox
+		* Fix INVOICE order on Downloadable cart
+		* FORM adding SendEMail flag
+		* Fixing BASKET display on transaction detail
+		* Correct bug on SERVER protocol DeliveryState when cart is VIRTUAL
+
+12-Jul-2011
+	- Version 1.0.35
+		* PayPal email title correction
+		* Fix admin log viewer error if no SagePaySuite log dir exist
+		* Fix token card delete error when on HTTPS
+		* Fix MOTO multiple vendors on multiple websites error
+		* PayPal register customer implementation
+		* Hide issue number and start date upon form show if no card is selected
+		* Fix trhirdman id error on order view
+
 24-Jun-2011
 	- Version 1.0.34
 		* Correcting typos on system.xml
@@ -42,3 +138,4 @@
 09-May-2011
     - Version 1.0.28
         * Added specific payment information template for PDF printing in admin panel.
+

@@ -8,7 +8,7 @@ class Ebizmarts_SagePaySuite_Model_Mysql4_SagePaySuite_Transaction_Collection ex
 		$this->_init('sagepaysuite2/sagepaysuite_transaction');
 	}
 
-    public function getOrfans()
+    public function getOrphans()
     {
         $this->getSelect()->where('isnull(main_table.order_id)')
         ->where('isnull(main_table.voided)');

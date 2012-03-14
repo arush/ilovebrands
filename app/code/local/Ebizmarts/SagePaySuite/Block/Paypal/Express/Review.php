@@ -26,7 +26,7 @@ class Ebizmarts_SagePaySuite_Block_Paypal_Express_Review extends Mage_Core_Block
      *
      * @var string
      */
-    protected $_paypalActionPrefix = 'sgpsSecure';
+    protected $_paypalActionPrefix = 'sgps';
 
     /**
      * Quote object setter
@@ -200,7 +200,8 @@ class Ebizmarts_SagePaySuite_Block_Paypal_Express_Review extends Mage_Core_Block
             // misc shipping parameters
             $this->setShippingMethodSubmitUrl($this->getUrl("{$this->_paypalActionPrefix}/paypalexpress/saveShippingMethod"))
                 ->setCanEditShippingAddress($this->_quote->getMayEditShippingAddress())
-                ->setCanEditShippingMethod($this->_quote->getMayEditShippingMethod())
+                //->setCanEditShippingMethod($this->_quote->getMayEditShippingMethod())
+                ->setCanEditShippingMethod(TRUE)
             ;
         }
 
@@ -210,3 +211,4 @@ class Ebizmarts_SagePaySuite_Block_Paypal_Express_Review extends Mage_Core_Block
         return parent::_beforeToHtml();
     }
 }
+

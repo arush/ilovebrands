@@ -1,1 +1,854 @@
-notifyThreedError=function(a){Control.Window.windows.each(function(b){if(b.container.visible()){b.close()}});if((typeof checkout.accordion=="object")){checkout.accordion.openSection("opc-payment")}alert(a)};if(typeof EbizmartsSagePaySuite=="undefined"){var EbizmartsSagePaySuite={}}EbizmartsSagePaySuite.Checkout=Class.create();EbizmartsSagePaySuite.Checkout.prototype={initialize:function(a){this.config=a;this.servercode="sagepayserver";this.directcode="sagepaydirectpro";this.paypalcode="sagepaypaypal";this.formcode="sagepayform";this.code="";if(this.getConfig("review")){this.getConfig("review").saveUrl=SuiteConfig.getConfig("global","sgps_saveorder_url");this.getConfig("review").onSave=this.reviewSave.bindAsEventListener(this)}else{if(this.getConfig("osc")){Event.stopObserving($("onestepcheckout-form"));$("onestepcheckout-form")._submit=$("onestepcheckout-form").submit;$("onestepcheckout-form").submit=function(){this.reviewSave()}.bind(this)}else{if(this.getConfig("msform")){this.getConfig("msform").observe("submit",function(d){Event.stop(d);this.reviewSave(d)}.bind(this))}}}var b=$("multishipping-billing-form");if(b){b.observe("submit",function(d){Event.stop(d);this.setPaymentMethod()}.bind(this))}var c=this.getPaymentSubmit();if(c){c.observe("click",this.setPaymentMethod.bindAsEventListener(this))}},evalTransport:function(transport){try{response=eval("("+transport.responseText+")")}catch(e){response={}}return response},getConfig:function(a){return(this.config[a]!="undefined"?this.config[a]:false)},getPaymentSubmit:function(){var d=$$("#opc-payment [onclick]");for(var c=0;c<d.length;c++){var a=[d[c].readAttribute("onclick"),d[c].getAttribute("onclick")];for(var b=0;b<a.length;b++){if(Object.isString(a[b])&&-1!==a[b].search(/payment\.save/)){return d[c]}}}return false},getShippingMethodSubmit:function(){var d=$$("#opc-shipping_method [onclick]");for(var c=0;c<d.length;c++){var a=[d[c].readAttribute("onclick"),d[c].getAttribute("onclick")];for(var b=0;b<a.length;b++){if(Object.isString(a[b])&&-1!==a[b].search(/shippingMethod\.save/)){return d[c]}}}return false},getPaymentMethod:function(){var b=null;if($("multishipping-billing-form")){b=$("multishipping-billing-form")}else{if(this.getConfig("osc")){b=this.getConfig("oscFrm")}else{if((typeof this.getConfig("payment"))!="undefined"){b=$(this.getConfig("payment").form)}}}if(b===null){return this.code}var a=null;b.getInputs("radio","payment[method]").each(function(c){if(c.checked){a=c.value;throw $break}});if(a!=null){return a}return this.code},isFormPaymentMethod:function(){return(this.getPaymentMethod()===this.formcode)},isServerPaymentMethod:function(){return(this.getPaymentMethod()===this.servercode||($("suite_ms_payment_method")&&$("suite_ms_payment_method").getValue()==this.servercode))},isDirectPaymentMethod:function(){return(this.getPaymentMethod()===this.directcode)},growlError:function(b){alert(b);return;try{var a=new k.Growler({location:"tc"});a.error(b,{life:10})}catch(c){alert(b)}},growlWarn:function(b){alert(b);return;try{var a=new k.Growler({location:"tc"});a.warn(b,{life:10})}catch(c){alert(b)}},isDirectTokenTransaction:function(){var a=$$("div#payment_form_sagepaydirectpro ul.tokensage li.tokencard-radio input");if(a.length){if(a[0].disabled===false){return true}}return false},isServerTokenTransaction:function(){var a=$$("div#payment_form_sagepayserver ul.tokensage li.tokencard-radio input");if(a.length){if(a[0].disabled===false){return true}}return false},getServerSecuredImage:function(){return new Element("img",{src:SuiteConfig.getConfig("server","secured_by_image"),style:"margin-bottom:5px"})},setShippingMethod:function(){try{if($("sagepaydirectpro_cc_type")){$("sagepaydirectpro_cc_type").selectedIndex=0}}catch(a){alert(a)}},setPaymentMethod:function(){if($("sagepaysuite-server-incheckout-iframe")){$("checkout-review-submit").show();$("sagepaysuite-server-incheckout-iframe").remove()}if(this.isServerPaymentMethod()){if(parseInt(SuiteConfig.getConfig("global","token_enabled"))===1){$("sagepayserver-dummy-link").writeAttribute("href",SuiteConfig.getConfig("server","new_token_url"));if(this.isServerTokenTransaction()){if($("multishipping-billing-form")){$("multishipping-billing-form").submit()}return}var b=new Element("div",{className:"lcontainer"});var d=parseInt(SuiteConfig.getConfig("server","token_iframe_height"))+80;b.setStyle({height:d.toString()+"px"});var f=new Control.Modal("sagepayserver-dummy-link",{className:"modal",iframe:true,closeOnClick:false,insertRemoteContentAt:b,height:SuiteConfig.getConfig("server","token_iframe_height"),width:SuiteConfig.getConfig("server","token_iframe_width"),fade:true,afterClose:function(){this.getTokensHtml()}.bind(this)});f.container.insert(b);f.container.down().insert(this.getServerSecuredImage());f.container.setStyle({height:d.toString()+"px"});f.open();if(this.getConfig("checkout")){this.getConfig("checkout").accordion.openSection("opc-payment")}return}}else{if(this.isDirectPaymentMethod()&&parseInt(SuiteConfig.getConfig("global","token_enabled"))===1){if(this.isDirectTokenTransaction()){return}try{if(new Validation(this.getConfig("payment").form).validate()===false){return}}catch(c){}if(this.getConfig("osc")){var a=new VarienForm("onestepcheckout-form").validator.validate();if(!a){return}}var e=(this.getConfig("osc")?this.getConfig("oscFrm"):$("co-payment-form"));new Ajax.Request(SuiteConfig.getConfig("direct","sgps_registerdtoken_url"),{method:"post",parameters:Form.serialize(e),onSuccess:function(h){try{this.getTokensHtml();var i=h.responseText.evalJSON();if(i.response_status=="INVALID"||i.response_status=="MALFORMED"||i.response_status=="ERROR"||i.response_status=="FAIL"){if(this.getConfig("checkout")){this.getConfig("checkout").accordion.openSection("opc-payment")}this.growlWarn("An error ocurred with Sage Pay Direct:\n"+i.response_status_detail.toString());if(this.getConfig("osc")){$("onestepcheckout-place-order").removeClassName("grey").addClassName("orange");$$("div.onestepcheckout-place-order-loading").invoke("remove");return}}else{if(i.response_status=="threed"){$("sagepaydirectpro-dummy-link").writeAttribute("href",i.url)}}if(this.getConfig("osc")){this.reviewSave({tokenSuccess:true});return}}catch(g){if(this.getConfig("checkout")){this.getConfig("checkout").accordion.openSection("opc-payment")}this.growlError(h.responseText.toString())}}.bind(this)})}}},getTokensHtml:function(){new Ajax.Updater(("tokencards-payment-"+this.getPaymentMethod()),SuiteConfig.getConfig("global","html_paymentmethods_url"),{parameters:{payment_method:this.getPaymentMethod()},onComplete:function(){if($$("a.addnew").length>1){$$("a.addnew").each(function(a){if(!a.visible()){a.remove()}})}toggleNewCard(2)}})},reviewSave:function(e){if((typeof e)=="undefined"){var e={}}if((typeof e.responseText)=="undefined"&&$("onestepcheckout-form")){if(this.isFormPaymentMethod()){setLocation(SuiteConfig.getConfig("form","url"));return}if((this.isDirectPaymentMethod()||this.isServerPaymentMethod())&&parseInt(SuiteConfig.getConfig("global","token_enabled"))===1){if((typeof e.tokenSuccess)=="undefined"){this.setPaymentMethod();if(!this.isDirectTokenTransaction()&&!this.isServerTokenTransaction()){return}}}if(parseInt($$("div.onestepcheckout-place-order-loading").length)||(typeof e.tokenSuccess!="undefined"&&true===e.tokenSuccess)){if(Ajax.activeRequestCount>1&&(typeof e.tokenSuccess)=="undefined"){return}var j=this.getPaymentMethod();if(j==this.paypalcode){setLocation(SuiteConfig.getConfig("paypal","redirect_url"));return}if(j==this.servercode||j==this.directcode){new Ajax.Request(SuiteConfig.getConfig("global","sgps_saveorder_url"),{method:"post",parameters:Form.serialize($("onestepcheckout-form")),onSuccess:function(s){this.reviewSave(s);e.element().removeClassName("grey").addClassName("orange");$$("div.onestepcheckout-place-order-loading").invoke("remove")}.bind(this)});return}else{$("onestepcheckout-form")._submit();return}}else{return}}else{if((typeof e.responseText)=="undefined"&&this.getConfig("msform")){var b=$H({"payment[method]":"sagepayserver"});if($("sagepay_server_token_cc_id")){b.set("payment[sagepay_token_cc_id]",$("sagepay_server_token_cc_id").getValue())}new Ajax.Request(SuiteConfig.getConfig("global","sgps_saveorder_url"),{method:"post",parameters:b,onSuccess:function(s){this.reviewSave(s)}.bind(this)});return}else{try{var g=this.evalTransport(e)}catch(q){suiteLogError(q)}}}if((typeof g.response_status!="undefined")&&g.response_status!="OK"&&g.response_status!="threed"&&g.response_status!="paypal_redirect"){var c=$$("div.onestepcheckout-place-order-loading");if(c.length){$("onestepcheckout-place-order").removeClassName("grey").addClassName("orange");c.invoke("remove")}this.growlWarn("An error ocurred with Sage Pay:\n"+g.response_status_detail.toString());return}if(g.response_status=="paypal_redirect"){setLocation(g.redirect);return}if(this.getConfig("osc")&&g.success&&g.response_status=="OK"&&(typeof g.next_url=="undefined")){setLocation(SuiteConfig.getConfig("global","onepage_success_url"));return}if(!g.redirect||!g.success){this.getConfig("review").nextStep(e);return}if(this.isServerPaymentMethod()){$("sagepayserver-dummy-link").writeAttribute("href",g.redirect);var r=$("review-buttons-container");var i=new Element("div",{className:"lcontainer"});var d=parseInt(SuiteConfig.getConfig("server","iframe_height"));if("live"!=SuiteConfig.getConfig("server","mode")){d=d-65}var f=SuiteConfig.getConfig("server","payment_iframe_position").toString();if(f=="modal"){var o=new Control.Modal("sagepayserver-dummy-link",{className:"modal",iframe:true,closeOnClick:false,insertRemoteContentAt:i,height:SuiteConfig.getConfig("server","iframe_height"),width:SuiteConfig.getConfig("server","iframe_width"),fade:true,afterOpen:function(){if(r){r.addClassName("disabled")}},afterClose:function(){if(r){r.removeClassName("disabled")}}});o.container.insert(i);o.container.down().setStyle({height:d.toString()+"px"});o.container.down().insert(this.getServerSecuredImage());o.open()}else{if(f=="incheckout"){var m="sagepaysuite-server-incheckout-iframe";var p=new Element("iframe",{src:g.redirect,id:m});if(this.getConfig("osc")){var h=$("onestepcheckout-place-order");h.hide();$("onestepcheckout-form").insert({after:p});$(m).scrollTo()}else{var n=$("checkout-review-submit");n.hide();n.insert({after:p})}}}}else{if(this.isDirectPaymentMethod()&&(typeof g.response_status!="undefined")&&g.response_status=="threed"){$("sagepaydirectpro-dummy-link").writeAttribute("href",g.redirect);var l=new Element("div",{className:"lcontainer"});var a=new Control.Modal("sagepaydirectpro-dummy-link",{className:"modal sagepaymodal",closeOnClick:false,insertRemoteContentAt:l,iframe:true,height:SuiteConfig.getConfig("direct","threed_iframe_height"),width:SuiteConfig.getConfig("direct","threed_iframe_width"),fade:true,afterOpen:function(){if(true===Prototype.Browser.IE){var s=parseFloat(navigator.appVersion.split("MSIE")[1]);if(s<8){return}}try{var t=this.container;if($$(".sagepaymodal").length>1){$$(".sagepaymodal").each(function(v){if(v.visible()){t=v;throw $break}})}t.down().down("iframe").insert({before:new Element("div",{id:"sage-pay-direct-ddada",style:"background:#FFF"}).update(SuiteConfig.getConfig("direct","threed_after").toString()+SuiteConfig.getConfig("direct","threed_before").toString())})}catch(u){}if(false===Prototype.Browser.IE){t.down().down("iframe").setStyle({height:(parseInt(t.down().getHeight())-60)+"px"});t.setStyle({height:(parseInt(t.down().getHeight())+57)+"px"})}else{t.down().down("iframe").setStyle({height:(parseInt(t.down().getHeight())+116)+"px"})}},afterClose:function(){var s=checkout.accordion.currentSection;if($("sage-pay-direct-ddada")){$("sage-pay-direct-ddada").remove()}$("sagepaydirectpro-dummy-link").writeAttribute("href","")}});a.container.insert(l);a.open()}else{if(this.isDirectPaymentMethod()){new Ajax.Request(SuiteConfig.getConfig("direct","sgps_registertrn_url"),{onSuccess:function(t){try{var u=t.responseText.evalJSON();if(u.response_status=="INVALID"||u.response_status=="MALFORMED"||u.response_status=="ERROR"||u.response_status=="FAIL"){this.getConfig("checkout").accordion.openSection("opc-payment");this.growlWarn("An error ocurred with Sage Pay Direct:\n"+u.response_status_detail.toString())}else{if(u.response_status=="threed"){$("sagepaydirectpro-dummy-link").writeAttribute("href",u.url)}}}catch(s){this.growlError(t.responseText.toString())}}.bind(this)})}else{this.getConfig("review").nextStep(e);return}}}}};try{Event.observe(window,"load",function(){$(document.body).insert(new Element("a",{id:"sagepayserver-dummy-link",href:"#",style:"display:none"}).update("&nbsp;"));$(document.body).insert(new Element("a",{id:"sagepaydirectpro-dummy-link",href:"#",style:"display:none"}).update("&nbsp;"));var c=$("suite_ms_payment_method");if(!c&&(SuiteConfig.getConfig("global","ajax_review")=="2")&&((typeof review)!="undefined")){var b=new EbizmartsSagePaySuite.Checkout({checkout:checkout,review:review,payment:payment,billing:billing,accordion:accordion})}else{if(!c&&($$("div.shopping-cart-totals").length!=1)&&$("onestepcheckout-form")){var b=new EbizmartsSagePaySuite.Checkout({osc:$("onestepcheckout-place-order"),oscFrm:$("onestepcheckout-form")})}else{if(c&&(c.getValue()=="sagepayserver")){var b=new EbizmartsSagePaySuite.Checkout({msform:$$("div.multiple-checkout")[0].down(2)})}}}if(parseInt(SuiteConfig.getConfig("global","valid"))===0){if(SuiteConfig.getConfig("direct","mode")=="live"||SuiteConfig.getConfig("server","mode")=="live"){new PeriodicalExecuter(function(){alert(SuiteConfig.getConfig("global","not_valid_message"))},10)}else{var a=new k.Growler({location:"bl"}).error("<strong>"+SuiteConfig.getConfig("global","not_valid_message")+"</strong>",{life:14400})}}})}catch(er){suiteLogError(er)}addValidationClass=function(a){if(a.hasClassName("validation-passed")){a.removeClassName("validation-passed")}a.addClassName("validate-issue-number")};paypalClean=function(a){var c=$("sagepaydirectpro_cc_type");var b="div#payment_form_sagepaydirectpro";var d=$$(b+" input, "+b+" select, "+b+" radio, "+b+" checkbox");if(a){d.invoke("enable");d.invoke("show");$$(b+" label, "+b+" a").invoke("show");c.addClassName("validate-ccsgpdp-type-select")}else{d.invoke("disable");d.invoke("hide");$$(b+" label, "+b+" a").invoke("hide");c.show();c.disabled=false;c.removeClassName("validate-ccsgpdp-type-select")}};changecsvclass=function(c){var b=$("sagepaydirectpro_cc_type");var a=$("sagepaydirectpro_cc_cid");fillSagePayTestData();if(b.value=="PAYPAL"){paypalClean(false)}else{paypalClean(true)}if(b){if(b.value=="LASER"&&a.hasClassName("required-entry")){if(a){a.removeClassName("required-entry")}}if(b.value!="LASER"&&!a.hasClassName("required-entry")){if(a){a.addClassName("required-entry")}}}};Validation.addAllThese([["validate-ccsgpdp-number","Please enter a valid credit card number.",function(a,d){try{var b=$(d.id.substr(0,d.id.indexOf("_cc_number"))+"_cc_type");if(b&&typeof Validation.creditCartTypes.get(b.value)!="undefined"&&Validation.creditCartTypes.get(b.value)[2]==false){if(!Validation.get("IsEmpty").test(a)&&Validation.get("validate-digits").test(a)){return true}else{return false}}if(b.value=="OT"||b.value=="UKE"||b.value=="DELTA"||b.value=="MAESTRO"||b.value=="SOLO"||b.value=="SWITCH"||b.value=="LASER"||b.value=="JCB"||b.value=="DC"){return true}return validateCreditCard(a)}catch(c){return true}}],["validate-ccsgpdp-cvn","Please enter a valid credit card verification number.",function(a,f){try{var d=$(f.id.substr(0,f.id.indexOf("_cc_cid"))+"_cc_type");var b=$(f.id.substr(0,f.id.indexOf("_cc_cid"))+"_cc_cid");if(d){if(d.value=="LASER"&&b.hasClassName("required-entry")){if(b){b.removeClassName("required-entry")}}if(d.value!="LASER"&&!b.hasClassName("required-entry")){if(b){b.addClassName("required-entry")}}}else{return true}if(!d&&d.value!="LASER"){return true}var c=d.value;switch(c){case"VISA":case"MC":re=new RegExp("^[0-9]{3}$");break;case"MAESTRO":case"SOLO":case"SWITCH":re=new RegExp("^([0-9]{1}|^[0-9]{2}|^[0-9]{3})?$");break;default:re=new RegExp("^([0-9]{3}|[0-9]{4})?$");break}if(a.match(re)||c=="LASER"){return true}return false}catch(e){return true}}],["validate-ccsgpdp-type","Credit card number doesn't match credit card type",function(c,g){try{g.value=removeDelimiters(g.value);c=removeDelimiters(c);var e=$(g.id.substr(0,g.id.indexOf("_cc_number"))+"_cc_type");if(!e){return true}var d=e.value;if(d=="OT"||d=="UKE"||d=="DELTA"||d=="MAESTRO"||d=="SOLO"||d=="SWITCH"||d=="LASER"||d=="JCB"||d=="DC"){return true}var b={VISA:new RegExp("^4[0-9]{12}([0-9]{3})?$"),MC:new RegExp("^5[1-5][0-9]{14}$"),AMEX:new RegExp("^3[47][0-9]{13}$")};var a="";$H(b).each(function(h){if(c.match(h.value)){a=h.key;throw $break}});if(a!=d){return false}return true}catch(f){return true}}],["validate-ccsgpdp-type-select","Card type doesn't match credit card number",function(b,d){try{var a=$(d.id.substr(0,d.id.indexOf("_cc_type"))+"_cc_number");return Validation.get("validate-ccsgpdp-type").test(a.value,a)}catch(c){return true}}],["validate-issue-number","Issue Number must have at least two characters",function(a,c){try{if(a.length>0&&!(a.match(new RegExp("^([0-9]{1}|[0-9]{2})$")))){return false}return true}catch(b){return true}}]]);
+notifyThreedError = function(msg){
+	Control.Window.windows.each(function(w){
+		if(w.container.visible()){
+			w.close();
+		}
+	});
+	if((typeof checkout.accordion == 'object')){
+		checkout.accordion.openSection('opc-payment');
+	}
+	alert(msg);
+}
+
+restoreOscLoad = function(){
+		//Hide loading indicator on OSC//
+		var loading_osc = $$('div.onestepcheckout-place-order-loading');
+		if(loading_osc.length){
+			$('onestepcheckout-place-order').removeClassName('grey').addClassName('orange');
+			$('onestepcheckout-place-order').removeAttribute('disabled');
+			loading_osc.invoke('hide');
+			already_placing_order = false;
+		}
+		//Hide loading indicator on OSC//
+}
+
+if(typeof EbizmartsSagePaySuite == 'undefined') {
+    var EbizmartsSagePaySuite = {};
+}
+EbizmartsSagePaySuite.Checkout = Class.create();
+EbizmartsSagePaySuite.Checkout.prototype = {
+
+	initialize: function(config){
+		this.config 		= config;
+		this.servercode			= 'sagepayserver';
+		this.directcode			= 'sagepaydirectpro';
+		this.paypalcode			= 'sagepaypaypal';
+		this.formcode			= 'sagepayform';
+		this.code               = '';
+
+		if(this.getConfig('review')){
+			this.getConfig('review').saveUrl = SuiteConfig.getConfig('global', 'sgps_saveorder_url');
+			this.getConfig('review').onSave = this.reviewSave.bindAsEventListener(this);
+		}else if(this.getConfig('osc')){
+
+		Event.stopObserving($('onestepcheckout-form'));
+		$('onestepcheckout-form')._submit = $('onestepcheckout-form').submit;
+		$('onestepcheckout-form').submit = function(){ this.reviewSave(); }.bind(this);
+
+		}else if(this.getConfig('msform')){
+			this.getConfig('msform').observe('submit', function(evmsc){Event.stop(evmsc);this.reviewSave(evmsc);}.bind(this));
+		}
+
+		var blFormMAC = $('multishipping-billing-form');
+		if(blFormMAC){
+			blFormMAC.observe('submit', function(_event_){ Event.stop(_event_); this.setPaymentMethod(); }.bind(this));
+		}
+
+		var paymentSubmit = this.getPaymentSubmit();
+		if(paymentSubmit) {
+
+			 if(this.getCurrentCheckoutStep() == 'opc-review'){//Magento 1.5.x+
+			 	this.setPaymentMethod(true);
+			 }else{
+			 	paymentSubmit.observe('click', this.setPaymentMethod.bindAsEventListener(this));
+			 }
+
+		}
+
+	},
+	evalTransport: function(transport){
+		try { response = eval('('+transport.responseText+')') } catch(e) { response = {} }
+                return response;
+	},
+	getConfig: function(instance){
+		return (this.config[instance] != 'undefined' ? this.config[instance] : false);
+	},
+	getCurrentCheckoutStep: function(){
+		return this.getConfig('checkout').accordion.currentSection;
+	},
+	getPaymentSubmit: function(){
+		var elements 	= $$("#opc-payment [onclick]");
+		 for(var i=0; i<elements.length; i++) {
+		 	// IE problems with readAttribute/getAttribute returning invalid results
+		 	var attrubutes = [elements[i].readAttribute('onclick'), elements[i].getAttribute('onclick')];
+		 	for(var j=0; j<attrubutes.length; j++) {
+		 		if(Object.isString(attrubutes[j]) && -1 !== attrubutes[j].search(/payment\.save/)) {
+					return elements[i];
+				}
+		 	}
+        }
+        return false;
+	},
+	getShippingMethodSubmit: function(){
+		var elements 	= $$("#opc-shipping_method [onclick]");
+		 for(var i=0; i<elements.length; i++) {
+		 	var attrubutes = [elements[i].readAttribute('onclick'), elements[i].getAttribute('onclick')];
+		 	for(var j=0; j<attrubutes.length; j++) {
+		 		if(Object.isString(attrubutes[j]) && -1 !== attrubutes[j].search(/shippingMethod\.save/)) {
+					return elements[i];
+				}
+		 	}
+        }
+        return false;
+	},
+	getPaymentMethod: function(){
+
+		var form = null;
+
+		if($('multishipping-billing-form')){
+			form = $('multishipping-billing-form');
+		}else if(this.getConfig('osc')){
+			form = this.getConfig('oscFrm');
+		}else if((typeof this.getConfig('payment')) != 'undefined'){
+			form = $(this.getConfig('payment').form);
+		}
+
+		if(form === null){
+			return this.code;
+		}
+
+		var checkedPayment = null
+
+		form.getInputs('radio', 'payment[method]').each(function(el){
+			if(el.checked){
+				checkedPayment = el.value;
+				throw $break;
+			}
+		});
+
+		if(checkedPayment != null){
+			return checkedPayment;
+		}
+
+        return this.code;
+	},
+	isFormPaymentMethod: function(){
+		return (this.getPaymentMethod() === this.formcode);
+	},
+	isServerPaymentMethod: function(){
+		return (this.getPaymentMethod() === this.servercode || ($('suite_ms_payment_method') && $('suite_ms_payment_method').getValue()==this.servercode));
+	},
+	isDirectPaymentMethod: function(){
+		return (this.getPaymentMethod() === this.directcode);
+	},
+	growlError: function(msg){
+		alert(msg);
+		return;
+		try{
+			var ng = new k.Growler({location:"tc"});
+			ng.error(msg, {life:10});
+		}catch(grwlerror){
+			alert(msg);
+		}
+	},
+	growlWarn: function(msg){
+		alert(msg);
+		return;
+		try{
+			var ng = new k.Growler({location:"tc"});
+			ng.warn(msg, {life:10});
+		}catch(grwlerror){
+			alert(msg);
+		}
+	},
+	isDirectTokenTransaction: function(){
+		var tokenRadios = $$('div#payment_form_sagepaydirectpro ul.tokensage li.tokencard-radio input');
+		if(tokenRadios.length){
+			if(tokenRadios[0].disabled === false){
+				return true;
+			}
+		}
+		return false;
+	},
+	isServerTokenTransaction: function(){
+		var tokenRadios = $$('div#payment_form_sagepayserver ul.tokensage li.tokencard-radio input');
+		if(tokenRadios.length){
+			if(tokenRadios[0].disabled === false){
+				return true;
+			}
+		}
+		return false;
+	},
+	getServerSecuredImage: function(){
+		return new Element('img', {'src':SuiteConfig.getConfig('server', 'secured_by_image'), 'style':'margin-bottom:5px'});
+	},
+	setShippingMethod: function(){
+		try{
+				if($('sagepaydirectpro_cc_type')){
+					$('sagepaydirectpro_cc_type').selectedIndex = 0;
+				}
+		}catch(ser){
+			alert(ser);
+		}
+	},
+	setPaymentMethod: function(modcompat){
+
+		// Remove Server InCheckout iFrame if exists
+		if($('sagepaysuite-server-incheckout-iframe')){
+			$('checkout-review-submit').show();
+			$('sagepaysuite-server-incheckout-iframe').remove();
+		}
+
+		if(this.isServerPaymentMethod()){
+
+			if( parseInt(SuiteConfig.getConfig('global','token_enabled')) === 1 && ($('remembertoken-sagepayserver').checked === true) ){
+
+			$('sagepayserver-dummy-link').writeAttribute('href', SuiteConfig.getConfig('server','new_token_url'));
+				if(this.isServerTokenTransaction()){
+
+					if($('multishipping-billing-form')){
+						$('multishipping-billing-form').submit();
+					}
+
+					return;
+				}
+				 var lcontwmt = new Element('div',{className: 'lcontainer'});
+				 var heit = parseInt(SuiteConfig.getConfig('server','token_iframe_height'))+80;
+				 lcontwmt.setStyle({'height':heit.toString() + 'px'});
+
+				 var wmt = new Control.Modal('sagepayserver-dummy-link',{
+						     className: 'modal',
+						     iframe: true,
+						     closeOnClick: false,
+						     insertRemoteContentAt: lcontwmt,
+						     height: SuiteConfig.getConfig('server','token_iframe_height'),
+						     width: SuiteConfig.getConfig('server','token_iframe_width'),
+						     fade: true,
+						     afterClose: function(){
+						     	this.getTokensHtml();
+				 			 }.bind(this)
+				 })
+				wmt.container.insert(lcontwmt);
+
+				wmt.container.down().insert(this.getServerSecuredImage());
+				wmt.container.setStyle({'height':heit.toString() + 'px'});
+			 	wmt.open();
+
+				if(this.getConfig('checkout') && (modcompat == undefined)){
+					this.getConfig('checkout').accordion.openSection('opc-payment');
+				}
+				return;
+			}
+
+		}else if(this.isDirectPaymentMethod() && parseInt(SuiteConfig.getConfig('global','token_enabled')) === 1 && ($('remembertoken-sagepaydirectpro').checked === true)){
+
+			if(this.isDirectTokenTransaction()){
+				return;
+			}
+
+			try{
+	            if(new Validation(this.getConfig('payment').form).validate() === false){
+	                return;
+	            }
+            }catch(one){}
+
+			if(this.getConfig('osc')){
+				var valOsc = new VarienForm('onestepcheckout-form').validator.validate();
+				if(!valOsc){
+					return;
+				}
+			}
+
+			var pmntForm = (this.getConfig('osc') ? this.getConfig('oscFrm') : $('co-payment-form'));
+			new Ajax.Request(SuiteConfig.getConfig('direct','sgps_registerdtoken_url'),{
+					method:"post",
+					parameters: Form.serialize(pmntForm),
+					onSuccess:function(f){
+
+						try{
+							this.getTokensHtml();
+
+							var d=f.responseText.evalJSON();
+
+							if(d.response_status=="INVALID"||d.response_status=="MALFORMED"||d.response_status=="ERROR"||d.response_status=="FAIL"){
+								if(this.getConfig('checkout')){
+									this.getConfig('checkout').accordion.openSection('opc-payment');
+								}
+								this.growlWarn("An error ocurred with Sage Pay Direct:\n" + d.response_status_detail.toString());
+
+								if(this.getConfig('osc')){
+									$('onestepcheckout-place-order').removeClassName('grey').addClassName('orange');
+									$$('div.onestepcheckout-place-order-loading').invoke('remove');
+									return;
+								}
+
+							}else if(d.response_status == 'threed'){
+								$('sagepaydirectpro-dummy-link').writeAttribute('href', d.url);
+							}
+
+							if(this.getConfig('osc')){
+								this.reviewSave({'tokenSuccess':true});
+								return;
+							}
+
+						}catch(alfaEr){
+
+							if(this.getConfig('checkout')){
+								this.getConfig('checkout').accordion.openSection('opc-payment');
+							}
+							this.growlError(f.responseText.toString());
+						}
+
+					}.bind(this)
+			});
+
+		}
+
+	},
+	getTokensHtml: function(){
+
+		new Ajax.Updater(('tokencards-payment-' + this.getPaymentMethod()), SuiteConfig.getConfig('global', 'html_paymentmethods_url'), {
+						 parameters: { payment_method: this.getPaymentMethod() },
+						 onComplete:function(){
+                                               if($$('a.addnew').length > 1){
+                                                   $$('a.addnew').each(function(el){
+                                                      if(!el.visible()){
+                                                          el.remove();
+                                                      }
+                                                   })
+                                               }
+                                               toggleNewCard(2);
+
+										     	if($('onestepcheckout-form') && this.isServerPaymentMethod()){
+											     	toggleNewCard(1);
+
+											     	var tokens = $$('div#payment_form_sagepayserver ul li.tokencard-radio input');
+											     	if(tokens.length){
+												     	tokens.each(function(radiob){
+															radiob.disabled = true;
+															radiob.removeAttribute('checked');
+														});
+														tokens.first().writeAttribute('checked', 'checked');
+														tokens.first().disabled = false;
+														$('onestepcheckout-form').submit();
+													}else{
+														this.resetOscLoading();
+													}
+
+										     	}
+						 }.bind(this)
+		});
+
+	},
+	resetOscLoading: function(){
+		restoreOscLoad();
+	},
+	reviewSave: function(transport){
+
+		if((typeof transport) == 'undefined'){
+		var transport = {};
+		}
+
+		//OSC\\
+		if((typeof transport.responseText) == 'undefined' && $('onestepcheckout-form')){
+
+			if(this.isFormPaymentMethod()){
+				new Ajax.Request(SuiteConfig.getConfig('global', 'sgps_saveorder_url'),{
+						method:"post",
+						parameters: Form.serialize($('onestepcheckout-form')),
+						onSuccess:function(f){
+							setLocation(SuiteConfig.getConfig('form','url'));
+						}
+				});
+				return;
+			}
+
+			if((this.isDirectPaymentMethod() || this.isServerPaymentMethod()) && parseInt(SuiteConfig.getConfig('global','token_enabled')) === 1){
+				if((typeof transport.tokenSuccess) == 'undefined'){
+					this.setPaymentMethod();
+
+					if(!this.isDirectTokenTransaction() && !this.isServerTokenTransaction() && (($('remembertoken-sagepaydirectpro') && $('remembertoken-sagepaydirectpro').checked === true) || ($('remembertoken-sagepayserver') && $('remembertoken-sagepayserver').checked === true))){
+						return;
+					}
+				}
+			}
+
+            if(parseInt($$('div.onestepcheckout-place-order-loading').length) || (typeof transport.tokenSuccess != 'undefined' && true === transport.tokenSuccess)){
+
+				if(Ajax.activeRequestCount > 1 && (typeof transport.tokenSuccess) == 'undefined'){
+					return;
+				}
+				var slPayM = this.getPaymentMethod();
+
+				if(slPayM == this.paypalcode){
+					new Ajax.Request(SuiteConfig.getConfig('global', 'sgps_saveorder_url'),{
+							method:"post",
+							parameters: Form.serialize($('onestepcheckout-form')),
+							onSuccess:function(f){
+								setLocation(SuiteConfig.getConfig('paypal', 'redirect_url'));
+							}
+					});
+					return;
+				}
+
+				if(slPayM == this.servercode || slPayM == this.directcode){
+					new Ajax.Request(SuiteConfig.getConfig('global', 'sgps_saveorder_url'),{
+							method:"post",
+							parameters: Form.serialize($('onestepcheckout-form')),
+							onSuccess:function(f){
+								this.reviewSave(f);
+								transport.element().removeClassName('grey').addClassName('orange');
+								$$('div.onestepcheckout-place-order-loading').invoke('hide');
+							}.bind(this)
+					});
+					return;
+				}else{
+                   $('onestepcheckout-form')._submit();
+                   return;
+				}
+
+              }else{
+              	return;
+              }
+		//OSC\\
+		}else if((typeof transport.responseText) == 'undefined' && this.getConfig('msform')){
+				var ps = $H({'payment[method]': 'sagepayserver'});
+
+				if($('sagepay_server_token_cc_id')){
+					ps.set('payment[sagepay_token_cc_id]', $('sagepay_server_token_cc_id').getValue());
+				}
+
+				new Ajax.Request(SuiteConfig.getConfig('global', 'sgps_saveorder_url'),{
+						method:"post",
+						parameters: ps,
+						onSuccess:function(f){
+							this.reviewSave(f);
+						}.bind(this)
+				});
+				return;
+
+		}else{
+			try{
+				var response = this.evalTransport(transport);
+			}catch(notv){
+				suiteLogError(notv);
+			}
+		}
+
+		if((typeof response.response_status != 'undefined') && response.response_status != 'OK' && response.response_status != 'threed' && response.response_status != 'paypal_redirect'){
+
+			this.resetOscLoading();
+
+			this.growlWarn("An error ocurred with Sage Pay:\n" + response.response_status_detail.toString());
+			return;
+		}
+
+		if(response.response_status == 'paypal_redirect'){
+			setLocation(response.redirect);
+			return;
+		}
+
+		if(this.getConfig('osc') && response.success && response.response_status == 'OK' && (typeof response.next_url == 'undefined')){
+			setLocation(SuiteConfig.getConfig('global','onepage_success_url'));
+			return;
+		}
+
+		if(!response.redirect || !response.success) {
+			this.getConfig('review').nextStep(transport);
+			return;
+		}
+
+		if(this.isServerPaymentMethod()){
+
+			$('sagepayserver-dummy-link').writeAttribute('href', response.redirect);
+
+			 var rbButtons = $('review-buttons-container');
+
+			 var lcont = new Element('div',{className: 'lcontainer'});
+			 var heit = parseInt(SuiteConfig.getConfig('server','iframe_height'));
+			 if(Prototype.Browser.IE){
+			 	heit = heit-65;
+			 }
+
+			var wtype = SuiteConfig.getConfig('server','payment_iframe_position').toString();
+			if(wtype == 'modal'){
+
+				 var wm = new Control.Modal('sagepayserver-dummy-link',{
+						     className: 'modal',
+						     iframe: true,
+						     closeOnClick: false,
+						     insertRemoteContentAt: lcont,
+						     height: SuiteConfig.getConfig('server','iframe_height'),
+						     width: SuiteConfig.getConfig('server','iframe_width'),
+						     fade: true,
+						     afterOpen: function(){
+								if(rbButtons){
+									rbButtons.addClassName('disabled');
+								}
+				 			 },
+						     afterClose: function(){
+						     	if(rbButtons){
+						     		rbButtons.removeClassName('disabled');
+						     	}
+				 			 }
+				 });
+			 	wm.container.insert(lcont);
+				wm.container.down().setStyle({'height':heit.toString() + 'px'});
+				wm.container.down().insert(this.getServerSecuredImage());
+				wm.open();
+
+			}else if(wtype == 'incheckout'){
+
+				var iframeId = 'sagepaysuite-server-incheckout-iframe';
+				var paymentIframe = new Element('iframe', {'src': response.redirect, 'id': iframeId});
+
+				if(this.getConfig('osc')){
+					var placeBtn = $('onestepcheckout-place-order');
+
+					placeBtn.hide();
+
+					$('onestepcheckout-form').insert( { after:paymentIframe } );
+					$(iframeId).scrollTo();
+
+				}else{
+
+					if( (typeof $('checkout-review-submit')) == 'undefined' ){
+						var btnsHtml  = $$('div.content.button-set').first();
+					}else{
+						var btnsHtml  = $('checkout-review-submit');
+					}
+
+					btnsHtml.hide();
+					btnsHtml.insert( { after:paymentIframe } );
+
+				}
+
+			}
+
+		}else if(this.isDirectPaymentMethod() && (typeof response.response_status != 'undefined') && response.response_status == 'threed'){
+
+			 $('sagepaydirectpro-dummy-link').writeAttribute('href', response.redirect);
+
+			 var lcontdtd = new Element('div',{className: 'lcontainer'});
+			 var dtd = new Control.Modal('sagepaydirectpro-dummy-link',{
+			     className: 'modal sagepaymodal',
+                 closeOnClick: false,
+                 insertRemoteContentAt: lcontdtd,
+			     iframe: true,
+			     height: SuiteConfig.getConfig('direct','threed_iframe_height'),
+			     width: SuiteConfig.getConfig('direct','threed_iframe_width'),
+			     fade: true,
+			     afterOpen: function(){
+
+				     if(true === Prototype.Browser.IE){
+				     	var ie_version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+						if(ie_version<8){
+							return;
+						}
+				     }
+
+				     try{
+				     	var daiv = this.container;
+
+				     	if($$('.sagepaymodal').length > 1){
+				     		$$('.sagepaymodal').each(function(elem){
+				     			if(elem.visible()){
+				     				daiv = elem;
+				     				throw $break;
+				     			}
+				     		});
+				     	}
+
+						daiv.down().down('iframe').insert({before:new Element('div', {'id':'sage-pay-direct-ddada','style':'background:#FFF'}).update(
+							SuiteConfig.getConfig('direct','threed_after').toString() + SuiteConfig.getConfig('direct','threed_before').toString())});
+
+						}catch(er){}
+
+						if(false === Prototype.Browser.IE){
+							daiv.down().down('iframe').setStyle({'height':(parseInt(daiv.down().getHeight())-60)+'px'});
+							daiv.setStyle({'height':(parseInt(daiv.down().getHeight())+57)+'px'});
+						}else{
+							daiv.down().down('iframe').setStyle({'height':(parseInt(daiv.down().getHeight())+116)+'px'});
+						}
+
+	 			 },
+			     afterClose: function(){
+                     if($('sage-pay-direct-ddada')){
+                     	$('sage-pay-direct-ddada').remove();
+                     }
+					$('sagepaydirectpro-dummy-link').writeAttribute('href', '');
+	 			 }
+			 });
+			 dtd.container.insert(lcontdtd);
+			 dtd.open();
+
+		}else if(this.isDirectPaymentMethod()){
+			new Ajax.Request(SuiteConfig.getConfig('direct','sgps_registertrn_url'),{
+					onSuccess:function(f){
+
+						try{
+
+							var d=f.responseText.evalJSON();
+
+							if(d.response_status=="INVALID"||d.response_status=="MALFORMED"||d.response_status=="ERROR"||d.response_status=="FAIL"){
+								this.getConfig('checkout').accordion.openSection('opc-payment');
+								this.growlWarn("An error ocurred with Sage Pay Direct:\n" + d.response_status_detail.toString());
+							}else if(d.response_status == 'threed'){
+								$('sagepaydirectpro-dummy-link').writeAttribute('href', d.url);
+							}
+
+						}catch(alfaEr){
+							this.growlError(f.responseText.toString());
+						}
+
+					}.bind(this)
+			});
+		}else{
+			this.getConfig('review').nextStep(transport);
+			return;
+		}
+	}
+}
+
+try{
+	Event.observe(window,"load",function(){
+
+	$(document.body).insert(new Element('a', { 'id': 'sagepayserver-dummy-link', 'href': '#', 'style':'display:none' }).update('&nbsp;'));
+	$(document.body).insert(new Element('a', { 'id': 'sagepaydirectpro-dummy-link', 'href': '#', 'style':'display:none' }).update('&nbsp;'));
+
+	var msCont = $('suite_ms_payment_method');
+
+		if( !msCont && (SuiteConfig.getConfig('global', 'ajax_review') == '2') && ((typeof window.review) != 'undefined') ){
+	        var SageServer = new EbizmartsSagePaySuite.Checkout(
+	                {
+	                        'checkout':             window.checkout,
+	                        'review':               window.review,
+	                        'payment':              window.payment,
+	                        'billing':              window.billing,
+	                        'accordion':            window.accordion
+	                }
+	        );
+        }else if(!msCont && ($$('div.shopping-cart-totals').length != 1) && $('onestepcheckout-form')){
+	        var SageServer = new EbizmartsSagePaySuite.Checkout(
+	                {
+	                        'osc': $('onestepcheckout-place-order'),
+	                        'oscFrm': $('onestepcheckout-form')
+	                }
+	        );
+
+        }else if(msCont && (msCont.getValue() == 'sagepayserver')){
+	        var SageServer = new EbizmartsSagePaySuite.Checkout(
+	                {
+	                	'msform': $$('div.multiple-checkout')[0].down(2)
+	                }
+	        );
+        }
+
+		if(parseInt(SuiteConfig.getConfig('global','valid')) === 0){
+			if(SuiteConfig.getConfig('direct','mode') == "live" || SuiteConfig.getConfig('server','mode') == "live"){
+				new PeriodicalExecuter(function(){ alert(SuiteConfig.getConfig('global','not_valid_message')); }, 10);
+			}else{
+				var invalidG = new k.Growler({location:"bl"}).error('<strong>'+SuiteConfig.getConfig('global','not_valid_message')+'</strong>', {life:14400});
+			}
+		}
+	})
+}catch(er){ suiteLogError(er); }
+
+
+    addValidationClass = function(obj){
+        if(obj.hasClassName('validation-passed')){
+            obj.removeClassName('validation-passed');
+        }
+        obj.addClassName('validate-issue-number');
+    }
+    paypalClean = function(reverse){
+    	var ccTypeContainer = $('sagepaydirectpro_cc_type');
+       	var sf = 'div#payment_form_sagepaydirectpro';
+       	var sfls = $$(sf+' input, '+sf+' select, '+sf+' radio, '+sf+' checkbox');
+
+       	if(reverse){
+	       	//sfls.invoke('enable');
+	       	//Just hide items wose parent is visible, these prevents enabling hiden token card elements
+	       	sfls.each(function(item){
+	       		if(item.up().visible() === true){
+	       			item.enable();
+	       		}
+	       	});
+
+	       	sfls.invoke('show');
+
+	       	$$(sf+' label, '+sf+' a[class!="addnew"]').invoke('show');
+
+	       	//ccTypeContainer.show();
+	       	//ccTypeContainer.disabled = false;
+	       	ccTypeContainer.addClassName('validate-ccsgpdp-type-select');
+       	}else{
+	       	sfls.invoke('disable');
+	       	sfls.invoke('hide');
+
+	       	$$(sf+' label, '+sf+' a').invoke('hide');
+
+	       	ccTypeContainer.show();
+	       	ccTypeContainer.disabled = false;
+	       	ccTypeContainer.removeClassName('validate-ccsgpdp-type-select');
+       	}
+
+    }
+    changecsvclass = function(obj) {
+        var ccTypeContainer = $('sagepaydirectpro_cc_type');
+        var ccCVNContainer = $('sagepaydirectpro_cc_cid');
+
+        fillSagePayTestData();
+
+        if(ccTypeContainer.value == 'PAYPAL'){//PayPal MARK integration
+        	paypalClean(false);
+        }else{
+        	paypalClean(true);
+        }
+
+        if(ccTypeContainer)
+        {
+            if(ccTypeContainer.value == 'LASER' && ccCVNContainer.hasClassName('required-entry'))
+            {
+                if(ccCVNContainer) {
+                    ccCVNContainer.removeClassName('required-entry');
+                }
+            }
+            if(ccTypeContainer.value != 'LASER' && !ccCVNContainer.hasClassName('required-entry'))
+            {
+                if(ccCVNContainer) {
+                    ccCVNContainer.addClassName('required-entry');
+                }
+            }
+        }
+    }
+
+    Validation.addAllThese([
+        ['validate-ccsgpdp-number', 'Please enter a valid credit card number.', function(v, elm) {
+                // remove non-numerics
+			try{
+           var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_number')) + '_cc_type');
+                if (ccTypeContainer && typeof Validation.creditCartTypes.get(ccTypeContainer.value) != 'undefined'
+                        && Validation.creditCartTypes.get(ccTypeContainer.value)[2] == false) {
+                    if (!Validation.get('IsEmpty').test(v) && Validation.get('validate-digits').test(v)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                if (ccTypeContainer.value == 'OT' ||  ccTypeContainer.value == 'UKE' || ccTypeContainer.value == 'DELTA' || ccTypeContainer.value == 'MAESTRO' || ccTypeContainer.value == 'SOLO' || ccTypeContainer.value == 'SWITCH' || ccTypeContainer.value == 'LASER' || ccTypeContainer.value == 'JCB' || ccTypeContainer.value == 'DC') {
+                     return true;
+                }
+
+                return validateCreditCard(v);
+                }catch(_error){return true;}
+            }],
+        ['validate-ccsgpdp-cvn', 'Please enter a valid credit card verification number.', function(v, elm) {
+        		try{
+                var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_cid')) + '_cc_type');
+                var ccCVNContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_cid')) + '_cc_cid');
+                if(ccTypeContainer)
+                {
+                    if(ccTypeContainer.value == 'LASER' && ccCVNContainer.hasClassName('required-entry'))
+                    {
+                        if(ccCVNContainer) {
+                            ccCVNContainer.removeClassName('required-entry');
+                        }
+                    }
+                    if(ccTypeContainer.value != 'LASER' && !ccCVNContainer.hasClassName('required-entry'))
+                    {
+                        if(ccCVNContainer) {
+                            ccCVNContainer.addClassName('required-entry');
+                        }
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+                if (!ccTypeContainer && ccTypeContainer.value != 'LASER') {
+                    return true;
+                }
+                var ccType = ccTypeContainer.value;
+
+                switch (ccType) {
+                    case 'VISA' :
+                    case 'MC' :
+                        re = new RegExp('^[0-9]{3}$');
+                        break;
+                    //case 'AMEX' :
+                    //    re = new RegExp('^[0-9]{4}$');
+                    //    break;
+                    case 'MAESTRO':
+                    case 'SOLO':
+                    case 'SWITCH':
+                        re = new RegExp('^([0-9]{1}|^[0-9]{2}|^[0-9]{3})?$');
+                        break;
+                    default:
+                        re = new RegExp('^([0-9]{3}|[0-9]{4})?$');
+                        break;
+                }
+
+                if (v.match(re) || ccType == 'LASER') {
+                    return true;
+                }
+
+                return false;
+                                }catch(_error){return true;}
+            }],
+            ['validate-ccsgpdp-type', 'Credit card number doesn\'t match credit card type', function(v, elm) {
+            try{
+                    // remove credit card number delimiters such as "-" and space
+                    elm.value = removeDelimiters(elm.value);
+                    v         = removeDelimiters(v);
+
+                    var ccTypeContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_number')) + '_cc_type');
+                    if (!ccTypeContainer) {
+                        return true;
+                    }
+                    var ccType = ccTypeContainer.value;
+
+                    // Other card type or switch or solo card
+                    if (ccType == 'OT' ||  ccType == 'UKE' || ccType == 'DELTA' || ccType == 'MAESTRO' || ccType == 'SOLO' || ccType == 'SWITCH' || ccType == 'LASER' || ccType == 'JCB' || ccType == 'DC') {
+                        return true;
+                    }
+                    // Credit card type detecting regexp
+                    var ccTypeRegExp = {
+                        'VISA': new RegExp('^4[0-9]{12}([0-9]{3})?$'),
+                        'MC': new RegExp('^5[1-5][0-9]{14}$'),
+                        'AMEX': new RegExp('^3[47][0-9]{13}$')
+                    };
+
+                    // Matched credit card type
+                    var ccMatchedType = '';
+                    $H(ccTypeRegExp).each(function (pair) {
+                        if (v.match(pair.value)) {
+                            ccMatchedType = pair.key;
+                            throw $break;
+                        }
+                    });
+
+                    if(ccMatchedType != ccType) {
+                        return false;
+                    }
+
+                    return true;
+                                    }catch(_error){return true;}
+                }],
+         ['validate-ccsgpdp-type-select', 'Card type doesn\'t match credit card number', function(v, elm) {
+                try{var ccNumberContainer = $(elm.id.substr(0,elm.id.indexOf('_cc_type')) + '_cc_number');
+                return Validation.get('validate-ccsgpdp-type').test(ccNumberContainer.value, ccNumberContainer);
+                                }catch(_error){return true;}
+            }],
+         ['validate-issue-number', 'Issue Number must have at least two characters', function(v, elm) {
+				try{
+                if(v.length > 0 && !(v.match(new RegExp('^([0-9]{1}|[0-9]{2})$')))){
+                    return false;
+                }
+
+                return true;
+                                }catch(_error){return true;}
+            }]
+    ]);
+

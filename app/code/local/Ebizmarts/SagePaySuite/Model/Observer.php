@@ -120,12 +120,47 @@ class Ebizmarts_SagePaySuite_Model_Observer
 
 	}
 
+	protected function _canProfile($controllerAction)
+	{
+		$sagepay = (bool)('Ebizmarts_SagePaySuite' == $controllerAction->getRequest()->getControllerModule());
+		$config  = (bool)Mage::getStoreConfig('payment/sagepaysuite/profile_request', Mage::app()->getStore());
+
+		return ($sagepay && $config);
+	}
+
+	public function profilePre($o)
+	{
+		$ca = $o->getEvent()->getControllerAction();
+		if( $this->_canProfile($ca) === FALSE){
+			return $o;
+		}
+
+		Mage::getSingleton('core/resource')->getConnection('core_write')->getProfiler()->setEnabled(TRUE);
+		Varien_Profiler::enable();
+	}
+
+	public function profilePost($o)
+	{
+		$ca = $o->getEvent()->getControllerAction();
+		if( $this->_canProfile($ca) === FALSE){
+			return $o;
+		}
+
+		Mage::helper('sagepaysuite')->logprofiler($ca);
+	}
+
 	public function layoutUpdate($o)
 	{
-		$isCe15  = Mage::helper('sagepaysuite')->mageVersionIs('1.5');
-		$isEe110 = Mage::helper('sagepaysuite')->mageVersionIs('1.10');
+		if(!Mage::helper('sagepaysuite')->isSuiteEnabled()){
+			return $o;
+		}
 
-		if(false === $isCe15 && false === $isEe110){
+		$isCe15  = Mage::helper('sagepaysuite')->mageVersionIs('1.5');
+		$isCe16  = Mage::helper('sagepaysuite')->mageVersionIs('1.6');
+		$isEe110 = Mage::helper('sagepaysuite')->mageVersionIs('1.10');
+		$isEe111 = Mage::helper('sagepaysuite')->mageVersionIs('1.11');
+
+		if(false === $isCe15 && false === $isEe110 && false === $isCe16 && false === $isEe111){
 			return $o;
 		}
 

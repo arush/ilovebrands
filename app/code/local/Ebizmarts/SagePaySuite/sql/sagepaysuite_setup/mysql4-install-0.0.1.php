@@ -145,7 +145,6 @@ $installer->run("
       `trndate` datetime NULL,
       PRIMARY KEY (`id`) )
     ENGINE = MYISAM DEFAULT CHARSET=utf8;
-
 ");
 
 

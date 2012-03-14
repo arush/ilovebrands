@@ -34,13 +34,14 @@
  }
 
  $stopped = ($sagepay->getVoided() || $sagepay->getAborted() || $sagepay->getCanceled()) ? true : false;
+ $isPayPal = $sagepay->getisPayPalTransaction();
 ?>
 
 <img src="<?php echo $this->getSkinUrl('sagepaysuite/images/sagepay-section-heading.png'); ?>" />
 
 <p>
 
-<?php if($sagepay->getisPayPalTransaction()): ?>
+<?php if($isPayPal): ?>
 	<?php echo $this->getMethod()->getPayPalTitle(); ?>
 <?php else: ?>
 	<?php echo $this->getMethod()->getTitle() ?>
@@ -107,6 +108,14 @@
     	if(!is_null($td_status)): ?>
     <li><strong><?php echo $this->__('3D Status'); ?></strong>: <span class="shield-flag threed-<?php echo strtolower(trim($td_status)); ?>"><?php echo $td_status; ?></span></li>
     <?php endif; ?>
+
+	<?php if($isPayPal): $paypaldata = $sagepay->getPayPalData(); ?>
+		<li><strong><?php echo $this->__('Payer ID:'); ?></strong> <?php echo $paypaldata->getPayerId(); ?></li>
+		<li><strong><?php echo $this->__('Payer Email:'); ?></strong> <?php echo $paypaldata->getCustomerEmail(); ?></li>
+		<li><strong><?php echo $this->__('Payer Status:'); ?></strong> <?php echo $paypaldata->getPayerStatus(); ?></li>
+		<li><strong><?php echo $this->__('Payer Address Status:'); ?></strong> <?php echo $paypaldata->getAddressStatus(); ?></li>
+	<?php endif; ?>
+
 </ul>
 
 <ul id="card-checks">
@@ -131,13 +140,14 @@
     <?php echo $this->__('Action: <strong style="%s">%s</strong>', 'color:'.$color, $fraud->getThirdmanAction()); ?></p>
 
     <!-- 3rdMan Breakdown -->
-    	<?php $bdown = $this->getThirdmanBreakdown($fraud->getThirdmanId()); ?>
+    	<?php if( $fraud->getThirdmanId() && ($bdown = $this->getThirdmanBreakdown($fraud->getThirdmanId())) ): ?>
     	<a href="" onclick="$('thirdman-breakdown').toggle();return false;"><?php echo $this->__('3rd Man breakdown'); ?></a>
     	<ul id="thirdman-breakdown" style="display:none">
     	<?php foreach($bdown->t3mresults->rule as $rule): ?>
     		<li><strong><?php echo (string)$rule->description; ?></strong>, <?php echo (string)$rule->score; ?></li>
     	<?php endforeach; ?>
     	</ul>
+    	<?php endif; ?>
     <!-- 3rdMan Breakdown -->
 </div>
 <?php endif; if(!$fraud->getThirdmanScore()): ?>

@@ -51,6 +51,8 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 
 		try {
 
+			Mage::helper('sagepaysuite')->validateQuote();
+
 			$result = $this->getServerModel()->registerTransaction($this->getRequest()->getPost());
 			$resultData = $result->getData();
 
@@ -165,25 +167,26 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 
 	private function _returnOkAbort()
 	{
-		header('Content-type: text/plain');
 		$strResponse = 'Status=OK' . $this->eoln;
 		$strResponse .= 'StatusDetail=Transaction ABORTED successfully' . $this->eoln;
 		$strResponse .= 'RedirectURL=' . $this->_getAbortRedirectUrl() . /*'?SID=' . $this->getRequest()->getParam('SID', '') .*/ $this->eoln;
-		echo $strResponse;
-		exit;
+
+		$this->getResponse()->setHeader('Content-type', 'text/plain');
+		$this->getResponse()->setBody($strResponse);
+		return;
 	}
 
 	private function _returnOk() {
-		header('Content-type: text/plain');
 		$strResponse = 'Status=OK' . $this->eoln;
 		$strResponse .= 'StatusDetail=Transaction completed successfully' . $this->eoln;
 		$strResponse .= 'RedirectURL=' . $this->_getSuccessRedirectUrl() . /*'?SID=' . $this->getRequest()->getParam('SID', '') .*/ $this->eoln;
-		echo $strResponse;
-		exit;
+
+		$this->getResponse()->setHeader('Content-type', 'text/plain');
+		$this->getResponse()->setBody($strResponse);
+		return;
 	}
 
 	private function _returnInvalid($message = 'Unable to find the transaction in our database.') {
-		header('Content-type: text/plain');
 		$response = 'Status=INVALID' . $this->eoln;
 		$response .= 'RedirectURL=' . $this->_getFailedRedirectUrl() . /*'?SID=' . $this->getRequest()->getParam('SID', '') .*/ $this->eoln;
 		$response .= 'StatusDetail=' . $message . $this->eoln;
@@ -196,8 +199,9 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 		Sage_Log::log($this->getRequest()->getPost());
 		Sage_log::log($this->_getSagePayServerSession()->getData());
 
-		echo $response;
-		exit;
+		$this->getResponse()->setHeader('Content-type', 'text/plain');
+		$this->getResponse()->setBody($response);
+		return;
 	}
 
 	protected function _getHRStatus($strStatus, $strStatusDetail) {
@@ -383,7 +387,9 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 
 								/** The status indicates a failure of one state or another, so send the customer to orderFailed instead **/
 								$strRedirectPage = $this->_getFailedRedirectUrl();
-
+								
+								Mage::helper('sagepaysuite')->cancelTransaction($dbtrn);
+								
 								$this->_returnInvalid('Could not save order: ' . $sOrder);
 							} else {
 
@@ -437,6 +443,9 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 						}
 
 					} else {
+						
+						Mage::helper('sagepaysuite')->cancelTransaction($this->_trn());
+						
 						$sagePayServerSession->setFailStatus($strDBStatus);
 						/** The status indicates a failure of one state or another, so send the customer to orderFailed instead **/
 						$this->_returnInvalid($strDBStatus);
@@ -561,19 +570,22 @@ class Ebizmarts_SagePaySuite_ServerPaymentController extends Mage_Core_Controlle
 				return true;
 
         	}else{
-
+				
                 $this->getOnepage()->getQuote()->collectTotals();
         		$order = $this->getOnepage()->saveOrder();
 
         		Mage::register('last_order_id', Mage::getSingleton('checkout/session')->getLastOrderId());
 
-			Mage::helper('sagepaysuite')->deleteQuote();
+				Mage::helper('sagepaysuite')->deleteQuote();
 
         		return true;
 
         	}
 
         }catch (Exception $e) {
+			
+			Mage::helper('sagepaysuite')->cancelTransaction($this->_trn());
+			
         	Mage::log($e->getMessage());
             Mage::logException($e);
             Mage::helper('checkout')->sendPaymentFailedEmail($this->getOnepage()->getQuote(), $e->getMessage());

@@ -149,7 +149,8 @@ class Ebizmarts_SagePaysuite_Block_Adminhtml_Sales_Order_View_Tab_Transactions
     {
     	try{
 			$regOrder = Mage::registry('current_order');
-	    	if($regOrder && false === $this->helper('sagepaysuite')->isSagePayMethod($regOrder->getPayment()->getMethod())){
+	    	if($regOrder && false === $this->helper('sagepaysuite')->isSagePayMethod($regOrder->getPayment()->getMethod())
+	    		|| ($this->_getActionCollection()->getSize() == 0)){
 				return true;
 	    	}
     	}catch(Exception $ee){

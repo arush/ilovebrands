@@ -17,7 +17,7 @@ class Ebizmarts_SagePaySuite_Block_Adminhtml_Transaction_Grid extends Mage_Admin
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrfans();
+        $collection = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->getCollection()->getOrphans();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }

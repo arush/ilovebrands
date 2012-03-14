@@ -51,6 +51,7 @@ class Ebizmarts_SagePaySuite_Block_Checkout_Serverfail extends Mage_Core_Block_T
 							);
 						}catch(er){}
 					}
+					window.parent.restoreOscLoad();
 				</script>';
         $html.= '</body></html>';
 

@@ -32,7 +32,6 @@ class Ebizmarts_SagePaySuite_Block_Info_Suite extends Mage_Payment_Block_Info_Cc
             $this->setChild('authorise.list', Mage::getModel('core/layout')->createBlock('core/template', 'authorise.li')->setTemplate('sagepaysuite/payment/info/authorises.phtml'));
         }
 
-		//if(Mage::registry('current_creditmemo') || Mage::registry('current_invoice')){
 		if(Mage::getSingleton('core/translate')->getTranslateInline() === false && Mage::app()->getStore()->isAdmin()){ //For Emails
 			$this->setTemplate('sagepaysuite/payment/info/base-basic.phtml');
 		}else{
@@ -89,10 +88,8 @@ class Ebizmarts_SagePaySuite_Block_Info_Suite extends Mage_Payment_Block_Info_Cc
 			}
 
             $url = $this->helper('sagepaysuite')->getCcImage($types[$ccType]);
-            #$name = $types[$ccType];
-            #if(@fopen($url, 'r')){
-                $name = '<img alt="'.$types[$ccType].'" title="'.$types[$ccType].'" src="'.$this->helper('sagepaysuite')->getCcImage($types[$ccType]).'"/>';
-            #}
+            $name = '<img alt="'.$types[$ccType].'" title="'.$types[$ccType].'" src="'.$this->helper('sagepaysuite')->getCcImage($types[$ccType]).'"/>';
+
             return $name;
 
         }
@@ -147,8 +144,6 @@ class Ebizmarts_SagePaySuite_Block_Info_Suite extends Mage_Payment_Block_Info_Cc
 	{
 		$title = $this->getMethod()->getTitle();
 
-		#if(is_object($this->getInfo()->getOrder()) && is_object($this->getInfo()->getOrder()->getSagepayInfo()) &&
-			#$this->getInfo()->getOrder()->getSagepayInfo()->getisPayPalTransaction()){
 		if(is_object($this->getInfo()->getOrder())){
 			$sagePayInfo = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')->loadByParent($this->getInfo()->getOrder()->getId());
 			if($sagePayInfo->getisPayPalTransaction()){
@@ -215,22 +210,14 @@ class Ebizmarts_SagePaySuite_Block_Info_Suite extends Mage_Payment_Block_Info_Cc
 
 	public function getThirdmanBreakdown($thirdmanId)
 	{
-		return Mage::getModel('sagepayreporting/sagepayreporting')
+		try{
+			$breakdown = Mage::getModel('sagepayreporting/sagepayreporting')
 				  ->getT3MDetail($thirdmanId);
+		}catch(Exception $e){
+			$breakdown = null;
+			Mage::logException($e);
+		}
+		return $breakdown;
 	}
-
-    /**
-     * Render block HTML
-     *
-     * @return string
-     */
-    /*protected function _toHtml()
-    {
-        if($this->getIsSecureMode() === true && !Mage::app()->getRequest()->isXmlHttpRequest()){
-            #return $this->getMethod()->getTitle();
-            return $this->getBasicRealTitle();
-        }
-        return parent::_toHtml();
-    }*/
 
 }

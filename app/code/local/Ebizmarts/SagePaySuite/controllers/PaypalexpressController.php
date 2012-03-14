@@ -204,15 +204,27 @@ class Ebizmarts_SagePaySuite_PaypalexpressController extends Mage_Core_Controlle
 		}
 
 		$sessionVendorTx = Mage::getModel('sagepaysuite/api_payment')->getSageSuiteSession()->getLastVendorTxCode();
+		$trn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
+            ->loadByVendorTxCode($sessionVendorTx);
 
 		$postArray = $_r->getPost();
+
+		//Testing data
+		if( $trn->getMode() == 'test' ){
+			$postArray['DeliveryAddress1'] = 'Test 1234';
+		    $postArray['DeliveryAddress2'] = 'Etage sieben.';
+		    $postArray['DeliveryCity']     = 'Los Angeles';
+		    $postArray['DeliveryPostCode'] = '90210';
+		    $postArray['DeliveryCountry']  = 'US';
+		    $postArray['DeliveryState']    = 'CA';
+		    $postArray['DeliveryPhone']    = '555 55555';
+		    $_r->setPost($postArray);
+		}
+		//Testing data
 
 		$postArray = array_map(array($this, 'encodechars'), $postArray);
 
 		$postArray = Mage::helper('sagepaysuite')->arrayKeysToUnderscore($postArray);
-
-		$trn = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
-            ->loadByVendorTxCode($sessionVendorTx);
 
 		$this->getPaypalTrnModel()
 		->loadByVendorTxCode($sessionVendorTx)
@@ -232,6 +244,10 @@ class Ebizmarts_SagePaySuite_PaypalexpressController extends Mage_Core_Controlle
         	$this->_getCheckoutSession()->addError($_r->getPost('StatusDetail'));
         	$this->_redirect('checkout/cart');
         	return;
+		}
+
+		if(!$this->_getQuote()->getCustomerEmail()){
+			$this->_getQuote()->setCustomerEmail( $_r->getPost('CustomerEMail') );
 		}
 
 		$this->_initCheckout();

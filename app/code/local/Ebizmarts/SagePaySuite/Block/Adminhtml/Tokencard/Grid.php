@@ -88,11 +88,12 @@ class Ebizmarts_SagePaySuite_Block_Adminhtml_Tokencard_Grid extends Mage_Adminht
                 'header'    => Mage::helper('sagepaysuite')->__('Action'),
                 'width'     => '50px',
                 'type'      => 'action',
+                'align'     => 'center',
                 'getter'     => 'getId',
                 'actions'   => array(
                     array(
                         'caption' => Mage::helper('sagepaysuite')->__('Delete'),
-                        'url'     => array('base'=>'*/*/deleteCard'),
+                        'url'     => array('base'=>'sgpsSecure/adminhtml_token/deleteCard'),
                         'field'   => 'id',
                         'confirm' => Mage::helper('sagepaysuite')->__('Are you sure?')
                     )
@@ -112,7 +113,7 @@ class Ebizmarts_SagePaySuite_Block_Adminhtml_Tokencard_Grid extends Mage_Adminht
 
     public function getGridUrl()
     {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
+        return $this->getUrl('sgpsSecure/adminhtml_token/grid', array('_current'=>true));
     }
 
 }

@@ -18,13 +18,18 @@
  }
  $_code = $this->getMethod()->getCode();
 
+ //For emails
+ if(Mage::getSingleton('sagepaysuite/session')->getSagepaypaypalRqpost()){
+   $_code = 'sagepaypaypal';
+ }
+
  $reg = Mage::registry('sageserverpost');
  if(!is_null($reg)){
  	$sagepay->setCardType($reg->getData('CardType'))
  	->setLastFourDigits($reg->getData('Last4Digits'));
  }
 
- if(!$sagepay->getLastFourDigits() && ($_code == 'sagepayserver' || $_code == 'sagepayserver_moto') && is_object($this->getInfo()->getOrder())){
+ if(!$sagepay->getLastFourDigits() && ($_code == 'sagepayserver' || $_code == 'sagepayserver_moto' || $_code == 'sagepaypaypal') && is_object($this->getInfo()->getOrder())){
  	$sagepay = Mage::getModel('sagepaysuite2/sagepaysuite_transaction')
                 ->loadByParent($this->getInfo()->getOrder()->getId());
  }

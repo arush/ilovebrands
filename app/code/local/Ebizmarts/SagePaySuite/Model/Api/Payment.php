@@ -13,6 +13,8 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
     protected $_canManageRecurringProfiles  = false;
 	protected $_quote = null;
 
+	protected $_canEdit = false;
+
     const BASKET_SEP = ':';
     const RESPONSE_DELIM_CHAR = "\r\n";
 
@@ -56,13 +58,13 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 	const RESPONSE_CODE_PAYPAL_OK = 'PAYPALOK';
 
     const ACTION_AUTHORIZE_CAPTURE = 'payment';
-    const ACTION_AUTHORIZE = 'deferred';
-    const ACTION_AUTHENTICATE = 'authenticate';
+    const ACTION_AUTHORIZE         = 'deferred';
+    const ACTION_AUTHENTICATE      = 'authenticate';
 
     protected $ACSURL = NULL;
     protected $PAReq = NULL;
     protected $MD = NULL;
-    private $_sharedConf = array('trncurrency', 'referrer_id', 'vendor', 'timeout_message', 'connection_timeout', 'send_basket');
+    private $_sharedConf = array('email_on_invoice', 'trncurrency', 'referrer_id', 'vendor', 'timeout_message', 'connection_timeout', 'send_basket');
 
     /**
      * Can be edit order (renew order)
@@ -71,7 +73,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
      */
     public function canEdit()
     {
-        return false;
+        return $this->_canEdit;
     }
 
 	protected function _getCoreUrl()
@@ -210,9 +212,11 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
         $_code = (!in_array($field, $this->_sharedConf) ? $this->getCode() : 'sagepaysuite');
 
-        if(strpos($this->getCode(), 'moto') !== false){
+        if( $_code != 'sagepaysuite' && strpos($this->getCode(), 'moto') !== FALSE ){
         	$_code = $this->getCode();
-
+        	if( Mage::getSingleton('adminhtml/session_quote')->getStoreId() ){
+        		$storeId = Mage::getSingleton('adminhtml/session_quote')->getStoreId();
+        	}
         }
 
         $path = 'payment/' . $_code . '/' . $field;
@@ -258,7 +262,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
     }
 
     public static function log($data, $level = null, $file = null) {
-        Ebizmarts_SagePaySuite_Log::w($data, $level, $file);
+        Sage_Log::log($data, $level, $file);
     }
 
     protected function _tokenPresent() {
@@ -296,8 +300,11 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 			}
 		}
 
-		#Direct GiftAidPayment flag
-		$dgift = (!is_null($data->getCcGiftaid()) ? 1 : null);
+		//Direct GiftAidPayment flag
+		$dgift = (!is_null($data->getCcGiftaid()) ? 1 : NULL);
+
+		//Remember token
+		$info->setRemembertoken((!is_null($data->getRemembertoken()) ? 1 : 0));
 
         $info->setCcType($data->getCcType())
                 ->setCcOwner($data->getCcOwner())
@@ -329,34 +336,6 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
         return ($adminQuote->hasItems() === true) ? $adminQuote : $opQuote;
 
     }
-
-/*    protected function _getQuote() {
-
-		if(!is_null($this->_quote)){
-			return $this->_quote;
-		}
-
-		$opQuote = Mage::getSingleton('checkout/type_onepage')->getQuote();
-		$adminQuote = Mage::getSingleton('adminhtml/session_quote')->getQuote();
-
-		$rqQuoteId = Mage::app()->getRequest()->getParam('qid');
-        if($adminQuote->hasItems() === false && (int)$rqQuoteId){
-        	$opQuote->setQuote(Mage::getModel('sales/quote')->loadActive($rqQuoteId));
-        }
-
-		$opQuote->setStore(Mage::app()->getStore());
-
-		if($adminQuote->hasItems() === true){
-			$this->_quote = $adminQuote;
-		}else{
-			$this->_quote = $opQuote;
-		}
-
-		return $this->_quote;
-
-        #return ($adminQuote->hasItems() === true) ? $adminQuote : $opQuote;
-
-    }*/
 
     public function getQuote() {
         return $this->_getQuote();
@@ -517,12 +496,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
                     $request->setBillingState($billing->getRegionCode());
                 }
 
-                if (!preg_match("/^([a-zA-Z0-9])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)+/",
-                                $this->getConfigData('email_customer'))) {
-                    $request->setCustomerEMail('');
-                } else {
-                    $request->setCustomerEMail($this->getConfigData('email_customer'));
-                }
+				$request->setCustomerEMail($billing->getEmail());
             }
 
 			if(!$request->getDescription()){
@@ -587,6 +561,13 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 			$request->setBasket($this->_getBasketContents($quoteObj));
 		}
 
+        if(!$request->getDeliveryPostCode()){
+        	$request->setDeliveryPostCode('000');
+        }
+        if(!$request->getBillingPostCode()){
+        	$request->setBillingPostCode('000');
+        }
+
         return $request;
     }
 
@@ -597,7 +578,12 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
      * @param string $captureMode Mode capture, OFFLINE-ONLINE-NOTCAPTURE
      */
     public function invoiceOrder($id = null, $captureMode = Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE, $silent = true){
-        $order = Mage::getModel('sales/order')->load($id);
+
+        if( is_object($id) ){
+        	$order = $id;
+        }else{
+        	$order = Mage::getModel('sales/order')->load($id);
+        }
 
         try {
             if (!$order->canInvoice()) {
@@ -605,7 +591,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
             	if(!$silent){
             		Mage::throwException($emessage);
             	}
-                Ebizmarts_SagePaySuite_Log::w($emessage);
+                Sage_Log::log($emessage);
                 return false;
             }
 
@@ -616,7 +602,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
             	if(!$silent){
             		Mage::throwException($emessage);
             	}
-                Ebizmarts_SagePaySuite_Log::w($emessage);
+                Sage_Log::log($emessage);
                 return false;
             }
 
@@ -624,26 +610,36 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
             # New in 1.4.2.0, if there is not such value, only REFUND OFFLINE shows up
             # TODO: @see Mage_Sales_Model_Order_Payment::registerCaptureNotification
-            $invoice->setTransactionId($order->getSagepayInfo()->getId());
+            //$invoice->setTransactionId($order->getSagepayInfo()->getId());
+            $invoice->setTransactionId(time());
 
             $invoice->register();
+
+			//Send email
+			$sendemail = (bool)$this->getConfigData('email_on_invoice');
+            $invoice->setEmailSent($sendemail);
+            $invoice->getOrder()->setCustomerNoteNotify($sendemail);
+
             $transactionSave = Mage::getModel('core/resource_transaction')
                             ->addObject($invoice)
                             ->addObject($invoice->getOrder());
 
             $transactionSave->save();
 
-			/*$o = new Varien_Object;
-			$o->setEvent(new Varien_Object(array('invoice'=>new Varien_Object(array('order'=>$order)))));
-			Mage::getModel('ugiftcert/observer')->sales_order_invoice_pay($o);*/
-
+			if($sendemail){
+	            try {
+	                $invoice->sendEmail(TRUE, '');
+	            } catch (Exception $em) {
+	                Mage::logException($em);
+	            }
+			}
 
             return true;
         } catch (Mage_Core_Exception $e) {
         	if(!$silent){
         		Mage::throwException($e->getMessage());
         	}
-            Ebizmarts_SagePaySuite_Log::we($e);
+            Sage_Log::logException($e);
             return false;
         }
     }
@@ -653,7 +649,35 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		return Mage::helper('core/http')->getRemoteAddr();
 	}
 
-    protected function _getBasketContents($quote) {
+
+    /**
+     * Get product customize options
+     *
+     * @return array || false
+     */
+    protected function _getProductOptions($item)
+    {
+    	$options = array();
+
+		//This HELPER does not exist on all Magento versions
+		$helperClass = Mage::getConfig()->getHelperClassName('catalog/product_configuration');
+		if( FALSE === class_exists($helperClass, FALSE) ){
+			return $options;
+		}
+
+		$helper  = Mage::helper('catalog/product_configuration');
+        if($item->getProductType() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE){
+        	$options =  $helper->getCustomOptions($item);
+        }elseif($item->getProductType() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE){
+        	$options =  $helper->getConfigurableOptions($item);
+        }
+
+        return $options;
+    }
+
+    protected function _getBasketContents($quote)
+    {
+		//WARNING: If want to import basket on SAGE software need to remove currency symbols\\
 
 		if(false === $this->getSendBasket()){
 			return null;
@@ -661,7 +685,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
 		$itemsCollection = $quote->getItemsCollection();
 
-		$orderCurrencyCode = $quote->getQuoteCurrencyCode();
+		$orderCurrencyCode = ((string)$this->getConfigData('trncurrency') == 'store') ? $quote->getQuoteCurrencyCode() : $quote->getBaseCurrencyCode();
 
         $basket = '';
 
@@ -670,6 +694,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
         if ($itemsCollection->getSize() > 0) {
 
             $numberOfdetailLines = $itemsCollection->getSize() + 1;
+            $todelete = 0;
 
             foreach ($itemsCollection as $item) {
                 if ($item->getParentItem()) { # Configurable products
@@ -681,28 +706,74 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
             foreach ($itemsCollection as $item) {
 
-                if ($item->getParentItem()) { # Configurable products
-                    $numberOfdetailLines--;
+				//Avoid duplicates SKUs on basket
+				if( strpos($basket, ($this->_cleanString($item->getSku()).'|')) !== FALSE){
+					continue;
+				}
+                if ($item->getParentItem()) {
                     continue;
                 }
 
 				$tax = ($item->getBaseTaxBeforeDiscount() ? $item->getBaseTaxBeforeDiscount() : ($item->getBaseTaxAmount() ? $item->getBaseTaxAmount() : 0));
 
-                $basket .= str_replace(':', '-', $this->_cleanString($item->getSku()) . '|' . $this->_cleanString($item->getName())) . self::BASKET_SEP;
-                $basket .= ( $item->getQty() * 1) . self::BASKET_SEP;
-                $basket .= $_currency->formatPrecision($item->getPrice(), 2, array(), false) . self::BASKET_SEP;
-                $basket .= $_currency->formatPrecision($item->getTaxAmount(), 2, array(), false) . self::BASKET_SEP;
-                $basket .= $_currency->formatPrecision($item->getTaxAmount()+$item->getPrice(), 2, array(), false) . self::BASKET_SEP;
-                $basket .= $_currency->formatPrecision((($item->getRowTotal()+$tax)-$item->getDiscountAmount()), 2, array(), false) . self::BASKET_SEP;
+				//Options
+				$options = $this->_getProductOptions($item);
+				$_options = '';
+				if(count($options) > 0){
+					foreach($options as $opt){
+						$_options .= $opt['label'] . '-' . $opt['value'] .'.';
+					}
+					$_options = '_' . substr($_options, 0, -1) . '_';
+				}
+
+                $line = str_replace(':', '-', '[' . $this->_cleanString($item->getSku()) . ']|' . $this->_cleanString($item->getName())) . $this->_cleanString($_options) . self::BASKET_SEP;
+                $line .= ( $item->getQty() * 1) . self::BASKET_SEP;
+                $line .= $_currency->formatPrecision($item->getCalculationPrice(), 2, array(), false) . self::BASKET_SEP;
+                $line .= $_currency->formatPrecision($item->getTaxAmount(), 2, array(), false) . self::BASKET_SEP;
+                $line .= $_currency->formatPrecision($item->getTaxAmount()+$item->getPrice(), 2, array(), false) . self::BASKET_SEP;
+                $line .= $_currency->formatPrecision((($item->getRowTotal()+$tax)-$item->getDiscountAmount()), 2, array(), false) . self::BASKET_SEP;
+
+				if( strlen($basket.$line) < 7498 ){
+					$basket .= $line;
+				}else{
+					$todelete++;
+				}
+
             }
         }
 
-		$deliveryName   = $quote->getShippingAddress()->getShippingDescription();
+		$deliveryName   = $quote->getShippingAddress()->getShippingDescription() ? $quote->getShippingAddress()->getShippingDescription() : 'Delivery';
 		$deliveryValue  = $_currency->formatPrecision($quote->getShippingAddress()->getShippingAmount(), 2, array(), false);
 		$deliveryTax    = $_currency->formatPrecision($quote->getShippingAddress()->getShippingTaxAmount(), 2, array(), false);
 		$deliveryAmount = $_currency->formatPrecision($quote->getShippingAddress()->getShippingInclTax(), 2, array(), false);
 
-        $basket .= $this->_cleanString($deliveryName) . ':1:' . $deliveryValue . ':' . $deliveryTax . ':' . $deliveryAmount . ':' . $deliveryAmount;
+        $delivery = $this->_cleanString($deliveryName) . self::BASKET_SEP . '1' . self::BASKET_SEP . $deliveryValue . self::BASKET_SEP . $deliveryTax . self::BASKET_SEP . $deliveryAmount . self::BASKET_SEP . $deliveryAmount;
+
+		if( strlen($basket.$delivery) < 7498 ){
+			$basket .= $delivery;
+		}else{
+			$todelete++;
+		}
+
+		$numberOfLines = substr($basket, 0, strpos($basket, ':'));
+
+		if($todelete > 0){
+			$num = $numberOfLines - $todelete;
+			$basket = str_replace($numberOfLines, $num, $basket);
+		}
+
+		//Verify that items count is correct
+
+		$items = explode(':', $basket);
+        //Remove line number from basket
+		array_shift($items);
+        //Split into rows
+        $rows = count(array_chunk($items, 6));
+		if($rows != $numberOfLines){
+			$basket = str_replace($numberOfLines, $rows, $basket);
+		}
+
+		//Verify that items count is correct
 
         return $basket;
     }
@@ -739,8 +810,9 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
 		if (!$orderId) {
 
-			if(!$this->_getQuote()->getReservedOrderId()){
-				$this->_getQuote()->reserveOrderId();
+			// we need to check here if the orderId has already been used by other payment method
+			if(!$this->_getQuote()->getReservedOrderId() || $this->_orderIdAlreadyUsed( $this->_getQuote()->getReservedOrderId() ) ){
+				$this->_getQuote()->reserveOrderId()->save();
 			}
 
             $orderId = $this->_getQuote()->getReservedOrderId();
@@ -751,14 +823,29 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		if($this->isMsOnOverview()){
 			$this->getSageSuiteSession()->setReservedOrderId(null);
 		}
-
 		return $orderId;
+	}
+
+	protected function _orderIdAlreadyUsed($orderId)
+	{
+		// just in case there is no orderId provided
+		if ( !$orderId ) return false;
+
+		// let's check now if it has been used for another order
+		$potentialExistingOrder = Mage::getModel( "sales/order" )->loadByIncrementId( $orderId );
+
+		// if there is an order we should have it loaded by now
+		if ( !$potentialExistingOrder->getId() ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	protected function _getTrnVendorTxCode()
 	{
         $rsOid = $this->_getReservedOid();
-        return ($rsOid) ? $rsOid . '-' . date('Y-m-d-H-i-s') : substr(date('Y-m-d-H-i-s-').time(), 0, 40);
+        return ($rsOid) ? substr($rsOid . '-' . date('Y-m-d-H-i-s'), 0, 40) : substr(date('Y-m-d-H-i-s-').time(), 0, 40);
 	}
 
 	protected function _getRqParams()
@@ -780,114 +867,12 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		$billingAddressObj = $this->_getQuote()->getBillingAddress();
 		$shippingAddressObj = $this->_getQuote()->getShippingAddress();
 
-		/**
-		 * OSC
-		 */
-		 	if( FALSE !== strstr(parse_url(Mage::app()->getRequest()->getServer('HTTP_REFERER'), PHP_URL_PATH), 'onestepcheckout') ){
-
-			$requestParams = $this->_getRqParams();
-
-				if(array_key_exists('billing', $requestParams)){
-
-			        $billingAddressId = array_key_exists('billing_address_id', $requestParams) ? $requestParams['billing_address_id'] : false;
-			        $shippingAddressId = array_key_exists('shipping_address_id', $requestParams) ? $requestParams['shipping_address_id'] : false;
-			        $sameAsBilling = array_key_exists('use_for_shipping', $requestParams['billing']) ? $requestParams['billing']['use_for_shipping'] : false;
-			        $billing_data = $requestParams['billing'];
-
-		            if( !Mage::helper('customer')->isLoggedIn() ){
-
-		                $registration_mode = Mage::getStoreConfig('onestepcheckout/registration/registration_mode');
-		                if($registration_mode == 'auto_generate_account')   {
-		                    // Modify billing data to contain password also
-		                    $password = Mage::helper('onestepcheckout/checkout')->generatePassword();
-		                    $billing_data['customer_password'] = $password;
-		                    $billing_data['confirm_password'] = $password;
-		                    $this->_getQuote()->getCustomer()->setData('password', $password);
-		                    $this->_getQuote()->setData('password_hash', Mage::getModel('customer/customer')->encryptPassword($password));
-
-	                        $this->_getQuote()->setData('customer_email', $billing_data['email']);
-	                        $this->_getQuote()->setData('customer_firstname', $billing_data['firstname']);
-	                        $this->_getQuote()->setData('customer_lastname', $billing_data['lastname']);
-
-		                }
-
-
-		                if($registration_mode == 'require_registration' || $registration_mode == 'allow_guest')   {
-		                    if(!empty($billing_data['customer_password']) && !empty($billing_data['confirm_password']) && ($billing_data['customer_password'] == $billing_data['confirm_password'])){
-		                        $password = $billing_data['customer_password'];
-		                        $this->_getQuote()->setCheckoutMethod('register');
-		                        $this->_getQuote()->getCustomer()->setData('password', $password);
-
-		                        $this->_getQuote()->setData('customer_email', $billing_data['email']);
-	                        	$this->_getQuote()->setData('customer_firstname', $billing_data['firstname']);
-	                        	$this->_getQuote()->setData('customer_lastname', $billing_data['lastname']);
-
-		                        $this->_getQuote()->setData('password_hash', Mage::getModel('customer/customer')->encryptPassword($password));
-		                    }
-		                }
-
-			            if(!empty($billing_data['customer_password']) && !empty($billing_data['confirm_password']))   {
-			                // Trick to allow saving of
-			                Mage::getSingleton('checkout/type_onepage')->saveCheckoutMethod('register');
-			            }
-
-		            }//IsLoggedIn
-
-			        if(false !== $billingAddressId && (int)$billingAddressId){
-			            $customerAddress = Mage::getModel('customer/address')->load((int)$billingAddressId);
-			            if ($customerAddress->getId()) {
-			                $this->_getQuote()->getBillingAddress()->importCustomerAddress($customerAddress);
-			                if($sameAsBilling){
-			                    $this->_getQuote()->getShippingAddress()->importCustomerAddress($customerAddress);
-			                }
-			            }
-			        }else{
-						$billingAddress = new Ebizmarts_SagePaySuite_Model_Address($requestParams['billing']);
-						$this->_getQuote()->getBillingAddress()->addData($billingAddress->toArray());
-						#Mage::helper('onestepcheckout/checkout')->saveShipping($requestParams['billing'], $billingAddressId);
-			        }
-
-			        if(false !== $shippingAddressId && false === $sameAsBilling && (int)$shippingAddressId){
-			            $customerAddress = Mage::getModel('customer/address')->load((int)$shippingAddressId);
-			            if ($customerAddress->getId()) {
-			                $this->_getQuote()->getShippingAddress()->importCustomerAddress($customerAddress);
-			            }
-			        }else{
-						if(false === $sameAsBilling){
-
-							#$shippingAddress = new Ebizmarts_SagePaySuite_Model_Address($requestParams['shipping']);
-							#$this->_getQuote()->getShippingAddress()->addData($shippingAddress->toArray());
-
-							Mage::helper('onestepcheckout/checkout')->saveShipping($requestParams['shipping'], null);
-
-						}elseif(false === $billingAddressId){
-							Mage::helper('onestepcheckout/checkout')->saveShipping($requestParams['billing'], $billingAddressId);
-							#$this->_getQuote()->getShippingAddress()->addData($billingAddressObj->toArray());
-						}
-			        }
-			        $this->_getQuote()->save();
-
-					if(array_key_exists('onestepcheckout_comments', $requestParams)
-					  && !empty($requestParams['onestepcheckout_comments'])){
-						$this->getSageSuiteSession()->setOscOrderComments($requestParams['onestepcheckout_comments']);
-					}
-
-					if(array_key_exists('subscribe_newsletter', $requestParams)
-					  && (int)$requestParams['subscribe_newsletter'] === 1){
-						$this->getSageSuiteSession()->setOscNewsletterEmail($this->_getQuote()->getBillingAddress()->getEmail());
-					}
-
-				}
-		 	}
-		/**
-		 * OSC
-		 */
         $payment->setTransactionType(strtoupper($this->getConfigData('payment_action')));
-        $payment->setAmountOrdered(number_format($quoteObj->getGrandTotal(), 2, '.', ''));
+        $payment->setAmountOrdered(number_format($this->_getQuote()->getGrandTotal(), 2, '.', ''));
         $payment->setRealCapture(true); //To difference invoice from capture
-        $payment->setOrder(new Varien_Object($quoteObj->toArray()));
+        $payment->setOrder(new Varien_Object($this->_getQuote()->toArray()));
         $payment->setAnetTransType(strtoupper($this->getConfigData('payment_action')));
-        $payment->getOrder()->setOrderCurrencyCode($quoteObj->getQuoteCurrencyCode());
+        $payment->getOrder()->setOrderCurrencyCode($this->_getQuote()->getQuoteCurrencyCode());
         $payment->getOrder()->setBillingAddress($this->_getQuote()->getBillingAddress());
         $payment->getOrder()->setShippingAddress($this->_getQuote()->getShippingAddress());
 
@@ -954,16 +939,23 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
         return $request;
 	}
 
-    protected function _setRequestCurrencyAmount($request, $quote) {
-        $new_value = false;
+    protected function _setRequestCurrencyAmount($request, $quote)
+    {
+
+		if( $quote->getMacAmount() ){
+			$quote = clone $quote;
+			$quote->setGrandTotal($quote->getMacAmount());
+			$quote->setBaseGrandTotal($quote->getBaseMacAmount());
+		}
 
 		if((string)$this->getConfigData('trncurrency') == 'store'){
-        	$request->setAmount(number_format($quote->getGrandTotal(), 2, '.', ''));
+        	$request->setAmount($this->_sageHelper()->moneyFormat($quote->getGrandTotal()));
             $request->setCurrency($quote->getQuoteCurrencyCode());
         }else{
-            $request->setAmount(number_format($quote->getBaseGrandTotal(), 2, '.', ''));
+            $request->setAmount($this->_sageHelper()->moneyFormat($quote->getBaseGrandTotal()));
             $request->setCurrency($quote->getBaseCurrencyCode());
         }
+
     }
 
     public function saveAction($orderId, $request, $result)
@@ -1029,6 +1021,14 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
             throw new Mage_Core_Exception($msg);
         }
 
+		/**
+		 * If we are capturing a FORM transaction we HAVE to retrieve the
+		 * SecurityKey from the "Admin & Access API"
+		 */
+		if(!$trn->getSecurityKey() && strtoupper($trn->getIntegration()) == 'FORM'){
+			$this->_addSecurityKey($trn);
+		}
+
 		$payment->setTransactionId($trn->getId());
 
         if($trn->getTxType() == self::REQUEST_TYPE_AUTHENTICATE){
@@ -1090,13 +1090,17 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
         $result = $this->requestPost($this->getUrl('repeat', false, $this->_getIntegrationCode($trn->getIntegration()), $trn->getMode()), $data);
 
         if($result['Status'] != 'OK'){
-            Ebizmarts_SagePaySuite_Log::w($result['StatusDetail']);
+            //Ebizmarts_SagePaySuite_Log::w($result['StatusDetail']);
             Mage::throwException('SagePay REPEAT error: ' . $result['StatusDetail']);
         }
 
 		$result ['Amount'] = $data['Amount'];
 
         $this->saveAction($trn->getOrderId(), $data, $result);
+
+		$result ['_requestvendor_'] = $data['VendorTxCode'];
+
+        return $result;
 	}
 
     public function release($trn, $amount)
@@ -1104,7 +1108,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		/**
 		 * If transaction is already RELEASED we need to REPEAT it.
 		 */
-    	if($trn->getReleased()){
+    	if( !is_null($trn->getReleased()) ){
     		$this->repeat($trn, $amount);
     		return;
     	}
@@ -1156,12 +1160,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		 * SecurityKey from the "Admin & Access API"
 		 */
 		if(!$trn->getSecurityKey() && strtoupper($trn->getIntegration()) == 'FORM'){
-			$trnDetails = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails($trn->getVendorTxCode(), null);
-			if ($trnDetails->getErrorcode() != '0000') {
-				Mage::throwException($trnDetails->getError());
-			}
-			$formSecKey = (string)$trnDetails->getSecuritykey();
-			$trn->setSecurityKey($formSecKey)->save();
+			$this->_addSecurityKey($trn);
 		}
 
 		$paymentId = Mage::app()->getRequest()->getParam('sagepaysuiterefundtrn');
@@ -1176,6 +1175,17 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 				    ->setVendorTxCode($action->getVendorTxCode());
 			}
 
+		}
+
+		//VOID payment if refunding full amount
+
+		//TODO: If it is PAYPAL dont VOID
+
+		if( ((float)$order->getGrandTotal()) == $payment->getCreditmemo()->getGrandTotal() ){
+			try{
+				$this->voidPayment($trn);
+				return $this;
+			}catch(Exception $e){}
 		}
 
         $data = array();
@@ -1381,11 +1391,17 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
                     ->setAdditionalData($result->getResponseStatusDetail());
             $payment->save();
 
-if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYMENT){
+			if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYMENT){
                 $this->getSageSuiteSession()->setInvoicePayment(true);
             }
+
+			$quote = Mage::getSingleton('checkout/type_onepage')->getQuote();
+			$quote->collectTotals();
+			return Mage::getSingleton('checkout/type_onepage')->saveOrder();
+
         }
         else {
+        	//TODO: SAVE ORPHAN if 3D failed
             if ($result->getResponseStatusDetail()) {
                 if ($result->getResponseStatus() == self::RESPONSE_CODE_NOTAUTHED) {
                     $error = $this->_sageHelper()->__('Your credit card can not be authenticated: ');
@@ -1456,9 +1472,13 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
 
         if($this->_getIsAdmin() && (int)$this->_getAdminQuote()->getCustomerId() === 0) {
             $cs = Mage::getModel('customer/customer')->setWebsiteId($this->_getAdminQuote()->getStoreId())->loadByEmail($this->_getAdminQuote()->getCustomerEmail());
+
             if( $cs->getId() ) {
                 Mage::throwException($this->_SageHelper()->__('Customer already exists.'));
             }
+        }
+        if($this->_getIsAdmin()){
+        	$payment->setRequestVendor( $this->getConfigData('vendor', $this->_getAdminQuote()->getStoreId()) );
         }
 
         if ($this->getSageSuiteSession()->getSecure3d()) {
@@ -1480,6 +1500,8 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
         $payment->setAmount($amount);
 
         $request= $this->_buildRequest($payment);
+
+		Mage::dispatchEvent('sagepaysuite_direct_request_post_before', array('request' => $request, 'payment' =>$this));
 
         $result = $this->_postRequest($request);
 
@@ -1569,6 +1591,11 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
         }
 
         if ($error !== false) {
+
+        	if( Mage::helper('adminhtml')->getCurrentUserId() !== FALSE ){
+        		Mage::getSingleton('adminhtml/session')->addError($error);
+        	}
+
             Mage::throwException($error);
         }
 
@@ -1658,6 +1685,7 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
 
         $curlSession = curl_init();
 
+		curl_setopt($curlSession, CURLOPT_USERAGENT, $this->_sageHelper()->getUserAgent());
         curl_setopt($curlSession, CURLOPT_URL, $url);
         curl_setopt($curlSession, CURLOPT_HEADER, 0);
         curl_setopt($curlSession, CURLOPT_POST, 1);
@@ -1686,6 +1714,8 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
 
             $output['Status'] = 'FAIL';
             $output['StatusDetail'] = htmlentities(curl_error($curlSession)) . '. ' . $this->getConfigData('timeout_message');
+
+            return $output;
         }
 
         curl_close($curlSession);
@@ -1759,5 +1789,16 @@ if(strtoupper($this->getConfigData('payment_action')) == self::REQUEST_TYPE_PAYM
     {
     	return substr($string, 0, $length);
     }
+
+	protected function _addSecurityKey($trn)
+	{
+		$trnDetails = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails($trn->getVendorTxCode(), null);
+		if ($trnDetails->getErrorcode() != '0000') {
+			Mage::throwException($trnDetails->getError());
+		}
+		$formSecKey = (string)$trnDetails->getSecuritykey();
+		$trn->setSecurityKey($formSecKey)
+			->save();
+	}
 
 }

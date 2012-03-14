@@ -33,6 +33,9 @@ class Ebizmarts_SagePaySuite_DirectPaymentController extends Mage_Core_Controlle
 		$resultData = array ();
 
 		try {
+
+			Mage::helper('sagepaysuite')->validateQuote();
+
 			$result = $this->getDirectModel()->registerTransaction($this->getRequest()->getPost());
 			$resultData = $result->getData();
 
@@ -144,12 +147,20 @@ class Ebizmarts_SagePaySuite_DirectPaymentController extends Mage_Core_Controlle
 		$error = false;
 		try {
 
-			Mage :: getModel('sagepaysuite/sagePayDirectPro')->saveOrderAfter3dSecure($this->getRequest()->getPost('PaRes'), Mage :: getSingleton('sagepaysuite/session')->getEmede());
+			Mage::getModel('sagepaysuite/sagePayDirectPro')->saveOrderAfter3dSecure($this->getRequest()->getPost('PaRes'), Mage :: getSingleton('sagepaysuite/session')->getEmede());
+
 		} catch (Exception $e) {
 
-			Mage :: getSingleton('sagepaysuite/session')->setAcsurl(null)->setPareq(null)->setSageOrderId(null)->setSecure3d(null)->setEmede(null)->setPares(null)->setMd(null);
+			try{
+				//VOID transaction if there was a problem
+				$vendorTxCode = Mage::getSingleton('sagepaysuite/session')->getLastVendorTxCode();
+				Mage::helper('sagepaysuite')->voidTransaction($vendorTxCode, 'sagepaydirectpro');
+			}catch(Exception $ex){
+			}
 
-			Ebizmarts_SagePaySuite_Log :: we($e);
+			Mage::getSingleton('sagepaysuite/session')->setAcsurl(null)->setPareq(null)->setSageOrderId(null)->setSecure3d(null)->setEmede(null)->setPares(null)->setMd(null);
+
+			Sage_Log::logException($e);
 
 			$error = true;
 			$message = $e->getMessage();

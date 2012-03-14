@@ -25,6 +25,9 @@ class Ebizmarts_SagePaySuite_Model_Feed_Updates extends Ebizmarts_SagePaySuite_M
 	 */
 	public function check() {
 
+		//Disable for now
+		return $this;
+
 		if(false === Mage::getStoreConfigFlag('payment/sagepaysuite/sagepay_notifications')){
 			return $this;
 		}

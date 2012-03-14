@@ -221,8 +221,15 @@ class Ebizmarts_SagePaySuite_CardController extends Mage_Core_Controller_Front_A
 			$post['protocol'] = 'server';
 	   	 }
 
-	     $_save = Mage::getModel('sagepaysuite2/sagepaysuite_tokencard')
-	     ->setToken($post['Token'])
+		 $sessId = Mage::getModel('sagepaysuite/api_payment')->getCustomerQuoteId();
+
+	     $_save = Mage::getModel('sagepaysuite2/sagepaysuite_tokencard');
+
+         if(is_string($sessId)){
+             $_save->setVisitorSessionId($sessId);
+         }
+
+	     $_save->setToken($post['Token'])
 	     ->setStatus($post['Status'])
 	     ->setCardType($post['CardType'])
 	     ->setExpiryDate($post['ExpiryDate'])
@@ -295,7 +302,7 @@ class Ebizmarts_SagePaySuite_CardController extends Mage_Core_Controller_Front_A
 			}
 
 			try{
-				$delete = Mage::getModel('sagepaysuite/sagePayToken')->removeCard($objCard->getToken());
+				$delete = Mage::getModel('sagepaysuite/sagePayToken')->removeCard($objCard->getToken(), $objCard->getProtocol());
 
 				if($delete['Status'] == 'OK'){
 					$objCard->delete();

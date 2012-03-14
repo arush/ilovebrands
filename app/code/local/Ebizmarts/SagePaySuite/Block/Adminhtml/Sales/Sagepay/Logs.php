@@ -21,13 +21,15 @@ class Ebizmarts_SagePaySuite_Block_Adminhtml_Sales_Sagepay_Logs extends Mage_Cor
 		$logPath = $this->_getLogPath();
 		$logFiles = array();
 
-		foreach (new DirectoryIterator($logPath) as $fileInfo) {
-		    if($fileInfo->isDot()){
-		    	continue;
-		    }
+		if( file_exists($logPath) ){
+			foreach (new DirectoryIterator($logPath) as $fileInfo) {
+			    if($fileInfo->isDot()){
+			    	continue;
+			    }
 
-			if(preg_match('/[(.log)(.logs)]$/', $fileInfo->getFilename())){
-				$logFiles [] = array('file' => $fileInfo->getPathname(), 'filename'=>$fileInfo->getFilename());
+				if(preg_match('/[(.log)(.logs)]$/', $fileInfo->getFilename())){
+					$logFiles [] = array('file' => $fileInfo->getPathname(), 'filename'=>$fileInfo->getFilename());
+				}
 			}
 		}
 

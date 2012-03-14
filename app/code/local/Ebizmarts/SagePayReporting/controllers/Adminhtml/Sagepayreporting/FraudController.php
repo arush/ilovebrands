@@ -3,133 +3,135 @@
 class Ebizmarts_SagePayReporting_Adminhtml_Sagepayreporting_FraudController extends Mage_Adminhtml_Controller_Action
 {
 
-    protected function _initAction()
-    {
-        $this->loadLayout()
-            ->_setActiveMenu('sales')
-            ->_addBreadcrumb($this->__('Sage Pay Reporting'), $this->__('Sage Pay Reporting'))
-            ->_addBreadcrumb($this->__('Sage Pay Fraud Information'), $this->__('Sage Pay Fraud Information'));
-        return $this;
-    }
+	protected function _initAction()
+	{
+		$this->loadLayout()
+		->_setActiveMenu('sales')
+		->_addBreadcrumb($this->__('Sage Pay Reporting'), $this->__('Sage Pay Reporting'))
+		->_addBreadcrumb($this->__('Sage Pay Fraud Information'), $this->__('Sage Pay Fraud Information'));
+		return $this;
+	}
 
-    public function indexAction()
-    {
-        $this->_title($this->__('Sage Pay Reporting'))->_title($this->__('Fraud Information'));
+	public function indexAction()
+	{
+		$this->_title($this->__('Sage Pay Reporting'))->_title($this->__('Fraud Information'));
 
-        $this->_initAction()
-            ->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_fraud'))
-            ->renderLayout();
-    }
+		$this->_initAction()
+		->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_fraud'))
+		->renderLayout();
+	}
 
-    public function gridAction()
-    {
-        $this->loadLayout();
-        $this->getResponse()->setBody(
-            $this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_fraud_grid')->toHtml()
-        );
-    }
+	public function gridAction()
+	{
+		$this->loadLayout();
+		$this->getResponse()->setBody(
+		$this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_fraud_grid')->toHtml()
+		);
+	}
 
-    public function invoiceAction()
-    {
-		 $orderIds = array();
+	public function invoiceAction()
+	{
+		$orderIds = array();
 
-		 if($this->getRequest()->isPost()){
-		 	$orderIds = $this->getRequest()->getPost('order_ids', array());
-		 }else{
-		 	$orderIds []= $this->getRequest()->getParam('order_id');
-		 }
+		if($this->getRequest()->isPost()){
+			$orderIds = $this->getRequest()->getPost('order_ids', array());
+		}else{
+			$orderIds []= $this->getRequest()->getParam('order_id');
+		}
 
-         if(count($orderIds)){ #Mass action
+		if(count($orderIds)){
+			#Mass action
 
-            foreach ($orderIds as $orderId) {
+			foreach ($orderIds as $orderId) {
 
-				try{
-					$rs = $this->getPersistentFraud()->invoice($orderId);
-					$this->_getSession()->addSuccess($this->__('Invoiced: Order Id #%s', $orderId));
-				}catch(Exception $e){
-					Sage_Log::logException($e);
-                    $this->_getSession()->addError($this->__('Cannot invoice order #%s. Reason: "%s"', $orderId, $e->getMessage()));
-				}
+			try{
+				$rs = $this->getPersistentFraud()->invoice($orderId);
+				$this->_getSession()->addSuccess($this->__('Invoiced: Order Id #%s', $orderId));
+			}catch(Exception $e){
+				Sage_Log::logException($e);
+				$this->_getSession()->addError($this->__('Cannot invoice order #%s. Reason: "%s"', $orderId, $e->getMessage()));
+			}
 
-            }
+		}
 
-         }
+		}
 
-         $this->_redirectReferer();
-         return;
-    }
+		$this->_redirectReferer();
+		return;
+	}
 
-    public function fraudCheckAction()
-    {
+	public function fraudCheckAction()
+	{
 
-         if($this->getRequest()->isPost()){ #Mass action
+		if($this->getRequest()->isPost()){
+			#Mass action
 
-            $orderIds = $this->getRequest()->getPost('order_ids', array());
-            foreach ($orderIds as $orderId) {
+			$orderIds = $this->getRequest()->getPost('order_ids', array());
+		foreach ($orderIds as $orderId) {
 
-                $_order = Mage::getModel('sales/order')->load($orderId);
+			$_order = Mage::getModel('sales/order')->load($orderId);
 
-                Mage::register('reporting_store_id', $_order->getStoreId());
+			Mage::register('reporting_store_id', $_order->getStoreId());
 
-                $rs = $this->getFraud()->getTransactionDetails($_order->getSagepayInfo()->getVendorTxCode());
+			$rs = $this->getFraud()->getTransactionDetails($_order->getSagepayInfo()->getVendorTxCode());
 
-                if($rs->getError()){
-                	Mage::unregister('reporting_store_id');
-                    $this->_getSession()->addError($this->__('An error ocurred: %s %s', $_order->getVendorTxCode(), $rs));
-                    continue;
-                }
-
-                if($rs->getError()){
-                    $this->_getSession()->addError((string)$xml->error.' '.$_order->getVendorTxCode());
-                }else{
-                    try{
-                        $this->getPersistentFraud()->updateThirdMan($orderId, $rs);
-                        $this->_getSession()->addSuccess($this->__('Updated: Order Id #%s', $_order->getIncrementId()));
-                    }catch(Exception $e){
-                        Ebizmarts_SagePaySuite_Log::we($e);
-                        $this->_getSession()->addError($_order->getVendorTxCode().' '.$e->getMessage);
-                    }
-                }
+			if($rs->getError()){
 				Mage::unregister('reporting_store_id');
-            }
+				$this->_getSession()->addError($this->__('An error ocurred: %s %s', $_order->getVendorTxCode(), $rs));
+				continue;
+			}
 
-         }else{
-            $orderId = $this->getRequest()->getParam('order_id');
+			if($rs->getError()){
+				$this->_getSession()->addError((string)$xml->error.' '.$_order->getVendorTxCode());
+			}else{
+				try{
+					$this->getPersistentFraud()->updateThirdMan($orderId, $rs);
+					$this->_getSession()->addSuccess($this->__('Updated: Order Id #%s', $_order->getIncrementId()));
+				}catch(Exception $e){
+					Ebizmarts_SagePaySuite_Log::we($e);
+					$this->_getSession()->addError($_order->getVendorTxCode().' '.$e->getMessage);
+				}
+			}
+			Mage::unregister('reporting_store_id');
+		}
 
-            $_order = Mage::getModel('sales/order')->load($orderId);
+		}else{
+			$orderId = $this->getRequest()->getParam('order_id');
 
-            Mage::register('reporting_store_id', $_order->getStoreId());
+			$_order = Mage::getModel('sales/order')->load($orderId);
 
-            $rs = $this->getFraud()->getTransactionDetails($_order->getSagepayInfo()->getVendorTxCode());
+			Mage::register('reporting_store_id', $_order->getStoreId());
 
-            if($rs->getError()){
-                $this->_getSession()->addError($this->__('An error ocurred: %s', htmlentities($rs->getError())));
-                $this->_redirectReferer();
-                return;
-            }else{
-                try{
-                    $this->getPersistentFraud()->updateThirdMan($orderId, $rs);
-                    $this->_getSession()->addSuccess($this->__('Updated: Order Id #%s', $_order->getIncrementId()));
-                }catch(Exception $e){
-                    Ebizmarts_SagePaySuite_Log::we($e);
-                    $this->_getSession()->addError($_order->getVendorTxCode().' '.htmlentities($e->getMessage()));
-                }
-            }
+			$rs = $this->getFraud()->getTransactionDetails($_order->getSagepayInfo()->getVendorTxCode());
 
-         }
+			if($rs->getError()){
+				$this->_getSession()->addError($this->__('An error ocurred: %s', htmlentities($rs->getError())));
+				$this->_redirectReferer();
+				return;
+			}else{
+				try{
+					$this->getPersistentFraud()->updateThirdMan($orderId, $rs);
+					$this->_getSession()->addSuccess($this->__('Updated: Order Id #%s', $_order->getIncrementId()));
+				}catch(Exception $e){
+					Ebizmarts_SagePaySuite_Log::we($e);
+					$this->_getSession()->addError($_order->getVendorTxCode().' '.htmlentities($e->getMessage()));
+				}
+			}
 
-         $this->_redirectReferer();
-         return;
-    }
+		}
 
-    public function getPersistentFraud()
-    {
-        return Mage::getModel('sagepayreporting/fraud');
-    }
+		$this->_redirectReferer();
+		return;
+	}
 
-    public function getFraud()
-    {
-        return Mage::getModel('sagepayreporting/sagepayreporting');
-    }
+	public function getPersistentFraud()
+	{
+		return Mage::getModel('sagepayreporting/fraud');
+	}
+
+	public function getFraud()
+	{
+		return Mage::getModel('sagepayreporting/sagepayreporting');
+	}
 
 }

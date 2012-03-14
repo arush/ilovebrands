@@ -26,13 +26,13 @@ class Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction extends Mage_Core_Mo
 
     public function loadByVpsTxId($vpsTxId)
     {
-        $this->load($vpsTxId, 'vps_tx_id');
+        $this->load(trim($vpsTxId), 'vps_tx_id');
         return $this;
     }
 
     public function loadByVendorTxCode($vendorTxCode)
     {
-        $this->load($vendorTxCode, 'vendor_tx_code');
+        $this->load(trim($vendorTxCode), 'vendor_tx_code');
         return $this;
     }
 
@@ -41,6 +41,32 @@ class Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction extends Mage_Core_Mo
 		$this->getCollection()
 		->addFieldToFilter($attribute, $value);
 		return $this;
+	}
+
+	/**
+	 * Adds some API data to transaction
+	 *
+	 * @param int Order ID
+	 */
+	public function addApiDetails($orderId)
+	{
+		$this->loadByParent($orderId);
+
+		if($this->getId()){
+
+			try{
+				$details = Mage::getModel('sagepayreporting/sagepayreporting')
+						->getTransactionDetails(null, $this->getVpsTxId());
+
+                if((string)$details->getErrorcode() === '0000'){
+					$this->setEci($details->getEci())
+						->setPaymentSystemDetails($details->getPaymentsystemdetails())
+						->save();
+				}
+
+			}catch(Exception $e){}
+
+		}
 	}
 
 	public function getisPayPalTransaction()
@@ -54,6 +80,7 @@ class Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction extends Mage_Core_Mo
 
 		if($pp->getId()){
 			$this->_paypal_trn = true;
+			$this->setPayPalData($pp);
 		}else{
 			$this->_paypal_trn = false;
 		}
@@ -109,6 +136,11 @@ class Ebizmarts_SagePaySuite_Model_Sagepaysuite_Transaction extends Mage_Core_Mo
     	/**
     	 * Multishipping parent TRN
     	 */
+
+		/**
+		 * Paypal
+		 */
+		$this->getisPayPalTransaction();
 
         return parent::_afterLoad();
     }

@@ -11,6 +11,11 @@
 class Ebizmarts_SagePaySuite_Model_Observer_Checkout extends Ebizmarts_SagePaySuite_Model_Observer
 {
 
+	protected function _getLastOrderId()
+	{
+		return (int)(Mage::getSingleton('checkout/type_onepage')->getCheckout()->getLastOrderId());
+	}
+
 	/**
 	 * Clear SagePaySuite session when loading onepage checkout
 	 */
@@ -24,8 +29,33 @@ class Ebizmarts_SagePaySuite_Model_Observer_Checkout extends Ebizmarts_SagePaySu
 		$this->getSession()->clear();
 	}
 
+	public function deferredCapture($o)
+	{
+		$canCapture = (bool)Mage::getStoreConfig('payment/sagepaysuite/deferred_capture');
+		if( $canCapture ){
+
+			$orderId = $this->_getLastOrderId();
+
+			$trn = $this->_getTransactionsModel()
+            ->loadByParent($orderId);
+            if($trn->getId()){
+            	if( $trn->getTxType() == 'DEFERRED' ){
+					Mage::getModel('sagepaysuite/api_payment')->invoiceOrder($orderId, Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+            	}
+            }
+
+		}
+	}
+
 	public function controllerOnePageSuccess($o)
 	{
+
+		//Capture data from Sage Pay API
+		$orderId = $this->_getLastOrderId();
+
+		$this->_getTransactionsModel()->addApiDetails($orderId);
+
+
 		/**
 		 * Delete session tokencards if any
 		 */

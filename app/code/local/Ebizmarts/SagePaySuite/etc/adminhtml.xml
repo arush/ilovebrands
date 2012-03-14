@@ -23,7 +23,7 @@
 						<orphans translate="title" module="sagepaysuite">
 							<title>Orphan Transactions</title>
 							<sort_order>3</sort_order>
-							<action>sgpsSecure/adminhtml_transaction/orfan</action>
+							<action>sgpsSecure/adminhtml_transaction/orphan</action>
 						</orphans>
 						<payments translate="title" module="sagepaysuite">
 							<title>Payment Transactions</title>

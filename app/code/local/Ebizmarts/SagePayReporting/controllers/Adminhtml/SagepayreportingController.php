@@ -5,8 +5,8 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 
 	protected function _initAction() {
 		$this->loadLayout()
-			->_setActiveMenu('sagepayreporting/transaction_detail')
-			->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
+		->_setActiveMenu('sagepayreporting/transaction_detail')
+		->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
 
 		return $this;
 	}
@@ -32,7 +32,7 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 			$this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 
 			$this->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_edit'))
-				->_addLeft($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_edit_tabs'));
+			->_addLeft($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_edit_tabs'));
 
 			$this->renderLayout();
 		} else {
@@ -54,7 +54,7 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 					$uploader = new Varien_File_Uploader('filename');
 
 					// Any extention would work
-	           		$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+					$uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
 					$uploader->setAllowRenameFiles(false);
 
 					// Set the file upload mode
@@ -69,21 +69,21 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 
 				} catch (Exception $e) {
 
-		        }
+				}
 
-		        //this way the name is saved in DB
-	  			$data['filename'] = $_FILES['filename']['name'];
+				//this way the name is saved in DB
+				$data['filename'] = $_FILES['filename']['name'];
 			}
 
 
 			$model = Mage::getModel('sagepayreporting/sagepayreporting');
 			$model->setData($data)
-				->setId($this->getRequest()->getParam('id'));
+			->setId($this->getRequest()->getParam('id'));
 
 			try {
 				if ($model->getCreatedTime == NULL || $model->getUpdateTime() == NULL) {
 					$model->setCreatedTime(now())
-						->setUpdateTime(now());
+					->setUpdateTime(now());
 				} else {
 					$model->setUpdateTime(now());
 				}
@@ -98,15 +98,15 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 				}
 				$this->_redirect('*/*/');
 				return;
-            } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                Mage::getSingleton('adminhtml/session')->setFormData($data);
-                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
-                return;
-            }
-        }
-        Mage::getSingleton('adminhtml/session')->addError(Mage::helper('sagepayreporting')->__('Unable to find item to save'));
-        $this->_redirect('*/*/');
+			} catch (Exception $e) {
+				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+				Mage::getSingleton('adminhtml/session')->setFormData($data);
+				$this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+				return;
+			}
+		}
+		Mage::getSingleton('adminhtml/session')->addError(Mage::helper('sagepayreporting')->__('Unable to find item to save'));
+		$this->_redirect('*/*/');
 	}
 
 	public function deleteAction() {
@@ -115,7 +115,7 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 				$model = Mage::getModel('sagepayreporting/sagepayreporting');
 
 				$model->setId($this->getRequest()->getParam('id'))
-					->delete();
+				->delete();
 
 				Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Item was successfully deleted'));
 				$this->_redirect('*/*/');
@@ -127,146 +127,146 @@ class Ebizmarts_SagePayReporting_Adminhtml_SagePayReportingController extends Ma
 		$this->_redirect('*/*/');
 	}
 
-    public function massDeleteAction() {
-        $sagepayreportingIds = $this->getRequest()->getParam('sagepayreporting');
-        if(!is_array($sagepayreportingIds)) {
+	public function massDeleteAction() {
+		$sagepayreportingIds = $this->getRequest()->getParam('sagepayreporting');
+		if(!is_array($sagepayreportingIds)) {
 			Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
-        } else {
-            try {
-                foreach ($sagepayreportingIds as $sagepayreportingId) {
-                    $sagepayreporting = Mage::getModel('sagepayreporting/sagepayreporting')->load($sagepayreportingId);
-                    $sagepayreporting->delete();
-                }
-                Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('adminhtml')->__(
+		} else {
+			try {
+				foreach ($sagepayreportingIds as $sagepayreportingId) {
+					$sagepayreporting = Mage::getModel('sagepayreporting/sagepayreporting')->load($sagepayreportingId);
+					$sagepayreporting->delete();
+				}
+				Mage::getSingleton('adminhtml/session')->addSuccess(
+				Mage::helper('adminhtml')->__(
                         'Total of %d record(s) were successfully deleted', count($sagepayreportingIds)
-                    )
-                );
-            } catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-            }
-        }
-        $this->_redirect('*/*/index');
-    }
+				)
+				);
+			} catch (Exception $e) {
+				Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+			}
+		}
+		$this->_redirect('*/*/index');
+	}
 
-    public function massStatusAction()
-    {
-        $sagepayreportingIds = $this->getRequest()->getParam('sagepayreporting');
-        if(!is_array($sagepayreportingIds)) {
-            Mage::getSingleton('adminhtml/session')->addError($this->__('Please select item(s)'));
-        } else {
-            try {
-                foreach ($sagepayreportingIds as $sagepayreportingId) {
-                    $sagepayreporting = Mage::getSingleton('sagepayreporting/sagepayreporting')
-                        ->load($sagepayreportingId)
-                        ->setStatus($this->getRequest()->getParam('status'))
-                        ->setIsMassupdate(true)
-                        ->save();
-                }
-                $this->_getSession()->addSuccess(
-                    $this->__('Total of %d record(s) were successfully updated', count($sagepayreportingIds))
-                );
-            } catch (Exception $e) {
-                $this->_getSession()->addError($e->getMessage());
-            }
-        }
-        $this->_redirect('*/*/index');
-    }
+	public function massStatusAction()
+	{
+		$sagepayreportingIds = $this->getRequest()->getParam('sagepayreporting');
+		if(!is_array($sagepayreportingIds)) {
+			Mage::getSingleton('adminhtml/session')->addError($this->__('Please select item(s)'));
+		} else {
+			try {
+				foreach ($sagepayreportingIds as $sagepayreportingId) {
+					$sagepayreporting = Mage::getSingleton('sagepayreporting/sagepayreporting')
+					->load($sagepayreportingId)
+					->setStatus($this->getRequest()->getParam('status'))
+					->setIsMassupdate(true)
+					->save();
+				}
+				$this->_getSession()->addSuccess(
+				$this->__('Total of %d record(s) were successfully updated', count($sagepayreportingIds))
+				);
+			} catch (Exception $e) {
+				$this->_getSession()->addError($e->getMessage());
+			}
+		}
+		$this->_redirect('*/*/index');
+	}
 
-    public function exportCsvAction()
-    {
-        $fileName   = 'sagepayreporting.csv';
-        $content    = $this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_grid')
-            ->getCsv();
+	public function exportCsvAction()
+	{
+		$fileName   = 'sagepayreporting.csv';
+		$content    = $this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_grid')
+		->getCsv();
 
-        $this->_sendUploadResponse($fileName, $content);
-    }
+		$this->_sendUploadResponse($fileName, $content);
+	}
 
-    public function exportXmlAction()
-    {
-        $fileName   = 'sagepayreporting.xml';
-        $content    = $this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_grid')
-            ->getXml();
+	public function exportXmlAction()
+	{
+		$fileName   = 'sagepayreporting.xml';
+		$content    = $this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_grid')
+		->getXml();
 
-        $this->_sendUploadResponse($fileName, $content);
-    }
+		$this->_sendUploadResponse($fileName, $content);
+	}
 
-    protected function _sendUploadResponse($fileName, $content, $contentType='application/octet-stream')
-    {
-        $response = $this->getResponse();
-        $response->setHeader('HTTP/1.1 200 OK','');
-        $response->setHeader('Pragma', 'public', true);
-        $response->setHeader('Cache-Control', 'must-revalidate, post-check=0, pre-check=0', true);
-        $response->setHeader('Content-Disposition', 'attachment; filename='.$fileName);
-        $response->setHeader('Last-Modified', date('r'));
-        $response->setHeader('Accept-Ranges', 'bytes');
-        $response->setHeader('Content-Length', strlen($content));
-        $response->setHeader('Content-type', $contentType);
-        $response->setBody($content);
-        $response->sendResponse();
-        die;
-    }
+	protected function _sendUploadResponse($fileName, $content, $contentType='application/octet-stream')
+	{
+		$response = $this->getResponse();
+		$response->setHeader('HTTP/1.1 200 OK','');
+		$response->setHeader('Pragma', 'public', true);
+		$response->setHeader('Cache-Control', 'must-revalidate, post-check=0, pre-check=0', true);
+		$response->setHeader('Content-Disposition', 'attachment; filename='.$fileName);
+		$response->setHeader('Last-Modified', date('r'));
+		$response->setHeader('Accept-Ranges', 'bytes');
+		$response->setHeader('Content-Length', strlen($content));
+		$response->setHeader('Content-type', $contentType);
+		$response->setBody($content);
+		$response->sendResponse();
+		die;
+	}
 
-    public function transactionDetailAction()
-    {
-        if ($this->getRequest()->getParam('vendortxcode')) {
-            $id = $this->getRequest()->getParam('vendortxcode');
-            $response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails(urldecode($id), null);
-            if ($response->getErrorcode() == '0000') {
-            	Mage::register('sagepay_detail', $response);
-            } else {
-            	$this->_getSession()->addError($response->getError());
-            }
-        } else {
-        	Mage::register('sagepay_detail', null);
-        }
+	public function transactionDetailAction()
+	{
+		if ($this->getRequest()->getParam('vendortxcode')) {
+			$id = $this->getRequest()->getParam('vendortxcode');
+			$response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails(urldecode($id), null);
+			if ($response->getErrorcode() == '0000') {
+				Mage::register('sagepay_detail', $response);
+			} else {
+				$this->_getSession()->addError($response->getError());
+			}
+		} else {
+			Mage::register('sagepay_detail', null);
+		}
 
-        $this->loadLayout()
-            ->_setActiveMenu('sales')
-            ->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_transaction_detail'))
-            ->renderLayout();
-    }
+		$this->loadLayout()
+		->_setActiveMenu('sales')
+		->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_transaction_detail'))
+		->renderLayout();
+	}
 
-    public function transactionDetailModalAction()
-    {
-        if ($this->getRequest()->getParam('vendortxcode') || $this->getRequest()->getParam('vpstxid')) {
-            $id = $this->getRequest()->getParam('vendortxcode') ? $this->getRequest()->getParam('vendortxcode') : $this->getRequest()->getParam('vpstxid');
+	public function transactionDetailModalAction()
+	{
+		if ($this->getRequest()->getParam('vendortxcode') || $this->getRequest()->getParam('vpstxid')) {
+			$id = $this->getRequest()->getParam('vendortxcode') ? $this->getRequest()->getParam('vendortxcode') : $this->getRequest()->getParam('vpstxid');
 
-            if($this->getRequest()->getParam('vpstxid')){
-            	$response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails(null, urldecode($id));
-            	Mage::register('sagepay_related_transactions', Mage::getModel('sagepayreporting/sagepayreporting')->getRelatedTransactions(urldecode($id)));
-            }else{
-            	Mage::register('sagepay_related_transactions', new Varien_Object);
-            	$response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails($id, null);
-            }
+			if($this->getRequest()->getParam('vpstxid')){
+				$response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails(null, urldecode($id));
+				Mage::register('sagepay_related_transactions', Mage::getModel('sagepayreporting/sagepayreporting')->getRelatedTransactions(urldecode($id)));
+			}else{
+				Mage::register('sagepay_related_transactions', new Varien_Object);
+				$response = Mage::getModel('sagepayreporting/sagepayreporting')->getTransactionDetails($id, null);
+			}
 
-            if ($response->getErrorcode() == '0000') {
-            	Mage::register('sagepay_detail', $response);
-            } else {
-            	$this->_getSession()->addError($response->getError());
-            }
-        } else {
-        	Mage::register('sagepay_detail', null);
-        }
+			if ($response->getErrorcode() == '0000') {
+				Mage::register('sagepay_detail', $response);
+			} else {
+				$this->_getSession()->addError($response->getError());
+			}
+		} else {
+			Mage::register('sagepay_detail', null);
+		}
 
-        $this->loadLayout('popup_sagepay')
-            ->renderLayout();
-    }
+		$this->loadLayout('popup_sagepay')
+		->renderLayout();
+	}
 
 	public function threedstatusAction()
 	{
 		$this->loadLayout()
-            ->_setActiveMenu('sales')
-            ->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_threedstatus'))
-            ->renderLayout();
+		->_setActiveMenu('sales')
+		->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_threedstatus'))
+		->renderLayout();
 	}
 
 	public function avscvstatusAction()
 	{
 		$this->loadLayout()
-            ->_setActiveMenu('sales')
-            ->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_avscvstatus'))
-            ->renderLayout();
+		->_setActiveMenu('sales')
+		->_addContent($this->getLayout()->createBlock('sagepayreporting/adminhtml_sagepayreporting_avscvstatus'))
+		->renderLayout();
 	}
 
 	public function avscvtoggleAction()
