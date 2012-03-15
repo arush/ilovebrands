@@ -121,7 +121,7 @@
             <div class="product-name"><h2><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_brand ?></a></h2>
 	            <div class="discount"><?php echo $_discount ?><br/>OFF</div>
             </div>
-            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(182,273); ?>" width="182" height="273" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(184,276); ?>" width="184" height="276" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
             <?php /*?>FLO ADD ROLLOVER START<?php */?>
             <div class="ProdTitleRollover"><h2><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2></div>
             <div class="ProdImgRollover">

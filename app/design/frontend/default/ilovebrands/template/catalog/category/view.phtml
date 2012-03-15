@@ -53,6 +53,7 @@ padding:0 32px 0 0;
 </style>
 <![endif]-->
 <div class="category-view">
+	<?php /*
 	<div class="category-banner">
 		<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
 			
@@ -70,10 +71,11 @@ padding:0 32px 0 0;
 		<?php if($_imgUrl): ?>
 			<div id="img-container">
 				<?php echo $_imgHtml ?>
-				<?php /*?><?php echo $this->getChildHtml('catalog_category_event') ?><?php */?>
 			</div>
 		<?php endif; ?>
 	</div>
+	<?php */ ?>
+	
 	<div class="clearer"></div>
     <?php if($this->isContentMode()): ?>
         <?php echo $this->getCmsBlockHtml() ?>

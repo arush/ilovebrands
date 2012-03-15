@@ -33,6 +33,17 @@
         <form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
         <fieldset>
             <p><?php echo $this->__('Already registered?') ?> <?php echo $this->__('Please log in below:') ?></p>
+            <!-- The provider login will be embedded in this div //-->
+									<div id="oa_social_login_container"></div>
+								
+									<script type="text/javascript">
+										 oneall.api.plugins.social_login.build("oa_social_login_container", {
+										  'providers' :  ['google', 'twitter', 'yahoo'], 
+										  
+										  'callback_uri': '<?php echo $this->getUrl('arush-oneall/rpx/token_url', array('_forced_secure' => false)) ?>',
+										  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_vertical.css'
+										 });
+									</script>
             <ul class="form-list">
                 <li>
                     <label for="login-email"><?php echo $this->__('Email Address') ?></label>
@@ -78,15 +89,15 @@
             <p><?php /*?><strong><?php echo $this->__('Register and save time!') ?></strong><br /><?php */?>
             <?php echo $this->__('...and get:') ?></p>
             <ul>
-                <li><?php echo $this->__('Access to purchase on evogue') ?></li>
-                <li><?php echo $this->__('Ability to earn &pound;15 per friend you invite') ?></li>
-                <li><?php echo $this->__('Live Alerts by email when our Collections go live (you can unsubscribe at any time)') ?></li>
+                <li><?php echo $this->__('Earn &pound;15 per friend you invite') ?></li>
+                <li><?php echo $this->__('Spend points and get discounts') ?></li>
             </ul>
         <?php elseif( $this->getQuote()->isAllowedGuestCheckout() && $this->helper('customer')->isRegistrationAllowed() ): ?>
             <p><?php echo $this->__('Register with us for future convenience:') ?></p>
         <?php endif ?>
 
         <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            
             <ul class="form-list form-alt">
                 <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
                 <li>
@@ -110,7 +121,7 @@
             <button type="button" class="button" onclick="loginForm.submit()"><span><span><?php echo $this->__('Login') ?></span></span></button>
         </div>
         <div class="buttons-set-2">
-            <button type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo ($this->getQuote()->isAllowedGuestCheckout() ? $this->__('Continue') : $this->__('Continue Checkout')) ?></span></span></button>
+            <button type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo ($this->getQuote()->isAllowedGuestCheckout() ? $this->__('Continue') : $this->__('Continue As Guest')) ?></span></span></button>
         </div>
     
     <?php endif; ?>

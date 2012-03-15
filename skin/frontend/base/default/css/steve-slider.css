@@ -1,0 +1,81 @@
+.sliders h1 {
+	clear: both;
+	padding: 10px;
+	width: 610px;
+	
+}
+.sliders .holder {
+	width: 630px;
+	height: 210px;
+	overflow: hidden;
+
+}
+
+.sliders .holder .slider {
+	position: relative;
+	height: 210px;
+	left: 0px;
+	margin: 0 27px;
+}
+
+.sliders .holder .slider ul li {
+	display: block;
+	width: 191px;
+	height: 210px;
+	float: left;
+	background: #fff;
+}
+
+.sliders .holder .left {
+	position: absolute;
+	width: 34px;
+	height: 210px;
+	margin-top: -210px;	
+	background: url('../images/slider-left.png') no-repeat 50% 50%;
+	cursor: pointer;
+}
+
+.sliders .holder .right {
+	position: absolute;
+	margin-left: 596px;
+	width: 34px;
+	height: 210px;	
+	margin-top: -210px;
+	background: url('../images/slider-right.png') no-repeat 50% 50%;
+	cursor: pointer;
+}
+
+.sliders {
+	background: #fff;
+	width: 630px;
+	float: left;
+	text-align: left;	
+}
+
+.sliders.quickie {
+	float: none;
+	margin: 0 auto;
+	width: 960px;
+}
+
+.sliders.quickie h1 {
+
+	display: inline;
+	
+}
+
+.sliders.quickie .holder {
+	width: 858px;
+	margin: 0 51px;
+}
+
+.sliders.quickie .holder .slider ul li {
+	width: 143px;
+
+}
+.sliders.quickie .holder .left {
+	margin-left: -51px;
+}
+.sliders.quickie .holder .right {
+	margin-left: 875px;
+}

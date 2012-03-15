@@ -1,5 +1,12 @@
 <layout version="0.1.0">
     <catalog_product_view>
+    	<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/steve-slider.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/steve-slider.css</name></action>
+
+    	</reference>
+    
+    
         <reference name="content">
             <!-- remove name="product.info.upsell" / -->
             <block type="evogue_targetrule/catalog_product_list_upsell" name="product.info.upsell" as="upsell_products" template="evogue/targetrule/catalog/product/list/upsell.phtml">
