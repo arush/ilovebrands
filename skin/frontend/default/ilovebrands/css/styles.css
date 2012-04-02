@@ -1,4 +1,4 @@
-  * {
+* {
   margin: 0pt;
   padding: 0pt;
 }
@@ -13451,5 +13451,3 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 .home-new #next-btn, #prev-btn {
 	height:115px;
 }
-
-/* */
