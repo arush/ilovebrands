@@ -406,8 +406,11 @@
 
 <?php /*?>DISCOUNT ADDED BY FLO<?php */?>
 <?php
-$_discount_long = 100 * (1 - $_finalPrice / $_regularPrice);
-$_discount = round ($_discount_long,0);
+$_discount = 0;
+if($_regularPrice !=0) {
+	$_discount_long = 100 * (1 - $_finalPrice / $_regularPrice);
+	$_discount = round ($_discount_long,0);
+}
 ?>
 <div class="price-discount">
 	<?php echo $_discount?>% OFF

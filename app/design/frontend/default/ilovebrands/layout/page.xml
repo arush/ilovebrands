@@ -123,9 +123,7 @@ Default layout, loads most of the pages
             <block type="core/text_list" name="right" as="right" translate="label">
                 <label>Right Column</label>
             </block>
-			
-			<block type="core/text_list" name="additional.products" as="additional_products"/>
-            
+			            
             <block type="page/html_wrapper" name="footer.before" as="footer_before" translate="label">
                 <label>Page Footer</label>
                 <action method="setElementClass"><value>footer-before-container</value></action>

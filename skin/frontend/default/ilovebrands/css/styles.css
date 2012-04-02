@@ -2954,7 +2954,7 @@ ul.disc li {
 
 .top-cart .actions a {
   padding: 5px 0pt 0pt;
-  color: #444;
+  color: #B14E4E;
   float: left;
   line-height: 23px;
 }
@@ -3387,7 +3387,7 @@ ul.disc li {
   margin-right: 10px;
   overflow: hidden;
   border-bottom: 1px solid rgb(79,78, 74);
-  margin-bottom: 40px;
+  margin-bottom: 75px;
 }
 
 .lte9 .products-grid li.item {
@@ -3408,7 +3408,7 @@ ul.disc li {
   margin: 0pt auto 5px;
   position: relative;
   width: 300px;
-  height: 320px;
+  height: 280px;
 }
 
 .products-grid .product-name {
@@ -10662,6 +10662,7 @@ font-size: 20px; }
 	font-size: 12px;
 	height: 20px;
 	margin-left: 10px;
+	margin-top: 10px;
 }
 .old-price, .old-price .price, .old-price .price-label{
 	color: #767676;
@@ -10787,7 +10788,7 @@ a.cat-view-now {
 	position: absolute;
 	color: #b14e4e;
 	font-size: 12px;
-	padding: 59px 0 0 171px;
+	padding: 69px 0 0 110px;
 	font-family: Gotham-book;
 }
 
@@ -12019,12 +12020,12 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	border: 1px solid #acacac\9;
 	margin-bottom: 20px;
 	position: relative;
-	float: right;
+	float: left;
 }
 
 #related-items, #upsell { float: left;}
 
-#related-items {width:960px; height: 207px;}
+#related-items {width:960px; height: 245px;}
 
 #last-viewed .block-title, #related-items .block-title, #upsell .block-title {
   padding: 8px 13px;
@@ -12841,9 +12842,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 		#nav li .shown-sub{
 			left: 0 !important;
 		}
-		#nav li.nav-4 .shown-sub{
-			left: -349px !important;
-		}
+
 		#nav li.last .shown-sub ul{
 			left: 0 !important;
 		}
@@ -12873,16 +12872,16 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 		}
 		
 		#nav ul.level0 a{
-			font-size: 10px;
+			font-size: 13px;
 			font-weight: normal;
-			font-family: Arial, sans-serif;
+			font-family: Gotham, Arial, sans-serif;
 			color: #92927f;
 			display: block;
 		}
 		#nav ul.level0 a span:hover{color: #fff; background: #000;}
 		#nav ul.level0 li.first, #nav ul.level0 li.last, #nav li.level0 level1:hover, #nav li.level1.over, #nav li.level1 ul.level1 a:hover, #nav li.level1 ul.level1 li.over{background: none;}
 		#nav .level0 li.level1 {text-align: left;}
-		#nav li.level0 li.first a{padding: 30px 0 0 20px;}
+		#nav li.level0 li.first a{padding: 20px 0 0 20px;}
 		#nav .level0 li.level1 a{padding: 15px 0 0 20px;}
 		#nav .level0 li.last a{padding: 15px 0 0 20px;}
 		#nav ul.level0 li.level1{padding: 0;}
@@ -13389,3 +13388,68 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 .store-switcher a.store.active:hover {
 	background-color:#B14E4E;
 }
+
+/* home page */
+
+.home-new #related-items {
+	height: 320px;
+	margin-top:40px;
+}
+
+.home-new .box-content .price-box .special-price .price {
+	color: #B14E4E ! important;
+	font-size: 12px;
+	
+}
+
+.home-new #related-items .product-image img {
+	height:auto;
+	}
+.home-new .sliders .holder {
+	height:285px;
+}
+.home-new .sliders .holder .slider {
+	height:285px;
+}
+
+.home-new a.button span, button.button span span {
+	color:white;
+}
+
+.home-new .box-content .price-box .old-price {
+	font-size:12px;
+}
+
+.home-new .products-grid .price-box .special-price .price, .special-price .price-label {
+	font-size:12px;
+	font-weight: normal;
+}
+
+.home-new .price-discount {
+	text-align: center;
+	clear:both;
+	
+}
+
+.home-new a.button, button.button span {
+	height:
+}
+
+.home-new .slider .price-box {
+	position:relative;
+	top:0;
+	left:0;
+	font-family:Gotham,arial;
+	text-align: center;
+	
+}
+
+.home-new .product-name {
+	text-align: center;
+}
+
+.home-new #next-btn, #prev-btn {
+	height:115px;
+}
+
+/* */

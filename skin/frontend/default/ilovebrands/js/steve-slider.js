@@ -2,7 +2,9 @@ document.observe('dom:loaded', function(){
 
 	$$('.sliders .holder .slider').each(function(obj){
 		var calculatedWidth = obj.select('ul li').length * parseInt(obj.select('ul li')[0].getStyle('width'));
-		obj.setStyle({ width: calculatedWidth + 'px' });
+		var margins = parseInt(obj.getStyle('margin-left'));
+		margins += parseInt(obj.getStyle('margin-right'));
+		obj.setStyle({ width: calculatedWidth + margins + 100 + 'px' });
 	});
 	
 	$$('.sliders .holder .left').each(function(obj){
@@ -33,12 +35,12 @@ document.observe('dom:loaded', function(){
 				target, start, end, {
 					duration: 0.2, afterFinish: function(){
 						
-						if (end != parseInt(target.getStyle('width'))*-1) {
+						// if (end != parseInt(target.getStyle('width'))*-1) {
 							var lastChild = document.createElement('li');
 							lastChild.innerHTML = target.innerHTML;
 							target.remove();
 							obj.up().firstDescendant().firstDescendant().insert(lastChild);
-						}
+						//}
 					}
 				},
 				function(p) { this.setStyle({marginLeft : p + "px" }) }

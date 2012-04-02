@@ -29,7 +29,7 @@
 <layout version="0.1.0">
     <catalog_product_view>
         <!-- Mage_Reports -->
-        <reference name="additional.products">
+        <reference name="content">
             <block type="reports/product_viewed" name="reports.product.viewed" after="product.info.upsell" template="reports/product_viewed.phtml" />
             <!--<block type="reports/product_compared" name="right.reports.product.compared" template="reports/product_compared.phtml" />-->
         </reference>
