@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+    <cms_index_index>
+	<reference name="head">
+	    <action method="addCss"><stylesheet>magazento/homepage/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template"
+            name="magazento_homepage"
+            before="-"
+            template="magazento/homepage/data.phtml"/>
+        </reference>
+    </cms_index_index>
+    
+</layout>
+
+
+
+
+
