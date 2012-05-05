@@ -19,31 +19,31 @@ class Magazento_Homepage_Block_Review extends Mage_Catalog_Block_Product_Abstrac
     }
 
 
-    function getReviewsData(){
-        $pending  = 2;  
-        $declined = 3;  
-        $reviews = $this->getReviews();
-        $count = 0;  
-        foreach ($reviews as $review){  
-          if($review['status_id'] != $pending || $review['status_id'] != $declined){
-//              var_dump($review);
-//              exit();
-            $vals = $this->getRatingValues($review);
-//            $allReviews[$count]['product_sku'] = $_product->getSku();
-//            $allReviews[$count]['status_id'] = $review['status_id'];
-            $allReviews[$count]['review_url'] = $review->getReviewUrl($review->getId());
-            $num = $count +1;
-            $allReviews[$count]['title'] = $num.'. '.$review['title'];
-            $allReviews[$count]['detail'] = $review['detail'];  
-            $allReviews[$count]['nickname'] = $review['nickname'];  
-//            $allReviews[$count]['customer_id'] = $review['customer_id'];  
-            $allReviews[$count]['ratings'] = $vals;  
-            $count++;      
-          }  
-        }  
+//     function getReviewsData(){
+//         $pending  = 2;  
+//         $declined = 3;  
+//         $reviews = $this->getReviews();
+//         $count = 0;  
+//         foreach ($reviews as $review){  
+//           if($review['status_id'] != $pending || $review['status_id'] != $declined){
+// //              var_dump($review);
+// //              exit();
+//             $vals = $this->getRatingValues($review);
+// //            $allReviews[$count]['product_sku'] = $_product->getSku();
+// //            $allReviews[$count]['status_id'] = $review['status_id'];
+//             $allReviews[$count]['review_url'] = $review->getReviewUrl($review->getId());
+//             $num = $count +1;
+//             $allReviews[$count]['title'] = $num.'. '.$review['title'];
+//             $allReviews[$count]['detail'] = $review['detail'];  
+//             $allReviews[$count]['nickname'] = $review['nickname'];  
+// //            $allReviews[$count]['customer_id'] = $review['customer_id'];  
+//             $allReviews[$count]['ratings'] = $vals;  
+//             $count++;      
+//           }  
+//         }  
 
-        return $allReviews;
-    }
+//         return $allReviews;
+//     }
     function getRatingValues(Mage_Review_Model_Review $review){
       $avg = 0;
       if( count($review->getRatingVotes()) ) {
