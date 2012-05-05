@@ -9674,187 +9674,6 @@ ul.timer li .title {
   border: none !important;
 }
 
-.wufoo-title  {
-	position: absolute;
-	top: 140px;
-	right: 12px;
-	padding: 24px 0 7px;
-	width: 380px;
-}
-
-.wufoo-title h1  {
-	color: #fdfbe6;
-	font-size: 22px;
-	padding-bottom: 5px;
-}
-
-.wufoo-title .register-explanation  {
-	color: #fff;
-	font-size: 14px;
-	padding: 15px 0 15px 0;
-}
-
-.whatis {
-	position: relative;
-	padding: 20px 0 0 0px;
-}
-
-.whatis p{
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	color: #9d9d9d;
-	width: 505px;
-	padding-top: 15px;
-	padding-bottom: 10px;
-	
-}
-
-.whatis h1 {
-	
-	color: #fdfbe6;
-	font-size: 22px;
-	font-weight: 100;
-}
-
-.carousel-title {
-	position: relative;
-	padding: 20px 0 10px 0px;
-}
-
-
-
-.carousel-title h1  {
-	
-	color: #fdfbe6;
-	font-size: 22px;
-}
-
-.what-leftright {
-	position: relative;
-	padding: 0;
-	width: 510px;
-	margin-top: 37px;
-	
-	
-}
-
-.what-left {
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-.what-left h1  {
-	color: #fdfbe6;
-	font-size: 22px;
-	margin-top: 10px;
-	margin-bottom: 5px;
-
-}
-
-.what-right {
-	position: absolute;
-	right: 0;
-	top: 0;	
-}
-.what-right h1  {
-	color: #fdfbe6;
-	font-size: 22px;
-	margin-top: 10px;
-	margin-bottom: 5px;
-}
-
-.whattext {
-	background: url(../images/carousel/whatleft-bg.jpg) repeat-x scroll left top transparent;
-	color: white;
-	font-weight: 100;
-	font-family: Arial, sans-serif;
-	font-size: 1.2em;
-	width: 229px;
-	height: 154px;
-	padding: 19px 10px 10px 15px;
-	line-height: .9em;
-	
-}
-
-.carousel-header {
-background: url(../images/bg-header.gif) no-repeat scroll left top transparent;
-  float: left;
-  width: 240px;
-  padding: 25px 0pt 0px 10px;
-  border-bottom: 1px solid #222;
-  width: 950px;
-  height: 113px;
-  
-}
-
-.image_carousel img {
-	border: none;
-	background-color: black;
-	padding: 0px;
-	margin: 0px;
-	display: block;
-	float: left;
-}
-
-
-.image_carousel {
-	padding: 15px 0 15px 20px;
-	position: absolute;
-	left: 20px;
-	top: 130px;
-}
-.image_carousel div.slide {
-	width: 510px;
-	height: 195px;
-	position: relative;
-	float: left;
-
-}
-.image_carousel div.slide div {
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 510px;
-	/*display: none;*/
-	position: absolute;
-	padding: 10px;
-	bottom: 0;
-}
-.image_carousel div.slide h4 {
-	font-size: 10px;
-	padding: 0px 0 0 0px;
-}
-.image_carousel div.slide p {
-	font-size: 0.9em;
-	color: #fff;
-	font-family: Helvetica, Arial, sans-serif;
-}
-.image_carousel div.slide h4, .image_carousel div.slide p {
-	color: white;
-	margin: 0;
-}
-
-.pagination {
-	text-align: right;
-	margin: -22px 0 0;
-	padding-right: 0px;
-	position: relative;
-	right: 15px;
-}
-.pagination a {
-	background: url(../images/carousel/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
-	width: 14px;
-	height: 14px;
-	margin: -3px -2px 0 0;
-	display: inline-block;
-	position: relative;
-}
-.pagination a.selected {
-	background-position: -25px -300px;
-	cursor: default;
-}
-.pagination a span {
-	display: none;
-}
 .clearfix {
 	float: none;
 	clear: both;
@@ -13451,4 +13270,109 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 
 .home-new #next-btn, #prev-btn {
 	height:115px;
+}
+
+/* homepage carousel */
+
+.sidepromo {
+  float:left;
+  width:274px;
+  height:370px;
+  padding: 15px 0 15px 0px;
+
+}
+
+.sidepromo .promo-item {
+  width:277px;
+  overflow:hidden;
+  display:block;
+  height:180px;
+  padding:0 0 5px 0;
+  float:left;
+  background-image: url(../../../../../media/wysiwyg/promo1.png);
+  background-repeat:no-repeat;
+
+}
+.sidepromo .promo-item.bottom {
+  background-image: url(../../../../../media/wysiwyg/promo2.png);
+    background-repeat:no-repeat;
+
+}
+
+.image_carousel {
+  float:left;
+}
+
+.image_carousel {
+  padding: 15px 0 15px 10px;
+  position: relative;
+}
+.image_carousel img {
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 9px;
+  margin: 7px;
+  display: block;
+  float: left;
+}
+.bigimage a.prev,.bigimage a.next {
+  background: url(../images/carousel/carousel_sprite.png) no-repeat transparent;
+  width: 45px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  top: 85px;
+}
+.bigimage a.prev {
+      left: -22px;
+      background-position: 0 0;
+}
+.bigimage a.prev:hover {    background-position: 0 -50px; }
+.bigimage a.prev.disabled { background-position: 0 -100px !important;  }
+.bigimage a.next {      right: -22px;
+          background-position: -50px 0; }
+.bigimage a.next:hover {    background-position: -50px -50px; }
+.bigimage a.next.disabled { background-position: -50px -100px !important;  }
+.bigimage a.prev.disabled, a.next.disabled {
+  cursor: default;
+}
+
+#foo #slide1, #foo #slide2, #foo #slide3, #foo #slide4, #foo #slide5 {
+  background-image: url(../../../../../media/wysiwyg/fullpromoimageMAY.jpg);
+  display:block;
+  width:676px;
+  height:370px;
+}
+#foo #slide2 {
+  background-position: -676px 0;
+}
+#foo #slide3 {
+  background-position: -1352px 0;
+}
+#foo #slide4 {
+  background-position: -2028px 0;
+}
+#foo #slide5 {
+  background-position: -2704px 0;
+}
+
+.bigimage a.prev span, a.next span {
+  display: none;
+}
+.bigimage .pagination {
+  text-align: center;
+}
+.bigimage .pagination a {
+  background: url(../images/carousel/carousel_sprite.png) 0 -300px no-repeat transparent;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px 0 0;
+  display: inline-block;
+}
+.bigimage .pagination a.selected {
+  background-position: -25px -300px;
+  cursor: default;
+}
+.bigimage .pagination a span {
+  display: none;
 }

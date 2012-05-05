@@ -24,6 +24,30 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		
+		// Using custom configuration
+		jQuery("#foo").carouFredSel({
+			auto 				: true,
+			circular			: true,
+			infinite			: true,
+			items				: 1,
+			direction			: "left",
+			scroll : {
+				items			: 1,
+				easing			: "easeOutBounce",
+				duration		: 1000,							
+				pauseOnHover	: true
+			},
+
+			pagination	: "#foo2_pag"				
+		});	
+	});
+
+</script>
+
 <?php 
 
 $_gender = 36;
