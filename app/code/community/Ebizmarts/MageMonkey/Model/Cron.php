@@ -245,6 +245,12 @@ class Ebizmarts_MageMonkey_Model_Cron
 			$collection->addFieldToFilter($this->_getId($job->getDataSourceEntity()), array('gt' => (int)$job->getLastProcessedId()));
 		}
 
+        //Filter by STORE
+        $jobStoreId = (int)$job->getStoreId();
+		if($jobStoreId){
+			$collection->addFieldToFilter('store_id', $jobStoreId);
+		}
+
 		$collection->load();
 
 		$batch = array();

@@ -8,15 +8,28 @@
                     <children>
 		                <ecommerce translate="title" module="monkey">
 		                    <title>Ecommerce 360 Orders</title>
-		                    <action>monkey/adminhtml_ecommerce</action>
+                            <children>
+				                <commerce translate="title" module="monkey">
+				                    <title>Magento sent orders</title>
+				                    <action>adminhtml/ecommerce</action>
+				                </commerce>
+				                <apicommerce translate="title" module="monkey">
+				                    <title>ALL orders from API</title>
+				                    <action>adminhtml/ecommerce/apiorders</action>
+				                </apicommerce>
+                            </children>
 		                </ecommerce>
 		                <transactional_email translate="title" module="monkey">
 		                    <title>Transactional Email</title>
 		                    <children>
 				                <sts translate="title" module="monkey">
 				                    <title>STS (Amazon Simple Email Service)</title>
-				                    <action>monkey/adminhtml_transactionalemail/sts</action>
+				                    <action>adminhtml/transactionalemail/sts</action>
 				                </sts>
+				                <mandrill translate="title" module="monkey">
+				                    <title>Mandrill</title>
+				                    <action>adminhtml/transactionalemail/mandrill</action>
+				                </mandrill>
 		                    </children>
 		                </transactional_email>
 		                <bulksync translate="title" module="monkey">
@@ -24,11 +37,11 @@
 		                    <children>
 				                <mage_to_mc translate="title" module="monkey">
 				                    <title>Export</title>
-				                    <action>monkey/adminhtml_bulksync/export</action>
+				                    <action>adminhtml/bulksync/export</action>
 				                </mage_to_mc>
 				                <mc_to_mage translate="title" module="monkey">
 				                    <title>Import</title>
-				                    <action>monkey/adminhtml_bulksync/import</action>
+				                    <action>adminhtml/bulksync/import</action>
 				                </mc_to_mage>
 		                    </children>
 		                </bulksync>

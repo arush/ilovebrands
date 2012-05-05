@@ -2,11 +2,11 @@
 <config>
     <modules>
         <Ebizmarts_MageMonkey>
-             <version>1.0.4</version>
+             <version>1.0.13</version>
         </Ebizmarts_MageMonkey>
     </modules>
     <global>
-        <cache>
+        <!-- not yet fully tested cache>
             <types>
                 <monkey translate="label,description" module="monkey">
                     <label>MailChimp</label>
@@ -14,7 +14,7 @@
                     <tags>MONKEY_GENERAL_CACHE_TAG</tags>
                 </monkey>
             </types>
-        </cache>
+        </cache-->
     	<events>
             <newsletter_subscriber_save_before>
                 <observers>
@@ -119,6 +119,14 @@
             </updates>
         </layout>
         <events>
+			<controller_action_predispatch_onestepcheckout_index_index>
+	           	<observers>
+	               <monkey_subscribe_checkout>
+	                   <class>monkey/observer</class>
+	                   <method>registerCheckoutSubscribe</method>
+	               </monkey_subscribe_checkout>
+	         	</observers>
+	        </controller_action_predispatch_onestepcheckout_index_index>
 			<controller_action_postdispatch_checkout_onepage_saveOrder>
 	           	<observers>
 	               <monkey_subscribe_checkout>
@@ -135,24 +143,35 @@
 	               </monkey_subscribe_checkoutsuccess>
 	         	</observers>
 	        </checkout_onepage_controller_success_action>
-	        <controller_action_predispatch>
+	        <controller_action_postdispatch>
 	           	<observers>
-	               <monkey_ecomm360_cookie>
+	               <monkey_ecomm_tracking_cookie>
 	                   <class>monkey/ecommerce360</class>
 	                   <method>saveCookie</method>
-	               </monkey_ecomm360_cookie>
+	               </monkey_ecomm_tracking_cookie>
 	         	</observers>
-	        </controller_action_predispatch>
+	        </controller_action_postdispatch>
 			<sales_order_place_after>
 			  <observers>
-			      <monkey_ecomm360_sendorder>
+			      <monkey_ecomm_tracking_sendorder>
 			          <class>monkey/ecommerce360</class>
 			          <method>run</method>
-			      </monkey_ecomm360_sendorder>
+			      </monkey_ecomm_tracking_sendorder>
 			  </observers>
 			</sales_order_place_after>
       	</events>
     </frontend>
+    <admin>
+        <routers>
+             <adminhtml>
+                 <args>
+                     <modules>
+                         <monkey before="Mage_Adminhtml">Ebizmarts_MageMonkey_Adminhtml</monkey>
+                     </modules>
+                 </args>
+             </adminhtml>
+        </routers>
+    </admin>
     <adminhtml>
     	<layout>
 	        <updates>

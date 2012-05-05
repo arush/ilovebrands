@@ -19,7 +19,8 @@ class Ebizmarts_MageMonkey_Model_System_Config_Source_TransactionalEmails
     {
 		return array(
 			array('value' => 'false', 'label' => Mage::helper('monkey')->__('Disabled')),
-			array('value' => 'sts', 'label' => Mage::helper('monkey')->__('STS'))
+			array('value' => 'sts', 'label' => Mage::helper('monkey')->__('STS')),
+			array('value' => 'mandrill', 'label' => Mage::helper('monkey')->__('Mandrill'))
 		);
     }
 
