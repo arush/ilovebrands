@@ -24,15 +24,29 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<?php 
+
+$_gender = 36;
+
+if (Mage::app()->getStore()->getStoreId() =='6') { //womens
+	$_gender = 273;
+
+}  
+
+$_products = $this->getProductCollection()
+	->addAttributeToSelect('*')
+	->addFieldToFilter('gender', array('eq' => $_gender));
+    // ->addAttributeToSelect('sku')
+    // ->setOrder('sku', 'asc')->load();
+
+if ($_products && $_products->getSize()): ?>
 <div class="block block-list" id="related-items">
     <div class="block-title">
-        <h2 class="cufon"><span><?php echo $this->__('New in this week!') ?></span></h2>
+        <h2 class="cufon"><span><?php echo $this->__('New Stock!') ?></span></h2>
     </div>
- 
+
     
     <div class="block-content">
-		
 		
     	
 		
@@ -44,7 +58,8 @@
 					<div class="slider">
 						<ul class="box-content">
 						
-						<?php $i=0; foreach ($_products->getItems() as $_product): ?>
+						<?php $i=0;
+						foreach ($_products->getItems() as $_product) { ?>
 					        <li class="item">
 					            <div class="item-info">
 					                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(130,195) ?>" width="130" height="195" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"/></a>
@@ -53,11 +68,13 @@
 					            	 
 					            </div>
 					        </li>
-					    <?php endforeach ?>
+					    <?php $i++;
+					    	if($i == 28) {break;}
+					    } ?>
+
 						</ul>
 					</div>
-					<div class="left" id="prev-btn"></div>		
-					<div class="right" id="next-btn"></div>	
+					
 				</div>
 			</div>
 		</div>

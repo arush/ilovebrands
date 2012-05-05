@@ -12050,6 +12050,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	margin-right: 1px;
 	width: auto;
 	padding: 0 !important;
+  list-style: none;
 }
 
 #next-btn, #prev-btn {
@@ -13392,7 +13393,6 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 /* home page */
 
 .home-new #related-items {
-	height: 320px;
 	margin-top:40px;
 }
 
@@ -13406,10 +13406,8 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	height:auto;
 	}
 .home-new .sliders .holder {
-	height:285px;
 }
 .home-new .sliders .holder .slider {
-	height:285px;
 }
 
 .home-new a.button span, button.button span span {
@@ -13432,7 +13430,10 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 }
 
 .home-new a.button, button.button span {
-	height:
+}
+
+.home-new #related-items {
+  height:auto;
 }
 
 .home-new .slider .price-box {
