@@ -61,7 +61,7 @@ $_products = $this->getProductCollection()
 	->addAttributeToSelect('*')
 	->addFieldToFilter('gender', array('eq' => $_gender))
     // ->addAttributeToSelect('sku')
-    ->setOrder('sku', 'desc');
+    ->setOrder('rmscategory', 'asc');
 
 if ($_products && $_products->getSize()): ?>
 <div class="block block-list" id="related-items">
