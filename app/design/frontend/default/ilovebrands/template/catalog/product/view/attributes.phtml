@@ -36,7 +36,7 @@
 ?>
 <?php if($_additional = $this->getAdditionalData()): ?>
     <?php foreach ($_additional as $_data): ?>
-            <div class="details-header"><?php echo $this->htmlEscape($this->__($_data['label'])) ?></div>
+            <div class="details-header"><?php echo $this->stripTags($this->__($_data['label'])) ?></div>
             <div class="details-content"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></div>
     <?php endforeach; ?>
 <?php endif;?>
