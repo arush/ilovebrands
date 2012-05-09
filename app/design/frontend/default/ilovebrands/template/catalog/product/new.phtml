@@ -87,7 +87,7 @@ if ($_products && $_products->getSize()): ?>
 					        <li class="item">
 					            <div class="item-info">
 					                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(130,195) ?>" width="130" height="195" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"/></a>
-					            	<h3 class="product-name"><a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->htmlEscape($_product->getName()); ?>"><?php echo $this->htmlEscape($_product->getAttributeText('brand')); ?></a></h3>
+					            	<h3 class="product-name"><a href="<?php echo $_product->getProductUrl(); ?>" title="<?php echo $this->htmlEscape($_product->getName()); ?>"><?php echo $_product->getAttributeText('brand'); ?></a></h3>
 					            	 <?php echo $this->getPriceHtml($_product, true, '-new') ?>
 					            	 
 					            </div>

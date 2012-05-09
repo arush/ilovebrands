@@ -13315,6 +13315,10 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
   display: block;
   float: left;
 }
+.home-new .item-info {
+  padding:20px;
+}
+
 .bigimage a.prev, .bigimage a.next {
   background: url(../images/carousel/carousel_sprite.png) no-repeat transparent;
   width: 45px;
