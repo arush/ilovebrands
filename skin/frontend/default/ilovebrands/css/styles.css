@@ -13295,8 +13295,16 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 }
 .sidepromo .promo-item.bottom {
   background-image: url(../../../../../media/wysiwyg/promo2.png);
-    background-repeat:no-repeat;
+  background-repeat:no-repeat;
+}
 
+.sidepromo.ladies .promo-item {
+  background-image: url(../../../../../media/wysiwyg/promo-ladies1.png);
+
+}
+.sidepromo.ladies .promo-item.bottom {
+  background-image: url(../../../../../media/wysiwyg/promo-ladies2.png);
+    background-repeat:no-repeat;
 }
 
 .image_carousel {
@@ -13341,12 +13349,19 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
   cursor: default;
 }
 
+
+
 #foo #slide1, #foo #slide2, #foo #slide3, #foo #slide4, #foo #slide5 {
-  background-image: url(../../../../../media/wysiwyg/fullpromoimageMAY.jpg);
+  background-image: url(../../../../../media/wysiwyg/homepagemens.jpg);
   display:block;
   width:676px;
   height:370px;
 }
+
+#foo.ladies #slide1, #foo.ladies #slide2, #foo.ladies #slide3, #foo.ladies #slide4, #foo.ladies #slide5 {
+  background-image: url(../../../../../media/wysiwyg/homepageladies.jpg);
+}
+
 #foo #slide2 {
   background-position: -676px 0;
 }
