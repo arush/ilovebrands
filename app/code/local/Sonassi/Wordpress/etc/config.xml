@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sonassi_Wordpress>
+            <version>1.2.1</version>
+            <depends>
+            <!-- no dependencies -->
+            </depends>
+        </Sonassi_Wordpress>
+    </modules>
+    <global>
+        <models>
+        	<wordpress>
+        		<class>Sonassi_Wordpress_Model</class>
+        	</wordpress>
+        </models>
+        <blocks>
+        	<wordpress>
+        		<class>Sonassi_Wordpress_Block</class>	
+        	</wordpress>	
+        </blocks>
+				        
+        <rewrite>
+            <sonassi_wordpress_index>
+                <from><![CDATA[#^/blog/(.*)#]]></from>
+                <to>/wordpress/index/</to>
+            </sonassi_wordpress_index> 
+        </rewrite>
+
+        <resources />
+        <extraconfig />         
+        
+      </global>    
+
+      <frontend>
+				<routers>
+					<sonassi_wordpress>
+              <use>standard</use>
+              <args>
+                  <module>Sonassi_Wordpress</module>
+                  <frontName>wordpress</frontName>
+              </args>
+					</sonassi_wordpress>
+				</routers>    
+				<layout>
+            <updates>
+                <wordpress module="Sonassi_Wordpress">
+                    <file>wordpress.xml</file>
+                </wordpress>
+            </updates>        
+        </layout> 				
+		</frontend>		
+</config>

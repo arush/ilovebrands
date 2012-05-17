@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <default>
+
+  </default>
+   
+  <blog_default>
+  	
+    <reference name="root">
+      <action method="setTemplate"><template>page/3columns.phtml</template></action>
+     </reference>
+
+     <reference name="head">
+       <block type="core/template" name="wordpress_head" template="wordpress/head.phtml" ></block>
+     </reference>        
+        
+     <reference name="content">
+       <block type="core/template" name="wordpress_content" template="wordpress/content.phtml" ></block>
+     </reference>
+
+     <reference name="right">
+       <block type="core/template" name="wordpress_sidebar" template="wordpress/left.phtml" before="-"></block>
+     </reference>  	
+  	
+   </blog_default>     
+
+</layout> 

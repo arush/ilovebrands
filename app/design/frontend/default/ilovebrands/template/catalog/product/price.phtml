@@ -57,7 +57,7 @@
 
     <div class="price-box">
     <?php $_price = $_taxHelper->getPrice($_product, $_product->getPrice()) ?>
-    <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax) ?>
+    <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getMsrp(), $_simplePricesTax) ?>
     <?php $_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice()) ?>
     <?php $_finalPriceInclTax = $_taxHelper->getPrice($_product, $_product->getFinalPrice(), true) ?>
     <?php $_weeeDisplayType = $_weeeHelper->getPriceDisplayType(); ?>

@@ -1,0 +1,21 @@
+<?php if ($this->helper('customer')->isLoggedIn()) : ?>
+	<?php $customer = Mage::getSingleton('customer/session')->getCustomer(); ?>
+	<p>Logged in as <?php echo $customer->toString('{{firstname}} {{lastname}}') ; ?>. <a href="<?php echo $this->getUrl('customer/account/logout'); ?>" title="Log out of this account">Log out &raquo;</a></p>
+	
+	<input type="hidden" name="author" id="author" value="<?php echo $customer->getFirstname() ; ?>"/>
+	<input type="hidden" name="email" id="email" value="<?php echo $customer->getEmail() ; ?>" />
+	<input type="hidden" name="url" id="url" value="" />
+
+<?php else : ?>
+	<p>
+		<input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" />
+		<label for="author"><small>Name</small></label>
+	</p>
+	
+	<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" />
+	<label for="email"><small>Mail (will not be published)</small></label></p>
+	
+	<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+	<label for="url"><small>Website</small></label></p>
+
+<?php endif; ?>
