@@ -1,0 +1,8 @@
+<config>
+  <modules>
+    <Sonassi_Wordpress>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Sonassi_Wordpress>
+  </modules>
+</config>

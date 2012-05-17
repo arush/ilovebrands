@@ -197,3 +197,18 @@ SetEnvIf Host www\.ilovebrandsoutlet\.com MAGE_RUN_CODE=ilovebrands
 SetEnvIf Host www\.ilovebrandsoutlet\.com MAGE_RUN_TYPE=website
 SetEnvIf Host ^ilovebrands\.com MAGE_RUN_CODE=ilovebrands
 SetEnvIf Host ^ilovebrands\.com MAGE_RUN_TYPE=website
+
+
+###################
+## Wordpress copy paste
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /blog/index.php [L]
+</IfModule>
+
+

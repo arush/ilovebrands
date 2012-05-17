@@ -1,0 +1,52 @@
+<?php
+	$blog_url = $this->getFeedUrl();
+	$blockTitle = ($this->getpTitle())?$this->getpTitle():'Latest articles';
+	$limit = ($this->getpLimit())?$this->getpLimit():10;
+	$maxChar = ($this->getmaxChar())?$this->getmaxChar():150;
+	$cssId = ($this->getCssId())?$this->getCssId():'rss_feed';
+	$dateFormat = ($this->getdateFormat())?$this->getdateFormat():'d[[M[[Y';
+	
+?>
+
+<div class="block base-mini rss-feed box">
+	<div class="head">
+		<h4><?php echo $blockTitle; ?></span></h4>
+	</div>
+	<div class="content">
+		<ul id="<?php echo $cssId ?>"> 
+			<?php if ($blog_url != NULL): 
+				$items = $this->getRssItems($blog_url);
+				$nbOcc = 0;
+				if(!$items):
+				echo 'Error : The RSS feed cannot be parsed';
+			else:
+				if(is_array($items)):
+					foreach($items as $it):
+						if($nbOcc > $limit) break;
+						$date = date($dateFormat,strtotime($it['pubDate'])); 
+						?>
+						<li>
+							<div class="pubDate-wrap">
+								<?php $exp_date = explode('[[', $date);
+								$exp_datef = explode('[[', $dateFormat);
+								for($i = 0; $i < count($exp_date); ++$i): ?>
+									<span class="pudDate-<?php echo $exp_datef[$i]; ?>"><?php echo $exp_date[$i]; ?></span>
+								<?php endfor; ?>
+							</div>
+							<div class="link-wrap">
+								<a class="link" href="<?php echo $it['link']; ?>"><?php echo $it['title']; ?></a>
+							</div>
+							<div class="desc-wrap">
+								<p class="desc"><?php echo substr($it['description'],0,$maxChar); ?></p>
+							</div>
+						</li>
+						<?php 
+						++$nbOcc;
+						endforeach; 
+					endif;
+				endif; 
+			?>
+		<?php endif; ?>
+		</ul>
+	</div>
+</div>
