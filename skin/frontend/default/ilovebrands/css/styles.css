@@ -13289,21 +13289,21 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
   height:180px;
   padding:0 0 5px 0;
   float:left;
-  background-image: url(../../../../../media/wysiwyg/promo1.png);
+  background-image: url(../../../../../media/wysiwyg/promo-mens1.jpg);
   background-repeat:no-repeat;
 
 }
 .sidepromo .promo-item.bottom {
-  background-image: url(../../../../../media/wysiwyg/promo2.png);
+  background-image: url(../../../../../media/wysiwyg/promo-mens2.jpg);
   background-repeat:no-repeat;
 }
 
 .sidepromo.ladies .promo-item {
-  background-image: url(../../../../../media/wysiwyg/promo-ladies1.png);
+  background-image: url(../../../../../media/wysiwyg/promo-ladies1.jpg);
 
 }
 .sidepromo.ladies .promo-item.bottom {
-  background-image: url(../../../../../media/wysiwyg/promo-ladies2.png);
+  background-image: url(../../../../../media/wysiwyg/promo-ladies2.jpg);
     background-repeat:no-repeat;
 }
 
