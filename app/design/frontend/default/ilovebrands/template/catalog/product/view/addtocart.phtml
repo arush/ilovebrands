@@ -37,9 +37,6 @@
 		<?php echo $this->getChildHtml('addto') ?>
 		<div class="info-shipment">
 		<?php if($_product->getData('promo_offer')): ?><?php echo $this->htmlEscape($_product->getData('promo_offer')); ?><br/><?php endif; ?>
-		<?php if($this->getProduct()->getShutl()): ?>90 minute London delivery<br/><?php endif; ?>
-		<?php $_nonrefundable = $this->htmlEscape($_product->getResource()->getAttribute('nonrefundable')->getFrontend()->getValue($_product)); ?>
-        <?php if ($_nonrefundable === 'No'):?>Free returns<?php endif; ?>
 		</div>
     </div>
 <?php endif; ?>
