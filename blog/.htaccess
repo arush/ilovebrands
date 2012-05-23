@@ -1,0 +1,26 @@
+## BEGIN sonassi.com wordpress extension
+  
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/blog/wp-admin
+RewriteCond %{REQUEST_URI} !^/blog/wp-content
+RewriteCond %{REQUEST_URI} ^/blog
+RewriteCond %{REMOTE_ADDR} !^78\.31\.108\.116
+RewriteRule .* ../index.php [L]
+</IfModule>
+
+## END sonassi.com wordpress extension
+    
+# BEGIN WordPress
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
+</IfModule>
+
+# END WordPress

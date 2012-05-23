@@ -117,6 +117,19 @@
     RewriteEngine on
 
 ############################################
+## BEGIN sonassi.com wordpress extension
+##
+ 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/blog/wp-admin
+    RewriteCond %{REQUEST_URI} !^/blog/wp-content   
+    RewriteCond %{REQUEST_URI} ^/blog
+    RewriteCond %{REMOTE_ADDR} !^78\.31\.108\.116
+    RewriteRule .* index.php [L] 
+
+## END sonassi.com wordpress extension
+
+############################################
 ## you can put here your magento root folder
 ## path relative to web root
 
@@ -188,27 +201,8 @@
 ############################################
 ## Set up multi domain magento
 
-SetEnvIf Host staging\.evogue\.co\.uk MAGE_RUN_CODE=base
-SetEnvIf Host staging\.evogue\.co\.uk MAGE_RUN_TYPE=website
-SetEnvIf Host ^evogue\.co\.uk MAGE_RUN_CODE=base
-SetEnvIf Host ^evogue\.co\.uk MAGE_RUN_TYPE=website
-
 SetEnvIf Host www\.ilovebrandsoutlet\.com MAGE_RUN_CODE=ilovebrands
 SetEnvIf Host www\.ilovebrandsoutlet\.com MAGE_RUN_TYPE=website
 SetEnvIf Host ^ilovebrands\.com MAGE_RUN_CODE=ilovebrands
 SetEnvIf Host ^ilovebrands\.com MAGE_RUN_TYPE=website
-
-
-###################
-## Wordpress copy paste
-
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /blog/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /blog/index.php [L]
-</IfModule>
-
 
