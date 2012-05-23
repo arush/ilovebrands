@@ -80,9 +80,16 @@
 		{
 
 			$url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$_SERVER['REQUEST_URI'];
+			$url = str_replace("//blog","/blog",$url);
 			if (@$file = file_get_contents($url)) {				
 				
-					$type = end($http_response_header);					
+					// $type = end($http_response_header);
+					$type = false;
+					foreach ($http_response_header as $headerVal) {
+						if(stristr($headerVal, 'Content-Type') !== false)
+						$type = $headerVal;
+					}
+
 					if ((strpos($type,"text/html") === false && strpos($type,"application/x-httpd-php") === false)
 								 || strpos($type,"text/xml") !== false ) {
 						if (file_exists($url)) {
