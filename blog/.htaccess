@@ -1,5 +1,5 @@
 ## BEGIN sonassi.com wordpress extension
-  
+  
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /blog/
@@ -13,7 +13,7 @@ RewriteRule .* ../index.php [L]
 </IfModule>
 
 ## END sonassi.com wordpress extension
-    
+    
 # BEGIN WordPress
 
 <IfModule mod_rewrite.c>

@@ -120,12 +120,12 @@
 ## BEGIN sonassi.com wordpress extension
 ##
  
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} !^/blog/wp-admin
-    RewriteCond %{REQUEST_URI} !^/blog/wp-content   
-    RewriteCond %{REQUEST_URI} ^/blog
-    RewriteCond %{REMOTE_ADDR} !^78\.31\.108\.116
-    RewriteRule .* index.php [L] 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/blog/wp-admin
+    RewriteCond %{REQUEST_URI} !^/blog/wp-content   
+    RewriteCond %{REQUEST_URI} ^/blog
+    RewriteCond %{REMOTE_ADDR} !^78\.31\.108\.116
+    RewriteRule .* index.php [L] 
 
 ## END sonassi.com wordpress extension
 
