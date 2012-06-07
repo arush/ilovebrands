@@ -13268,7 +13268,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	text-align: center;
 }
 
-.home-new #next-btn, #prev-btn {
+.home-new #next-btn, .home-new #prev-btn {
 	height:115px;
 }
 

@@ -55,7 +55,7 @@
 .sliders.quickie {
 	float: none;
 	margin: 0 auto;
-	width: 960px;
+	width: 958px;
 }
 
 .sliders.quickie h1 {
@@ -77,5 +77,5 @@
 	margin-left: -51px;
 }
 .sliders.quickie .holder .right {
-	margin-left: 875px;
+	margin-left: 864px;
 }
