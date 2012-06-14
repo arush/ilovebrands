@@ -7,7 +7,7 @@ Mage::setIsDeveloperMode(true);
 
 Mage::app(); //pass in store code if you like
 
-$coll = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name');
+$coll = Mage::getModel('catalog/category')->getCollection()->addAttributeToSelect('name')->addAttributeToSelect('id');
 foreach ($coll as $cat) {
 	echo $coll->getId()."\t".$coll->getName()."\n";
 }
