@@ -27,8 +27,8 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 		$total2 = getSoldValue($sales2);
 
 
-		$currentSales = array("text"=>"Sales this week", "value"=>$total1);
-		$previousSales = array("text"=>"on last week", "value"=>$total2);
+		$currentSales = array("text"=>"Sales this week", "value"=>money_format('%(#10n', $total1));
+		$previousSales = array("text"=>"on last week", "value"=>money_format('%(#10n', $total2);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 
