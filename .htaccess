@@ -119,7 +119,7 @@
 ############################################
 ## BEGIN sonassi.com wordpress extension
 ##
- 
+    RewriteBase / 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_URI} !^/blog/wp-admin
     RewriteCond %{REQUEST_URI} !^/blog/wp-content   
