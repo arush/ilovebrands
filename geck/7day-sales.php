@@ -26,7 +26,7 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 		$count2 = getSoldCount($sales2);
 		$total2 = getSoldValue($sales2);
 
-		$prefix = '$';
+		$prefix = '£';
 
 		$currentSales = array("text"=>"Sales this week", "value"=>$total1, "prefix"=>$prefix);
 		$previousSales = array("text"=>"on last week", "value"=>$total2, "prefix"=>$prefix);
