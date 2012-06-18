@@ -88,7 +88,7 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
     /**
      * Check API key
      */
-    //if ('evogue2011' == $_SERVER['PHP_AUTH_USER']) {
+    if ('1024' == $_SERVER['PHP_AUTH_USER']) {
         switch($metric) {
             case 1:
                 if($pps>0){
@@ -131,12 +131,12 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 	                break;
         }
         echo $response;
-    // }
-    // else {
-    //     Header("HTTP/1.1 403 Access denied");
-    //     $data = array('error' => 'Access denied.');
-    //     echo $response_obj->getResponse($data);
-    // }
+    }
+    else {
+        Header("HTTP/1.1 403 Access denied");
+        $data = array('error' => 'Access denied.');
+        echo $response_obj->getResponse($data);
+    }
 }
 else {
     //debug
