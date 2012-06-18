@@ -26,9 +26,10 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 		$count2 = getSoldCount($sales2);
 		$total2 = getSoldValue($sales2);
 
+		$prefix = '<![CDATA[&pound;]]>';
 
-		$currentSales = array("text"=>"Sales this week", "value"=>money_format('%(#10n', $total1));
-		$previousSales = array("text"=>"on last week", "value"=>money_format('%(#10n', $total2);
+		$currentSales = array("text"=>"Sales this week", "value"=>$total1, "prefix"=>$prefix);
+		$previousSales = array("text"=>"on last week", "value"=>$total2, "prefix"=>$prefix);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 

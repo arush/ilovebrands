@@ -8,7 +8,6 @@ Mage::setIsDeveloperMode(true);
 
 Mage::app(); //pass in store code if you like
 date_default_timezone_set('Europe/London'); // add your locale - thanks to @benmarks from BlueAcorn for this
-setlocale(LC_MONETARY, 'en_GB'); // change this to display different currencies
 
 
 function getSoldCount($orders) {
