@@ -1,42 +1,11 @@
 <?php
-header('Content-Type: text/plain');
 
-ini_set('display_errors',true);
-include('../app/Mage.php');
-Mage::setIsDeveloperMode(true);
-
-Mage::app(); //pass in store code if you like
-date_default_timezone_set('Europe/London'); // add your locale - thanks to @benmarks from BlueAcorn for this
-
-
-
-function getSoldCount($orders) {
-
-	$count = 0;
-	$number = count($orders);
-	return $number;
-}
-
-function getOrders($from,$to) {
-	$orders = Mage::getSingleton('sales/order')->getCollection()
-		->addAttributeToSelect('*')
-		->addFieldToFilter('created_at', array('from'=>$from, 'to'=>$to))
-		->addFieldToFilter('status', 'complete')
-	    ->addFieldToFilter('status', 'processing');
-}
-
-//excludes shipping amount
-function getSoldValue($orders) {
-	$totalSales = 0;
-	foreach($orders as $order) {
-		$totalSales = $totalSales + $order->getGrandTotal() - $order->getShippingAmount();
-	}
-	return $totalSales;
-}
+require_once('config.php');
 
 // t = time period from now to last monday midnight
 // y = time period from last monday midnight to 7 days before that
 
+// $ts = date('Y-m-d H:i:s', strtotime('last monday'));
 $ts = date('Y-m-d H:i:s', strtotime('last monday'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), 0, date('m'), date('d'), date('Y')));
 
@@ -44,20 +13,39 @@ $ys = date('Y-m-d H:i:s', strtotime('-1 week',strtotime('last monday')));
 $ye = date('Y-m-d H:i:s', mktime(0, 0, 0, date('m'), date('d')-7, date('Y')));
 
 
-$sales1 = getOrders($ts,$te);
-$count1 = getSoldCount($sales1);
-$total1 = getSoldValue($sales1);
-
-$sales2 = getOrders($ys,$ye);
-$count2 = getSoldCount($sales2);
-$total2 = getSoldValue($sales2);
-
-echo "Sales value last week: " . $total1 . "<br/>Sales value week before that: " . $total2;
-echo "Sales count last week: " . $count1 . "<br/>Sales value week before that: " . $count2;
+if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 
+	/* Check API key */
+    if ($apiKey == $_SERVER['PHP_AUTH_USER']) {
+		$sales1 = getOrders($ts,$te);
+		$count1 = getSoldCount($sales1);
+		$total1 = getSoldValue($sales1);
+
+		$sales2 = getOrders($ys,$ye);
+		$count2 = getSoldCount($sales2);
+		$total2 = getSoldValue($sales2);
+
+
+		$currentSales = array("text"=>"Sales this week", "value"=>$total1);
+		$previousSales = array("text"=>"on last week", "value"=>$total2);
+
+		$response = array("item"=>array($currentSales,$previousSales));
+
+		$json = json_encode($response);
+
+		echo $json;        
+    
+    } else {
+        Header("HTTP/1.1 403 Access denied");
+        $data = array('error' => 'Nice try, asshole.');
+        echo $data;
+    }
+
+} else {
+	Header("HTTP/1.1 404 Page not found");
+}
 
 
 
-
-
+?>
