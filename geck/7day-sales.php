@@ -17,7 +17,7 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 
 	/* Check API key */
-    if ($apiKey == $_SERVER['PHP_AUTH_USER']) {
+    if ('1024' == $_SERVER['PHP_AUTH_USER']) {
 		$sales1 = getOrders($ts,$te);
 		$count1 = getSoldCount($sales1);
 		$total1 = getSoldValue($sales1);
