@@ -1,6 +1,6 @@
 <?php
 
-require_once('config.php');
+require_once('core.php');
 
 // t = time period from now to last monday midnight
 // y = time period from last monday midnight to 7 days before that
