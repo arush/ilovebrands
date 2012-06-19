@@ -10,12 +10,12 @@ require_once('core.php');
 // $ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
 // $ye = $ts;
 
-// month on month
+// compare with 24h ago
 $ts = date('Y-m-d H:i:s', strtotime('-1 day'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
 $ys = date('Y-m-d H:i:s', strtotime('-1 day',strtotime('-1 day')));
-$ye = $ts;
+$te = date('Y-m-d H:i:s', mktime(date('H')-24, date('i'), date('s'), date('m'), date('d'), date('Y')));
 
 
 if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
