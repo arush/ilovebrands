@@ -5,7 +5,7 @@ require_once('core.php');
 $ts = date('Y-m-d H:i:s', strtotime('this monday'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date('Y-m-d H:i:s', strtotime('-1 week',$ts));
+$ys = date('Y-m-d H:i:s', strtotime('-1 week',strtotime('this monday')));
 $ye = $ts;
 
 
@@ -17,8 +17,8 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 		$currentOrders = getOrders($ts,$te);
 		
 		$countAtProcessing = countAtStatus($currentOrders,'processing');
-		$countAtComplete = countAtComplete($currentOrders,'complete');
-		$countAtClosed = countAtComplete($currentOrders,'closed');
+		$countAtComplete = countAtStatus($currentOrders,'complete');
+		$countAtClosed = countAtStatus($currentOrders,'closed');
 
 		$ordersRefunded = array("text"=>"Orders Refunded", "value"=>$countAtClosed);
 		$ordersProcessing = array("text"=>"Orders Processing", "value"=>$countAtProcessing);
