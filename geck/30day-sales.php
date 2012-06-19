@@ -3,10 +3,10 @@
 require_once('core.php');
 
 
-$ts = date('Y-m-d H:i:s', strtotime('this monday'));
+$ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date('Y-m-d H:i:s', strtotime('-1 week',$ts));
+$ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
 $ye = $ts;
 
 
@@ -25,8 +25,8 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		$prefix = '£';
 
-		$currentSales = array("text"=>"Sales this week", "value"=>$total1, "prefix"=>$prefix);
-		$previousSales = array("text"=>"on last week", "value"=>$total2);
+		$currentSales = array("text"=>"Sales this month", "value"=>$total1, "prefix"=>$prefix);
+		$previousSales = array("text"=>"on last month", "value"=>$total2);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 

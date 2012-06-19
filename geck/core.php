@@ -26,6 +26,14 @@ function getOrders($from,$to) {
 	return $orders;
 }
 
+function countAtStatus($orders, $status) {
+	$coll = $orders->addFieldToFilter('status', $status);
+	$num = count($coll);
+	return $num;
+}
+
+
+
 //excludes shipping amount
 function getSoldValue($orders) {
 	$totalSales = 0;
