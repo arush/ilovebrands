@@ -33,8 +33,8 @@ $ye = date('Y-m-d H:i:s', mktime(date('H')-24, date('i'), date('s'), date('m'), 
 
 		$prefix = '£';
 
-		$currentSales = array("text"=>"Sales today", "value"=>$total1, "prefix"=>$prefix);
-		$previousSales = array("text"=>"on yesterday", "value"=>$total2);
+		$currentSales = array("text"=>"last 24 hours", "value"=>$total1, "prefix"=>$prefix);
+		$previousSales = array("text"=>"on previous", "value"=>$total2);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 

@@ -47,8 +47,8 @@ $ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, d
 			$aov2 = 0;
 		}
 
-		$currentAov = array("text"=>"AOV this month", "value"=>$aov1, "prefix"=>$prefix);
-		$previousAov = array("text"=>"on last month", "value"=>$aov2);
+		$currentAov = array("text"=>"AOV last 30 days", "value"=>$aov1, "prefix"=>$prefix);
+		$previousAov = array("text"=>"on previous", "value"=>$aov2);
 
 		$response = array("item"=>array($currentAov,$previousAov));
 

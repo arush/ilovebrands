@@ -25,8 +25,8 @@ $ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), dat
 
 		$prefix = '£';
 
-		$currentSales = array("text"=>"Sales this week", "value"=>$total1, "prefix"=>$prefix);
-		$previousSales = array("text"=>"on last week", "value"=>$total2);
+		$currentSales = array("text"=>"Sales last 7 days", "value"=>$total1, "prefix"=>$prefix);
+		$previousSales = array("text"=>"on previous", "value"=>$total2);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 

@@ -32,8 +32,8 @@ $ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, d
 
 		$prefix = '£';
 
-		$currentSales = array("text"=>"Sales this month", "value"=>$total1, "prefix"=>$prefix);
-		$previousSales = array("text"=>"on last month", "value"=>$total2);
+		$currentSales = array("text"=>"Sales last 30 days", "value"=>$total1, "prefix"=>$prefix);
+		$previousSales = array("text"=>"on previous", "value"=>$total2);
 
 		$response = array("item"=>array($currentSales,$previousSales));
 

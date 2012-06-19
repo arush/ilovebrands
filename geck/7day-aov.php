@@ -38,8 +38,8 @@ $ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), dat
 			$aov2 = 0;
 		}
 
-		$currentAov = array("text"=>"AOV this week", "value"=>$aov1, "prefix"=>$prefix);
-		$previousAov = array("text"=>"on last week", "value"=>$aov2);
+		$currentAov = array("text"=>"AOV last 7 days", "value"=>$aov1, "prefix"=>$prefix);
+		$previousAov = array("text"=>"on previous", "value"=>$aov2);
 
 		$response = array("item"=>array($currentAov,$previousAov));
 
