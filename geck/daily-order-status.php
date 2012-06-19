@@ -3,10 +3,10 @@
 require_once('core.php');
 
 
-$ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d'), date('Y')));
+$ts = date('Y-m-d H:i:s', strtotime('this monday'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d')-1, date('Y')));
+$ys = date('Y-m-d H:i:s', strtotime('-1 week',$ts));
 $ye = $ts;
 
 
