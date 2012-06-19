@@ -14,7 +14,7 @@ $ts = date('Y-m-d H:i:s', strtotime('-1 month'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
 $ys = date('Y-m-d H:i:s', strtotime('-1 month',strtotime('-1 month')));
-$te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, date('d'), date('Y')));
+$ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, date('d'), date('Y')));
 
 
 // if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {

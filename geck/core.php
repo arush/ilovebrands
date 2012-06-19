@@ -26,9 +26,39 @@ function getOrders($from,$to) {
 	return $orders;
 }
 
-function countAtStatus($orders, $status) {
-	$coll = $orders->addFieldToFilter('status', $status);
-	$num = count($coll);
+function countAtProcessing($from,$to) {
+
+	$orders = Mage::getSingleton('sales/order')->getCollection()
+		->addAttributeToSelect('*')
+		->addFieldToFilter('created_at', array('from'=>$from, 'to'=>$to))
+		->addFieldToFilter('status', 'processing');
+	 	// ->addFieldToFilter('status', array('in' => array('complete','processing')));
+
+	$num = count($orders);
+	return $num;
+}
+
+function countAtComplete($from,$to) {
+
+	$orders = Mage::getSingleton('sales/order')->getCollection()
+		->addAttributeToSelect('*')
+		->addFieldToFilter('created_at', array('from'=>$from, 'to'=>$to))
+		->addFieldToFilter('status', 'complete');
+	 	// ->addFieldToFilter('status', array('in' => array('complete','processing')));
+
+	$num = count($orders);
+	return $num;
+}
+
+function countAtClosed($from,$to) {
+
+	$orders = Mage::getSingleton('sales/order')->getCollection()
+		->addAttributeToSelect('*')
+		->addFieldToFilter('created_at', array('from'=>$from, 'to'=>$to))
+		->addFieldToFilter('status', 'closed');
+	 	// ->addFieldToFilter('status', array('in' => array('complete','processing')));
+
+	$num = count($orders);
 	return $num;
 }
 

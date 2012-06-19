@@ -15,7 +15,7 @@ $ts = date('Y-m-d H:i:s', strtotime('-1 month'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
 $ys = date('Y-m-d H:i:s', strtotime('-1 month',strtotime('-1 month')));
-$te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, date('d'), date('Y')));
+$ye = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, date('d'), date('Y')));
 
 
 // if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
@@ -25,9 +25,9 @@ $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m')-1, d
 //     if ('1024' == $_SERVER['PHP_AUTH_USER']) {
 		$currentOrders = getOrders($ts,$te);
 		
-		$countAtProcessing = countAtStatus($currentOrders,'processing');
-		$countAtComplete = countAtStatus($currentOrders,'complete');
-		$countAtClosed = countAtStatus($currentOrders,'closed');
+		$countAtProcessing = countAtProcessing($ts,$te);
+		$countAtComplete = countAtComplete($ts,$te);
+		$countAtClosed = countAtClosed($ts,$te);
 
 		$ordersRefunded = array("value"=>$countAtClosed, "text"=>"Orders Refunded");
 		$ordersProcessing = array("value"=>$countAtProcessing, "text"=>"Orders Processing");
