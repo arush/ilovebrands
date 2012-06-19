@@ -2,6 +2,7 @@
 
 require_once('core.php');
 
+
 // first of the month
 // $ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
 // $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
@@ -22,24 +23,20 @@ $ye = $ts;
 
 // 	/* Check API key */
 //     if ('1024' == $_SERVER['PHP_AUTH_USER']) {
-		$sales1 = getOrders($ts,$te);
-		$count1 = getSoldCount($sales1);
-		$total1 = getSoldValue($sales1);
+		$currentOrders = getOrders($ts,$te);
+		
+		$countAtProcessing = countAtStatus($currentOrders,'processing');
+		$countAtComplete = countAtStatus($currentOrders,'complete');
+		$countAtClosed = countAtStatus($currentOrders,'closed');
 
-		$sales2 = getOrders($ys,$ye);
-		$count2 = getSoldCount($sales2);
-		$total2 = getSoldValue($sales2);
+		$ordersRefunded = array("value"=>$countAtClosed, "text"=>"Orders Refunded");
+		$ordersProcessing = array("value"=>$countAtProcessing, "text"=>"Orders Processing");
+		$ordersComplete = array("value"=>$countAtComplete, "text"=>"Orders Invoiced");
 
-		$prefix = '£';
-
-		$currentSales = array("text"=>"Sales this month", "value"=>$total1, "prefix"=>$prefix);
-		$previousSales = array("text"=>"on last month", "value"=>$total2);
-
-		$response = array("item"=>array($currentSales,$previousSales));
+		$response = array("item"=>array($ordersRefunded,$ordersProcessing,$ordersComplete));
 
 		$json = json_encode($response);
 
-		//echo $ts . " to " . $te . "\n" . $ys . " to " . $ye . "\n";
 		echo $json;        
     
 //     } else {

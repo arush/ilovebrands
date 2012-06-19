@@ -3,18 +3,27 @@
 require_once('core.php');
 
 
-$ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
+// first of the month
+// $ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
+// $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
+
+// $ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
+// $ye = $ts;
+
+// month on month
+$ts = date('Y-m-d H:i:s', strtotime('-1 month'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
+$ys = date('Y-m-d H:i:s', strtotime('-1 month',strtotime('-1 month')));
 $ye = $ts;
 
 
-if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
+
+// if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 
-	/* Check API key */
-    if ('1024' == $_SERVER['PHP_AUTH_USER']) {
+// 	/* Check API key */
+//     if ('1024' == $_SERVER['PHP_AUTH_USER']) {
 		$sales1 = getOrders($ts,$te);
 		$count1 = getSoldCount($sales1);
 		$total1 = getSoldValue($sales1);
@@ -25,8 +34,18 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		$prefix = '£';
 
-		$aov1 = round($sales1/$count1,2);
-		$aov2 = round($sales2/$count2,2);
+		if($count1 != 0) {
+			$aov1 = round($total1/$count1,2);
+		}
+		else {
+			$aov1 = 0;
+		}
+		if($count2 != 0) {
+			$aov2 = round($total2/$count2,2);
+		}
+		else {
+			$aov2 = 0;
+		}
 
 		$currentAov = array("text"=>"AOV this month", "value"=>$aov1, "prefix"=>$prefix);
 		$previousAov = array("text"=>"on last month", "value"=>$aov2);
@@ -37,15 +56,15 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		echo $json;        
     
-    } else {
-        Header("HTTP/1.1 403 Access denied");
-        $data = array('error' => 'Nice try, asshole.');
-        echo $data;
-    }
+//     } else {
+//         Header("HTTP/1.1 403 Access denied");
+//         $data = array('error' => 'Nice try, asshole.');
+//         echo $data;
+//     }
 
-} else {
-	Header("HTTP/1.1 404 Page not found");
-}
+// } else {
+// 	Header("HTTP/1.1 404 Page not found");
+// }
 
 
 

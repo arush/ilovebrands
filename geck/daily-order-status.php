@@ -3,10 +3,18 @@
 require_once('core.php');
 
 
-$ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d'), date('Y')));
+// first of the month
+// $ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
+// $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
+
+// $ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
+// $ye = $ts;
+
+// month on month
+$ts = date('Y-m-d H:i:s', strtotime('-1 day'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d')-1, date('Y')));
+$ys = date('Y-m-d H:i:s', strtotime('-1 day',strtotime('-1 day')));
 $ye = $ts;
 
 
@@ -21,9 +29,9 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 		$countAtComplete = countAtComplete($currentOrders,'complete');
 		$countAtClosed = countAtComplete($currentOrders,'closed');
 
-		$ordersRefunded = array("text"=>"Orders Refunded", "value"=>$countAtClosed);
-		$ordersProcessing = array("text"=>"Orders Processing", "value"=>$countAtProcessing);
-		$ordersComplete = array("text"=>"Orders Invoiced", "value"=>$countAtComplete);
+		$ordersRefunded = array("value"=>$countAtClosed, "text"=>"Orders Refunded");
+		$ordersProcessing = array("value"=>$countAtProcessing, "text"=>"Orders Processing");
+		$ordersComplete = array("value"=>$countAtComplete, "text"=>"Orders Invoiced");
 
 		$response = array("item"=>array($ordersRefunded,$ordersProcessing,$ordersComplete));
 

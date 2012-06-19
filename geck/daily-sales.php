@@ -3,17 +3,26 @@
 require_once('core.php');
 
 
-$ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d'), date('Y')));
+// first of the month
+// $ts = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), 1, date('Y')));
+// $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
+
+// $ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m')-1, 1, date('Y')));
+// $ye = $ts;
+
+// month on month
+$ts = date('Y-m-d H:i:s', strtotime('-1 day'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date("Y-m-d H:i:s", mktime(0, 0, 0, date('m'), date('d')-1, date('Y')));
+$ys = date('Y-m-d H:i:s', strtotime('-1 day',strtotime('-1 day')));
 $ye = $ts;
 
-if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
+
+// if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 
-	/* Check API key */
-    if ('1024' == $_SERVER['PHP_AUTH_USER']) {
+// 	/* Check API key */
+//     if ('1024' == $_SERVER['PHP_AUTH_USER']) {
 		$sales1 = getOrders($ts,$te);
 		$count1 = getSoldCount($sales1);
 		$total1 = getSoldValue($sales1);
@@ -33,15 +42,15 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		echo $json;        
     
-    } else {
-        Header("HTTP/1.1 403 Access denied");
-        $data = array('error' => 'Nice try, asshole.');
-        echo $data;
-    }
+//     } else {
+//         Header("HTTP/1.1 403 Access denied");
+//         $data = array('error' => 'Nice try, asshole.');
+//         echo $data;
+//     }
 
-} else {
-	Header("HTTP/1.1 404 Page not found");
-}
+// } else {
+// 	Header("HTTP/1.1 404 Page not found");
+// }
 
 
 

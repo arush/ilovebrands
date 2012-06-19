@@ -3,18 +3,17 @@
 require_once('core.php');
 
 
-$ts = date('Y-m-d H:i:s', strtotime('this monday'));
+$ts = date('Y-m-d H:i:s', strtotime('-1 week'));
 $te = date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d'), date('Y')));
 
-$ys = date('Y-m-d H:i:s', strtotime('-1 week',$ts));
+$ys = date('Y-m-d H:i:s', strtotime('-1 week',strtotime('-1 week')));
 $ye = $ts;
 
+// if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
-if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
-
-	/* Check API key */
-    if ('1024' == $_SERVER['PHP_AUTH_USER']) {
+// 	/* Check API key */
+//     if ('1024' == $_SERVER['PHP_AUTH_USER']) {
 		$sales1 = getOrders($ts,$te);
 		$count1 = getSoldCount($sales1);
 		$total1 = getSoldValue($sales1);
@@ -25,8 +24,18 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		$prefix = '£';
 
-		$aov1 = round($sales1/$count1,2);
-		$aov2 = round($sales2/$count2,2);
+		if($count1 != 0) {
+			$aov1 = round($total1/$count1,2);
+		}
+		else {
+			$aov1 = 0;
+		}
+		if($count2 != 0) {
+			$aov2 = round($total2/$count2,2);
+		}
+		else {
+			$aov2 = 0;
+		}
 
 		$currentAov = array("text"=>"AOV this week", "value"=>$aov1, "prefix"=>$prefix);
 		$previousAov = array("text"=>"on last week", "value"=>$aov2);
@@ -37,15 +46,15 @@ if (isset($_POST) && isset($_SERVER['PHP_AUTH_USER'])) {
 
 		echo $json;        
     
-    } else {
-        Header("HTTP/1.1 403 Access denied");
-        $data = array('error' => 'Nice try, asshole.');
-        echo $data;
-    }
+//     } else {
+//         Header("HTTP/1.1 403 Access denied");
+//         $data = array('error' => 'Nice try, asshole.');
+//         echo $data;
+//     }
 
-} else {
-	Header("HTTP/1.1 404 Page not found");
-}
+// } else {
+// 	Header("HTTP/1.1 404 Page not found");
+// }
 
 
 
