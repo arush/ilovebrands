@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <!-- Gosquared_Livestats -->
+        <reference name="before_body_end">
+            <block type="livestats/tracking" name="livestats_tracking" template="livestats/footer.phtml" />
+        </reference>
+    </default>
+</layout>
