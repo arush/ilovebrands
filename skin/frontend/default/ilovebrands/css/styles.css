@@ -1221,7 +1221,7 @@ p.error-msg {
 .pager {
   float: right;
   margin: 15px 0pt;
-  font-size: 11px;
+  font-size: 15px;
   padding: 4px 10px 0pt
     0pt;
   color: rgb(255, 255, 255);
@@ -1244,7 +1244,7 @@ p.error-msg {
 .pager .limiter {
   line-height: 20px;
   float: right;
-  width: 90px;
+  width: 115px;
 }
 
 .sales-order-history .pager .limiter {
@@ -1263,14 +1263,14 @@ p.error-msg {
 
 .pager .pages {
   text-align: center;
-  color: rgb(255, 255, 255);
+  color: #404040;
   line-height: 20px;
   float: right;
-  width: 130px;
+  width: 150px;
 }
 
 .pager .pages a {
-  color: rgb(255, 255, 255);
+  color: #B14E4E;
   text-decoration: underline;
 }
 
@@ -1298,8 +1298,8 @@ p.error-msg {
 
 .sorter {
   float: left;
-  width: 130px;
-  font-size: 11px;
+  width: 140px;
+  font-size: 15px;
   margin: 0pt;
   padding: 4px 15px 0pt
     10px;
@@ -1382,7 +1382,7 @@ p.error-msg {
 }
 
 .sorter .sort-by label {
-  width: 38px;
+  width: 48px;
 }
 
 .sorter .sort-by a {
@@ -1407,6 +1407,7 @@ p.error-msg {
 .pager .limiter select {
   float: right;
   width: 50px;
+  margin-right: 20px;
 }
 
 .sorter .link-feed {
@@ -1415,7 +1416,7 @@ p.error-msg {
 
 .toolbar {
   float: right;
-  width: 300px;
+  width: 450px;
   padding-bottom: 10px;
 }
 
@@ -12631,7 +12632,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 		}
 		#nav li.level-top{
 			height: 47px;
-			width: 119px;
+			width: 150px;
 			text-align: center;
 			float: left;
 			position: relative;
@@ -12645,7 +12646,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 			font-size: 11px;
 			text-transform: uppercase;
 			font-family: Gotham-book, sans-serif;
-			width: 119px;
+			width: 150px;
 			display: block;
 			margin-top: 5px;
 		}
