@@ -80,8 +80,8 @@ define('WPLANG', '');
 define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
-define('WP_HOME','http://www.ilovebrandsoutlet.com/blog');
-define('WP_SITEURL','http://www.ilovebrandsoutlet.com/blog');
+define('WP_HOME','http://ilovebrands.macbook.pro/blog');
+define('WP_SITEURL','http://ilovebrands.macbook.pro/blog');
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
