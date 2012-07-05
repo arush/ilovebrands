@@ -195,7 +195,7 @@ class Ebizmarts_MageMonkey_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function canCheckoutSubscribe()
 	{
-		return (bool)($this->config('checkout_subscribe') != 0);
+		return $this->config('checkout_subscribe');
 	}
 
 	/**
@@ -207,12 +207,16 @@ class Ebizmarts_MageMonkey_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function subscribedToList($email, $listId = null)
 	{
-		$member = Mage::getSingleton('monkey/api')
-									->listMemberInfo($listId, $email);
-        $on = FALSE;
-        if($member['success'] && ($member['data'][0]['status'] == 'subscribed')){
-            $on = TRUE;
-        }
+		$on = FALSE;
+
+		if($email){
+			$member = Mage::getSingleton('monkey/api')
+										->listMemberInfo($listId, $email);
+
+	        if(!is_string($member) && $member['success'] && ($member['data'][0]['status'] == 'subscribed')){
+	            $on = TRUE;
+	        }
+		}
 
         return $on;
 	}
@@ -262,6 +266,21 @@ class Ebizmarts_MageMonkey_Helper_Data extends Mage_Core_Helper_Abstract
 		return $list;
 	}
 
+	/**
+	 * Get additional Lists by storeId
+	 *
+	 * @param string $store
+	 * @return string $list
+	 */
+	public function getAdditionalList($store)
+	{
+		$curstore = Mage::app()->getStore();
+		Mage::app()->setCurrentStore($store);
+			$list = $this->config('additional_lists', $store);
+		Mage::app()->setCurrentStore($curstore);
+		return $list;
+	}
+	
 	/**
 	 * Get which store is associated to given $mcListId
 	 *
@@ -728,7 +747,10 @@ class Ebizmarts_MageMonkey_Helper_Data extends Mage_Core_Helper_Abstract
 					if($defaultList == $listId){
 
 						$item = Mage::getModel('monkey/monkey')->loadByEmail($email);
-
+						if(!$item->getId()){
+							$item = Mage::getModel('newsletter/subscriber')
+								    ->loadByEmail($email);
+						}
 						if($item->getSubscriberEmail()){
 							$item->unsubscribe();
 						}
@@ -742,6 +764,17 @@ class Ebizmarts_MageMonkey_Helper_Data extends Mage_Core_Helper_Abstract
 
 					$groupings = $lists[$listId];
 					unset($groupings['subscribed']);
+					$customerLists = $api->listMemberInfo($listId,$email);
+					$customerLists = isset($customerLists['data'][0]['merges']['GROUPINGS']) ?$customerLists['data'][0]['merges']['GROUPINGS'] :array();
+
+					foreach ($customerLists as $clkey => $cl)
+					{
+						if (!isset($groupings[$cl['id']]))
+						{
+							$groupings[$cl['id']][] = '';
+						}
+					}
+
 					$customer->setMcListId($listId);
 					$customer->setListGroups($groupings);
 					$mergeVars = Mage::helper('monkey')->getMergeVars($customer);

@@ -15,15 +15,7 @@ class Ebizmarts_MageMonkey_Model_Cron
 	 * @var integer
 	 * @access protected
 	 */
-	protected $_limit = 200;
-
-	/**
-	 * Import limit var
-	 *
-	 * @var integer
-	 * @access protected
-	 */
-	protected $_importLimit = 500;
+	protected $_limit = 1000;
 
 	/**
 	 * Current Magento store
@@ -221,18 +213,13 @@ class Ebizmarts_MageMonkey_Model_Cron
 	 */
 	public function processExportJobs()
 	{
+		$this->_limit = (int)Mage::getStoreConfig("monkey/general/cron_export");
 		$job = $this->_getJob('Export');
 		if(is_null($job)){
 			return $this;
 		}
 
 		$collection = $this->_getEntityModel($job->getDataSourceEntity());
-
-		//Update total count on first run
-		if(!$job->getTotalCount()){
-			$allRows = $collection->getSize();
-			$job->setTotalCount($allRows)->save();
-		}
 
 		if(!$job->getStartedAt()){
 			$job->setStartedAt(Mage::getModel('core/date')->gmtDate())->save();
@@ -250,74 +237,80 @@ class Ebizmarts_MageMonkey_Model_Cron
 		if($jobStoreId){
 			$collection->addFieldToFilter('store_id', $jobStoreId);
 		}
-
+		
+		if($job->getDataSourceEntity() == 'newsletter_subscriber'):
+			$collection->addFieldToFilter('subscriber_status', Mage_Newsletter_Model_Subscriber::STATUS_SUBSCRIBED);
+		endif;
+		
 		$collection->load();
 
+		//Update total count on first run
+		if(!$job->getTotalCount()){
+			$allRows = $collection->getSize();
+			$job->setTotalCount($allRows)->save();
+		}
+		
 		$batch = array();
 
 		foreach($job->lists() as $listId){
 			$store = $this->_helper()->getStoreByList($listId);
+			$api = Mage::getSingleton('monkey/api', array('store' => $store));
 
-			//if($store){
+			$processedCount = 0;
+			foreach($collection as $item){
+				$processedCount += 1;
+				$batch []= $this->_helper()->getMergeVars($item, TRUE);
+			}
 
-				$api = Mage::getSingleton('monkey/api', array('store' => $store));
+			if(count($batch) > 0){
 
-				$processedCount = 0;
-				foreach($collection as $item){
-					$processedCount += 1;
-					$batch []= $this->_helper()->getMergeVars($item, TRUE);
-				}
-
-				if(count($batch) > 0){
-
-					$job->setStatus('chunk_running')
-						->setUpdatedAt($this->_dbDate())
-						->save();
-
-					$vals = $api->listBatchSubscribe($listId, $batch, FALSE, TRUE, FALSE);
-
-					if ( is_null($api->errorCode) ){
-
-						$lastId = $collection->getLastItem()->getId();
-						$job->setLastProcessedId($lastId);
-						$job->setProcessedCount( ( $processedCount+$job->getProcessedCount() ));
-
-						/*if( $processedCount < $this->_limit ){
-							$job->setStatus('finished');
-						}*/
-
-						$job
-						->setUpdatedAt($this->_dbDate())
-						->save();
-
-					} else {
-
-						//TODO: Do something to handle errors
-
-					    /*echo "Batch Subscribe failed!\n";
-						echo "code:".$api->errorCode."\n";
-						echo "msg :".$api->errorMessage."\n";
-						die;*/
-						/*echo "added:   ".$vals['add_count']."\n";
-						echo "updated: ".$vals['update_count']."\n";
-						echo "errors:  ".$vals['error_count']."\n";
-						foreach($vals['errors'] as $val){
-							echo $val['email_address']. " failed\n";
-							echo "code:".$val['code']."\n";
-							echo "msg :".$val['message']."\n";
-						}
-						die;*/
-
-					}
-
-				}else{
-					$job
-					->setStatus('finished')
+				$job->setStatus('chunk_running')
 					->setUpdatedAt($this->_dbDate())
 					->save();
+
+				$vals = $api->listBatchSubscribe($listId, $batch, FALSE, TRUE, FALSE);
+
+				if ( is_null($api->errorCode) ){
+
+					$lastId = $collection->getLastItem()->getId();
+					$job->setLastProcessedId($lastId);
+					$job->setProcessedCount( ( $processedCount+$job->getProcessedCount() ));
+
+					/*if( $processedCount < $this->_limit ){
+						$job->setStatus('finished');
+					}*/
+
+					$job
+					->setUpdatedAt($this->_dbDate())
+					->save();
+
+				} else {
+
+					//TODO: Do something to handle errors
+
+					/*echo "Batch Subscribe failed!\n";
+					echo "code:".$api->errorCode."\n";
+					echo "msg :".$api->errorMessage."\n";
+					die;*/
+					/*echo "added:   ".$vals['add_count']."\n";
+					echo "updated: ".$vals['update_count']."\n";
+					echo "errors:  ".$vals['error_count']."\n";
+					foreach($vals['errors'] as $val){
+						echo $val['email_address']. " failed\n";
+						echo "code:".$val['code']."\n";
+						echo "msg :".$val['message']."\n";
+					}
+					die;*/
+
 				}
 
-			//}
+			}else{
+				$job
+				->setStatus('finished')
+				->setUpdatedAt($this->_dbDate())
+				->save();
+			}
+
 		}
 
 		return $this;
