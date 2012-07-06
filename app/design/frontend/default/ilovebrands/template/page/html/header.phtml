@@ -127,7 +127,13 @@
 						<script type="text/javascript">
 							 oneall.api.plugins.social_login.build("oa_social_login_header", {
 							  'providers' :  ['facebook','google', 'twitter', 'yahoo'], 
-							  'callback_uri': '<?php echo $this->getUrl('arush-oneall/rpx/token_url', array('_forced_secure' => false)) ?>',
+							  'callback_uri': '<?php $isSecure = Mage::app()->getStore()->isCurrentlySecure();
+							  		if($isSecure) {
+								  		echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, array('_forced_secure'=>true));
+								  	} else {
+								  		echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+								  	}
+								?>arush-oneall/rpx/token_url/',
 							  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_horizontal_small.css'
 							 });
 							</script>	
