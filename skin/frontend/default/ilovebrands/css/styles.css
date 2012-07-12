@@ -1298,7 +1298,7 @@ p.error-msg {
 
 .sorter {
   float: left;
-  width: 140px;
+  width: auto;
   font-size: 15px;
   margin: 0pt;
   padding: 4px 15px 0pt
@@ -1382,7 +1382,7 @@ p.error-msg {
 }
 
 .sorter .sort-by label {
-  width: 48px;
+  width: auto;
 }
 
 .sorter .sort-by a {
@@ -1401,12 +1401,12 @@ p.error-msg {
 }
 
 .catalog-category-view .sorter .sort-by select {
-  width: 71px;
+  width: auto;
 }
 
 .pager .limiter select {
   float: right;
-  width: 50px;
+  width: auto;
   margin-right: 20px;
 }
 
@@ -1416,7 +1416,7 @@ p.error-msg {
 
 .toolbar {
   float: right;
-  width: 450px;
+  width: auto;
   padding-bottom: 10px;
 }
 
