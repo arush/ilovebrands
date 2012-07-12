@@ -1223,7 +1223,7 @@ p.error-msg {
   font-size: 15px;
   padding: 4px 10px 0pt
     0pt;
-  color: rgb(255, 255, 255);
+  color: #444;
 }
 
 .pager p {
@@ -1297,12 +1297,12 @@ p.error-msg {
 
 .sorter {
   float: left;
-  width: 140px;
+  width: auto;
   font-size: 15px;
   margin: 0pt;
   padding: 4px 15px 0pt
     10px;
-  color: rgb(255, 255, 255);
+  color: #444;
 }
 
 .sorter p {
@@ -1381,7 +1381,7 @@ p.error-msg {
 }
 
 .sorter .sort-by label {
-  width: 48px;
+  width: auto;
 }
 
 .sorter .sort-by a {
@@ -1400,12 +1400,12 @@ p.error-msg {
 }
 
 .catalog-category-view .sorter .sort-by select {
-  width: 71px;
+  width: auto;
 }
 
 .pager .limiter select {
   float: right;
-  width: 50px;
+  width: auto;
   margin-right: 20px;
 }
 
@@ -1415,7 +1415,7 @@ p.error-msg {
 
 .toolbar {
   float: right;
-  width: 450px;
+  width: auto;
   padding-bottom: 10px;
 }
 
@@ -1425,7 +1425,7 @@ p.error-msg {
 }
 
 .toolbar-bottom {
-  display: none;
+  display: ;
 }
 
 .table-caption {
@@ -10841,7 +10841,7 @@ a.cat-view-now {
 	background: url('../images/button-rollover.png');
 }
 .product-view .product-options p.required{display: none;}
-.product-view .product-options-bottom .add-to-cart button.button, .product-view .add-to-box button.button{width: 177px !important; margin-bottom: 10px;}
+.product-view .product-options-bottom .add-to-cart button.button, .product-view .add-to-box button.button{width: 100% !important; margin-bottom: 10px;}
 .product-view .product-shop .add-to-links li{border-bottom: none; text-transform: uppercase;}
 .add-to-links a{color: #5b5757; font-size: 11px; line-height: 24px;}
 .add-to-links a:hover{text-decoration: none;}
