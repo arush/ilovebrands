@@ -10843,7 +10843,7 @@ a.cat-view-now {
 	background: url('../images/button-rollover.png');
 }
 .product-view .product-options p.required{display: none;}
-.product-view .product-options-bottom .add-to-cart button.button, .product-view .add-to-box button.button{width: 177px !important; margin-bottom: 10px;}
+.product-view .product-options-bottom .add-to-cart button.button, .product-view .add-to-box button.button{width: 100% !important; margin-bottom: 10px;}
 .product-view .product-shop .add-to-links li{border-bottom: none; text-transform: uppercase;}
 .add-to-links a{color: #5b5757; font-size: 11px; line-height: 24px;}
 .add-to-links a:hover{text-decoration: none;}
