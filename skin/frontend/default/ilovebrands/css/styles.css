@@ -1224,7 +1224,7 @@ p.error-msg {
   font-size: 15px;
   padding: 4px 10px 0pt
     0pt;
-  color: rgb(255, 255, 255);
+  color: #444;
 }
 
 .pager p {
@@ -1303,7 +1303,7 @@ p.error-msg {
   margin: 0pt;
   padding: 4px 15px 0pt
     10px;
-  color: rgb(255, 255, 255);
+  color: #444;
 }
 
 .sorter p {
@@ -1426,7 +1426,7 @@ p.error-msg {
 }
 
 .toolbar-bottom {
-  display: none;
+  display: ;
 }
 
 .table-caption {
