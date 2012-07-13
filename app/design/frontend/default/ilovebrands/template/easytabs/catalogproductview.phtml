@@ -68,7 +68,7 @@
         <?php echo $this->getChildHtml('upsell_products') ?>
         <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
-    
+
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <div class="no-display">
@@ -80,50 +80,54 @@
                 	<?php // echo $this->getChildHtml('shutl_service'); ?>
                 </div>
             </div -->
-            
+
         <div class="product-shop">
-            
+
             <?php /*?><?php if ($this->canEmailToFriend()): ?>
                 <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
             <?php endif; ?><?php */?>
 
             <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
             <?php /*?><?php echo $this->getChildHtml('alert_urls') ?><?php */?>
-            
+
             <!-- this somehow makes the price box appear -->
+            <div class="rrp">
+                <span class="price-label">RRP</span>
+                <span class="price"><?php echo '£'. number_format($_product->getMsrp()); ?></span>
+            </div>
 			<?php echo $this->getChildHtml('product_type_data') ?>
-       
+
 			<?php if($_product->isSaleable()): ?>
 				<?php /*WDCA CODE BEGINS*/ ?>
 				<?php echo $this->getChildHtml('points'); ?>
 				<?php /*WDCA CODE ENDS*/ ?>
             <?php endif; ?>
-			
+
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('extrahint') ?>
 
 			<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2')):?>
-                
+
                 <div class="container2">
                 <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-                
+
                 <?php if ($_product->getTypeId() === 'configurable'): ?>
                 	<a onclick="window.open('/index.php/sizing','popup','width=790,height=500,scrollbars=yes,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=575,top=0'); return false" href="/index.php/sizing" id="my-size"><?php echo $this->__('Whats My Size?') ?></a>
 				<?php endif; ?>
 				</div>
-				
+
 			<?php endif;?>
-                
-                
+
+
 
             <?php if (!$this->hasOptions()):?>
-            
+
             		<?php if($_product->isSaleable()): ?>
 						<?php /*WDCA CODE BEGINS*/ ?>
                         <?php echo $this->getChildHtml('points'); ?>
                         <?php /*WDCA CODE ENDS*/ ?>
 					<?php endif; ?>
-					
+
                 <div class="add-to-box">
                     <?php if($_product->isSaleable()): ?>
                         <?php echo $this->getChildHtml('addtocart') ?>
@@ -143,17 +147,17 @@
 							    <?php endswitch; ?>
 							<?php else:?>
 							    <p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
-							<?php endif;?>    
+							<?php endif;?>
 						    </div>
 						    <div class="sold-out-wishlist"><?php echo $this->getChildHtml('addto') ?></div>
                     <?php endif; ?>
                 </div>
-               
-               
-                
-            
+
+
+
+
 			<?php else:?>
-				
+
 				<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container1') ):?>
                 	<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
 				<?php elseif (!$_product->isSaleable()): ?>
@@ -175,25 +179,25 @@
 					    	<?php else:?>
 								<p><br>COLLECTION CLOSED<br><br>Gotta be quicker next time!</p>
 					    	<?php endif;?>
-					    	
+
 						</div>
 						<div class="sold-out-wishlist"><?php echo $this->getChildHtml('addto') ?></div>
 
 					</div>
-				
+
 				<?php endif;?>
-                
-			
+
+
 			<?php endif; ?>
-			            
+
         <?php echo $this->getChildHtml('extra_buttons') ?>
         <?php echo $this->getChildHtml('other');?>
 
         </div>
 
         <div class="clearer"></div>
-        
-		
+
+
     </form>
     <script type="text/javascript">
     //<![CDATA[

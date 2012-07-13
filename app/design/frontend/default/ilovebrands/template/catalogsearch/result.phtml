@@ -41,7 +41,7 @@
     <?php endif; ?>
 	<?php /* add layered nav flo start */ ?>
 	<div class="clearer"></div>
-    <div class="left-layered-nav"><?php echo $this->getLayout()->createBlock('catalog/layer_view')->setTemplate('catalog/layer/view.phtml')->toHtml(); ?></div>
+    <div class="left-layered-nav"><?php echo $this->getLayout()->createBlock('catalogsearch/layer')->setTemplate('catalog/layer/view.phtml')->toHtml(); ?></div>
 	<?php /* add layered nav flo end */ ?>
     <?php echo $this->getProductListHtml() ?>
 <?php else: ?>
@@ -58,6 +58,6 @@
 </p>
 	<?php /* add layered nav flo start */ ?>
 	<div class="clearer"></div>
-    <div class="left-layered-nav"><?php echo $this->getLayout()->createBlock('catalog/layer_view')->setTemplate('catalog/layer/view.phtml')->toHtml(); ?></div>
+    <div class="left-layered-nav"><?php echo $this->getLayout()->createBlock('catalogsearch/layer')->setTemplate('catalog/layer/view.phtml')->toHtml(); ?></div>
 	<?php /* add layered nav flo end */ ?>
 <?php endif; ?>
