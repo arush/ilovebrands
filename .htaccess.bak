@@ -117,6 +117,19 @@
     RewriteEngine on
 
 ############################################
+## BEGIN sonassi.com wordpress extension
+##
+    RewriteBase / 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !^/blog/wp-admin
+    RewriteCond %{REQUEST_URI} !^/blog/wp-content   
+    RewriteCond %{REQUEST_URI} ^/blog
+    RewriteCond %{REMOTE_ADDR} !^31\.25\.191\.164
+    RewriteRule .* index.php [L] 
+
+## END sonassi.com wordpress extension
+
+############################################
 ## you can put here your magento root folder
 ## path relative to web root
 

@@ -1,5 +1,14 @@
-<?php
+<div class="container">
 
-	echo Mage::getSingleton('Sonassi_Wordpress_Model_Page')->getContent();
-
-?>
+	<div class="three columns">
+		<?php
+			echo Mage::getSingleton('Sonassi_Wordpress_Model_Page')->getSidebar();
+		?>
+	</div>
+	<div class="twelve columns offset-by-three">
+		<?php
+			echo Mage::getSingleton('Sonassi_Wordpress_Model_Page')->getContent();
+		?>
+	</div>
+	
+</div>
