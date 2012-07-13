@@ -13407,3 +13407,15 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 #onestepcheckout-login-popup-contents-login {
     color: #000;
 }  
+
+.onestepcheckout-index-index .wrapper {
+  background: url("../images/header-bg-checkout.png") repeat-x scroll white;
+}
+
+.onestepcheckout-index-index .header {
+  background:white;
+}
+
+.onestepcheckout-index-index .header-container {
+  height:175px;
+}
