@@ -104,6 +104,10 @@ class Ebizmarts_SagePaySuite_Model_SagePayToken extends Ebizmarts_SagePaySuite_M
 
 	  $isGuest = Mage::getSingleton('checkout/type_onepage')->getCheckoutMethod() == Mage_Checkout_Model_Type_Onepage::METHOD_GUEST;
 
+	  if($this->_getIsAdmin()){
+		  $isGuest = FALSE;
+	  }
+
 	  $postData                   = array();
 	  $postData                  += $this->_getGeneralTrnData($info->getPayment())->getData();
 	  $postData['vendortxcode']   = substr($postData['vendor_tx_code'], 0, 40);

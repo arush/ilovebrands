@@ -15,7 +15,7 @@ border-bottom:medium none;
 padding:0.5em 0.5em 0.28em 1.5em;
 }
 
-h3.sagepaysuite-header {background:url("../images/sagepay-section-heading.png") no-repeat scroll 0 0 transparent;height:0;overflow:hidden;padding:39px 0 0 169px;width:62px;}
+/*h3.sagepaysuite-header {background:url("../images/sagepay-section-heading.png") no-repeat scroll 0 0 transparent;height:0;overflow:hidden;padding:39px 0 0 169px;width:62px;}*/
 
 ul.tabs a.sagepaysuite-section:hover {background-color:#d8e6e6;}
 

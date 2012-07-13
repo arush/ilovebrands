@@ -468,10 +468,10 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
             $from = $order->getOrderCurrencyCode();
 
 			if((string)$this->getConfigData('trncurrency') == 'store'){
-	        	$request->setAmount(number_format($quoteObj->getGrandTotal(), 2, '.', ''));
+	        	$request->setAmount( $this->formatAmount($quoteObj->getGrandTotal(), $quoteObj->getQuoteCurrencyCode()) );
 	            $request->setCurrency($quoteObj->getQuoteCurrencyCode());
 	        }else{
-	            $request->setAmount(number_format($quoteObj->getBaseGrandTotal(), 2, '.', ''));
+	            $request->setAmount( $this->formatAmount($quoteObj->getBaseGrandTotal(), $quoteObj->getBaseCurrencyCode()) );
 	            $request->setCurrency($quoteObj->getBaseCurrencyCode());
 	        }
         }
@@ -868,7 +868,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		$shippingAddressObj = $this->_getQuote()->getShippingAddress();
 
         $payment->setTransactionType(strtoupper($this->getConfigData('payment_action')));
-        $payment->setAmountOrdered(number_format($this->_getQuote()->getGrandTotal(), 2, '.', ''));
+        $payment->setAmountOrdered( $this->formatAmount($this->_getQuote()->getGrandTotal(), $this->_getQuote()->getQuoteCurrencyCode()) );
         $payment->setRealCapture(true); //To difference invoice from capture
         $payment->setOrder(new Varien_Object($this->_getQuote()->toArray()));
         $payment->setAnetTransType(strtoupper($this->getConfigData('payment_action')));
@@ -932,7 +932,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
         $this->_setRequestCurrencyAmount($request, $quoteObj);
 
-		if(strlen($request->getDescription()) === 0){
+		if(strlen($request->getDescription()) === 1){
 			$request->setDescription('PayPal transaction.');
 		}
 
@@ -949,10 +949,10 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		}
 
 		if((string)$this->getConfigData('trncurrency') == 'store'){
-        	$request->setAmount($this->_sageHelper()->moneyFormat($quote->getGrandTotal()));
+        	$request->setAmount( $this->formatAmount($quote->getGrandTotal(), $quote->getQuoteCurrencyCode()) );
             $request->setCurrency($quote->getQuoteCurrencyCode());
         }else{
-            $request->setAmount($this->_sageHelper()->moneyFormat($quote->getBaseGrandTotal()));
+            $request->setAmount($this->formatAmount($quote->getBaseGrandTotal(), $quote->getBaseCurrencyCode()));
             $request->setCurrency($quote->getBaseCurrencyCode());
         }
 
@@ -1053,7 +1053,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
     	$data['ReferrerID']          = $this->getConfigData('referrer_id');
     	$data['Vendor']              = $trn->getVendorname();
     	$data['VendorTxCode']        = substr(time(),0,30) . substr($trn->getVendorTxCode(), 0, 10);
-        $data['Amount']              = number_format($amount, 2, '.', '');
+        $data['Amount']              = $this->formatAmount($amount, $trn->getTrnCurrency());
         $data['Description']         = '.';
 		$data['RelatedVPSTxId']      = $trn->getVpsTxId();
 		$data['RelatedVendorTxCode'] = $trn->getVendorTxCode();
@@ -1079,7 +1079,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
     	$data['ReferrerID']          = $this->getConfigData('referrer_id');
     	$data['Vendor']              = $trn->getVendorname();
     	$data['VendorTxCode']        = substr(time(),0,30) . substr($trn->getVendorTxCode(), 0, 10);
-        $data['Amount']              = number_format($amount, 2, '.', '');
+        $data['Amount']              = $this->formatAmount($amount, $trn->getTrnCurrency());
         $data['Currency']            = $trn->getTrnCurrency();
         $data['Description']         = '.';
 		$data['RelatedVPSTxId']      = $trn->getVpsTxId();
@@ -1122,7 +1122,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
         $data['VPSTxId']       = $trn->getVpsTxId();
         $data['SecurityKey']   = $trn->getSecurityKey();
         $data['TxAuthNo']      = $trn->getTxAuthNo();
-        $data['ReleaseAmount'] = number_format($amount, 2, '.', '');
+        $data['ReleaseAmount'] = $this->formatAmount($amount, $trn->getTrnCurrency());
 
         $result = $this->requestPost($this->getUrl('release', false, $this->_getIntegrationCode($trn->getIntegration()), $trn->getMode()), $data);
 
@@ -1177,10 +1177,9 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
 		}
 
-		//VOID payment if refunding full amount
-
 		//TODO: If it is PAYPAL dont VOID
 
+		//VOID payment if refunding full amount
 		if( ((float)$order->getGrandTotal()) == $payment->getCreditmemo()->getGrandTotal() ){
 			try{
 				$this->voidPayment($trn);
@@ -1194,7 +1193,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
     	$data['ReferrerID']          = $this->getConfigData('referrer_id');
     	$data['Vendor']              = $trn->getVendorname();
     	$data['VendorTxCode']        = substr(time(),0,30) . substr($trn->getVendorTxCode(), 0, 10);
-        $data['Amount']              = number_format($amount, 2, '.', '');
+        $data['Amount']              = $this->formatAmount($amount, $trn->getTrnCurrency());
         $data['Currency']            = $trn->getTrnCurrency();
         $data['Description']         = '.';
 		$data['RelatedVPSTxId']      = $trn->getVpsTxId();
@@ -1273,6 +1272,14 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
     public function abortPayment($trn)
     {
+
+		/**
+		 * SecurityKey from the "Admin & Access API"
+		 */
+		if(!$trn->getSecurityKey() && strtoupper($trn->getIntegration()) == 'FORM'){
+			$this->_addSecurityKey($trn);
+		}
+
         $data = array();
     	$data['VPSProtocol']  = $trn->getVpsProtocol();
     	$data['TxType']       = self::REQUEST_TYPE_ABORT;
@@ -1301,6 +1308,14 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
     public function voidPayment($trn)
     {
+
+		/**
+		 * SecurityKey from the "Admin & Access API"
+		 */
+		if(!$trn->getSecurityKey() && strtoupper($trn->getIntegration()) == 'FORM'){
+			$this->_addSecurityKey($trn);
+		}
+
         $data = array();
     	$data['VPSProtocol']  = $trn->getVpsProtocol();
     	$data['TxType']       = self::REQUEST_TYPE_VOID;
@@ -1329,6 +1344,14 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 
     private function _cancel($trn)
     {
+
+		/**
+		 * SecurityKey from the "Admin & Access API"
+		 */
+		if(!$trn->getSecurityKey() && strtoupper($trn->getIntegration()) == 'FORM'){
+			$this->_addSecurityKey($trn);
+		}
+
         $data = array();
     	$data['VPSProtocol']  = $trn->getVpsProtocol();
     	$data['TxType']       = self::REQUEST_TYPE_CANCEL;
@@ -1766,7 +1789,7 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
             return parent::getTitle();
         }
 
-        return parent::getTitle() . ' - <span>' . strtoupper($mode) . ' mode</span>';
+        return parent::getTitle() . ' - ' . strtoupper($mode) . ' mode';
     }
 
     public function isServer() {
@@ -1799,6 +1822,27 @@ class Ebizmarts_SagePaySuite_Model_Api_Payment extends Mage_Payment_Model_Method
 		$formSecKey = (string)$trnDetails->getSecuritykey();
 		$trn->setSecurityKey($formSecKey)
 			->save();
+	}
+
+	/**
+	 * Format amount based on currency
+	 *
+	 * @param float $amount
+	 * @param string $currency
+	 * @return float|int
+	 */
+	public function formatAmount($amount, $currency)
+	{
+		$_amount = 0.00;
+
+		//JPY, which only accepts whole number amounts
+		if($currency == 'JPY'){
+			$_amount = round($amount, 0, PHP_ROUND_HALF_EVEN);
+		}else{
+			$_amount = number_format($amount, 2, '.', '');
+		}
+
+		return $_amount;
 	}
 
 }

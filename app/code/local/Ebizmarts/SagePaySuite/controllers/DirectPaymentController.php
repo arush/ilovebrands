@@ -151,12 +151,12 @@ class Ebizmarts_SagePaySuite_DirectPaymentController extends Mage_Core_Controlle
 
 		} catch (Exception $e) {
 
-			try{
+			/*try{
 				//VOID transaction if there was a problem
 				$vendorTxCode = Mage::getSingleton('sagepaysuite/session')->getLastVendorTxCode();
 				Mage::helper('sagepaysuite')->voidTransaction($vendorTxCode, 'sagepaydirectpro');
 			}catch(Exception $ex){
-			}
+			}*/
 
 			Mage::getSingleton('sagepaysuite/session')->setAcsurl(null)->setPareq(null)->setSageOrderId(null)->setSecure3d(null)->setEmede(null)->setPares(null)->setMd(null);
 

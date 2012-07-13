@@ -56,6 +56,17 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
 		return $order->cancel();
 	}
 
+	/**
+	 * Check Magento version for layout changes.
+	 * Only applies for Magento 1.5.x and up
+	 *
+	 * @return boolean
+	 */
+	public function shouldAddChildLayout()
+	{
+		return (version_compare(Mage::getVersion(), '1.4.2.0') === 1);
+	}
+
 	public function mageVersionIs($version)
 	{
 		return strstr(Mage::getVersion(), $version);
@@ -168,7 +179,7 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
 	public function creatingAdminOrder()
 	{
 		$controllerName = Mage::app()->getRequest()->getControllerName();
-		return ($controllerName == 'sales_order_create' || $controllerName == 'adminhtml_sales_order_create');
+		return ($controllerName == 'sales_order_create' || $controllerName == 'adminhtml_sales_order_create' || $controllerName == 'sales_order_edit');
 	}
 
 	public function getIndicator()
@@ -426,10 +437,6 @@ class Ebizmarts_SagePaySuite_Helper_Data extends Mage_Core_Helper_Abstract
 	public function validateQuote()
 	{
 		$quote = Mage::getSingleton('sagepaysuite/api_payment')->getQuote();
-
-        if ($quote->getIsMultiShipping()) {
-            Mage::throwException($this->__('Invalid checkout type.'));
-        }
 
         if (!$quote->isVirtual()) {
             $address = $quote->getShippingAddress();

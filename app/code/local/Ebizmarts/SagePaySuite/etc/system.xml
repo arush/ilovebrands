@@ -2,7 +2,7 @@
 <config>
     <sections>
         <sagepaysuite translate="label" module="sagepaysuite">
-            <label>SagePay Suite</label>
+            <label>Sage Pay Suite</label>
             <class>sagepaysuite-section</class>
             <header_css>sagepaysuite-header</header_css>
             <tab>sales</tab>
@@ -1097,6 +1097,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </payment_action>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <config_path>payment/sagepaypaypal/order_status</config_path>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
                         <mode translate="label">
                             <label>Mode</label>
                             <frontend_type>select</frontend_type>

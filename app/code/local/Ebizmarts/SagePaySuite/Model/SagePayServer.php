@@ -70,6 +70,11 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 		'FAIL'
 	);
 
+    /**
+     * http://pastie.org/3798730
+     */
+    protected $_postPayment = array();
+
 	/**
 	 * Validate payment method information object
 	 *
@@ -93,6 +98,8 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 	public function registerTransaction($params = null)
 	{
 		if ($this->_getIsAdmin()) {
+
+            $this->_postPayment = $params['payment'];
 
 			$err = new Varien_Object;
 			$err['response_status'] = 'ERROR';
@@ -127,7 +134,7 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 
         $quoteObj = $this->_getQuote();
 
-        $amount = number_format($quoteObj->getGrandTotal(), 2, '.', '');
+        $amount = $this->formatAmount($quoteObj->getGrandTotal(), $quoteObj->getQuoteCurrencyCode());
 		$payment = $this->_getBuildPaymentObject($quoteObj);
 
 		/**
@@ -335,10 +342,10 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 		}
 
 		if((string)$this->getConfigData('trncurrency') == 'store'){
-			$data['Amount'] = number_format($quoteObj->getGrandTotal(), 2, '.', '');
+			$data['Amount'] = $this->formatAmount($quoteObj->getGrandTotal(), $quoteObj->getQuoteCurrencyCode());
 			$data['Currency'] = $quoteObj->getQuoteCurrencyCode();
         }else{
-			$data['Amount'] = number_format($quoteObj->getBaseGrandTotal(), 2, '.', '');
+			$data['Amount'] = $this->formatAmount($quoteObj->getBaseGrandTotal(), $quoteObj->getBaseCurrencyCode());
 			$data['Currency'] = $quoteObj->getBaseCurrencyCode();
         }
 
@@ -482,9 +489,12 @@ class Ebizmarts_SagePaySuite_Model_SagePayServer extends Ebizmarts_SagePaySuite_
 
 				Mage::getSingleton('checkout/session')->setSagePayServerNextUrl($r['NextURL']);
 
-				$data = array ();
-				$data['method'] = $this->_code;
-
+				if(!empty($this->_postPayment)){
+					$data = $this->_postPayment;
+				}else{
+					$data = array ();
+-					$data['method'] = $this->_code;
+				}
 
 				//TODO: not use this on admin panel
 				if ($this->_isMultishippingCheckout()) {

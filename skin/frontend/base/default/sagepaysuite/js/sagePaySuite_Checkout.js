@@ -357,6 +357,13 @@ EbizmartsSagePaySuite.Checkout.prototype = {
 						method:"post",
 						parameters: Form.serialize($('onestepcheckout-form')),
 						onSuccess:function(f){
+							var d = f.responseText.evalJSON();
+							if(d.response_status == 'ERROR'){
+								alert(d.response_status_detail);
+								this.resetOscLoading();
+								return;
+							}
+
 							setLocation(SuiteConfig.getConfig('form','url'));
 						}
 				});
