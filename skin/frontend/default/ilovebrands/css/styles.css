@@ -12262,7 +12262,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	z-index: 100;
 	position:absolute;
 }
-.header-middle{float: left; padding: 17px 32px;}
+.header-middle{float: left; padding: 17px 32px;margin: 22px 0 0 57px;}
 .header-contact {text-transform: uppercase;}
 .header-contact img{float: left; margin-bottom: -1px;}
 .header-contact img.visit{margin-top: -2px;}
