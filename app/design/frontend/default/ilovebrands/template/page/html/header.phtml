@@ -1,15 +1,32 @@
 <?php
+	$isSecure = Mage::app()->getStore()->isCurrentlySecure();
+
+	$request = $this->getRequest();
+	$module = $request->getModuleName();
+	$controller = $request->getControllerName();
+	$action = $request->getActionName();
+
+	$checkoutPage = false;
+	if ($module == 'onestepcheckout'){
+		$checkoutPage = true;
+	}
 
 ?>
+
+
 
 <div class="header-container">
     <div class="header">
 	
 		<div class="top-header">
-			<div class="store-language"><?php echo $this->getChildHtml('store_language') ?></div>
-			<img src="<?php echo $this->getSkinUrl();?>images/thline.jpg"/>
-			<div class="facebook-header"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-fb-like')->toHtml() ?></div>
-			<?php /* echo $this->getChildHtml('topLinks') */ ?>
+			<?php if(!$checkout) {
+				?>
+
+				<div class="store-language"><?php echo $this->getChildHtml('store_language') ?></div>
+				<img src="<?php echo $this->getSkinUrl();?>images/thline.jpg"/>
+				<div class="facebook-header"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-fb-like')->toHtml() ?></div>
+
+			<?php } ?>
 		    
 			<?php if (Mage::getSingleton('customer/session')->isLoggedIn()):?> 
 				<div class="top-name">
@@ -35,9 +52,17 @@
 					
 					
 					if(isset($facebookID)) { ?>
-						<img class="oaimg" width="30" height="30" src="http://graph.facebook.com/<?php echo $facebookID ?>/picture?type=square" />
+						<img class="oaimg" width="30" height="30" src="http<?php 
+							  		if($isSecure) {
+								  		echo 's';
+								  	}
+								?>://graph.facebook.com/<?php echo $facebookID ?>/picture?type=square" />
 					<?php  } else if(isset($twitterID)) { ?>
-						<img class="oaimg" width="30" height="30" src="http://api.twitter.com/1/users/profile_image?screen_name=<?php echo $twitterID ?>&size=normal" />
+						<img class="oaimg" width="30" height="30" src="http<?php 
+							  		if($isSecure) {
+								  		echo 's';
+								  	}
+								?>://api.twitter.com/1/users/profile_image?screen_name=<?php echo $twitterID ?>&size=normal" />
 					<?php
 					} 
 					?>
@@ -127,7 +152,7 @@
 						<script type="text/javascript">
 							 oneall.api.plugins.social_login.build("oa_social_login_header", {
 							  'providers' :  ['facebook','google', 'twitter', 'yahoo'], 
-							  'callback_uri': '<?php $isSecure = Mage::app()->getStore()->isCurrentlySecure();
+							  'callback_uri': '<?php 
 							  		if($isSecure) {
 								  		echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK, array('_forced_secure'=>true));
 								  	} else {
@@ -158,18 +183,22 @@
 		<div class="header-middle">
 			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-contact')->toHtml() ?>
 		</div>
-	
-		<div class="header-panel">
-				<div class="checkout-link"><?php echo $this->getChildHtml('checkoutLinks') ?></div>	
-				<?php echo $this->getChildHtml('topCart') ?>
-				<?php echo $this->getChildHtml('topSearch') ?>
-				<a class="help" href="/help">help</a>				
-		</div>
-		<div class="store-switcher clearfix">
-	    	<a href="/?___store=ilovebrands_mens_uk" id="men" class="store<?php if (Mage::app()->getStore()->getStoreId() =='9') {echo ' active';} ?>">Men</a>
-	    	<a href="/?___store=ilovebrands_womens_uk" id="women" class="store<?php if (Mage::app()->getStore()->getStoreId() =='6') {echo ' active';} ?>">Women</a>    	
-	    </div>
-		<?php echo $this->getChildHtml('topMenu') ?>
+		
+		<?php if(!$checkout) { ?>
+			<div class="header-panel">
+					<div class="checkout-link"><?php echo $this->getChildHtml('checkoutLinks') ?></div>	
+					<?php echo $this->getChildHtml('topCart') ?>
+					<?php echo $this->getChildHtml('topSearch') ?>
+					<a class="help" href="/help">help</a>				
+			</div>
+		
+			<div class="store-switcher clearfix">
+		    	<a href="/?___store=ilovebrands_mens_uk" id="men" class="store<?php if (Mage::app()->getStore()->getStoreId() =='9') {echo ' active';} ?>">Men</a>
+		    	<a href="/?___store=ilovebrands_womens_uk" id="women" class="store<?php if (Mage::app()->getStore()->getStoreId() =='6') {echo ' active';} ?>">Women</a>    	
+		    </div>
+			<?php echo $this->getChildHtml('topMenu'); ?>
+		<?php } ?>
+
     </div>
     
     
