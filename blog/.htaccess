@@ -11,7 +11,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !^/blog/wp-admin
 RewriteCond %{REQUEST_URI} !^/blog/wp-content
 RewriteCond %{REQUEST_URI} ^/blog
-RewriteCond %{REMOTE_ADDR} !^78\.31\.108\.116
+RewriteCond %{REMOTE_ADDR} !^31\.25\.191\.164
 RewriteRule .* ../index.php [L]
 </IfModule>
 
