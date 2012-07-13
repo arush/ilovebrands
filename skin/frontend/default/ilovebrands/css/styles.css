@@ -429,7 +429,6 @@ textarea {
 input.radio, input.checkbox {
   margin-right: 9px;
   font-size: 11px ! important;
-  margin-top: 4px;
   vertical-align: top;
 }
 
@@ -10026,26 +10025,25 @@ label#source-label, input#source, label#invite-label, input#invite, label#gender
 /*PAYMENT CHECKOUT STYLING START*/
 #payment_form_sagepayserver{
 	clear: both;
-	height: 105px;
-	padding-left: 70px;
+	height: 40px;
 }
 dl#checkout-payment-method-load{
 	background: #ffffff;
 }
 #checkout-payment-method-load dt{
 	/*padding: 35px 0 35px 20px; if several payment methods are enabled*/
-	padding: 35px 0 35px 45px;
 	margin-bottom: 0;
-	color: #555555;
+	margin-top: 20px;
+	color: #555;
 	min-height: 18px;
 }
 #checkout-payment-method-load dd{
 	margin: 0;
+	margin-top: 35px;
 }
 input#p_method_paypal_express{margin-top: 5px;}
 #serversecure span{
-	color: #555555;
-	padding-left: 5px;
+	color: #919191;
 }
 #payment_form_paypal_express{
 	color: #000000;
@@ -13396,3 +13394,16 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 .bigimage .pagination a span {
   display: none;
 }
+.onestepcheckout-shipping-method label {
+   color: #444;
+}
+.onestepcheckout-column-right {
+    color: #444;
+}
+.onestepcheckout-shipping-method-block .shipment-methods dt {
+    margin-bottom: 15px !important;
+	width: 280px;
+}
+#onestepcheckout-login-popup-contents-login {
+    color: #000;
+}  

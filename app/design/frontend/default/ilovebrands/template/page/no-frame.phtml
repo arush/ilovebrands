@@ -1,0 +1,111 @@
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ * Author: Arush Sehgal - @ldn_tech_exec
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7 no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7 no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8 no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if IE 9]>     <html class="ie ie9 lte9 no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if gt IE 9]>  <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>"> <![endif]-->
+
+<!--[if !IE]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
+xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://ogp.me/ns#"
+lang="<?php echo $this->getLang() ?>">             <!--<![endif]-->
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+<!-- required for skeleton -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- required for skeleton -->
+
+<!-- Chartbeat module -->
+<?php 	if(Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_on')) {
+		echo Mage::getStoreConfig('analytics/chartbeat/analytics_chartbeat_head_code'); }?>
+<!-- END Chartbeat module -->
+
+<?php echo $this->getChildHtml('head') ?>
+
+<!-- Javascripthead module -->
+
+<?php 	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on1')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code1');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on2')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code2');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on3')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code3');
+	}
+	if(Mage::getStoreConfig('javascripthead/script/javascripthead_on4')) {
+		echo Mage::getStoreConfig('javascripthead/script/javascripthead_code4');
+	}
+?>
+
+<!-- END Javascripthead module -->
+
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<!-- KISSinsights  -->
+
+<?php 	if(Mage::getStoreConfig('kissinsights/survey/kissinsights_on')) {
+		echo Mage::getStoreConfig('kissinsights/survey/kissinsights_code');
+	}
+	
+	if(Mage::getStoreConfig('kissinsights/survey/kissinsights_identify')) {
+		?>
+		<script type="text/javascript" charset="utf-8">
+		var email = "<?php $email = Mage::getSingleton('customer/session')->getCustomer()->getEmail(); echo $email; ?>";
+		_kiq.push(['identify', email]);
+		</script>
+<?php	}
+?>
+
+<!-- END KISSinsights  -->
+
+<!-- Innovate Analytics tracking beacon  -->
+
+<?php if(Mage::getStoreConfig('analytics/track/analytics_reg_confirm_on')) {
+		echo Mage::getStoreConfig('analytics/track/analytics_reg_confirm_code');
+	}
+?>
+
+<!-- END Innovate Analytics tracking beacon  -->
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+        <?php echo $this->getChildHtml('header') ?>
+		<?php echo $this->getChildHtml('topContainer') ?>
+	
+        
+        <?php echo $this->getChildHtml('breadcrumbsContainer') ?>
+	
+		<?php echo $this->getChildHtml('global_messages') ?>
+		<?php echo $this->getChildHtml('global_notices') ?>
+        
+        <?php echo $this->getChildHtml('content') ?>
+                
+		<div class="main-bottom"></div>
+        <?php echo $this->getChildHtml('footer_before') ?>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

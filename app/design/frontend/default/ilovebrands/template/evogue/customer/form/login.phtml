@@ -106,8 +106,10 @@
 								<!-- our individual panels -->
 															
 								<div class="panel" id="login">
-															
-								<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+								<!-- 2012/07/13 changed by Steven -->							
+								<form action="<?php echo str_replace('login', 'loginPost', $this->helper('customer')->getLoginUrl()) ?>" method="post" id="login-form"> 
+								<!--<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">-->
+								<!-- 2012/07/13 changed end by Steven -->
 								<div class="fieldset">
 									<div class="login-normal">
 										<ul class="form-list">

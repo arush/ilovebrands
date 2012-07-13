@@ -29,24 +29,7 @@
  * Template for Mage_Page_Block_Html
  */
 ?>
-<?php
-	$referrerIsValid = false;
-	$hasReferrer = false;
-		if (isset($_SERVER['HTTP_REFERER'])) {
-			$parts = parse_url($_SERVER['HTTP_REFERER']);
-			if (isset($parts['host'])) {
-				$hasReferrer = true;
-				$referrerIsValid = (bool) preg_match('/(?:^|\.)evogue\.co\.uk$/', strtolower($parts['host']));
-			}
-		}
 
-
-$routeName = Mage::app()->getRequest()->getRouteName();
-$identifier = Mage::getSingleton('cms/page')->getIdentifier();
-if($referrerIsValid === false) {
-	if($routeName === 'cms' && $identifier === 'home' ) {
-		echo $this->getChildHtml('auth-redirect');}
-}?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>"
@@ -98,24 +81,6 @@ lang="<?php echo $this->getLang() ?>">             <!--<![endif]-->
 ?>
 
 <!-- END Javascripthead module -->
-
-
-<!-- custom skinning javascript -->
-
-<script type="text/javascript">
-
-var $j = jQuery.noConflict();
-
-$j(document).ready(function () {
-    $j("#logo-container").fadeTo("slow", 0.3); // This sets the opacity of the thumbs to fade down to 30% when the page loads
-    $j("#logo-container").hover(function () {
-        $j(this).fadeTo("slow", 1.0); // This should set the opacity to 100% on hover
-    }, function () {
-        $j(this).fadeTo("slow", 0.3); // This should set the opacity back to 30% on mouse out
-    });
-});
-</script>
-<!-- custom skinning javascript -->
 
 </head>
 <body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
