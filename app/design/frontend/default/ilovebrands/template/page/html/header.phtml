@@ -19,7 +19,7 @@
     <div class="header">
 	
 		<div class="top-header">
-			<?php if(!$checkout) {
+			<?php if(!$checkoutPage) {
 				?>
 
 				<div class="store-language"><?php echo $this->getChildHtml('store_language') ?></div>
@@ -184,7 +184,7 @@
 			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('header-contact')->toHtml() ?>
 		</div>
 		
-		<?php if(!$checkout) { ?>
+		<?php if(!$checkoutPage) { ?>
 			<div class="header-panel">
 					<div class="checkout-link"><?php echo $this->getChildHtml('checkoutLinks') ?></div>	
 					<?php echo $this->getChildHtml('topCart') ?>
