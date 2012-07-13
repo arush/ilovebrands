@@ -5,3 +5,5 @@ magmi/*
 magmi_old/*
 /index.php
 wp-config.php
+.htaccess
+
