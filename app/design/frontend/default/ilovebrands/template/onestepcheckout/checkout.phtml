@@ -6,6 +6,7 @@ $helper = Mage::helper('onestepcheckout/checkout');
 ?>
 <?php if(!$this->canCheckout() || !$this->validateMinimumAmount()): ?>
     <?php if($this->settings['checkout_title']): ?>
+        <div class="checkout-lock"></div>
         <h1 class="onestepcheckout-title"><?php echo $this->settings['checkout_title']; ?></h1>
     <?php endif; ?>
 

@@ -13419,3 +13419,14 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 .onestepcheckout-index-index .header-container {
   height:175px;
 }
+
+h1.onestepcheckout-title {
+  line-height: 34px;
+}
+
+.onestepcheckout-index-index .onestepcheckout-lock {
+  background-image:url('../images/secured.jpg');
+  width: 41px;
+  height: 34px;
+  float:left;
+}
