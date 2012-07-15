@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <TBT_RewardsPlat>
-            <active>true</active>
+        <TBT_RewardsOnly>
+            <active>false</active>
             <codePool>community</codePool>
             <!-- dependent on TBT_Rewards -->
+            
             <depends>
-                <TBT_Rewards/>
+                <TBT_RewardsPlat/>
             </depends>
-        </TBT_RewardsPlat>
+        </TBT_RewardsOnly>
     </modules>
 </config>
