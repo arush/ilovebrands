@@ -13424,7 +13424,7 @@ h1.onestepcheckout-title {
   line-height: 34px;
 }
 
-.onestepcheckout-index-index .onestepcheckout-lock {
+.onestepcheckout-index-index .checkout-lock {
   background-image:url('../images/secured.jpg');
   width: 41px;
   height: 34px;
