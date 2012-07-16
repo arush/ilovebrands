@@ -78,6 +78,9 @@ class Ebizmarts_SagePaySuite_FormPaymentController extends Mage_Core_Controller_
 
 	public function saveOrderAction()
 	{
+
+		Mage::helper('sagepaysuite')->validateQuote();
+
 		$this->_initCheckout();
 
 		$resultData             = array();

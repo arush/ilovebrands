@@ -1,3 +1,19 @@
+07-May-2012
+	- Version 1.1.11
+		* Fixed bug with YEN currency
+		* Fix bug on validateQuote for MultiShipping
+		* Compatibility with Magento EE 1.12 and CE 1.7.0.0
+
+16-April-2012
+	- Version 1.1.9
+		* Fixed bug when saving Edit Order with any payment method
+        * Fixing bug with FORM protocol on additional operations such as abort
+        * Fixing but in token transactions for MOTO orders
+        * Validating quote before sending transaction to Sage Pay
+        * Fixing doulbe email failed payments on SERVER integration
+        * Adding 'order_status' config setting for PayPal integration
+        * Fixing FORM bug when using OSC and Sage Pay returns an error
+
 24-Feb-2012
 	- Version 1.1.7
 		* Payment System details on Transaction Details (API)

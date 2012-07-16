@@ -155,12 +155,7 @@ class Ebizmarts_SagePaySuite_Model_Observer
 			return $o;
 		}
 
-		$isCe15  = Mage::helper('sagepaysuite')->mageVersionIs('1.5');
-		$isCe16  = Mage::helper('sagepaysuite')->mageVersionIs('1.6');
-		$isEe110 = Mage::helper('sagepaysuite')->mageVersionIs('1.10');
-		$isEe111 = Mage::helper('sagepaysuite')->mageVersionIs('1.11');
-
-		if(false === $isCe15 && false === $isEe110 && false === $isCe16 && false === $isEe111){
+		if(FALSE === Mage::helper('sagepaysuite')->shouldAddChildLayout()){
 			return $o;
 		}
 

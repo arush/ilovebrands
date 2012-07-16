@@ -115,10 +115,10 @@ class Ebizmarts_SagePaySuite_Model_SagePayForm extends Ebizmarts_SagePaySuite_Mo
 		$data['VendorTxCode'] = $this->_getTrnVendorTxCode();
 
 		if((string)$this->getConfigData('trncurrency') == 'store'){
-			$data['Amount'] = number_format($quoteObj->getGrandTotal(), 2, '.', '');
+			$data['Amount'] = $this->formatAmount($quoteObj->getGrandTotal(), $quoteObj->getQuoteCurrencyCode());
 			$data['Currency'] = $quoteObj->getQuoteCurrencyCode();
         }else{
-			$data['Amount'] = number_format($quoteObj->getBaseGrandTotal(), 2, '.', '');
+			$data['Amount'] = $this->formatAmount($quoteObj->getBaseGrandTotal(), $quoteObj->getBaseCurrencyCode());
 			$data['Currency'] = $quoteObj->getBaseCurrencyCode();
         }
 

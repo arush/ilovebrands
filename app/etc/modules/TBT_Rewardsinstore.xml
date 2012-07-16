@@ -3,7 +3,7 @@
 <config>
     <modules>
         <TBT_Rewardsinstore>
-            <active>true</active>
+            <active>false</active>
             <codePool>community</codePool>
             <depends>
                 <TBT_Rewards/>

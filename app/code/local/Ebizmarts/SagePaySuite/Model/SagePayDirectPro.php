@@ -48,9 +48,9 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
 		$pdata ['VPSTxId']= $request['VPSTxId'];
 
 		if((string)$this->getConfigData('trncurrency') == 'store'){
-        	$pdata ['Amount']= number_format($quote->getGrandTotal(), 2, '.', '');
+        	$pdata ['Amount']= $this->formatAmount($quote->getGrandTotal(), $quote->getCurrencyCode());
         }else{
-            $pdata ['Amount']= number_format($quote->getBaseGrandTotal(), 2, '.', '');
+            $pdata ['Amount']= $this->formatAmount($quote->getBaseGrandTotal(), $quote->getQuoteCurrencyCode());
         }
 
 		if($request['Status'] == parent::RESPONSE_CODE_PAYPAL_OK){
@@ -140,10 +140,14 @@ class Ebizmarts_SagePaySuite_Model_SagePayDirectPro extends Ebizmarts_SagePaySui
         $quoteObj = $this->_getQuote();
 
 		if(is_null($macOrder)){
-			$amount = $this->_sageHelper()->moneyFormat($quoteObj->getGrandTotal());
+			$amount = $this->formatAmount($quoteObj->getGrandTotal(), $quoteObj->getCurrencyCode());
 		}else{
-			$amount = $this->_sageHelper()->moneyFormat($macOrder->getGrandTotal());
-			$baseAmount = $this->_sageHelper()->moneyFormat($macOrder->getBaseGrandTotal());
+
+			//TODO: Test this
+			$amount = $this->formatAmount($macOrder->getGrandTotal(), $macOrder->getCurrencyCode());
+
+			$baseAmount = $this->formatAmount($macOrder->getBaseGrandTotal(), $macOrder->getQuoteCurrencyCode());
+
 			$quoteObj->setMacAmount($amount);
 			$quoteObj->setBaseMacAmount($baseAmount);
 		}
