@@ -40,13 +40,13 @@
 </style>
 <![endif]-->
 
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('login-bg')->toHtml() ?> 
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('login-bg')->toHtml() ?>
 
 <div class="account-login<?php if (!$this->helper('customer')->isRegistrationAllowed()) echo ' login-only' ?>" />
 
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-        
-        	
+
+
 			<!-- <div id="login-title" class="cufon">
 				<?php // echo $this->__('members sign in') ?>
 			</div>
@@ -55,61 +55,61 @@
 				<a href="http://www.evogue.co.uk/editorial/?page_id=120"><span><?php echo $this->__('become a member') ?></span></a>
 			</div> -->
 			<?php // endif; ?>
-			
+
 			<div class="login-oneall">
-				
+
 				<h1>Login or connect</h1>
-			
+
 				<form action="<?php echo Mage::getUrl('oneall/rpx/loginpost') ?>" method="post" id="login-form">
 					<div class="fieldset" id="gigya-fieldset">
 						<div class="gigya-group">
 							<!--<div class="gigya-label"><p id="loginwith">login with</p><p id="connectwith">connect with</p></div>-->
 							<div class="gigya-block">
-								
+
 								<!-- The provider login will be embedded in this div //-->
 									<div id="oa_social_login_container"></div>
-								
+
 									<script type="text/javascript">
 										 oneall.api.plugins.social_login.build("oa_social_login_container", {
-										  'providers' :  ['Facebook','google', 'twitter', 'yahoo'], 
-										  
+										  'providers' :  ['Facebook','google', 'twitter', 'yahoo'],
+
 										  'callback_uri': '<?php echo $this->getUrl('arush-oneall/rpx/token_url', array('_forced_secure' => false)) ?>',
 										  'css_theme_uri': 'https://cdn.oneall.com/css/api/socialize/themes/connect_vertical.css'
 										 });
 									</script>
-									
+
 							</div>
-						</div>	
+						</div>
 					</div>
 				</form>
-			
+
 				<p>We never post to your profile without your consent</p>
-			
+
 				<div id="panes">
-					
-					
+
+
 					<img src="<?php echo $this->getSkinUrl();?>images/login-line.jpg"/>
 					<p>Login</p>
-					
+
 					<div id="slider">
 						<?php /* ?><ul class="navigation">
 							<li><a id="signin-button" href="#login">Members sign in</a></li>
 							<li><a id="become-button" href="#register">Become a Member</a></li>
 						</ul><?php */ ?>
 							<!-- a id="become-member" href="http://www.evogue.co.uk/editorial/?page_id=120">Become a Member</a -->
-					
-						
+
+
 					<!-- element with overflow applied -->
 						<div class="scroll">
 							<!-- the element that will be scrolled during the effect -->
 							<div class="scrollContainer">
 								<!-- our individual panels -->
-															
+
 								<div class="panel" id="login">
-								<!-- 2012/07/13 changed by Steven -->							
-								<form action="<?php echo str_replace('login', 'loginPost', $this->helper('customer')->getLoginUrl()) ?>" method="post" id="login-form"> 
+								<!-- 2012/07/13 start changed by Steven -->
+								<form action="<?php echo str_replace('login', 'loginPost', $this->helper('customer')->getLoginUrl()) ?>" method="post" id="login-form">
 								<!--<form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">-->
-								<!-- 2012/07/13 changed end by Steven -->
+								<!-- 2012/07/13 end changed by Steven -->
 								<div class="fieldset">
 									<div class="login-normal">
 										<ul class="form-list">
@@ -130,17 +130,17 @@
 											<button type="submit" class="button" name="send" id="send2"><span><span class="cufon"><?php echo $this->__('Sign in') ?></span></span></button>
 											<p class="forgotpass-back-link"><a href="#forgotpass">Forgot your password?</a></p>
 										</div>
-										
+
 										<div style="clear: both;"><!-- --></div>
-										
+
 										<!-- <a href="#forgotpass<?php // echo $this->getForgotPasswordUrl() ?>"><?php // echo $this->__('Forgot Your Password?') ?></a> -->
 									</div>
 								</div> <!-- end fieldset -->
 								</form>
 								</div> <!-- end panel -->
-								
-								
-								
+
+
+
 								<div class="panel" id="forgotpass">
 									<form action="<?php echo $this->getUrl('*/*/forgotpasswordpost') ?>" method="post" id="form-validate">
 										<fieldset>
@@ -163,61 +163,61 @@
 										</fieldset>
 									</form>
 								</div>
-								
+
 							</div> <!-- end scrollContainer -->
 						</div> <!-- end scroll -->
 					</div> <!-- end slider -->
-				
+
 				</div> <!-- end panes -->
-			
-			
-			
+
+
+
 			</div>
-		
+
 			<img class="divider" src="<?php echo $this->getSkinUrl();?>images/login-line.png"/>
-		
+
 			<div class="col-1 registered-users">
-			
+
 				<h1>Don't have a social account?</h1>
-								
+
 				<div id="register">
-					
+
 					<p>Register without a social account</p>
-				
+
 					<form action="<?php echo $this->getBaseUrl() .'customer/account/create/'?>" method="get" id="register-form">
 					<div class="fieldset">
 						<div class="login-normal">
 							<ul class="form-list">
-								
+
 								<li>
 									<label for="email" class="required"><?php echo $this->__('email') ?></label>
 									<div class="input-box">
 										<input name="email" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" type="text" class="input-text required-entry" title="<?php echo $this->__('Email Address') ?>" />
 									</div>
 								</li>
-								
+
 							</ul>
 							<div class="buttons-set form-buttons btn-only">
 								<button type="submit" class="button" name="send" id="send3"><span><span class="cufon"><?php echo $this->__('Register') ?></span></span></button>
 							</div>
-													
+
 						</div>
 					</div> <!-- end fieldset -->
 					</form>
-												
+
 				</div>
 
-			
-			
-			
+
+
+
 			</div> <!-- end col-1 registered-users -->
-			  
-        
-    
+
+
+
 
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('home-text')->toHtml() ?>
 	<?php /* ?><div id="content-links">
-		
+
 		<ul>
 			<li><a id="about-box" href = "javascript:void(0)" onclick = "document.getElementById('light1').style.visibility='visible';document.getElementById('fade').style.display='block'">photography</a></li>
 			<li><a id="terms-service-box" href = "javascript:void(0)" onclick = "document.getElementById('light2').style.visibility='visible';document.getElementById('fade').style.display='block'">terms</a></li>
@@ -230,7 +230,7 @@
         var dataForm = new VarienForm('login-form', true);
     //]]>
     </script>
-    
-  
-            
+
+
+
 </div>

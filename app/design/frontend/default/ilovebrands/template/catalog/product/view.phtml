@@ -59,7 +59,7 @@
                 <?php echo $this->getChildHtml('upsell_products') ?>
                 <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
-    
+
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <div class="no-display">
@@ -70,26 +70,28 @@
 				<div class="shutl-right-col">
                 	<?php // echo $this->getChildHtml('shutl_service'); ?>
                 </div>
-                
+
 			</div -->
 	</div>
-            
+
         <div class="product-shop">
-            
+asdfasdf
             <?php /*?><?php if ($this->canEmailToFriend()): ?>
                 <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
             <?php endif; ?><?php */?>
 
             <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
             <?php /*?><?php echo $this->getChildHtml('alert_urls') ?><?php */?>
-            
+
             <?php /*?>ifs added for different top height depending if configurable or not<?php */?>
 			<?php /*?><?php if ($_product->isSaleable() && $this->hasOptions()):?><div style="padding-top: 80px;"><?php endif;?><?php */?>
-            
-				<?php echo $this->getChildHtml('product_type_data') ?>
-           
-           <?php /*?><?php if ($_product->isSaleable() && $this->hasOptions()):?></div><?php endif;?><?php */?> 
-            
+
+
+
+			<?php echo $this->getChildHtml('product_type_data') ?>
+
+           <?php /*?><?php if ($_product->isSaleable() && $this->hasOptions()):?></div><?php endif;?><?php */?>
+
             <div class="cms-block1" style="border-bottom: 1px solid #acacac;">SWEET TOOTH</div>
             <?php echo $this->getTierPriceHtml() ?>
             <?php echo $this->getChildHtml('extrahint') ?>
@@ -126,12 +128,12 @@
             <?php if ($_product->isSaleable() && $this->hasOptions()):?>
                 <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
             <?php endif;?>
-			
+
         </div>
 
         <div class="clearer"></div>
-        
-		
+
+
     </form>
     <script type="text/javascript">
     //<![CDATA[

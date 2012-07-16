@@ -87,8 +87,8 @@ Category default layout
             <block type="catalog/category_view" name="category.title" after="breadcrumbs" template="catalog/category/title.phtml"/>
         </reference>
         <reference name="content">
-        
-                    
+
+
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
 				<block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
                     <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
@@ -122,16 +122,16 @@ Category layered navigation layout
     <catalog_category_layered translate="label">
         <label>Catalog Category (Anchor)</label>
         <reference name="left">
-		<!-- 2012/07/13 changed start by Steven -->
+		<!-- 2012/07/13 start changed by Steven -->
             <!--<block type="catalog/layer_view" name="catalog.leftnav" after="currency" template="catalog/layer/view.phtml"/>-->
-		<!-- 2012/07/13 changed end by Steven -->
+		<!-- 2012/07/13 end  changed by Steven -->
         </reference>
 		<reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="breadcrumbs.container">
             <block type="catalog/category_view" name="category.title" after="breadcrumbs" template="catalog/category/title.phtml"/>
-        </reference>	
+        </reference>
         <reference name="content">
             <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
                 <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
@@ -217,7 +217,7 @@ Product view
         </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
-            
+
                 <!--
                 <action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/summary.phtml</template></action>
                 <action method="addReviewSummaryTemplate"><type>short</type><template>review/helper/summary_short.phtml</template></action>
@@ -231,8 +231,8 @@ Product view
 
                 <action method="setTierPriceTemplate"><template>catalog/product/view/tierprices.phtml</template></action>
 
-                
-                
+
+
 
                 <block type="catalog/product_view_additional" name="product.info.additional" as="product_additional_data" />
                 <block type="catalog/product_view_description" name="product.description" as="description" template="catalog/product/view/description.phtml">
@@ -282,9 +282,9 @@ Product view
                 <action method="unsetCallChild"><child>container1</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
                 <action method="unsetCallChild"><child>container2</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
             </block>
-           		
+
 		</reference>
-        
+
     </catalog_product_view>
 
 <!--
