@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <DTD_FPCache>
+            <version>0.1.0</version>
+        </DTD_FPCache>
+    </modules>
+    <global>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <fpcache_predispatch>
+                        <class>fpcache/observer</class>
+                        <method>processPreDispatch</method>
+                    </fpcache_predispatch>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+        <models>
+            <fpcache>
+                <class>DTD_FPCache_Model</class>
+            </fpcache>
+        </models>
+    </global>
+    <default>
+    </default>
+</config>
+
