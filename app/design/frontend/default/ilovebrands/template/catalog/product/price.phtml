@@ -57,7 +57,7 @@
 
     <div class="price-box">
     <?php $_price = $_taxHelper->getPrice($_product, $_product->getPrice()) ?>
-    <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getMsrp(), $_simplePricesTax) ?>
+    <?php $_regularPrice = $_taxHelper->getPrice($_product, $_product->getPrice(), $_simplePricesTax) ?>
     <?php $_finalPrice = $_taxHelper->getPrice($_product, $_product->getFinalPrice()) ?>
     <?php $_finalPriceInclTax = $_taxHelper->getPrice($_product, $_product->getFinalPrice(), true) ?>
     <?php $_weeeDisplayType = $_weeeHelper->getPriceDisplayType(); ?>
@@ -186,9 +186,12 @@
                     <?php echo $_coreHelper->currency($_price+$_weeeTaxAmount,true,true) ?>
                 </span>
             <?php else: ?>
+            <p class="special-price">
+                <span class="price-label"><?php echo $this->__('NOW') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price,true,true) ?>
                 </span>
+            </p>
             <?php endif; ?>
         <?php endif; ?>
     <?php else: /* if ($_finalPrice == $_price): */ ?>
