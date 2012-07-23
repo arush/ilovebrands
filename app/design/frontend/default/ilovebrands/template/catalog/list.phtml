@@ -125,28 +125,29 @@
             <?php /*?>FLO ADD ROLLOVER START<?php */?>
             <div class="ProdTitleRollover"><h2><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2></div>
             <div class="ProdImgRollover">
-            <?php if ($_product->isSalable()): ?>    
+            <?php if ($_product->isSalable()): ?>
 				<?php /*WDCA CODE BEGINS*/ ?>
                 <?php if(!Mage::getStoreConfigFlag('advanced/modules_disable_output/TBT_Rewards') && Mage::getConfig()->getModuleConfig('TBT_Rewards')->is('active', 'true')) : ?>
-                    <?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?> 
-                    <?php $predict_points_block->setProduct($_product);?> 
+                    <?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?>
+                    <?php $predict_points_block->setProduct($_product);?>
                     <?php echo $predict_points_block->toHtml()?>
                 <?php endif; ?>
                 <?php /*WDCA CODE ENDS*/ ?>
-            <?php endif; ?>    
+            <?php endif; ?>
             </div>
             <?php /*?>FLO ADD ROLLOVER END<?php */?>
             </a>
             <?php if($_product->getRatingSummary()): ?>
             <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
             <?php endif; ?>
+
             <?php echo $this->getPriceHtml($_product, true) ?>
             <div class="cat-view-now"><a href="<?php echo $_product->getProductUrl() ?>">View now</a></div>
             <?php echo $this->getChildHtml('product_type_data') ?>
            <?php if (!$_product->isSalable()): ?>
 <!-- ARUSH 2/11/10 ADDED DIV FOR SOLD OUT IMAGE -->
                <div class="out-of-stock-image">
-                    
+
                     <?php switch ($_event->getStatus()):
                         case 'upcoming': ?>
                             <a href="<?php echo $_product->getProductUrl() ?>"><img class="PREVIEWNOW-img" src="<?php echo $this->getSkinUrl(); ?>/images/PREVIEWNOW.png" alt="PREVIEW NOW"></a>
@@ -165,18 +166,18 @@
 <!-- END ARUSH 2/11/10 ADDED DIV FOR SOLD OUT IMAGE -->
             <?php endif; ?>
 
-<?php if ($_product->isSalable()): ?>    
+<?php if ($_product->isSalable()): ?>
     <?php /*WDCA CODE BEGINS*/ ?>
 <?php /*?>    <?php if(!Mage::getStoreConfigFlag('advanced/modules_disable_output/TBT_Rewards') && Mage::getConfig()->getModuleConfig('TBT_Rewards')->is('active', 'true')) : ?>
-        <?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?> 
-        <?php $predict_points_block->setProduct($_product);?> 
+        <?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?>
+        <?php $predict_points_block->setProduct($_product);?>
         <?php echo $predict_points_block->toHtml()?>
     <?php endif; ?>
 <?php */?>    <?php /*WDCA CODE ENDS*/ ?>
-<?php endif; ?>    
-	
+<?php endif; ?>
+
     <!-- REMOVED ADD TO CART -->
-    
+
         </li>
     <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
     </ul>

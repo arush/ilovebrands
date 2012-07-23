@@ -13432,6 +13432,20 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
     padding-left:2px;
 }
 
+.products-grid .rrp {
+    font-family: Gotham-Book;
+    padding: 0 8px;
+}
+
+
+.products-grid .rrp .price-label, .rrp .price {
+    color: #222;
+    font-size:14px;
+    font-weight:normal;
+    padding-left:2px;
+}
+
+
 .product-view .product-shop .price-box p.old-price {
     background:none repeat scroll 0 0 #B14E4E;
     width:268px !important;

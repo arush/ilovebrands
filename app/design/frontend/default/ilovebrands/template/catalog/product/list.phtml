@@ -120,6 +120,11 @@
                 <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                 <?php endif; ?>
 
+                 <div class="rrp">
+                    <span class="price-label">RRP</span>
+                    <span class="price"><?php echo '£'. number_format($_product->getMsrp()); ?></span>
+                </div>
+
                 <?php echo $this->getPriceHtml($_product, true) ?>
 
 				<!-- ARUSH 28/7/11 ADDED DIV FOR SOLD OUT IMAGE -->
