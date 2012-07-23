@@ -1,0 +1,102 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+?>
+
+<?php	
+	$attribute = $this->getAttributeModel();
+	$show_labels = $this->canShowLabels();
+	
+	if($image_width = $this->getImageWidth()){
+		$image_width = 'width="'.$image_width.'"';
+	}else{
+		$image_width = '';
+	}
+	if($image_height = $this->getImageHeight()){
+		$image_height = 'height="'.$image_height.'"';
+	}else{
+		$image_height = '';
+	}
+	
+	$image_align = $this->getImageAlign();	
+?>
+<ol class="image-align-<?php echo $image_align;?> <?php if($this->canShowCheckbox()):?>gan-list-checkbox<?php endif;?> <?php if(!$show_labels):?> no-titles <?php endif?> ">
+<?php foreach ($this->getItems() as $_item):?>
+	
+	<?php
+		
+		$image_url = '';
+		
+		if(($image = $_item->getImage())){
+			
+			if(file_exists(Mage::getBaseDir('media').'/option_image/'.$image)){
+				
+				$image_url = Mage::getBaseUrl('media').'/option_image/'.$_item->getImage();
+				
+			}else{
+				
+				$image_url = Mage::getBaseUrl('media').'/catalog/category/'.$_item->getImage();
+				
+			}
+			
+		}
+		
+		
+		
+	?>
+	
+    <li>
+    	
+    	
+    	
+        <?php if ($_item->getCount() > 0 || $_item->getActive()): ?>
+    		
+	        <a <?php if($_item->getActive()):?> class="active" <?php endif;?> title="<?php echo $_item->getLabel() ?>" <?php if($this->ajaxEnabled()):?> onclick="setNavigationUrl('<?php echo urlencode($_item->getActive() ? $_item->getRemoveUrl(true) : $_item->getUrl(true)) ?>'); return false;" <?php endif;?> href="<?php echo ($_item->getActive() ? $_item->getRemoveUrl() : $_item->getUrl()) ?>">
+	        	
+	        	
+	        	<?php if($image_url):?>
+	        	
+		    	<img <?php echo $image_width, ' ', $image_height;?> title="<?php echo $_item->getLabel() ?>" src="<?php echo $image_url;?>" alt="<?php echo $_item->getLabel() ?>" />
+		    	
+		    	<?php endif;?>
+		    	
+		    	<?php if($show_labels):?>
+		    	
+		    	<span class="filter-label"><?php echo $_item->getLabel() ?>
+		    		
+			    	<?php if(!$_item->getActive()):?>
+			        (<?php echo $_item->getCount() ?>)
+			        <?php endif;?>
+			    </span>   
+		    	<?php endif;?>
+		    
+	    	</a>
+	    	
+        <?php else:?>
+        	
+	    	<?php if($image_url):?>
+        	
+	    	<img <?php echo $image_width, ' ', $image_height;?> title="<?php echo $_item->getLabel() ?>" src="<?php echo $image_url;?>" alt="<?php echo $_item->getLabel() ?>" />
+	    	
+	    	<?php endif;?>
+	    	
+	    	<?php if($show_labels):?>
+	    	<span class="filter-label"><?php echo $_item->getLabel() ?></span>
+	    	
+	        (<?php echo $_item->getCount() ?>)
+	        
+	    	<?php endif;?>
+	    	
+        <?php endif; ?>
+    </li>
+<?php endforeach ?>
+</ol>

@@ -1,0 +1,476 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+
+$config = new Varien_Object();
+$type = 'option_image';
+
+$config->setUrl(Mage::getModel('adminhtml/url')->addSessionParam()->getUrl('gomage_navigation/adminhtml_image/upload', array('type' => $type, '_secure' => true)));
+$config->setParams(array('form_key' => $this->getFormKey()));
+$config->setFileField($type);
+$config->setFilters(array(
+    'all'    => array(
+        'label' => Mage::helper('adminhtml')->__('All Files'),
+        'files' => array('*.*')
+    )
+));
+$config->setReplaceBrowseWithRemove(true);
+$config->setWidth('32');
+$config->setHideUploadButton(true);
+$json_config = Mage::helper('core')->jsonEncode($config->getData());
+
+$show_options = 10;
+ 	
+ 
+?>
+<div>
+<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li><?php echo Mage::helper('catalog')->__('If you do not specify an option value for a specific store view then the default (Admin) value will be used.') ?></li>
+        </ul>
+    </li>
+</ul>
+</div>
+
+<div class="entity-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('catalog')->__('Manage Titles (Size, Color, etc.)') ?></h4>
+    </div>
+    <div class="box">
+            <div class="hor-scroll">
+            <table class="dynamic-grid" cellspacing="0" id="attribute-labels-table">
+                <tr>
+                <?php foreach ($this->getStores() as $_store): ?>
+                    <th><?php echo $_store->getName() ?></th>
+                <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <?php $_labels = $this->getLabelValues() ?>
+                    <?php foreach ($this->getStores() as $_store): ?>
+                    <td>
+                        <input class="input-text<?php if($_store->getId()==0): ?> required-option<?php endif; ?>" type="text" name="frontend_label[<?php echo $_store->getId() ?>]" value="<?php echo $this->htmlEscape($_labels[$_store->getId()]) ?>"<?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/>
+                    </td>
+                    <?php endforeach; ?>
+                </tr>
+            </table>
+            </div>
+    </div>
+</div>
+<br/>
+<div class="entity-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('catalog')->__('Manage Help Icon text') ?></h4>
+    </div>
+    <div class="box">
+            <div class="hor-scroll">
+            <table class="dynamic-grid" cellspacing="0" id="attribute-labels-popup-text-table">
+                <tr>
+	                <?php foreach ($this->getStores() as $_store): ?>
+	                	<?php if ($_store->getId() == 0) continue; ?>
+	                    <th><?php echo $_store->getName() ?></th>
+	                <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <?php $_labels = $this->getPopupTextValues(); ?>
+                    <?php foreach ($this->getStores() as $_store): ?>
+	                    <?php if ($_store->getId() == 0) continue; ?>
+	                    <td>                        
+	                        <textarea <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?> class="textarea" cols="15" rows="2" name="popup_text[<?php echo $_store->getId() ?>]"><?php echo $this->htmlEscape($_labels[$_store->getId()]) ?></textarea>
+	                    </td>
+                    <?php endforeach; ?>
+                </tr>
+            </table>
+            </div>
+    </div>
+</div>
+<br/>
+<div class="entity-edit" id="matage-options-panel">
+    <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('catalog')->__('Manage Options (values of your attribute)') ?></h4>
+    </div>
+    <div class="box">
+        <div class="hor-scroll">
+            <table class="dynamic-grid" cellspacing="0"  cellpadding="0">
+                <tr id="attribute-options-table">
+                    <?php foreach ($this->getStores() as $_store): ?>
+                        <th><?php echo $_store->getName() ?></th>
+                    <?php endforeach; ?>
+    					<th><?php echo $this->__('Image')?></th>
+    					<th><?php echo Mage::helper('gomage_navigation')->__('Remove Image') ?></th>
+                        <th><?php echo Mage::helper('catalog')->__('Position') ?></th>
+                        <th class="nobr a-center"><?php echo Mage::helper('catalog')->__('Is Default') ?></th>
+                        <th>
+                            <?php if (!$this->getReadOnly()):?>
+                                <?php echo $this->getAddNewButtonHtml() ?>
+                            <?php endif;?>
+                        </th>
+                    </tr>
+                    <tr class="no-display template" id="row-template">
+                        <?php foreach ($this->getStores() as $_store): ?>
+                        <td><input name="option[value][{{id}}][<?php echo $_store->getId() ?>]" value="{{store<?php echo $_store->getId() ?>}}" class="input-text<?php if($_store->getId()==0): ?> required-option<?php endif; ?>" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/></td>
+                        <?php endforeach; ?>
+                        <td class="a-center"> uploader here <!--<input class="input-text" type="text" name="option[url_key][{{id}}]" value="{{url_key}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/>--></td>
+                        <td class="a-center"><input class="input-text" type="text" name="option[order][{{id}}]" value="{{sort_order}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/></td>
+                        <td><input class="input-radio" type="radio" name="default[]" value="{{id}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/></td>
+                        <td class="a-left">
+                            <input type="hidden" class="delete-flag" name="option[delete][{{id}}]" value="" />
+                            <?php if (!$this->getReadOnly()):?>
+                                <?php echo $this->getDeleteButtonHtml() ?>
+                            <?php endif;?>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+        <input type="hidden" id="option-count-check" value="" />
+    </div>
+    <?php if (count($this->getOptionValues()) > $show_options): ?>
+    	<div id="show_all_options_wrapper">
+    		<?php echo $this->__('Options 1 to %s of %s total', $show_options, count($this->getOptionValues())); ?>
+    		<button onclick="ganShowAllOptions()" class="scalable add" type="button" title="<?php echo $this->__('Show All Options'); ?>" id="show_all_options"><span><span><span><?php echo $this->__('Show All Options'); ?></span></span></span></button>    		 
+    	</div>
+    <?php endif; ?>
+    
+</div>
+								
+<script type="text/javascript">
+//<![CDATA[
+
+
+<?php $uploader_block = new Mage_Adminhtml_Block_Media_Uploader();?>
+
+var maxUploadFileSizeInBytes = <?php echo $uploader_block->getDataMaxSizeInBytes() ?>;
+var maxUploadFileSize = '<?php echo $uploader_block->getDataMaxSize() ?>';
+
+var uploaderTemplate = '<div class="no-display" id="[[idName]]-template">' +
+                            '<div id="{{id}}" class="file-row file-row-narrow">' +
+                                '<span class="file-info">' +
+                                    '<span class="file-info-name">{{name}}</span>' +
+                                    ' ' +
+                                    '<span class="file-info-size">({{size}})</span>' +
+                                '</span>' +
+                                '<span class="progress-text"></span>' +
+                                '<div class="clear"></div>' +
+                            '</div>' +
+                        '</div>' +
+                            '<div class="no-display" id="[[idName]]-template-progress">' +
+                            '{{percent}}% {{uploaded}} / {{total}}' +
+                            '</div>';
+
+var fileListTemplate = '<span class="file-info">' +
+                            '<span class="file-info-name">{{name}}</span>' +
+                            ' ' +
+                            '<span class="file-info-size">({{size}})</span>' +
+                        '</span>';
+                        
+var Downloadable = {
+    uploaderObj : $H({}),
+    objCount : 0,
+    setUploaderObj : function(type, key, obj){
+        if (!this.uploaderObj.get(type)) {
+            this.uploaderObj.set(type, $H({}));
+        }
+        
+        obj.onFileSelect	= function(){this.upload();}.bind(obj);
+        obj.onFilesComplete = function(files){
+        	
+        	for(var i = 0; i < files.length; i++){
+        		item = files[i];
+        		
+        		if (!item.response.isJSON()) {
+	                try {
+	                    console.log(item.response);
+	                } catch (e2) {
+	                    alert(item.response);
+	                }
+	               return;
+	           }
+	           var response = item.response.evalJSON();
+	           if (response.error) {
+	               return;
+	           }
+	           
+	           var newFile = {};
+	           newFile.file = response.file;
+	           newFile.name = response.name;
+	           newFile.size = response.size;
+	           newFile.status = 'new';
+        	   
+        	}
+        	
+        	if(newFile){
+        		
+        		$(this.containerId+'_save').value = Object.toJSON([newFile]);
+        		
+        	}
+        	
+        }.bind(obj);
+        
+        this.uploaderObj.get(type).set(key, obj);
+    },
+    
+    
+    getUploaderObj : function(type, key){
+        try {
+            return this.uploaderObj.get(type).get(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    unsetUploaderObj : function(type, key){
+        try {
+            this.uploaderObj.get(type).unset(key);
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    },
+    massUploadByType : function(type){
+        try {
+            this.uploaderObj.get(type).each(function(item){
+                container = item.value.container.up('tr');
+                if (container.visible() && !container.hasClassName('no-display')) {
+                    item.value.upload();
+                } else {
+                    Downloadable.unsetUploaderObj(type, item.key);
+                }
+            });
+        } catch (e) {
+            try {
+                console.log(e);
+            } catch (e2) {
+                alert(e.name + '\n' + e.message);
+            }
+        }
+    }
+};
+Downloadable.FileUploader = Class.create();
+Downloadable.FileUploader.prototype = {
+    type : null,
+    key : null, //key, identifier of uploader obj
+    elmContainer : null, //insert Flex object and templates to elmContainer
+    fileValueName : null, //name of field of JSON data of saved file
+    fileValue : null,
+    idName : null, //id name of elements for unique uploader
+    uploaderText: uploaderTemplate,
+    uploaderSyntax : /(^|.|\r|\n)(\[\[(\w+)\]\])/,
+    uploaderObj : $H({}),
+    config : null,
+    initialize: function (type, key, elmContainer, fileValueName, fileValue ,idName, config) {
+    	
+        this.type = type;
+        this.key = key;
+        this.elmContainer = elmContainer;
+        this.fileValueName = fileValueName;
+        this.fileValue = fileValue;
+        this.idName = idName;
+        this.config = config;
+        uploaderTemplate = new Template(this.uploaderText, this.uploaderSyntax);
+        
+        <?php if (true):?>
+        
+        
+        Element.insert(
+            elmContainer,
+            {'top' : uploaderTemplate.evaluate({
+                    'idName' : this.idName,
+                    'fileValueName' : this.fileValueName,
+                    'uploaderObj' : 'Downloadable.getUploaderObj(\''+this.type+'\', \''+this.key+'\')'
+                })
+            }
+        );
+        
+        if ($(this.idName+'_save')) {
+            if(typeof this.fileValue.toJSON != "undefined"){                
+            	$(this.idName+'_save').value = this.fileValue.toJSON();
+            }
+        }
+        Downloadable.setUploaderObj(
+            this.type,
+            this.key,
+            new Flex.Uploader(this.idName, '<?php echo $this->getSkinUrl('media/uploaderSingle.swf') ?>', this.config)
+        );
+        
+        if (varienGlobalEvents) {
+            varienGlobalEvents.attachEventHandler('tabChangeBefore', Downloadable.getUploaderObj(type, key).onContainerHideBefore);
+    	}
+        //new Downloadable.FileList(this.idName, Downloadable.getUploaderObj(type, key));
+        <?php endif;?>
+    }
+}
+
+var optionDefaultInputType = 'radio';
+
+// IE removes quotes from element.innerHTML whenever it thinks they're not needed, which breaks html.
+var templateText =
+        '<tr class="option-row">'+
+<?php foreach ($this->getStores() as $_store): ?>
+            '<td><input name="option[value][{{id}}][<?php echo $_store->getId() ?>]" value="{{store<?php echo $_store->getId() ?>}}" class="input-text<?php if($_store->getId()==0): ?> required-option<?php endif; ?>" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+<?php endforeach; ?>
+			'<td><input id="option_image_{{id}}_save" class="hidden" type="hidden" name="option[image][{{id}}]]" value=""/>'+
+				'<div id="option_image_{{id}}" class="uploader">'+
+					'<div id="option_image_{{id}}-old" class="file-row-info"></div>'+
+                    '<div id="option_image_{{id}}-new" class="file-row-info new-file"></div>'+
+                    '<div id="option_image_{{id}}-upload" class="file-row-info"></div>'+
+                    '<div class="buttons">'+
+                        '<div id="option_image_{{id}}-install-flash" style="display:none">'+
+                            '<?php echo $this->jsQuoteEscape(Mage::helper('media')->__('This content requires last version of Adobe Flash Player. <a href="%s">Get Flash</a>', 'http://www.adobe.com/go/getflash/')) ?>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '<\/td>'+
+            '<td><input class="input-text" type="checkbox" name="option[remove_image][{{id}}]]" value="1" /><\/td>'+
+            '<td><input class="input-text" type="text" name="option[order][{{id}}]" value="{{sort_order}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+            '<td class="a-center"><input class="input-radio" type="{{intype}}" name="default[]" value="{{id}}" {{checked}} <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+            '<td class="a-left">'+
+                '<input type="hidden" class="delete-flag" name="option[delete][{{id}}]" value="" />'+
+                <?php if (!$this->getReadOnly()):?>
+                    '<?php echo $this->getDeleteButtonHtml() ?>'+
+                <?php endif;?>
+            '<\/td>'+
+        '<\/tr>';
+
+var attributeOption = {
+    table : $('attribute-options-table'),
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    templateText : templateText,
+    fileListTemplate:fileListTemplate,
+    listTemplate : null,
+    itemCount : 0,
+    totalItems : 0,
+    add : function(data) {
+        this.template = new Template(this.templateText, this.templateSyntax);
+        this.listTemplate = new Template(this.fileListTemplate, this.templateSyntax);
+        if(!data.id){
+            data = {};
+            data.id  = 'option_'+this.itemCount;
+        }
+        if (!data.intype)
+            data.intype = optionDefaultInputType;
+
+        Element.insert(this.table, {after: this.template.evaluate(data)});
+        this.bindRemoveButtons();
+        var itemCount = this.itemCount;
+        
+        if (!data.image_info) {
+            data.image_info = [];
+        }else{
+        	
+        	$('option_image_' + data.id + '-old').innerHTML = this.listTemplate.evaluate(data.image_info[0]);
+        }
+    	$('option_image_' + data.id + '-new').hide();
+    	$('option_image_' + data.id + '-old').show();
+        
+        new Downloadable.FileUploader(
+            'option_image',
+            'option_image_'+itemCount,
+            $('option_image_'+data.id+'').up('td'),
+            'option[image]['+data.id+']',
+            data.image_info,
+            'option_image_'+data.id+'',
+            <?php echo $json_config ?>
+        );
+        
+        this.itemCount++;
+        this.totalItems++;
+        this.updateItemsCountField();
+        
+    },
+    remove : function(event){
+        var element = $(Event.findElement(event, 'tr')); // !!! Button already
+                                                               // have table parent in safari
+        // Safari workaround
+        element.ancestors().each(function(parentItem){
+           if (parentItem.hasClassName('option-row')) {
+               element = parentItem;
+               throw $break;
+           } else if (parentItem.hasClassName('box')) {
+               throw $break;
+           }
+        });
+
+
+        if(element){
+            var elementFlags = element.getElementsByClassName('delete-flag');
+            if(elementFlags[0]){
+                elementFlags[0].value=1;
+            }
+
+            element.addClassName('no-display');
+            element.addClassName('template');
+            element.hide();
+            this.totalItems--;
+            this.updateItemsCountField();
+        }
+    },
+    updateItemsCountField: function() {
+        if (this.totalItems > 0) {
+            $('option-count-check').value = '1';
+        } else {
+            $('option-count-check').value = '';
+        }
+    },
+    bindRemoveButtons : function(){
+        var buttons = $$('.delete-option');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.remove.bind(this));
+            }
+        }
+    }
+
+}
+if($('row-template')){
+    $('row-template').remove();
+}
+attributeOption.bindRemoveButtons();
+
+if($('add_new_option_button')){
+    Event.observe('add_new_option_button', 'click', attributeOption.add.bind(attributeOption));
+}
+Validation.addAllThese([
+    ['required-option', '<?php echo Mage::helper('catalog')->__('Failed') ?>', function(v) {
+        return !Validation.get('IsEmpty').test(v);
+}]]);
+Validation.addAllThese([
+    ['required-options-count', '<?php echo Mage::helper('catalog')->__('Options is required') ?>', function(v) {
+        return !Validation.get('IsEmpty').test(v);
+}]]);
+<?php $_i = 0; ?>
+<?php foreach ($this->getOptionValues() as $_value): ?>
+	<?php $_i++; ?>
+    attributeOption.add(<?php echo $_value->toJson() ?>);    
+    <?php if ($_i == $show_options) break; ?>
+<?php endforeach; ?>
+
+<?php if (count($this->getOptionValues()) > $show_options): ?>
+ function ganShowAllOptions(){
+	 <?php $_i = 0; ?>
+	 <?php foreach ($this->getOptionValues() as $_value): ?>
+	     <?php $_i++; ?>
+	     <?php if ($_i <= $show_options) continue; ?>
+	     attributeOption.add(<?php echo $_value->toJson() ?>);	     	     
+	 <?php endforeach; ?>
+	 $('show_all_options_wrapper').hide();
+ }
+<?php endif; ?>
+
+//]]>
+</script>

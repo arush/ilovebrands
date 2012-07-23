@@ -1,0 +1,99 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 2.0
+ */
+ 
+$_menu = $this->renderCategoriesMenuHtml(0,'level-top'); 
+
+if($_menu): ?>
+<div class="block gan-sidebar-nav gan-left-nav" id="gan-left-nav-main-container">
+    
+    <?php if($this->canShowPopup()):?>
+                    
+        <?php $note_content = trim($this->getPopupText())?>
+        
+    	<?php if(strlen($note_content)):?>
+    		<?php        		
+            		$styles = 'display: none;';        		
+            		if($content_width = $this->getPopupWidth()){        			
+            			$styles .= "width:{$content_width}px;";        			
+            		}
+            		if($content_height = $this->getPopupHeight()){        			
+            			$styles .= "height:{$content_height}px;";        			
+            		}        		
+            ?>        	
+        	<div id="filter-left-category-note-content" class="filter-note-content" <?php if($styles):?> style="<?php echo $styles;?>" <?php endif;?>>
+    			<?php echo nl2br($note_content);?>
+        	</div>
+    	<?php endif;?>
+    <?php endif;?>
+    
+    <div class="block-title" onclick="navigationOpenFilter('left-category')">
+        <strong><span><?php echo $this->__('Categories') ?></span></strong>
+        <?php if($this->canShowPopup()):?>                    		                    		                    	
+        	<?php if(strlen($note_content)):?>        	
+        		<span class="filter-note-handle" onmouseout="hideNavigationNote();" onmouseover="showNavigationNote('filter-left-category-note-content', this)">?</span>        		                    	
+        	<?php endif;?>                    	
+        <?php endif;?>
+    </div>
+	<div class="block-content" id="advancednavigation-filter-content-left-category" <?php if ($this->canShowMinimized()): ?>style="display: none;"<?php endif; ?> >
+        <div class="gan-wrapper gan-left" style="background-color: <?php echo $this->getColumnColor() ?>;" >
+            <?php switch ($this->getTypeNavigation()):  
+                    case GoMage_Navigation_Model_Layer::FILTER_TYPE_DROPDOWN: ?>
+                       <ul class="gan-dropdown-list">                  
+                          <?php echo $_menu ?>                 
+                       </ul>   
+                   <?php break; ?>  
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_PLAIN: ?>                   
+                          <ul id="gan_nav_left" class="gan-plain-list">
+                            <?php echo $_menu ?>
+                          </ul> 
+                          <?php if($this->getRequest()->getParam('ajax')>0):?>
+                            	<?php Mage::getBlockSingleton('gomage_navigation/ajax')->addEvalJs("mainNav('gan_nav_left', {'show_delay':'100','hide_delay':'100'});");?>                            	
+                          <?php endif; ?>
+                   <?php break; ?>         
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_FOLDING: ?>
+                          <ul id="gan_nav_left" class="gan-folding-list <?php if($this->canShowCheckbox() && $this->getIsAjax()):?>gan-list-checkbox<?php endif;?>">
+                            <?php echo $_menu ?>
+                          </ul>                           
+                   <?php break; ?>
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_IMAGE: ?>
+                          <ul id="gan_nav_left" class="gan-image-list <?php if ($this->getImageAlign()): ?>image-align-<?php echo $this->getImageAlign(); ?><?php endif; ?> <?php if($this->canShowCheckbox() && $this->getIsAjax()):?>gan-list-checkbox<?php endif;?> <?php if(!$this->canShowLabels()):?>no-titles<?php endif;?>">
+                            <?php echo $_menu ?>
+                          </ul> 
+                   <?php break; ?>
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_DEFAULT_PRO: ?>
+                          <ul id="gan_nav_left" class="gan-defaultpro-list">
+                            <?php echo $_menu ?>
+                          </ul>
+                          <?php if($this->getRequest()->getParam('ajax')>0):?>
+                            	<?php Mage::getBlockSingleton('gomage_navigation/ajax')->addEvalJs("mainNav('gan_nav_left', {'show_delay':'100','hide_delay':'100'});");?>                            	
+                          <?php endif; ?>
+                   <?php break; ?>
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_DEFAULT_INBLOCK: ?>
+                   		  <ul id="gan_nav_left" class="gan-inblock-list gan-default-list <?php if($this->canShowCheckbox() && $this->getIsAjax()):?>gan-list-checkbox<?php endif;?>" style="height:<?php echo $this->getInBlockHeight(); ?>px;">
+                            <?php echo $_menu ?>
+                          </ul>		
+                   <?php break; ?>
+                   <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_ACCORDION: ?>
+                          <ul id="gan_nav_left" class="gan-accordion-list <?php if($this->canShowCheckbox() && $this->getIsAjax()):?>gan-list-checkbox<?php endif;?>">
+                            <?php echo $_menu ?>
+                          </ul>                           
+                   <?php break; ?>
+                   <?php default: ?>
+                          <ul id="gan_nav_left" class="gan-default-list <?php if($this->canShowCheckbox() && $this->getIsAjax()):?>gan-list-checkbox<?php endif;?>">
+                            <?php echo $_menu ?>
+                          </ul>
+            <?php endswitch; ?>
+        </div>
+	</div>
+</div>
+<?php endif ?>

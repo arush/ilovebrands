@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Available since Release 1.0
+ */
+ -->
+<config>
+    <modules>
+        <GoMage_Navigation>
+            <active>true</active>
+            <codePool>local</codePool>
+        </GoMage_Navigation>
+	</modules>
+</config>
