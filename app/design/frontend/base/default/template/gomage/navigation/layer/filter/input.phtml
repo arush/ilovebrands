@@ -1,0 +1,46 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+?>
+
+<?php	
+	$attribute 		= $this->getAttributeModel();
+	$attribute_code = $attribute->getAttributeCode();
+	$request		= $this->getRequest();
+	
+	$_from	= $request->getParam($this->_filter->getRequestVar().'_from', '');
+   	$_to	= $request->getParam($this->_filter->getRequestVar().'_to', '');
+	
+?>
+<div class="filter-type-input" style="padding:0;">
+	<form onsubmit="submitNavigationForm(this, '<?php echo Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true, '_query'=>array('ajax'=>$this->ajaxEnabled())))?>', <?php echo $this->ajaxEnabled() ?>);return false;" action="'<?php echo Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true))?>'">
+		<fieldset class="filter-fieldset">
+		
+		<div class="fields">
+		<div class="from-wrapper">
+			<label><!--<span><?php //echo $this->__('From')?></span>--><input class="input-text navigation-from" type="text" name="<?php echo $attribute_code;?>_from" value="<?php echo $_from;?>" /></label>
+		</div>
+		
+		<div class="from-wrapper">
+			<label><span><?php echo $this->__('to')?></span><input class="input-text navigation-to" type="text" name="<?php echo $attribute_code;?>_to" value="<?php echo $_to;?>" /></label>
+		</div>
+		
+		</div>
+		
+		<div class="slider-input-action">
+		
+		<button class="button" type="submit"><span><span><?php echo $this->__('Filter')?></span></span></button>
+		
+		</div>
+		</fieldset>
+	</form>
+</div>

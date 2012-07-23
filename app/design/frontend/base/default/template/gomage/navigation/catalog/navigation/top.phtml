@@ -1,0 +1,52 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 2.0
+ */
+
+/**
+ * Top menu for store
+ *
+ * @see GoMage_Navigation_Block_Navigation
+ */
+?>
+
+<?php 
+	if (method_exists($this, 'renderCategoriesMenuHtml')){		
+		$menu_block = $this;
+	}else{
+		$menu_block = Mage::getBlockSingleton('gomage_navigation/navigation');				
+	}
+	$_menu = $menu_block->renderCategoriesMenuHtml(0,'level-top');
+?>
+<?php if($_menu): ?>
+    <?php switch ($menu_block->getTypeNavigation()):  
+            case GoMage_Navigation_Model_Layer::FILTER_TYPE_DROPDOWN: ?>
+              <div class="gan-wrapper gan-top">
+                  <ul class="gan-dropdown-list">                  
+                      <?php echo $_menu ?>          
+                  </ul>
+              </div>           
+           <?php break; ?>           
+           <?php case GoMage_Navigation_Model_Layer::FILTER_TYPE_PLAIN: ?>
+              <div class="gan-wrapper gan-top">
+                  <ul id="gan_nav_top" class="gan-plain-list">
+                    <?php echo $_menu ?>
+                  </ul>
+              </div>     
+           <?php break; ?> 
+           <?php default: ?>
+              <div class="nav-container">
+                    <ul id="nav">
+                        <?php echo $_menu ?>
+                    </ul>
+              </div>  
+    <?php endswitch; ?>
+<?php endif ?>

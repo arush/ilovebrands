@@ -1,0 +1,26 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 2.0
+ */
+?>
+<select <?php if($this->ajaxEnabled()):?>onchange="setNavigationUrl( this.value ? this.value : '<?php echo urlencode($this->getRemoveUrl(true));?>')"<?php else:?>onchange="setLocation( this.value ? GanUrl.decode(this.value) : '<?php echo $this->getParentBlock()->getClearUrl(true);?>')"<?php endif;?>>
+	<option value=""><?php echo $this->__('Please Select')?></option>
+<?php foreach ($this->getItems() as $_item): ?>
+    <option value="<?php echo urlencode($_item->getUrl($this->ajaxEnabled()));?>" <?php if($_item->getActive()):?> selected="selected" <?php endif;?>>
+        
+        <?php echo $_item->getLabel() ?>
+        
+    	<?php if(!$_item->getActive()):?>
+        (<?php echo $_item->getCount() ?>)
+        <?php endif;?>
+    </option>
+<?php endforeach ?>
+</select>

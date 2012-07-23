@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Available since Release 1.0
+ */
+ -->
+<layout version="1.0">
+	<default>
+		<reference name="head">    		
+    		<action method="addJs"><script>gomage/validation.js</script></action>
+    		<action method="addJs"><script>jscolor/jscolor.js</script></action>
+    		<action method="addJs"><script>jscolor/jscolor/jscolor.js</script></action>
+    	</reference>
+	</default>	
+	<adminhtml_catalog_product_attribute_edit>
+		<reference name="head">
+    		<action method="addJs"><script>lib/flex.js</script></action>
+    		<action method="addJs"><script>lib/FABridge.js</script></action>
+    		<action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>    		
+    	</reference>
+	</adminhtml_catalog_product_attribute_edit>	
+	<adminhtml_cms_page_edit>
+		<reference name="cms_page_edit_tabs">
+			<block type="gomage_navigation/adminhtml_cms_page_edit_tab_navigation" name="cms_page_edit_tab_navigation" />
+			<action method="addTab"><name>navigation_section</name><block>cms_page_edit_tab_navigation</block></action>
+		</reference>	
+	</adminhtml_cms_page_edit>			
+</layout>

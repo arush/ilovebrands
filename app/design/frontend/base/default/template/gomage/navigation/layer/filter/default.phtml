@@ -1,0 +1,40 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 2.0
+ */
+?>
+<ol class="<?php if($this->canShowCheckbox()):?>gan-list-checkbox<?php endif;?> <?php if($this->getFilterType()==GoMage_Navigation_Model_Layer::FILTER_TYPE_DEFAULT_INBLOCK):?>gan-inblock-list<?php endif;?>" <?php if($this->getFilterType()==GoMage_Navigation_Model_Layer::FILTER_TYPE_DEFAULT_INBLOCK):?>style="height:<?php echo $this->getInBlockHeight(); ?>px;"<?php endif;?>>
+<?php 
+	$show_all = (bool)$this->getShowAllOptions();
+	$visible_options = intval($this->getVisibleOptions());
+	$i = 0; 	
+?>
+<?php foreach ($this->getItems() as $_item): ?>
+	<?php $i++; ?>
+    <li <?php if ($visible_options && $i > $visible_options && !$show_all): ?>style="display:none;"<?php endif; ?>>
+        <?php if ($_item->getCount() > 0 || $_item->getActive()): ?>
+        <a <?php if($_item->getActive()):?> class="active" <?php endif;?> <?php if($this->ajaxEnabled()):?> onclick="setNavigationUrl('<?php echo urlencode($_item->getActive() ? $_item->getRemoveUrl(true) : $_item->getUrl(true)) ?>'); return false;" <?php endif;?> href="<?php echo ($_item->getActive() ? $_item->getRemoveUrl() : $_item->getUrl()) ?>"><?php echo $_item->getLabel() ?></a>
+        <?php else: echo $_item->getLabel() ?>
+        <?php endif; ?>
+    	<?php if(!$_item->getActive()):?>
+        (<?php echo $_item->getCount() ?>)
+        <?php endif;?>
+    </li>    
+<?php endforeach ?>
+<?php if ($visible_options && $i > $visible_options): ?>
+	<li <?php if ($show_all): ?>style="display:none;"<?php endif; ?> >
+		<a class="gan-attr-more" onclick="showAllNavigationAttribute(this, '<?php echo $this->_filter->getRequestVar(); ?>')" href="javascript:void(0)"><?php echo $this->__('More') ?></a>
+	</li>
+	<li <?php if (!$show_all): ?>style="display:none;"<?php endif; ?> >
+		<a class="gan-attr-less" onclick="hideNavigationAttribute(this, <?php echo $visible_options; ?>, '<?php echo $this->_filter->getRequestVar(); ?>')" href="javascript:void(0)"><?php echo $this->__('Less') ?></a>
+	</li>
+<?php endif; ?>
+</ol>

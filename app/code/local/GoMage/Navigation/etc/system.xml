@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+ -->
+<config>
+	<tabs>
+        <gomage translate="label">
+            <label>GoMage</label>
+            <sort_order>200</sort_order>
+        </gomage>
+    </tabs>
+	<sections>
+		
+		<gomage_activation>
+			<label>Activation</label>
+            <tab>gomage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+				<advancednavigation translate="label">
+					<label>GoMage Advanced Navigation v.3.0</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<key>
+							<label>Activation Key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</key>
+						<websites translate="label">
+							<label>Select Websites</label>
+							<frontend_type>checkbox</frontend_type>
+							<source_model>adminhtml/system_config_source_website</source_model>
+							<frontend_model>gomage_navigation/adminhtml_config_form_renderer_website</frontend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</websites>
+					</fields>
+				</advancednavigation>
+			</groups>
+		</gomage_activation>
+		
+		<gomage_navigation>
+            <label>Advanced Navigation</label>
+            <tab>gomage</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>130</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+			<groups>
+				<general translate="label">
+					<label>General</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<mode>
+							<label>Filter Mode</label>
+							<frontend_type>select</frontend_type>
+							<frontend_model>gomage_navigation/adminhtml_config_form_renderer_enabledisable</frontend_model>
+							<source_model>gomage_navigation/adminhtml_system_config_source_mode</source_model>							
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</mode>
+						<pager>
+							<label>Filter Category Pages</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</pager>
+						<urlhash>
+							<label>Add Filter Results to URL</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</urlhash>
+						<frendlyurl>
+							<label>Use Friendly URLs</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>	
+							<comment>It will replace Attribute Numbers to Names</comment>						
+						</frendlyurl>
+						<show_shopby>
+							<label>Show Shop By in</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_shopby</source_model>
+							<sort_order>22</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>														
+						</show_shopby>
+						<autoscrolling>
+							<label>Use Autoscrolling</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_autoscrolling</source_model>
+							<sort_order>25</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>														
+						</autoscrolling>
+						<showpager>
+							<label>Show Pager</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>														
+						</showpager>
+						<back_to_top>
+							<label>Show Back to Top Button</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>35</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>														
+						</back_to_top>												 																		
+					</fields>
+				</general>
+				<filter translate="label">
+					<label>Navigation View</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>15</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<style>
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</style>
+						<button_style>
+							<label>Buttons Color</label>
+							<frontend_type>text</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style_button</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</button_style>
+						<icon_style>
+							<label>Help Icon View</label>
+							<frontend_type>text</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style_icon</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</icon_style>
+						<slider_style>
+							<label>Slider Color</label>
+							<frontend_type>text</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style_slider</source_model>
+							<sort_order>31</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</slider_style>
+						<slider_type>
+							<label>Slider Type</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style_slidertype</source_model>
+							<sort_order>31</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slider_type>
+						<popup_style>
+							<label>Popup Window Background</label>
+							<frontend_type>text</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_style_popup</source_model>
+							<sort_order>32</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</popup_style>						
+					</fields>
+				</filter>
+				<category translate="label">
+					<label>Category Settings (Left Column)</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>50</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active>
+							<label>Left Column Navigation</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_enabledisable</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						
+						<filter_type>
+							<label>Navigation Type</label>
+							<frontend_type>select</frontend_type>							
+							<frontend_model>gomage_navigation/adminhtml_config_form_renderer_navigationtype</frontend_model>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_type_category</source_model>							
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_type>
+						
+						<inblock_height>
+							<label>Block Height, px</label>
+							<frontend_type>text</frontend_type>							
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>							
+						</inblock_height>
+						
+						<ajax_enabled>
+							<label>Use Category Filter</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_type_category_mode</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</ajax_enabled>
+						
+						<show_shopby>
+							<label>Show Category in Shop by</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</show_shopby>
+						
+						<hide_empty>
+							<label>Hide Empty Category</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</hide_empty>
+						
+						<show_allsubcats>
+							<label>Show All Subcategories</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</show_allsubcats>
+						
+						<column_color>
+							<label>Category Column Color</label>
+							<frontend_type>text</frontend_type>							
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</column_color>
+																		 
+						<show_minimized>
+							<label>Show Minimized</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>38</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_minimized>
+						
+						<show_checkbox>
+							<label>Show Checkboxes</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_checkbox>
+						
+						
+						<show_image_name>
+							<label>Show Image Name</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_image_name>
+						
+						<image_align>
+							<label>Image Alignment</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_image_align</source_model>							
+							<sort_order>55</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_align>
+						
+						<image_width>
+							<label>Image Width, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</image_width>
+						
+						<image_height>
+							<label>Image Height, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</image_height>
+						
+						<show_help>
+							<label>Show Help Icon</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_help>
+						
+						<popup_text>
+							<label>Help Icon text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</popup_text>
+						
+						<popup_width>
+							<label>Popup Width, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</popup_width>
+						
+						<popup_height>
+							<label>Popup Height, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</popup_height>
+						
+						<filter_reset>
+							<label>Show Reset Link</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</filter_reset>
+						
+					</fields>
+				</category>
+								
+				<menubarsettings translate="label">
+					<label>Menu Bar Navigation Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>40</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<navigation>
+							<label>Menu Bar Navigation</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_category_navigation</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</navigation>																			
+					</fields>
+				</menubarsettings>
+												
+				<rightcolumnsettings translate="label">
+					<label>Category Settings (Right Column)</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>60</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>												
+						<active>
+							<label>Right Column Navigation</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_enabledisable</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+												
+						<filter_type>
+							<label>Navigation Type</label>
+							<frontend_type>select</frontend_type>
+							<frontend_model>gomage_navigation/adminhtml_config_form_renderer_navigationtype</frontend_model>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_type_category</source_model>							
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_type>
+						
+						<inblock_height>
+							<label>Block Height, px</label>
+							<frontend_type>text</frontend_type>							
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>							
+						</inblock_height>
+						
+						<ajax_enabled>
+							<label>Use Category Filter</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_type_category_mode</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</ajax_enabled>
+						
+						<show_shopby>
+							<label>Show Category in Shop by</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</show_shopby>
+						
+						<hide_empty>
+							<label>Hide Empty Category</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</hide_empty>
+						
+						<show_allsubcats>
+							<label>Show All Subcategories</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</show_allsubcats>
+						
+						<column_color>
+							<label>Category Column Color</label>
+							<frontend_type>text</frontend_type>							
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</column_color>
+																								 
+						<show_minimized>
+							<label>Show Minimized</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>38</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_minimized>
+						
+						<show_checkbox>
+							<label>Show Checkboxes</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_checkbox>
+						
+						
+						<show_image_name>
+							<label>Show Image Name</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_image_name>
+						
+						<image_align>
+							<label>Image Alignment</label>
+							<frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_filter_image_align</source_model>							
+							<sort_order>55</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_align>
+						
+						<image_width>
+							<label>Image Width, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</image_width>
+						
+						<image_height>
+							<label>Image Height, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</image_height>
+						
+						<show_help>
+							<label>Show Help Icon</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_help>
+						
+						<popup_text>
+							<label>Help Icon text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</popup_text>
+						
+						<popup_width>
+							<label>Popup Width, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</popup_width>
+						
+						<popup_height>
+							<label>Popup Height, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>gomage-validate-number</validate>
+						</popup_height>
+						
+						<filter_reset>
+							<label>Show Reset Link</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</filter_reset>
+						
+																		
+					</fields>
+				</rightcolumnsettings>
+				
+				<ajaxloader translate="label">
+					<label>Ajax Window Settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>70</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+					
+						<enable>
+							<label>Show Ajax Loader Window</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						
+						<loadimage translate="label">
+                            <label>Ajax Loader View</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">gomage/config</upload_dir>
+                            <base_url type="media" scope_info="1">gomage/config</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loadimage>
+                        
+                        <imagealign translate="label">
+                            <label>Image Alignment</label>
+                            <frontend_type>select</frontend_type>
+							<source_model>gomage_navigation/adminhtml_system_config_source_imagealign</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </imagealign>
+						
+						<bgcolor>
+							<label>Background Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</bgcolor>
+						
+						<bordercolor>
+							<label>Border Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</bordercolor>
+						
+						<textcolor>
+							<label>Text Color</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>85</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g. "ffffff", "000" </comment>
+							<validate>color</validate>
+						</textcolor>
+						
+						<width>
+							<label>Widow Width, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</width>
+						
+						<height>
+							<label>Widow Height, px</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</height>
+						
+						<text>
+							<label>Ajax Loader Text</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</text>
+						
+					</fields>
+				</ajaxloader>
+				
+			</groups>
+		</gomage_navigation>
+	</sections>
+</config>

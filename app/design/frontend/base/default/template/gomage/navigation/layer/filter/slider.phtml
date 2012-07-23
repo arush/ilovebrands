@@ -1,0 +1,92 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+?>
+
+<?php	
+	$attribute 		= $this->getAttributeModel();
+	$attribute_code = $attribute->getAttributeCode();
+	$request		= $this->getRequest();
+	
+	$_from	= $request->getParam($this->_filter->getRequestVar().'_from', $this->_filter->getMinValueInt());
+   	$_to	= $request->getParam($this->_filter->getRequestVar().'_to', $this->_filter->getMaxValueInt());
+	
+?>
+
+<div class="filter-type-input hidden">	
+	<form onsubmit="submitNavigationForm(this, '<?php echo Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true, '_query'=>array('ajax'=>$this->ajaxEnabled())))?>', <?php echo $this->ajaxEnabled() ?>);return false;" id="<?php echo $attribute_code?>-filter-form" action="<?php echo Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true, '_query'=>array('ajax'=>$this->ajaxEnabled())))?>">
+		<fieldset class="filter-fieldset">
+		
+		<div class="from-wrapper">
+			<label><span><?php echo $this->__('From')?></span><input class="navigation-from" type="text" name="<?php echo $attribute_code;?>_from" value="<?php echo $_from;?>" /></label>
+		</div>
+		
+		<div class="from-wrapper">
+			<label><span><?php echo $this->__('To')?></span><input class="navigation-to" type="text" name="<?php echo $attribute_code;?>_to" value="<?php echo $_to;?>" /></label>
+		</div>
+		
+		</fieldset>
+	</form>
+</div>
+
+	
+	<div id="<?php echo $attribute_code;?>-track" class="gan-track">
+	    <div id="<?php echo $attribute_code;?>-handle-from" class="handle handle-left">
+	    	<span class="handle-left-bg">
+	    		<span class="slider-span">
+					
+				</span>
+	    	</span>
+	    </div>
+	    <div id="<?php echo $attribute_code;?>-handle-to" class="handle handle-right">
+	    	<span class="handle-right-bg">
+	    		<span class="slider-span">
+				</span>
+	    	</span>
+	    </div>
+	    <div class="slider-back-bg"></div>
+	    <div id="<?php echo $attribute_code;?>-square_slider_span" class="span" style="position:absolute;">
+	    	
+	    	<div class="gan-slider-span"></div>
+	    	
+	    </div>
+	    
+	</div>
+  
+  <div class="gan-track-values">
+    <span class="track-value value-min" id="<?php echo $attribute_code;?>-value-from"></span>
+    <span class="track-value value-max" id="<?php echo $attribute_code;?>-value-to"></span>
+  </div>  
+  
+	<div class="hidden" id='<?php echo $attribute_code;?>-value'></div>
+
+<?php if($this->getRequest()->getParam('ajax')>0):?>
+	
+			<?php Mage::getBlockSingleton('gomage_navigation/ajax')->addEvalJs("initSlider('".$attribute_code."', ".$this->_filter->getMinValueInt().", ".$this->_filter->getMaxValueInt().", ". $_from .", ". $_to.", '". Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true, '_query'=>array('ajax'=>$this->ajaxEnabled(), $this->_filter->getRequestVar().'_from'=>null, $this->_filter->getRequestVar().'_to'=>null, )))."', ".$this->ajaxEnabled().");");?>
+
+	
+<?php else:?>
+
+		
+<script type="text/javascript">
+	
+	// <![CDATA[
+	
+initSlider('<?php echo $attribute_code;?>', <?php echo $this->_filter->getMinValueInt();?>, <?php echo $this->_filter->getMaxValueInt();?>, <?php echo $_from;?>, <?php echo $_to;?>, '<?php echo Mage::helper('gomage_navigation')->getFilterUrl('*/*/*', array('_current'=>true, '_nosid'=>true, '_use_rewrite'=>true, '_query'=>array('ajax'=>$this->ajaxEnabled())))?>', <?php echo $this->ajaxEnabled() ?>);
+
+
+	
+	// ]]>
+	
+</script>
+
+<?php endif;?>

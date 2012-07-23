@@ -1,0 +1,100 @@
+<?php
+ /**
+ * GoMage Advanced Navigation Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 3.0
+ * @since        Class available since Release 1.0
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<?php 
+	$content_area = Mage::getStoreConfig('gomage_navigation/general/show_shopby') == GoMage_Navigation_Model_Adminhtml_System_Config_Source_Shopby::CONTENT;
+	$gan_bcontent_hide = 'true' === $this->getRequest()->getParam('gan_bcontent_hide'); 
+?>
+<div class="block block-layered-nav gomage-navigation-slider-type-<?php echo $this->getSliderType();?> gomage-navigation-icons-<?php echo $this->getIconStyle();?><?php if ($content_area): ?> gan-content-area<?php endif; ?>">
+    <div class="block-title">
+        <strong>
+        	<span><?php echo $this->__('Shop By') ?></span>
+        	<?php if ($content_area): ?>
+        		<a href="javascript:void(0);" onclick="ganSHBlockContent(this);" class="gan-hide-link"><?php if ($content_area && $gan_bcontent_hide): ?><?php echo $this->__('Show') ?><?php else: ?><?php echo $this->__('Hide') ?><?php endif; ?></a>
+        	<?php endif; ?>
+        </strong>
+    </div>
+    <div class="block-content<?php if ($content_area && $gan_bcontent_hide): ?> gan-hidden<?php endif; ?>" id="gan-block-content" <?php if ($content_area && $gan_bcontent_hide): ?>style="display:none;"<?php endif; ?> >
+        <?php echo $this->getStateHtml() ?>
+        <?php if($this->canShowOptions()): ?>
+            <p class="block-subtitle">
+    			<span><?php echo $this->__('Shopping Options') ?></span>
+    			
+    			<?php if(count($this->getActiveFilters()) > 0):?>
+    				<?php if (Mage::helper('gomage_navigation')->isGomageNavigationAjax()): ?>
+    					<button class="button" onclick="setNavigationUrl('<?php echo urlencode($this->getClearUrl(true));?>'); return false;"><span><span><?php echo $this->__('Clear All') ?></span></span></button>
+    				<?php else: ?>
+    					<button class="button" onclick="setLocation('<?php echo $this->getClearUrl();?>')"><span><span><?php echo $this->__('Clear All') ?></span></span></button>
+    				<?php endif; ?>	
+    			
+    			<?php endif;?>
+    		</p>
+            <div id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter):                 	
+                	$filter_id = 'advancednavigation-filter-content-'.$_filter->_filter->getRequestVar();                	
+                ?>
+
+                <?php if($_filter->getItemsCount()): ?>
+                	<?php if($_filter->canShowPopup()):?>	                    
+                        <?php $note_content = trim($_filter->getPopupText())?>	                        
+    					<?php if(strlen($note_content)):?>
+    						<?php	    	                    		
+    	                    		$styles = '';	    	                    		
+    	                    		if($content_width = $_filter->getPopupWidth()){	    	                    			
+    	                    			$styles .= "width:{$content_width}px;";	    	                    			
+    	                    		}
+    	                    		if($content_height = $_filter->getPopupHeight()){	    	                    			
+    	                    			$styles .= "height:{$content_height}px;";	    	                    			
+    	                    		}	    	                    		
+    	                    	?>	    	                    	
+    	                    	<div id="filter-<?php echo $_filter->getPopupId();?>-note-content" class="filter-note-content" <?php if($styles):?> style="<?php echo $styles;?>" <?php endif;?>>
+    								<?php echo nl2br($note_content);?>
+    	                    	</div>
+    					<?php endif;?>
+					<?php endif;?>
+                	<dl class="gan-attribute">	                    	                	                	                	
+	                    <dt onclick="navigationOpenFilter('<?php echo $_filter->_filter->getRequestVar();?>');">
+	                    	<span class="filter-name"><?php echo $this->__($_filter->getName()) ?></span>
+	                    	
+	                    	<?php if($_filter->canShowPopup()):?>
+	                    		                    		                    	
+		                    	<?php if(strlen($note_content)):?>
+		                    	
+		                    	<span class="filter-note-handle" onmouseout="hideNavigationNote();" onmouseover="showNavigationNote('filter-<?php echo $_filter->getPopupId();?>-note-content', this)">?</span>
+		                    		                    	
+		                    	<?php endif;?>
+	                    	
+	                    	<?php endif;?>
+	                    </dt>
+	                    <dd id="<?php echo $filter_id;?>" <?php if($_filter->canShowMinimized()){?> style="display:none;" <?php } ?> >
+	                    
+	                    <?php if ($_filter->canShowResetFirler()): ?>
+	                        <?php $_filter_reset =  $this->getResetFirlerUrl($_filter, $_filter->ajaxEnabled()); ?>
+	                        <?php if ($_filter_reset): ?>
+	                             <a href="<?php echo $_filter_reset; ?>" <?php if ($_filter->ajaxEnabled()): ?>onclick="setNavigationUrl('<?php echo urlencode($_filter_reset); ?>'); return false;"<?php endif; ?> >Reset</a>
+	                        <?php endif; ?>
+	                    <?php endif; ?>
+	                    
+	                    
+	                    <?php echo $_filter->getHtml() ?>					
+						</dd>
+					</dl>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </div>            
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
