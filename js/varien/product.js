@@ -575,6 +575,11 @@ Product.OptionsPrice.prototype = {
 
         this.displayZeroPrice   = true;
 
+        // {{ Added By Steven
+        this.priceFormat.precision = 0;
+        this.priceFormat.requiredPrecision = 0;
+        // }}
+
         this.initPrices();
     },
 
