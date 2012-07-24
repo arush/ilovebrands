@@ -143,7 +143,7 @@
 					
 					$layout->removeOutputBlock('root');
 					$layout->removeOutputBlock('core_profiler');
-					
+					$navBlock=false;
 					if ($layout->getBlock('gomage.catalog.rightnav')){
 						$navBlock = $layout->getBlock('gomage.catalog.rightnav');
 					}
