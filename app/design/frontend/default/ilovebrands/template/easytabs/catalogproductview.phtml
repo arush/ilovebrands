@@ -91,10 +91,7 @@
             <?php /*?><?php echo $this->getChildHtml('alert_urls') ?><?php */?>
 
             <!-- this somehow makes the price box appear -->
-            <div class="rrp">
-                <span class="price-label">RRP</span>
-                <span class="price"><?php echo '£'. number_format($_product->getMsrp()); ?></span>
-            </div>
+            
 			<?php echo $this->getChildHtml('product_type_data') ?>
 
 			<?php if($_product->isSaleable()): ?>
