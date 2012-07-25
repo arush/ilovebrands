@@ -138,14 +138,12 @@
 		public function checkAjax(){
 			
 			if($layout = Mage::getSingleton('core/layout')){
-				Mage::log('ajax: '. Mage::app()->getFrontController()->getRequest()->getParam('ajax'), null, 'arush-gomage.log');
+				
 				if(intval(Mage::app()->getFrontController()->getRequest()->getParam('ajax'))){
 					
 					$layout->removeOutputBlock('root');
 					$layout->removeOutputBlock('core_profiler');
 					
-					Mage::log('navblock: '. $layout->getBlock('catalog.leftnav'), null, 'arush-gomage.log');
-
 					if ($layout->getBlock('gomage.catalog.rightnav')){
 						$navBlock = $layout->getBlock('gomage.catalog.rightnav');
 					}
