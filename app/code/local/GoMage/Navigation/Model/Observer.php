@@ -136,11 +136,15 @@
 		}
 		
 		public function checkAjax(){
+			Mage::log('entered the check ajax function', null, 'arush-gomage.log');
 			
 			if($layout = Mage::getSingleton('core/layout')){
+				Mage::log($layout, null, 'arush-gomage.log');
+				Mage::log(Mage::app()->getFrontController()->getRequest()->getParam('ajax'), null, 'arush-gomage.log');
 				
 				if(intval(Mage::app()->getFrontController()->getRequest()->getParam('ajax'))){
 					
+
 					$layout->removeOutputBlock('root');
 					$layout->removeOutputBlock('core_profiler');
 					
@@ -207,6 +211,7 @@
 				}
 				
 			}
+			else {Mage::log('didnt enter first if\n'.$layout, null, 'arush-gomage.log');}
 			
 		}
 		
