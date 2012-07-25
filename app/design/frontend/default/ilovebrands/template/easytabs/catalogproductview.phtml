@@ -95,7 +95,6 @@
                 <span class="price-label">RRP</span>
                 <span class="price"><?php echo '£'. number_format($_product->getMsrp()); ?></span>
             </div>
-			<?php echo $this->getChildHtml('product_type_data') ?>
 
 			<?php if($_product->isSaleable()): ?>
 				<?php /*WDCA CODE BEGINS*/ ?>
@@ -104,6 +103,8 @@
             <?php endif; ?>
 
             <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('product_type_data') ?>
+
             <?php echo $this->getChildHtml('extrahint') ?>
 
 			<?php if ($_product->isSaleable() && $this->hasOptions() && $this->getChildChildHtml('container2')):?>
