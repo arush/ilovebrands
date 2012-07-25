@@ -137,33 +137,24 @@
 									<?php if($_product->getTypeId() == "configurable"):
 										$ids = $_product->getTypeInstance()->getUsedProductIds();  ?>
 										<span class="sizes-avail">Sizes Available</span>
-										    <?php $i=0;foreach ($ids as $id) :
+										<ul class="sizes">
+										    <?php $_size=0;foreach ($ids as $id) :
 
 										        $simpleproduct = Mage::getModel('catalog/product')->load($id); ?>
 
+												<?php if((int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleproduct)->getQty() > 0) { ?>
+
+                                                    <?php if($_size != $simpleproduct->getResource()->getAttribute('size')->getFrontend()->getValue($simpleproduct)){ ?>
+											            <li class="size-square">
+                                                            <?php echo $simpleproduct->getResource()->getAttribute('size')->getFrontend()->getValue($simpleproduct); ?>
+											            </li>
 												<?php
-                                                    if((int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($simpleproduct)->getQty() > 0)
-                                                    {
-                                                        $_size[$i] = $simpleproduct->getResource()->getAttribute('size')->getFrontend()->getValue($simpleproduct);
-                                                        $i++;
                                                     }
+                                                }
+                                                $_size = $simpleproduct->getResource()->getAttribute('size')->getFrontend()->getValue($simpleproduct);
                                                 ?>
 
-										    <?php
-                                                endforeach;
-                                                $_size = array_unique($_size, SORT_REGULAR);
-                                            ?>
-                                        <ul class="sizes">
-                                            <?php
-                                                foreach($_size as $__size)
-                                                {
-                                             ?>
-                                                    <li class="size-square">
-                                                        <?php echo $__size; ?>
-                                                    </li>
-                                             <?php
-                                                }
-                                             ?>
+										    <?php endforeach;	?>
 										</ul>
 									<?php endif; ?>
 
