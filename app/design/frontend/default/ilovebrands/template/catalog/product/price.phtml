@@ -410,9 +410,15 @@
 <?php /*?>DISCOUNT ADDED BY FLO<?php */?>
 <?php
 $_discount = 0;
-if($_regularPrice !=0) {
-	$_discount_long = 100 * (1 - $_finalPrice / $_regularPrice);
+$_msrp = number_format($_product->getMsrp();
+
+if($_msrp !=0) {
+	$_discount_long = 100 * (1 - $_finalPrice /*sale price*/ / $_msrp);
 	$_discount = round ($_discount_long,0);
+
+    if($_discount == 0) {
+    $_discount_long = 100 * (1 - $_regularPrice /*now price*/ / $_msrp);
+    }
 }
 ?>
 <div class="price-discount">
