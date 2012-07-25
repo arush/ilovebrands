@@ -199,7 +199,7 @@
 
         <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 0)): // including ?>
 
-            <p class="old-price">
+            <p class="old-price strike">
                 <span class="price-label"><?php echo $this->__('NOW') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_regularPrice+$_originalWeeeTaxAmount,true,false) ?>
@@ -313,7 +313,7 @@
 
         <?php else: // excl. ?>
 			<?php /*?>this one is used<?php */?>
-            <p class="old-price">
+            <p class="old-price strike">
                 <span class="price-label"><?php echo $this->__('NOW') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>"><?php echo $_coreHelper->currency($_regularPrice,true,false) ?></span>
             </p>
