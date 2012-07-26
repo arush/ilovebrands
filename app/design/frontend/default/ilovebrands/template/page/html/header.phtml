@@ -7,7 +7,7 @@
 	$action = $request->getActionName();
 
 	$checkoutPage = false;
-	if ($module == 'onestepcheckout'){
+	if ($module === 'onestepcheckout' || $module === 'checkout'){
 		$checkoutPage = true;
 	}
 
