@@ -7,7 +7,7 @@
 	$action = $request->getActionName();
 
 	$checkoutPage = false;
-	if ($module === 'onestepcheckout' || $module === 'checkout'){
+	if ($module === 'onestepcheckout'){
 		$checkoutPage = true;
 	}
 
@@ -19,7 +19,7 @@
     <div class="header">
 	
 		<div class="top-header">
-			<?php if(!$checkoutPage) {
+			<?php if(!$isSecure) {
 				?>
 
 				<div class="store-language"><?php echo $this->getChildHtml('store_language') ?></div>
@@ -200,8 +200,6 @@
 		<?php } ?>
 
     </div>
-    
-    
     
 </div>
 

@@ -36,9 +36,11 @@
 
 <div class="page-title">
     <h1><?php echo $this->__('Thank you for your purchase!') ?></h1>
+    <br/><br/>
+    <h2>Now spare 10 seconds to feedback on our website <a href="http://www.surveymonkey.com/s/WT63HLH">by clicking here</a></h2>
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<p><strong><?php echo $this->__('Why not <a href="%srewardsref/customer/index/">invite your friends and earn 1500 reward points</a> towards your next purchase?', $this->escapeHtml(Mage::getBaseUrl())) ?></strong></p></br>
+
 <?php if ($this->getOrderId()):?>
 <?php if ($this->getCanViewOrder()) :?>
     <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
