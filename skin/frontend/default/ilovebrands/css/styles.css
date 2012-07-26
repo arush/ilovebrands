@@ -13449,13 +13449,12 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 
 
 .product-view .product-shop .price-box p.old-price {
-    background:none repeat scroll 0 0 #B14E4E;
-    width:268px !important;
-
+  background:none;
+  color: #B14E4E;
+  text-decoration: line-through;
 }
 
-.product-view .product-shop .price-box p.old-price span{
-    color:#FFF !important;
-    font-weight:bold;
-    text-decoration: line-through;
+.old-price.strike {
+  text-decoration:line-through;
+  color: red;
 }
