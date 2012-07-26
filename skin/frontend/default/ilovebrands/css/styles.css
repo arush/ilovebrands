@@ -12411,7 +12411,10 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 		.header-panel .checkout-link{
 			padding: 0;
 			float: right;
-		}
+		
+			background-color: #B14E4E;
+			border: 1px solid #D9D9D9;
+}
 		.header-panel .checkout-link ul.links li{
 			padding: 0;
 			display: block;
@@ -12445,13 +12448,14 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 			float: right;
 			position: relative;
 			z-index: 1000;
-		}
+		
+			border: 1px solid #D9D9D9;
+}
 		.top-cart #basket-items{
 			z-index: 5p;
-			border: 1px solid #d9d9d9;
 			background: url('../images/cartbg.png');
 			float: right;
-			width: 121px;
+			width: 118px;
 			border-right: none;
 		}
 		.top-cart .block-title strong{
@@ -12607,7 +12611,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 }
 
 .header-panel .my-account-links li.last a{color: #b14e4e;}
-.header-panel .links li a{color: #8c8c8c; font-size: 11px;}
+.header-panel .links li a{color: #FFF; font-size: 12px;}
 
 /*NAV BAR NEW 2011-05-30 BY FLO START*/
 
@@ -13207,7 +13211,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 
 }
 .store-switcher a.store.active:hover {
-	background-color:#B14E4E;
+	background-color: #B14E4E;
 }
 
 /* home page */
