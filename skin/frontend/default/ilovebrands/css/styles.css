@@ -2656,7 +2656,7 @@ ul.disc li {
 
 .col-main .block .block-title {
   padding: 5px 20px;
-  margin: 0pt 0px -12px -16px;
+  
 }
 
 .col-main .block .block-title h2, .col-main .block .block-title h3 {
@@ -11871,6 +11871,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	width: auto;
 	padding: 0 !important;
   list-style: none;
+   min-height: 265px;
 }
 
 #next-btn, #prev-btn {
