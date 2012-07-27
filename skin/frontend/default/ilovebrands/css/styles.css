@@ -13331,6 +13331,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 }
 .home-new .item-info {
   padding:20px;
+  min-height: 245px;
 }
 
 .bigimage a.prev, .bigimage a.next {
