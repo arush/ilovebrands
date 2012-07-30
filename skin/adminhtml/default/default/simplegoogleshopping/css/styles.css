@@ -1,0 +1,200 @@
+#dfm-view{
+  float: left;
+  margin-left:40px;
+  max-width: 580px;
+  
+}
+#dfm-view #page{
+  background: none repeat scroll 0 0 #EFF8FF;
+  border: 1px solid blue;
+  padding: 10px;
+  min-height:250px;
+  min-width:390px;
+  background: none repeat scroll 0 0 #EFF8FF;
+   border: 1px solid blue;
+   min-height: 250px;
+   min-width: 390px;
+   max-width: 530px;
+   overflow: auto;
+   padding: 10px;
+ }
+ 
+ #dfm-view .feedname,  #dfm-view .feedtype{
+ color:blue;
+ font-weight:bold;
+ }
+  #dfm-view .filetype{
+ color:blue;
+  font-weight:bold;
+ }
+#dfm-view PRE{
+	line-height:12px;
+	font-size:12px;   
+}
+#dfm-view .product{
+	line-height:13px;
+	margin:3px 0px 3px  20px 
+}
+#dfm-view .fileheader{
+	line-height:13px;
+	margin:3px 0px 3px  20px 
+}
+#dfm-view .productpattern{
+	line-height:13px;
+	margin:3px 0px 3px  35px 
+}
+ #simplegoogleshopping_form .txt-field {
+ 	width:160px;
+ 	margin: 2px 0px;
+ }
+#simplegoogleshopping_form.text PRE{
+	margin:0;
+}
+#simplegoogleshopping_form PRE SPAN.red{
+ 	color: red; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.pink{
+color: #FF1493; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.purple{
+color: purple; font-weight: bold;
+}
+
+#simplegoogleshopping_form PRE SPAN.orange{
+ 	color: orange; font-weight: bold;
+ 	border-bottom:1px dotted orange;
+}
+#simplegoogleshopping_form PRE SPAN.blue{
+ 	color: #006699; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.green{
+ 	color: green; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.grey{
+ 	color: grey; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.orangered{
+ 	color: orangered; font-weight: bold;
+}
+#simplegoogleshopping_form PRE SPAN.underline{
+	background:yellow;
+}
+ #simplegoogleshopping_form .remove-field,  #simplegoogleshopping_form .add-field{
+   
+    font-weight: bold;
+    height: 21px;
+    padding: 2px 0 3px;
+    width: 21px;
+ }
+ #simplegoogleshopping_form .remove-field{
+  margin-right:15px;
+  }
+#simplegoogleshopping_form .product-txt-field,  #simplegoogleshopping_form .txt-field.first{
+  margin-right:15px;
+  margin-left:15px;
+ }
+ 
+ #simplegoogleshopping_form  .txt-field-box SPAN{
+ display:block;
+ float:left;
+ }
+ #simplegoogleshopping_form .mapping{ 
+    margin-top: 20px;
+    font-weight:bold;
+ }
+
+ 
+ 
+  #simplegoogleshopping_form .txt-field-box{
+  margin-bottom:20px;
+ 
+  }
+ #simplegoogleshopping_form .add-field{
+     margin-bottom:25px;
+ 	width:80px;
+   
+ }
+#simplegoogleshopping_form .form-list{float:left}
+
+#simplegoogleshopping_form.text   #dfm-view {margin-top: 20px;}
+
+
+.main-box{
+    width:650px;
+}
+.cat-box{
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    background-color: #efefef;
+    padding:0 3px;
+    margin:2px;
+    border:1px solid #AFAFAF;
+    position:relative;
+}
+
+#category-selector #note{
+    font-size:11px;
+    margin-top:10px;
+    color:orangered;
+}
+
+#category-selector .cat-box{
+ padding: 0 0 0 22px;
+}
+.small{
+    font-size:10px;
+}
+.categories-tree{
+    margin:2px 0 2px 15px;
+}
+#category-selector{
+    overflow:auto;
+    height:auto;
+}
+#category-selector INPUT.mapping{
+    width:79%;
+    color:grey;
+    border:none;
+    background:transparent;
+    margin-left:2px;
+    font-size:11px;
+}
+  #category-selector .mapped{ 
+   font-size:11px;
+    }
+  #category-selector .mapped SPAN{ 
+   padding-left:35px;
+   background:url("../arrow.png") no-repeat scroll 23px 1px transparent;
+ }
+
+#category-selector .tree_view{
+    width:9px;
+    height:9px;
+    position:absolute;
+    top:5px;
+    left:5px;
+}
+#category-selector .tree_view.close{
+    background:url(../treeview_p.png) no-repeat 50% 50%;
+}
+#category-selector .tree_view.open{
+    background:url(../treeview_m.png) no-repeat 50% 50%;
+}
+
+.categories-tree INPUT{
+    margin-right:10px;
+}
+
+#type-ids-selector INPUT, #visibility-selector INPUT{
+    margin-right:10px;
+}
+
+LI.selected > .cat-box,  DIV.selected > .cat-box{
+    background-color: #EFFFF0;
+}
+
+#attributes-selector .value-attribute{
+    vertical-align:bottom;
+    margin-bottom:1px;
+}

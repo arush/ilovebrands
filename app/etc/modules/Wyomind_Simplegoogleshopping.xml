@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @package    Wyomind_Simplegoogleshopping
+ */
+ -->
+<config>
+    <modules>
+        <Wyomind_Simplegoogleshopping>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wyomind_Simplegoogleshopping>
+    </modules>
+</config> 

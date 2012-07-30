@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+      <menu>
+            <catalog>
+                <children>
+                    <simplegoogleshopping translate="title" module="simplegoogleshopping">
+                        <title>Simple Google Shopping</title>
+                        <sort_order>200</sort_order>
+                        <action>simplegoogleshopping/adminhtml_simplegoogleshopping</action>
+                   </simplegoogleshopping>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <simplegoogleshopping translate="title" module="simplegoogleshopping">
+                                    <title>Simple Google Shopping</title>
+                               </simplegoogleshopping>
+                            </children>
+                        </catalog>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                       <simplegoogleshopping>
+                                            <title>Simple Google Shopping</title>
+                                       </simplegoogleshopping>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+		
+		
+		
+     <translate>
+            <modules>
+                <Wyomind_Simplegoogleshopping>
+                    <files>
+                        <default>Wyomind_Simplegoogleshopping.csv</default>
+                    </files>
+                </Wyomind_Simplegoogleshopping>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <simplegoogleshopping>
+                    <file>simplegoogleshopping.xml</file>
+                </simplegoogleshopping>
+            </updates>
+        </layout>
+
+</config>

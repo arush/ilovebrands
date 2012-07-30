@@ -1,0 +1,107 @@
+
+
+
+
+<div class='entry-edit'>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Product type'); ?></h4></div>
+    <div class="fieldset " id='type-ids-selector'>
+        <div class="main-box">
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_simple' identifier='simple'/><?php echo $this->__('Simple');?></div></div>		
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_configurable' identifier='configurable'/><?php echo $this->__('Configurable');?></div>	</div>	
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_bundle' identifier='bundle'/><?php echo $this->__('Bundle');?></div>	</div>	
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_grouped' identifier='grouped'/><?php echo $this->__('Grouped');?></div>	</div>
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_virtual' identifier='virtual'/><?php echo $this->__('Virtual');?></div>	</div>	
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='type_id_downloadable' identifier='downloadable'/><?php echo $this->__('Downloadable');?></div>	</div>	
+        </div>
+    </div>
+</div>
+
+<div class='entry-edit'>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Product visibility'); ?></h4></div>
+    <div class="fieldset " id='visibility-selector'>
+        <div class="main-box">
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='visibility_1' identifier='1'/><?php echo $this->__('Not Visible Individually'); ?></div></div>		
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='visibility_2' identifier='2'/><?php echo $this->__('Catalog'); ?></div>	</div>	
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='visibility_3' identifier='3'/><?php echo $this->__('Search'); ?></div>	</div>	
+            <div class="node"><div class='cat-box'><input  type='checkbox' id='visibility_4' identifier='4'/><?php echo $this->__('Catalog, Search'); ?></div>	</div>	
+        </div>
+    </div>
+</div>
+
+<div class='entry-edit'>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Advanced filters'); ?></h4></div>
+    <div class="fieldset " id='attributes-selector'>
+        <?php
+        /* R�cup�rer l'id du type d'attributs */
+        $resource = Mage::getSingleton('core/resource');
+        $read = $resource->getConnection('core_read');
+        $tableEet = $resource->getTableName('eav_entity_type');
+        $select = $read->select()->from($tableEet)->where('entity_type_code=\'catalog_product\'');
+        $data = $read->fetchAll($select);
+        $typeId = $data[0]['entity_type_id'];
+
+
+        /*  Liste des  attributs disponible dans la bdd */
+
+        $attributesList = Mage::getResourceModel('eav/entity_attribute_collection')
+                ->setEntityTypeFilter($typeId)
+                ->addSetInfo()
+                ->getData();
+        $selectOutput = null;
+        foreach ($attributesList as $attribute) {
+
+
+            if (!empty($attribute['frontend_label']))
+                $selectOutput.= "<option value='" . $attribute['attribute_code'] . "'>" . $attribute['frontend_label'] . "</option>";
+        }
+        $selectOutput.= "<option value='qty'>Quantity</option>";
+        $selectOutput.= "<option value='is_in_stock'>Is in stock</option>";
+        echo "<script>";
+        foreach ($attributesList as $attribute) {
+            $attribute = Mage::getModel('catalog/resource_eav_attribute')->load($attribute['attribute_id']);
+            $attributeOptions = $attribute->getSource()->getAllOptions();
+            $options = array();
+            foreach ($attributeOptions as $attributeOption) {
+
+                if ((string)$attributeOption["value"] != '') {
+                    $options[] = $attributeOption;
+                }
+            }
+            echo " " . $attribute['attribute_code'] . "=" . json_encode($options) . ";";
+        }
+         echo "</script>";
+        ?>
+
+        <?php for ($x = 0; $x <= Mage::getStoreConfig("simplegoogleshopping/system/filters"); $x++) : ?>
+
+            <div class="node" id='node_<?php echo $x; ?>'>
+                <div class='cat-box' >
+                    <input  type='checkbox' id='attribute_<?php echo $x; ?>' identifier='<?php echo $x; ?>'/> 
+                    <select style="width:300px" disabled="disabled" class="name-attribute" id='name_attribute_<?php echo $x; ?>' onchange='setValues($("attributes-selector"))' >
+                        <?php echo $selectOutput; ?>
+
+                    </select>
+
+
+
+                    <select disabled="disabled" class="condition-attribute" id='condition_attribute_<?php echo $x; ?>' onchange='setValues($("attributes-selector"))' style="width:100px">
+                        <option value='eq'><?php echo $this->__('=') ?></option>
+                        <option value='gt'><?php echo $this->__('>') ?></option>
+                        <option value='lt'><?php echo $this->__('<') ?></option>
+                        <option value='gteq'><?php echo $this->__('&ge;') ?></option>
+                        <option value="lteq"><?php echo $this->__('&le;') ?></option>
+                        <option value='neq'><?php echo $this->__('&ne;') ?></option>
+                        <option value='like'><?php echo $this->__('like') ?></option>
+                        <option value='nlike'><?php echo $this->__('not like') ?></option>
+                        <option value='null'><?php echo $this->__('is null') ?></option>
+                        <option value='notnull'><?php echo $this->__('is not null') ?></option>
+                        <option value='in'><?php echo $this->__('in') ?></option>
+                        <option value='nin'><?php echo $this->__('not in') ?></option>
+                    </select>
+                    <select disabled="disabled" size="3" class='pre-value-attribute' id="pre-value-attribute_<?php echo $x; ?>" style="display:none;width:300px" multiple="multiple "></select>
+                    <input disabled="disabled"  type='text' class="value-attribute"  id="value_attribute_<?php echo $x; ?>" style="width:300px" onkeyup='setValues($("attributes-selector"))'/>
+                </div>
+            </div>
+        <?php endfor; ?>
+    </div>
+</div>

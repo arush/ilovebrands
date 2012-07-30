@@ -1,0 +1,88 @@
+"Preview", "Apperçu"
+"products", "produits"
+"Delete", "Supprimer"
+"Generate","Générer"
+"Edit","Editer"
+
+"Store View","Magasin"
+"Action","Action"
+"Save & Generate","Sauver et générer"
+"Save & Continue","Sauver et continuer"
+"Copy","Copier"
+"Save","Sauver"
+"Back","Retour"
+"Reset","Réinitialiser"
+
+"Configuration", "Configuration"
+"Categories", "Catégories"
+"Filters","Filtres"
+"Scheduled task","Tache planifiée"
+
+"Simplegoogleshopping filename","Nom du fichier"
+"File path","Chemin vers le fichier"
+"File link","Lien vers le fichier"
+"Last update","Mise à jour"
+"Website url", "Url du site"
+"Title", "Titre"
+"Xml template", "Modèle xml"
+"Filename", "Nom de fichier"
+"Path", "Chemin"
+"Description", "Description"
+
+
+"Filter the categories","Filtrer les categories"
+"<b>Exclude</b> all products from the selected categories.","Exclure tous les produits des catégories sélectionnées"
+"<b>Include</b> all products from the selected categories.","Inclure tous les produits des catégories sélectionnées"
+"Category selection and mapping","Sélection et mappage des categories"
+"mapped as","mappé avec"
+"* If you do not select any category, all products will be exported","* Si vous n'avez sélectionné aucune catégorie, tous les produits seront exportés"
+
+"Not Visible Individually", "Nul part"
+"Catalog", "Catalogue"
+"Search", "Recherche"
+"Catalog, Search", "Catalogue, recherche"
+"Simple","Simple"
+"Configurable","Configurable"
+"Bundle","Packagé"
+"Grouped","Groupé"
+"Virtual","Virtuel"
+"Downloadable","Téléchargeable"
+"Monday","Lundi"
+"Tuesday","Mardi"
+"Wednesday","Mercredi"
+"Thursday","jeudi"
+"Friday","Vendredi"
+"Saturday","Samedi"
+"Sunday","Dimanche"
+"Days of the week","Jours de la semaine"
+"Hours of the day","Heures du jour"
+"Setting","Réglages"
+
+
+"Product type","Type de produits"
+"Product visibility","Visibilité des produits"
+"Advanced filters","Filtres avancés"
+
+"Create a new data feed","Créer un nouveau flux de données"
+"Modify data feed : ","Modifier le flux de données :"
+
+"This is a required field.", "Ce champ est obligatoire."
+
+"Item does not exist","L'élément n'existe pas"
+"Generate a data feed can take a while. Are you sure you want to generate it now ?","Générer un flux de donnée Google Shopping peut prendre un moment, êtes vous sûr de vouloir le faire maintenant ?"
+
+
+"The data feed \"%s\" has been generated.","Le  Catalogue Google Shopping \"%s\" a été généré."
+"The data feed has been saved.","Le flux de données a été enregistré."
+"The data feed has been deleted.","Le flux de données  a été effacé."
+"Unable to find a data feed to delete.","Impossible de trouver  le flux de données  à supprimer."
+"Unable to generate the data feed.","Impossible de générer le flux de données ."
+"Unable to find a data feed to generate.","Impossible de trouver le flux de données à générer."
+"Please define correct path","Précisez un chemin valable"
+"Please create the specified folder \"%s\" before saving the data feed.","Veuillez créer le dossier "%s" avant d'enregistrer le fluc de données"
+"Please make sure that \"%s\" is writable by web-server.","Veuillez vérifier que le chemin \"%s\" est ouvert en écriture sur le serveur."
+"Please use only letters (a-z or A-Z), numbers (0-9) or underscore (_) in the filename. No spaces or other characters are allowed.","Veillez utiliser des caractères alphanumérique ou l'underscore (_) pour le nom du fichier"
+"File \"%s\" cannot be saved. Please, make sure the directory \"%s\" is writeable by web server.","Le fichier \"%s\" ne peut pas être enregistré. Veillez vérifier que le dossier \"%s\" est ouvert en écriture sur le serveur."
+
+
+

@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <WYOMIND translate="label">
+            <label>WYOMIND</label>
+            <sort_order>1000000</sort_order>
+        </WYOMIND>
+    </tabs>
+    <sections>
+        <simplegoogleshopping translate="label">
+            <label>Simple Google Shopping</label>
+            <tab>WYOMIND</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <license translate="label">
+                    <label>License activation</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <version translate="label comment">
+                            <label>Extension version</label>
+                            <frontend_type>Link</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </version>
+                        <activation_key translate="label comment">
+                            <label>Activation key</label>
+                            <comment>
+                <![CDATA[<span class="notice">1- Fill this field with your activation key.</span>]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </activation_key>
+                        <get_online_license translate="label comment">
+                            <label>Remote activation :</label>
+                            <comment>
+                <![CDATA[<span class="notice">2- Choose your activation method.<br>[yes = automatic activation]<br>[no = manual activation]</span>]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </get_online_license>
+                        <activation_code translate="label comment">
+                            <label>License code</label>
+                            <comment>
+                <![CDATA[<span class="notice">3 - Go to Catalog > Google Shopping.<br>Then fill this field with the license code you get.</span>]]>
+                            </comment>
+                            <depends>
+                                <get_online_license>0</get_online_license>
+                            </depends>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </activation_code>
+			
+                    </fields>
+                </license>
+                <setting translate="label">
+                    <label>Cron job reporting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <fields>
+                        <enable_report translate="label comment">
+                            <label>Enable cron job reporting</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable_report>
+                        <emails translate="label comment">
+                            <label>Send the reports to </label>
+                            <comment>
+               <![CDATA[<span class="notice">Emails must be separated with a comma (,).</span>]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </emails>
+                        <report_title translate="label comment">
+                            <label>Report title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </report_title>
+                        <report_debug translate="label comment">
+                            <label>Debug mode</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>
+               <![CDATA[<span class="notice">Enable html job reporting in cron.php file</span>]]>
+                            </comment>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </report_debug>
+                      
+                      
+                    </fields>
+                </setting>
+                <system translate="label">
+                    <label><![CDATA[ Core setting <span class="notice"> // Advanced users //</span>]]>
+                    </label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>300</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <fields>
+                       
+                        <preview translate="label comment">
+                            <label>Items in preview</label>
+                            <comment>
+                            <![CDATA[ <span class="notice"> Default value -> 10</span>]]>
+                            </comment>
+                            <validate>required-entry  validate-number</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </preview>
+                        <buffer translate="label comment">
+                            <label>Items in buffer</label>
+                            <comment>
+                            <![CDATA[ <span class="notice">Default value -> 10</span>]]>
+                            </comment>
+                            <validate>required-entry  validate-number</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </buffer>
+                        <sqlsize translate="label comment">
+                            <label>Items in SQL request</label>
+                            <comment>
+                            <![CDATA[ <span class="notice">Default value -> 1500</span>]]>
+                            </comment>
+                            <validate>required-entry validate-number</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sqlsize>
+                        <filters translate="label comment">
+                            <label>Number of advanced filters</label>
+                            <comment>
+                            <![CDATA[ <span class="notice">Default value -> 10</span>]]>
+                            </comment>
+                            <validate>required-entry validate-number</validate>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </filters>
+                    </fields>
+                </system>
+            </groups>
+        </simplegoogleshopping>
+    </sections>
+</config>
+
+
+
+

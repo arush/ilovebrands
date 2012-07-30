@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Wyomind
+ * @package    Wyomind_Simplegoogleshopping
+ * @license    http://wyomind.com
+ */
+ --> 
+<config>
+    <modules>
+        <Wyomind_Simplegoogleshopping>
+            <version>6.1.1</version> 
+        </Wyomind_Simplegoogleshopping> 
+    </modules> 
+    <default>
+       <simplegoogleshopping>
+            <license>
+                <version>6.1.1</version>
+            </license>
+            <setting>
+                <report_title>Simple Google Shopping - report </report_title>
+            </setting>
+            <system>
+                <preview>10</preview>
+                <buffer>10</buffer>
+                <sqlsize>1500</sqlsize>
+                <filters>10</filters>
+            </system>
+       </simplegoogleshopping>
+    </default>
+    <frontend>
+        <routers>
+           <simplegoogleshopping>
+                <use>standard</use>
+                <args>
+                    <module>Wyomind_Simplegoogleshopping</module>
+                    <frontName>simplegoogleshopping</frontName>
+                </args>
+           </simplegoogleshopping>
+        </routers>  
+    </frontend>
+    <admin>
+        <routers>
+           <simplegoogleshopping>
+                <use>admin</use>
+                <args>
+                    <module>Wyomind_Simplegoogleshopping</module>
+                    <frontName>simplegoogleshopping</frontName>
+                </args>
+           </simplegoogleshopping>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <catalog>
+                <children>
+                    <simplegoogleshopping translate="title" module="simplegoogleshopping">
+                        <title>Simple Google Shopping</title>
+                        <sort_order>200</sort_order>
+                        <action>simplegoogleshopping/adminhtml_simplegoogleshopping</action>
+                   </simplegoogleshopping>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <simplegoogleshopping translate="title" module="simplegoogleshopping">
+                                    <title>Simple Google Shopping</title>
+                               </simplegoogleshopping>
+                            </children>
+                        </catalog>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                       <simplegoogleshopping>
+                                            <title>Simple Google Shopping</title>
+                                       </simplegoogleshopping>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+		
+		
+		
+        <translate>
+            <modules>
+                <Wyomind_Simplegoogleshopping>
+                    <files>
+                        <default>Wyomind_Simplegoogleshopping.csv</default>
+                    </files>
+                </Wyomind_Simplegoogleshopping>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <simplegoogleshopping>
+                    <file>simplegoogleshopping.xml</file>
+                </simplegoogleshopping>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <simplegoogleshopping>
+                <class>Wyomind_Simplegoogleshopping_Model</class>
+                <resourceModel>simplegoogleshopping_mysql4</resourceModel>
+            </simplegoogleshopping>
+            <simplegoogleshopping_mysql4>
+                <class>Wyomind_Simplegoogleshopping_Model_Mysql4</class>
+                <entities>
+                    <simplegoogleshopping>
+                        <table>simplegoogleshopping</table>
+                    </simplegoogleshopping>
+                </entities>
+            </simplegoogleshopping_mysql4>
+        </models>
+        <resources>
+            <simplegoogleshopping_setup>
+                <setup>
+                    <module>Wyomind_Simplegoogleshopping</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </simplegoogleshopping_setup>
+            <simplegoogleshopping_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </simplegoogleshopping_write>
+            <simplegoogleshopping_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </simplegoogleshopping_read>
+        </resources>
+        <blocks>
+            <simplegoogleshopping>
+                <class>Wyomind_Simplegoogleshopping_Block</class>
+           </simplegoogleshopping>
+        </blocks>
+        <helpers>
+           <simplegoogleshopping>
+                <class>Wyomind_Simplegoogleshopping_Helper</class>
+           </simplegoogleshopping>
+        </helpers>
+    </global>
+    <crontab>
+        <jobs>
+            <simplegoogleshopping_generate>
+                <schedule>
+                    <cron_expr>* * * * *</cron_expr>
+                </schedule>
+                <run> 
+                    <model>simplegoogleshopping/observer::scheduledGenerateCatalogs</model>
+                </run>
+            </simplegoogleshopping_generate>
+        </jobs>
+    </crontab>
+</config>

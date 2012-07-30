@@ -1,0 +1,91 @@
+
+
+<div class='entry-edit'>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Filter the categories'); ?></h4></div>
+    <div class="fieldset" id='category-type'>
+
+        <div class='main-box'>
+            <script>
+                 document.observe('dom:loaded', function(){
+                     console.log($('simplegoogleshopping_category_filter').value)
+                     if($('simplegoogleshopping_category_filter').value==1){
+                         $('category_filter_0').checked=false;
+                         $('category_filter_1').checked=true;
+                     }
+                     else{
+                         $('category_filter_0').checked=true;
+                         $('category_filter_1').checked=false;
+                     }
+                     $$('.category_filter').each(function(r){
+                         r.observe('click',function(){
+                             console.log(r.value)
+                             $('simplegoogleshopping_category_filter').value=r.value;
+                         })
+                     })
+                 })
+            </script>
+            <input type='radio' value='0' name='category_filter' class='category_filter' id="category_filter_0" /> <?php echo $this->__("<b>Exclude</b> all products from the selected categories."); ?><br/>
+            <input type='radio' value='1' name='category_filter' class='category_filter' id="category_filter_1" /> <?php echo $this->__("<b>Include</b> all products from the selected categories."); ?><br/>
+           
+        </div>
+    </div>
+    <div class="entry-edit-head"><h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Category selection and mapping'); ?></h4></div>
+    <div class="fieldset" id='category-selector'>
+
+        <div class='main-box'>
+           
+            <?php
+            $storeId = $this->getStoreId();
+            $listOfCategories = Mage::getModel('catalog/category')->getCollection()
+                    ->setStoreId($storeId)
+                    ->addAttributeToSelect('name')
+
+                    // ->addAttributeToSelect('is_active')
+                    ->addAttributeToSort('path', 'ASC');
+
+            $categories = array();
+            foreach ($listOfCategories as $category) {
+                if (substr($category->getPath(), 0, 1) != '/' && $category->getLevel()>0) {
+                    $categories[$category->getId()]['name'] = $category->getName();
+                    $categories[$category->getId()]['path'] = $category->getPath();
+                    $categories[$category->getId()]['depth'] = count(explode('/', $category->getPath()))-1;
+                    $categories[$category->getId()]['id'] = $category->getId();
+                }
+            }
+
+            //  array_shift($categories);
+
+
+            $a = 0;
+            $current_depth[$a] = 0;
+            $a++;
+            foreach ($categories as $category) {
+                $current_depth[$a] = $category['depth'];
+                if ($current_depth[$a] - $current_depth[$a - 1] > 1)
+                    continue;
+                //  print_r($category);
+                //  echo "<br>";
+                if ($current_depth[$a] > $current_depth[$a - 1])
+                    echo "<ul class='categories-tree'>";
+                elseif ($current_depth[$a] < $current_depth[$a - 1]) {
+                    $ll = $current_depth[$a - 1] - $current_depth[$a];
+                    for ($l = 0; $l < $ll; $l++) {
+                        echo " </li></ul>";
+                    }
+                }
+                echo "<li class='node'>
+                                
+				<div class='cat-box'>
+                                        <div class='tree_view'></div>
+                                        <input type='checkbox' id='category_" . $category['path'] . "' identifier='" . $category['path'] . "' class='category'/>" . $category['name'] . " <span class='small'>[ID:" . $category['id'] . "]</span>
+					<span class='mapped'><br><span>" . $this->__('mapped as') . " :</span></span> <input title='Press `End.` on your keyboard in order to apply this value to all the sub-categories' type='text' class='mapping' id='category_mapping" . $category['path'] . "' class='mapping' >
+				</div>";
+                $a++;
+            }
+            echo "</li></ul><span id='note' style='margin-left:10px;'>".$this->__("* If you do not select any category, all products will be exported")."</span>";
+            ?>
+            
+        </div>
+    </div>
+</div>
+
