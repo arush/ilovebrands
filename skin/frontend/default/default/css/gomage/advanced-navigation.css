@@ -481,6 +481,7 @@ ul.image-align-2-columns li{
 .gan-track-values{
   overflow:hidden;
   margin:0 -5px;
+  color: #444;
   }
   .gan-track-values .value-min{
     float:left;
