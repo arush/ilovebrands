@@ -122,8 +122,8 @@
 				
 				//else, they're a normal registered user.
 				else {
-					$customer = Mage::getModel('customer/customer')->load($order->getCustomerId());
-					$customer->getDefaultBillingAddress()->getLastname();
+					// $customer = Mage::getModel('customer/customer')->load($order->getCustomerId());
+					// $customer->getDefaultBillingAddress()->getLastname();
 				}
 			?>
 			// they are now a paying customer
