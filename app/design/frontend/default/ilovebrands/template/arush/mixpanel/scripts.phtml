@@ -81,7 +81,7 @@
 			// by converting body tags to payload elements
 
 			var bodyClass = $j('body').attr('class');
-			var bodyClass = bodyClass.split(" ");
+			bodyClass = bodyClass.split(" ");
 			var x;
 			var payload = new Array();
 
@@ -89,12 +89,12 @@
 				payload['page-'+x]= bodyClass[x];
 			}
 
-			mixpanel.track_links(".add-to-cart button", "added to cart", payload, function() { console.log('add to cart succeeded') });
+			mixpanel.track_links(".add-to-cart button", "added to cart", payload, function() { console.log('add to cart succeeded'); });
 
 			// filtered nav
-			var link = $j('#narrow-by-list li a')
+			var link = $j('#narrow-by-list li a');
 			link.click(function(event) {
-				mixpanel.track("Filter", function(event.target) {
+				mixpanel.track("Filter", payload, function(event.target) {
 					var filterType = $j(this).closest('dl').find('dt span').text();
 					return { filter_type: filterType };
 				});
