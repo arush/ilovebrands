@@ -28,9 +28,9 @@
 			$customerID = $customer->getId();
 			$customerEmail = $customer->getEmail();
 			$createdAt = $customer->getCreatedAt();
-			$gender = $customer-getGender();
 			$fname = $customer->getFirstname();
 			$lname = $customer->getLastname();
+			$gender = $customer->getAttributeText('gender');
 
 			// check if they have ever made an order
 			$orders = Mage::getResourceModel('sales/order_collection')
@@ -52,7 +52,6 @@
 			    "$first_name": '<?php echo $fname ?>',
 			    "$last_name": '<?php echo $lname ?>',
 			    "$created": '<?php echo $createdAt; ?>',
-			    
 			    "gender": '<?php echo $gender ?>'
 			});
 		<?php } ?>
@@ -115,6 +114,7 @@
 					    "$email": '<?php echo $order->getBillingAddress()->getEmail(); ?>',    // only special properties need the $
 					    "$first_name": '<?php echo $order->getBillingAddress()->getFirstname(); ?>',
 					    "$last_name": '<?php echo $order->getBillingAddress()->getLastname(); ?>',
+					    "$gender": '<?php echo $order->getCustomerGender(); ?>',
 					    "$created": '<?php echo date("Y-m-d H:i:s") ?>'
 					});
 				
