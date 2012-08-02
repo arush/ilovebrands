@@ -1,0 +1,139 @@
+<?php  if(Mage::getStoreConfig('mixpanel/track/mixpanel_on')) {
+	$payer = false; // default for non paying customers
+	
+
+	$userIp = Mage::helper('mixpanel')->getUserIp();
+	$internalIp = '78.86.161.88';
+	
+	if($userIp === $internalIp) {
+		$internal = true;
+	}
+	else {
+		$internal = false;
+	}
+
+	// check the page
+	$request = $this->getRequest();
+	$module = $request->getModuleName();
+	$controller = $request->getControllerName();
+	$action = $request->getActionName();
+
+
+?>
+	<!-- start Mixpanel BRANDiD code -->
+	<script type="text/javascript">
+		
+		<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+			$customer = Mage::getSingleton('customer/session')->getCustomer();
+			$customerID = $customer->getId();
+			$customerEmail = $customer->getEmail();
+			$createdAt = $customer->getCreatedAt();
+			$gender = $customer-getGender();
+			$fname = $customer->getFirstname();
+			$lname = $customer->getLastname();
+
+			// check if they have ever made an order
+			$orders = Mage::getResourceModel('sales/order_collection')
+			    ->addFieldToSelect('customer_id')
+			    ->addFieldToFilter('customer_id', $customerID);
+
+			if ($this->isCustomerLoggedIn() && (!$orders->getSize()))
+			{ 
+			    $payer = false; // default for non paying customers
+			}
+			else {
+				$payer = true;
+			}
+
+		 ?>
+			mixpanel.identify("<?php echo $customerID; ?>");
+			mixpanel.people.set({
+			    "$email": '<?php echo $customerEmail; ?>',    // only special properties need the $
+			    "$first_name": '<?php echo $fname ?>',
+			    "$last_name": '<?php echo $lname ?>',
+			    "$created": '<?php echo $createdAt; ?>',
+			    
+			    "gender": '<?php echo $gender ?>'
+			});
+		<?php } ?>
+
+		// create payload
+
+		
+		// track first touch / original referrer
+		mixpanel.register_once({
+			'first touch': window.location.href
+			,'first touch referrer': document.referrer
+	 	});
+	 	// track current referrer
+	 	mixpanel.register({
+			'current referrer': document.referrer
+			,'paying customer': '<?php echo $payer ?>'
+			,'internal': '<?php echo $internal ?>'
+	 	});
+
+		// custom actions
+		document.observe('dom:loaded', function(){
+			
+			var $j = jQuery.noConflict();
+
+			// create payload with page information and attached to every event
+			// by converting body tags to payload elements
+
+			var bodyClass = $j('body').attr('class');
+			var bodyClass = bodyClass.split(" ");
+			var x;
+			var payload = new Array();
+
+			for (x in bodyClass) {
+				payload['page-'+x]= bodyClass[x];
+			}
+
+			mixpanel.track_links(".add-to-cart button", "added to cart", payload, function() { console.log('add to cart succeeded') });
+
+			// filtered nav
+			var link = $j('#narrow-by-list li a')
+			link.click(function(event) {
+				mixpanel.track("Filter", function(event.target) {
+					var filterType = $j(this).closest('dl').find('dt span').text();
+					return { filter_type: filterType };
+				});
+			});
+
+
+			<?php /* order success page only */ 
+			if($module === 'onepage' && $controller === 'checkout' && $action === 'success') {
+
+				// get last order
+				$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+				$order = Mage::getModel('sales/order')->load($orderId);
+				
+				//If they have no customer id, they're a guest. We can link customer details from the order to the mixpanel cookie
+				if($order->getCustomerId() === NULL){ ?>
+					
+					mixpanel.people.set({
+					    "$email": '<?php echo $order->getBillingAddress()->getEmail(); ?>',    // only special properties need the $
+					    "$first_name": '<?php echo $order->getBillingAddress()->getFirstname(); ?>',
+					    "$last_name": '<?php echo $order->getBillingAddress()->getLastname(); ?>',
+					    "$created": '<?php echo date("Y-m-d H:i:s") ?>'
+					});
+				
+				<?php }
+				
+				//else, they're a normal registered user.
+				else {
+					$customer = Mage::getModel('customer/customer')->load($order->getCustomerId());
+					$customer->getDefaultBillingAddress()->getLastname();
+				}
+			?>
+			// they are now a paying customer
+			mixpanel.register({'paying customer':true});
+
+			<?php } ?>
+
+		});
+
+	</script>
+	<!-- end Mixpanel BRANDiD code -->
+
+<?php } ?>
