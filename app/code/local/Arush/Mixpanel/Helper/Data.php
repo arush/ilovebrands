@@ -10,23 +10,24 @@ class Arush_Mixpanel_Helper_Data extends Mage_Core_Helper_Abstract
 	**/
 	public function getUserIp() {
 
-    if (isset($_SERVER)) {
+        if (isset($_SERVER)) {
 
-    	// if using a proxy
-        if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
-            return $_SERVER["HTTP_X_FORWARDED_FOR"];
-        
-        if (isset($_SERVER["HTTP_CLIENT_IP"]))
-            return $_SERVER["HTTP_CLIENT_IP"];
+        	// if using a proxy
+            if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+                return $_SERVER["HTTP_X_FORWARDED_FOR"];
+            
+            if (isset($_SERVER["HTTP_CLIENT_IP"]))
+                return $_SERVER["HTTP_CLIENT_IP"];
 
-        return $_SERVER["REMOTE_ADDR"];
+            return $_SERVER["REMOTE_ADDR"];
+        }
+
+        if (getenv('HTTP_X_FORWARDED_FOR'))
+            return getenv('HTTP_X_FORWARDED_FOR');
+
+        if (getenv('HTTP_CLIENT_IP'))
+            return getenv('HTTP_CLIENT_IP');
+
+        return getenv('REMOTE_ADDR');
     }
-
-    if (getenv('HTTP_X_FORWARDED_FOR'))
-        return getenv('HTTP_X_FORWARDED_FOR');
-
-    if (getenv('HTTP_CLIENT_IP'))
-        return getenv('HTTP_CLIENT_IP');
-
-    return getenv('REMOTE_ADDR');
 }
