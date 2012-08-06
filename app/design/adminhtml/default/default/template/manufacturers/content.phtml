@@ -1,0 +1,70 @@
+<?php
+/**
+ * Sample template for custom tab content by FishPig
+ *
+ * Feel free to change this template to what ever you like
+ *
+ */
+?>
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend">Manufacturers</h4>
+	</div>
+	<div id="group_fields4" class="fieldset fieldset-wide">
+		<div class="hor-scroll">
+			<table cellspacing="0" class="form-list">
+				<tbody>
+					<tr>
+						<td>
+                            <table cellspacing="0" class="form-list">
+                            <tbody>
+                                <tr>
+                                    <td class="label"><label for="enablenew">Select Manufacturer</label></td>
+                                    <td class="value">
+                                    
+                                    	<?php
+											$manufacturerID = 0;
+											try {
+												$id = $this->getRequest()->getParam('id');
+												if($id != "" && $id != 0 && $id != NULL) {
+													$collection  = Mage::getModel('manufacturers/manufacturers')->checkManufacturer($id);
+													foreach ( $collection as $_manufacturer ) :
+														$manufacturerID = $_manufacturer["manufacturers_id"];
+													endforeach;
+												}
+											} catch (Exception $e) {}
+										?>
+                                    
+                                    	<?php
+											try {
+											$collection = Mage::getModel('manufacturers/manufacturers')->getCollection()
+											->addFieldToFilter('main_table.status', 1)
+											->getData();
+											} catch (Exception $e) {}
+										?>	
+										<select class=" select" name="manufacturers_id" id="manufacturers_id">
+											<option value="0">No Manufacturer</option>
+											<?php foreach ( $collection as $_manufacturer) : ?>
+                                            <?php
+                                            	if($manufacturerID == $_manufacturer["manufacturers_id"]) {
+													$optionVal = 'selected="selected"';
+												} else {
+													$optionVal = '';
+												}
+											?>
+												<option <?php echo $optionVal;?> value="<?php echo  $_manufacturer["manufacturers_id"]; ?>"><?php echo  $_manufacturer["m_name"]; ?></option>
+											<?php endforeach; ?> 
+										</select>
+                                    </td>
+                                    <td class="scope-label"><span class="nobr">[GLOBAL]</span></td>
+                                    <td><small>&nbsp;</small></td>
+                                </tr>
+                            </tbody>
+                            </table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<?php
+/**
+ * Manufacturers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Manufacturers
+ * @author     Kamran Rafiq Malik <kamran.malik@unitedsol.net>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+?>
+<?php
+$config = Mage::getModel('manufacturers/image_config');
+$image = Mage::getModel('media/image');
+$image->setConfig($config);	
+$brandsLinks = Mage::helper('manufacturers')->getBrandLinks();
+?>	
+<div style="padding-top:5px;"><h5><?php echo $this->__(Mage::helper('manufacturers')->getProductPageLogoText()); ?></h5></div>
+<?php 
+	$_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct(); 
+	$pid = $this->getProduct()->getId();
+?>
+<?php if ( $pid != 0 ) : ?>
+<div class="price-box" id="manufacturer_logo">
+	<?php			
+		//Get Manfacturer Logo
+		$collection  = Mage::getModel('manufacturers/manufacturers')->checkManufacturer($pid);	
+		foreach ( $collection as $_manufacturer ) :
+		
+			$x = Mage::helper('manufacturers')->getProductPageLogoWidth();  
+        	$y = Mage::helper('manufacturers')->getProductPageLogoHeight(); 
+			$color = Mage::helper('manufacturers')->getProductPageLogoBackgroundColor();
+		
+			if($_manufacturer["m_logo"] != "") {
+				$imgPath = Mage::helper('manufacturers')->getResizedUrl($_manufacturer["m_logo"],$x,$y,$color);	
+				$_SESSION["manufactureridentifier"] = $_manufacturer['identifier'];
+			} else {			
+				$imageFile =  "manufacturers/files/n/i/no_image_available.jpg";
+				$imgPath = Mage::helper('manufacturers')->getResizedUrl($imageFile,$x,$y,$color);
+				$_SESSION["manufactureridentifier"] = $_manufacturer['identifier'];
+			}
+		
+			?>
+            <a class="image" href="<?php echo Mage::helper('manufacturers')->getUrl($_manufacturer['identifier']); ?>" title="<?php echo $_manufacturer["m_name"]; ?>">
+				<img style="margin-top:-10px;" src="<?php echo $imgPath; ?>" alt="<?php echo $_manufacturer["m_name"] ?>" >
+            </a>
+            <?php if($brandsLinks!=""){ ?>
+            <br />
+            <a href="<?php echo Mage::helper('manufacturers')->getUrl($_manufacturer['identifier']); ?>" title="<?php echo $_manufacturer["m_name"]; ?>"><?php echo $this->__($brandsLinks); ?> <?php echo $_manufacturer["m_name"]; ?></a>
+            <?php } ?>
+    	<?php endforeach; ?>
+</div>
+<?php endif; ?>

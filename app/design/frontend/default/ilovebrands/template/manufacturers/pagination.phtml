@@ -1,0 +1,53 @@
+<?php $paginator = $this->getPaginator(); ?>
+
+<?php
+$startQueryString = "";
+$startWith  = $this->getRequest()->getParam('start');
+if(isset($startWith)) {
+	$startQueryString = "&start=".$startWith;
+} else {
+	$startQueryString = "";
+}
+
+?>
+
+<?php if ($paginator->pageCount && $paginator->pageCount > 1): ?>
+	<div class="paginationControl">
+	<?php echo $paginator->firstItemNumber; ?> - <?php echo $paginator->lastItemNumber; ?>
+	<?php echo $this->__('of'); ?> <?php echo $paginator->totalItemCount; ?>
+	
+		<!-- First page link -->
+		<?php if ( isset($paginator->previous) ): ?>
+			<a href="<?php echo Mage::helper('manufacturers')->getUrl() . '?page=' . $paginator->first; echo $startQueryString; ?>">
+				<?php echo $this->__('First'); ?>
+			</a> |
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('First'); ?></span> |
+		<?php endif; ?>
+	
+		<!-- Previous page link -->
+		<?php if ( isset($paginator->previous) ): ?>
+			<a href="<?php echo Mage::helper('manufacturers')->getUrl() . '?page=' . $paginator->previous; echo $startQueryString; ?>">
+				&lt; <?php echo $this->__('Previous'); ?>
+			</a> |
+		<?php else: ?>
+			<span class="disabled">&lt; <?php echo $this->__('Previous'); ?></span> |
+		<?php endif; ?>
+	
+		<!-- Next page link -->
+		<?php if ( isset($paginator->next) ): ?>
+			<a href="<?php echo Mage::helper('manufacturers')->getUrl() . '?page=' . $paginator->next; echo $startQueryString; ?>">
+				<?php echo $this->__('Next'); ?> &gt;
+			</a> |
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('Next'); ?> &gt;</span> |
+		<?php endif; ?>
+	
+		<!-- Last page link -->
+		<?php if (isset($paginator->next)): ?>
+			<a href="<?php echo Mage::helper('manufacturers')->getUrl() . '?page=' . $paginator->last; echo $startQueryString;?>"><?php echo $this->__('Last'); ?></a>
+		<?php else: ?>
+			<span class="disabled"><?php echo $this->__('Last'); ?></span>
+		<?php endif; ?>	
+</div>
+<?php endif; ?>

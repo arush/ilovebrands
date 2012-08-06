@@ -1,0 +1,194 @@
+.product_container { width:100%; margin:0 auto; margin-top:0px; padding-left:10px; }
+.row_main { width:100%; height:auto; }
+.main_div { width:180px; float:left; margin-left:30px; }
+.heading { font-family:Arial; font-size:12px; color:#FFF; font-weight:bold; padding-left:10px; float:left; padding-top:0px; }
+.text { font-family:arial; font-size:12px; color:#676767; font-style:italic; font-weight:normal; line-height:18px; }
+
+div.casestudy {
+	margin: 0 6px 6px 0;
+	/*background-color: #ccc;*/
+	float: left;
+	text-align: left;
+}
+
+div.casestudy div.who {
+	background-color: #222;
+	padding: 5px;
+}
+
+div.casestudy div.who h3, div.casestudy div.who h4 {
+	margin: 0;
+	padding: 2px 0 0 0;
+	color: #fff;
+	line-height: 1em;
+}
+
+div.casestudy div.who h3 {
+	font-size: 14px;
+}
+
+div.casestudy div.who h4 {
+	font-size: 12px;
+	font-weight: normal;
+	color: #E8ECDC;
+}
+
+div.casestudy div.what {
+	font-size: 14px;
+	text-align: left;
+	padding: 5px 0 0 5px;
+	font-family: georgia;
+	font-style: italic;
+	/*background-color: #F5F6F7;*/
+	line-height: 1.1em;
+}
+
+div.casestudies div.casestudy img.play {
+	position: absolute;
+	border:0;
+}
+
+div.end {
+	margin-right: 0;
+}
+
+/*--------------------########## Block #######-----------------*/ 
+
+#man_wrapper { width:195px; margin:0 auto; margin-top:30px; }
+
+.man_div_end { clear:both; }
+
+.man_bg { background:url(../../images/manufacturers/bg.jpg) repeat-x #FFF left top; width:195px; border:#c4c1bc 1px solid; }
+
+.man_image { padding:12px; float:left; }
+
+.man_text1 { font-family:Arial; font-size:12px; font-weight:bold; color:#272727; float:left; margin:30px 0 0 0; }
+
+.man_dvd { margin:0 0 0 12px; }
+
+.man_block_title {
+background:url("../images/bkg_block-title.gif") repeat-x scroll 0 0 transparent;
+border-bottom:1px solid #DDDDDD;
+padding:2px 9px;
+}
+
+#manfacturerwrapper { width:675px; margin:0 auto; margin-top:5px; }
+
+.div_end { clear:both; }
+
+/*--------------------########## BackGROUND Images #######-----------------*/   /*START*/
+
+
+.manfacturerimage { padding-right:10px; float:left; }
+
+.manfacturertext { font-family:"Trebuchet MS"; font-size:13px; font-weight:normal; color:#272727;  line-height:22px; }
+
+#manufacturer_char_filter {
+    text-align: center;
+}
+
+#manufacturer_char_filter li {
+    display: inline;
+    margin-right: 10px;
+	font-weight:bold;
+}
+
+#manufacturer_char_filter li.selected {
+	font-size:18px;
+    font-weight:bold;
+	text-decoration:underline;
+}
+
+.manufacturer_sort {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+#ul_manuf { height: auto; width:auto; }
+
+#ul_manuf h3 { font-family:Arial; font-size:12px; color: #555555; padding: 0; margin:0px;}
+
+#ul_manuf ul li { font-family:Arial; font-size:12px; padding-top: 0px; list-style:none; float:left; width:160px; line-height:26px; }
+
+#ul_manuf ul li a { color:#09F; }
+
+#ul_manuf ul li a:hover { color:#434343; text-decoration:none; }
+
+.shopbymanufacturersddl {
+	width:182px;
+	padding:4px;
+	margin-left:5px;
+	*width: 170px;
+	*margin-left: -15px;
+}
+
+.letter_heading {
+    border-bottom: 1px solid #CACCCD;
+    clear: both;
+    color: #0A263C;
+    float: none !important;
+    font-size: 16px !important;
+    font-weight: bold;
+    padding: 10px 0 5px !important;
+    width: 100% !important;
+}
+	
+.brandListView {
+    font-size: 80%;
+    margin: 0 0 15px;
+    padding: 0;
+    text-align: right;
+	clear:both;
+}
+
+.brandListView li {
+    display: inline;
+    list-style: none outside none;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.brandListView li a {
+    border: 1px solid #EBEBEB;
+    margin: 0;
+    padding: 5px 6px;
+    text-align: center;
+}
+.brandListView li a, .brandListView li span {
+    display: inline-block;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.brandListView li span {
+    background-image: url("../../images/manufacturers/view-by.png");
+    height: 13px;
+    margin: 0 2px 0 0;
+    width: 14px;
+}
+
+.brandListView li a.current {
+    background: none repeat scroll 0 0 #EBEBEB;
+    border-color: #EBEBEB;
+    cursor: default;
+}
+
+.brandListView li a:hover {
+    border-color: black;
+}
+
+.brandListView li a:hover .brandListIconview, .brandListView li a.current .brandListIconview {
+    background-position: 0 13px;
+}
+
+.brandListView li a:hover .brandListTextview, .brandListView li a.current .brandListTextview {
+    background-position: 14px 13px;
+}
+
+.brandListTextview {
+    background-position: 14px 0px;
+}
+
+.brandListIconview {
+    background-position: 0 0;
+}

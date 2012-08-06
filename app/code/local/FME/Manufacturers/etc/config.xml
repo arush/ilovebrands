@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   FME
+ * @package    FME_Manufacturers
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <FME_Manufacturers>
+            <version>0.1.1</version>
+        </FME_Manufacturers>
+    </modules>
+    <frontend>
+        <routers>
+            <manufacturers>
+                <use>standard</use>
+                <args>
+                    <module>FME_Manufacturers</module>
+                    <frontName>manufacturers</frontName>
+                </args>
+            </manufacturers>
+        </routers>
+        <layout>
+            <updates>
+                <manufacturers>
+                    <file>manufacturers.xml</file>
+                </manufacturers>
+            </updates>
+        </layout>
+		<translate>
+            <modules>
+                <FME_Manufacturers>
+                    <files>
+                        <default>FME_Manufacturers.csv</default>
+                    </files>
+                </FME_Manufacturers>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+			<manufacturersadmin>
+				<use>admin</use>
+				<args>
+					<module>FME_Manufacturers</module>
+					<frontName>manufacturersadmin</frontName>
+				</args>
+			</manufacturersadmin>
+			<adminhtml>
+				<args>
+					<modules>
+						<FME_Manufacturers_Override before="Mage_Adminhtml">FME_Manufacturers_Override_Admin</FME_Manufacturers_Override>
+					</modules>
+				</args>
+	    	</adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+		<translate>
+            <modules>
+                <FME_Manufacturers>
+                    <files>
+                        <default>FME_Manufacturers.csv</default>
+                    </files>
+                </FME_Manufacturers>
+            </modules>
+        </translate>
+		<menu>
+			<manufacturers module="manufacturers">
+				<title>Manufacturers</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<items module="manufacturers">
+						<title>Manage Manufacturers</title>
+						<sort_order>0</sort_order>
+						<action>manufacturersadmin/adminhtml_manufacturers</action>
+					</items>
+					<import module="manufacturers">
+						<title>Import / Export</title>
+						<sort_order>1</sort_order>
+						<action>manufacturersadmin/adminhtml_manufacturers/importExport</action>
+					</import>
+					<importm module="manufacturers">
+						<title>Import from Magento</title>
+						<sort_order>2</sort_order>
+						<action>manufacturersadmin/adminhtml_manufacturers/importManufacturer</action>
+					</importm>
+					<importbycode module="manufacturers">
+						<title>Import By AttributeCode</title>
+						<sort_order>2</sort_order>
+						<action>manufacturersadmin/adminhtml_manufacturers/importbyAttribute</action>
+					</importbycode>
+					<config translate="title">
+						<title>Configuration</title>
+						<sort_order>3</sort_order>
+						<action>adminhtml/system_config/edit/section/manufacturers</action>
+					</config>
+				</children>
+			</manufacturers>
+		</menu>
+		<acl>
+            <resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+                <admin>
+                    <children>
+						<manufacturers>
+							<title>Manufacturers Module</title>
+							<children>
+								<items translate="title">
+									<title>All Manufacturers</title>
+								</items>
+								<import translate="title">
+									<title>Import / Export</title>
+								</import>
+								<importm translate="title">
+									<title>Import from Magento</title>
+								</importm>
+								<config translate="title">
+									<title>Configuration</title>
+								</config>
+							</children>
+							<sort_order>10</sort_order>
+						</manufacturers>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <manufacturers translate="title" module="manufacturers">
+                                            <title>Manufacturers Section</title>
+                                            <sort_order>139</sort_order>
+                                        </manufacturers>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+				
+            </resources>
+        </acl>
+		<layout>
+			<updates>
+				<manufacturers>
+					<file>manufacturers.xml</file>
+				</manufacturers>
+			</updates>
+		</layout>
+		<events>
+			<!--<core_block_abstract_prepare_layout_after>
+				<observers>
+					<fme_product_injectTabs>
+						<type>singleton</type>
+						<class>manufacturers/observer_product</class>
+						<method>injectTabs</method>
+					</fme_product_injectTabs>
+				</observers>
+			</core_block_abstract_prepare_layout_after>-->
+			<catalog_product_save_after>
+				<observers>
+					<fme_save_product_data>
+						<type>singleton</type>
+						<class>manufacturers/observer_product</class>
+						<method>saveTabData</method>
+					</fme_save_product_data>
+				</observers>
+			</catalog_product_save_after>
+		</events>
+    </adminhtml>   
+    <global>
+        <models>
+            <manufacturers>
+                <class>FME_Manufacturers_Model</class>
+                <resourceModel>manufacturers_mysql4</resourceModel>
+            </manufacturers>
+            <manufacturers_mysql4>
+                <class>FME_Manufacturers_Model_Mysql4</class>
+                <entities>
+                    <manufacturers>
+                        <table>manufacturers</table>
+                    </manufacturers>
+					<manufacturers_store>
+                        <table>manufacturers_store</table>
+                    </manufacturers_store>
+					<manufacturers_products>
+                        <table>manufacturers_products</table>
+                    </manufacturers_products>
+                </entities>
+            </manufacturers_mysql4>
+        </models>
+        <resources>
+            <manufacturers_setup>
+                <setup>
+                    <module>FME_Manufacturers</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </manufacturers_setup>
+            <manufacturers_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </manufacturers_write>
+            <manufacturers_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </manufacturers_read>
+        </resources>
+        <blocks>
+            <manufacturers>
+                <class>FME_Manufacturers_Block</class>
+            </manufacturers>
+        </blocks>
+        <helpers>
+            <manufacturers>
+                <class>FME_Manufacturers_Helper</class>
+            </manufacturers>
+        </helpers>
+		<events>
+            <controller_front_init_routers>
+                <observers>
+                    <manufacturers>
+                        <type>singleton</type>
+                        <class>FME_Manufacturers_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </manufacturers>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+	<default>
+        <catalog>
+            <manufacturers>
+				<enabled>1</enabled>
+                <product_manufacturer>1</product_manufacturer>
+             </manufacturers>
+        </catalog>
+    </default>
+</config>

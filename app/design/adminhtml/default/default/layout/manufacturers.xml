@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+
+	<manufacturersadmin_cms_wysiwyg_images_index>
+        <remove name="footer" />
+        <remove name="head" />
+        <reference name="left">
+            <block name="wysiwyg_images.js" type="adminhtml/cms_wysiwyg_images_content" template="cms/browser/js.phtml" />
+            <block name="wysiwyg_images.tree" type="adminhtml/cms_wysiwyg_images_tree" template="cms/browser/tree.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="wysiwyg_images.content"  type="adminhtml/cms_wysiwyg_images_content" template="cms/browser/content.phtml">
+                <block name="wysiwyg_images.uploader" type="adminhtml/cms_wysiwyg_images_content_uploader" template="cms/browser/content/uploader.phtml" />
+                <block name="wysiwyg_images.newfolder" type="adminhtml/cms_wysiwyg_images_content_newfolder" template="cms/browser/content/newfolder.phtml" />
+            </block>
+        </reference>
+    </manufacturersadmin_cms_wysiwyg_images_index>
+    
+    <manufacturersadmin_adminhtml_manufacturers_index>
+	    <update handle="editor" />
+        <reference name="content">
+            <block type="manufacturers/adminhtml_manufacturers" name="manufacturers" />
+        </reference>
+    </manufacturersadmin_adminhtml_manufacturers_index>
+	
+	 <manufacturersadmin_adminhtml_manufacturers_edit>
+        <update handle="editor"/>
+    </manufacturersadmin_adminhtml_manufacturers_edit>
+	
+	<manufacturersadmin_adminhtml_manufacturers_products>
+        <block type="core/text_list" name="root">
+            <block type="manufacturers/adminhtml_manufacturers_edit_tab_products" name="manufacturers.edit.tab.products"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+                <reference name="related_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>manufacturers.edit.tab.products</grid_block_name>
+                        <data_callback>_getSelectedProducts</data_callback>
+                        <hidden_input_name>links[related]</hidden_input_name>
+                        <reload_param_name>products_related</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </manufacturersadmin_adminhtml_manufacturers_products>
+
+    <manufacturersadmin_adminhtml_manufacturers_productsgrid>
+        <block type="core/text_list" name="root">
+           <block type="manufacturers/adminhtml_manufacturers_edit_tab_products" name="manufacturers.edit.tab.products"/>
+        </block>
+    </manufacturersadmin_adminhtml_manufacturers_productsgrid>
+	
+</layout>

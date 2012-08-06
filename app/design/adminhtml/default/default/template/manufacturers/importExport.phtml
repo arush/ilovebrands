@@ -1,0 +1,39 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-tax-rate-importExport"><?php echo Mage::helper('manufacturers')->__('Import / Export') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <div class="box-left">
+        <form id="import_form" action="<?php echo $this->getUrl('*/*/importPost') ?>" method="post" enctype="multipart/form-data">
+            <?php echo $this->getBlockHtml('formkey')?>
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('manufacturers')->__('Import Manufacturers') ?></h4>
+            </div>
+            <fieldset>
+                <legend><?php echo Mage::helper('manufacturers')->__('Import Manufacturers') ?></legend>
+                <input type="file" name="import_manufacturers_file" class="input-file required-entry"/>
+                <?php echo $this->getButtonHtml('Import Manufacturers', "this.form.submit()") ?>
+            </fieldset>
+			<p><?php echo Mage::helper('manufacturers')->__('Import only CSV file.') ?></p>
+        </form>
+        <script type="text/javascript">
+            var importForm = new varienForm('import_form');
+        </script>
+    </div>
+    <div class="box-right">
+        <form id="export_form" action="<?php echo $this->getUrl('*/*/exportPost') ?>" method="post" enctype="multipart/form-data">
+            <?php echo $this->getBlockHtml('formkey')?>
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('manufacturers')->__('Export Manufacturers') ?></h4>
+            </div>
+            <fieldset>
+                <legend><?php echo Mage::helper('manufacturers')->__('Export Manufacturers') ?></legend>
+                <?php echo $this->getButtonHtml('Export Manufacturers', "this.form.submit()") ?>
+            </fieldset>
+        </form>
+    </div>
+    <div class="clear"></div>
+</div>

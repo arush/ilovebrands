@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    
+	<default>
+	
+		<reference name="head">	
+			<action method="addCss"><stylesheet>css/manufacturers/manufacturers.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/manufacturers/carousel.css</stylesheet></action>
+			<action method="addJs"><script>manufacturers/carousel.packed.js</script></action>
+			<action method="addJs"><script>manufacturers/carousel.js</script></action>
+			<action method="addJs"><script>manufacturers/corner.js</script></action>	
+		</reference>
+		
+		<reference name="top.links">
+		 	<action method="addLink" translate="label title" module="manufacturers"><label>Manufacturers</label><url helper="manufacturers/geturlIdentifier"/><title>Manufacturers</title><prepare>true</prepare><urlParams/><position>10</position></action>
+		</reference>
+		<reference name="footer_links">
+			<action method="addLink" translate="label title" module="manufacturers"><label>Manufacturers</label><url helper="manufacturers/geturlIdentifier" /><title>Manufacturers</title><prepare>true</prepare><urlParams/></action>
+		</reference>
+		
+		<reference name="left">
+			<block type="manufacturers/ManufacturerLeftnav" name="manufacturers.block.left" before="-" as="manufacturer_block_left">
+				<action method="setFromXml">
+					<from_xml>yes</from_xml>
+				</action>
+			</block>
+        </reference>
+		
+	</default>
+	
+    <manufacturers_index_index>
+	
+		<reference name="head">	
+			<action method="addCss"><stylesheet>css/manufacturers/manufacturers.css</stylesheet></action>
+		</reference>
+		
+		 <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+		
+        <reference name="content">
+		    <block type="manufacturers/block" name="featured.manufacturers" template="manufacturers/featuredmanufacturers.phtml" />
+            <block type="manufacturers/manufacturers" name="manufacturers" template="manufacturers/manufacturers.phtml" >
+			<block type="manufacturers/pagination" name="manufacturers.pagination" as="pagination" template="manufacturers/pagination.phtml"/>
+			</block>
+        </reference>
+		
+    </manufacturers_index_index>
+	
+	<manufacturers_view_index>
+	
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/manufacturers/manufacturers.css</stylesheet></action>
+		</reference>
+		
+		 <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+		
+        <reference name="content">
+			<block type="manufacturers/product_list" name="manufacturer" template="manufacturers/manufacturer.phtml">	
+				<block type="manufacturers/product_list" after="media" name="manufacturer_product_list" as="manufacturer_product_list" template="catalog/product/list.phtml" >
+					<block type="manufacturers/product_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>	 
+				</block> 
+			</block>  
+        </reference>
+		
+    </manufacturers_view_index>
+		
+	<catalog_product_view>
+		<reference name="content">
+			<reference name="product.info">
+				<reference name="alert.urls">
+					<block type="manufacturers/ManufacturerLogo" before="alert.urls" name="product.info.logo" as="manufacturer_logo">
+						<action method="setFromXml">
+							<from_xml>yes</from_xml>
+						</action>
+					</block>
+				</reference>
+			</reference>
+		</reference>
+	</catalog_product_view>	
+		
+</layout> 

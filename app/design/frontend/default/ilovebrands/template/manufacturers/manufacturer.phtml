@@ -1,0 +1,52 @@
+<?php
+/**
+ * Manufacturers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Manufacturers
+ * @author     Kamran Rafiq Malik <kamran.malik@unitedsol.net>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+?>	
+<?php
+	//Image Adjustment
+	$config = Mage::getModel('manufacturers/image_config');
+	$image = Mage::getModel('media/image');
+	$image->setConfig($config);
+	//Get Manfacturer Info
+	$mId  = $this->getRequest()->getParam('id');
+?>
+<?php if ( $mId != 0 ) : ?>
+<?php
+	$model  = Mage::getModel('manufacturers/manufacturers')->load($mId);
+	
+	$x = Mage::helper('manufacturers')->getLogoWidth();  
+    $y = Mage::helper('manufacturers')->getLogoHeight(); 
+	$color = Mage::helper('manufacturers')->getLogoBackgroundColor();
+	
+	if($model["m_logo"] != "") {
+		$imgPath = Mage::helper('manufacturers')->getResizedUrl($model["m_logo"],$x,$y,$color);	
+	} else {			
+		$imageFile =  "manufacturers/files/n/i/no_image_available.jpg";
+		$imgPath = Mage::helper('manufacturers')->getResizedUrl($imageFile,$x,$y,$color);
+	}
+
+?>
+<div id="manfacturerwrapper">
+    <div>
+    	<img src="<?php echo $imgPath; ?>" class="manfacturerimage" alt="<?php echo $model["m_name"] ?>" border="0" /> 
+        <span class="manfacturertext"><?php echo Mage::helper('manufacturers')->getWysiwygFilter($model["m_details"]); ?></span>
+    	<br /> 
+	</div>
+</div>
+<?php endif; ?>
+<div style="clear:both;"></div>
+<div style="height:10px;"></div>
+<?php echo $this->getChildHtml('manufacturer_product_list');?>

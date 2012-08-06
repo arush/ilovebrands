@@ -1,0 +1,26 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-tax-rate-importExport"><?php echo Mage::helper('manufacturers')->__('Import from Magento By Attribute Code') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <div class="box-left">
+        <form id="importbycode_form" action="<?php echo $this->getUrl('*/*/importbyattributeCode') ?>" method="post" enctype="multipart/form-data">
+            <?php echo $this->getBlockHtml('formkey')?>
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('manufacturers')->__('Import Manufacturers By Attribute Code') ?></h4>
+            </div>
+            <fieldset>
+                <legend><?php echo Mage::helper('manufacturers')->__('Import Manufacturers') ?></legend>
+                <input type="text" name="import_attributecode" class="input-file required-entry"/>
+                <?php echo $this->getButtonHtml('Start Importing', "this.form.submit()") ?>
+            </fieldset>
+			<p><?php echo Mage::helper('manufacturers')->__('Import only attributes those represent to your manufacturer/brands.') ?></p>
+        </form>
+        <script type="text/javascript">
+            var importbycodeForm = new varienForm('importbycode');
+        </script>
+    </div>
+</div>

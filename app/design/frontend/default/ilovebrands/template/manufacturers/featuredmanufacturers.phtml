@@ -1,0 +1,95 @@
+<?php
+/**
+ * Manufacturers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Manufacturers
+ * @author     Kamran Rafiq Malik <kamran.malik@unitedsol.net>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+?>
+<?php $collection = $this->getFeaturedManufacturers(); ?>
+<?php
+	if(!empty($collection)) {
+
+?>
+<style>
+#horizontal_carousel .middle{
+  float: left;
+  width: <?php echo Mage::helper('manufacturers')->getFeaturedBlockWidth(); ?>px;
+  height: auto;
+  position: relative;    
+  overflow: hidden;
+}
+<?php
+$pageLayout = Mage::getStoreConfig('manufacturers/manufacturers/layout');
+if($pageLayout!="page/2columns-left.phtml"){
+?>
+#horizontal_carousel ul li {
+  padding:4px;
+}
+<?php
+}
+?>
+</style>
+<?php
+$x = Mage::helper('manufacturers')->getFeaturedBlockLogoWidth();  
+$y = Mage::helper('manufacturers')->getFeaturedBlockLogoHeight(); 
+$color = Mage::helper('manufacturers')->getFeaturedBlockLogoBackgroundColor();
+?>
+<div class="page-title category-title">
+        <h1><?php echo $this->__(Mage::helper('manufacturers')->getFeaturedBlockTitle()); ?></h1>
+</div>
+<div id="horizontal_carousel" class="carousel">
+                            <a id="nav-right" rel="next" class="carousel-control next" href="javascript:"></a>
+                            <a id="nav-left" rel="prev" class="carousel-control prev" href="javascript:"></a>
+                            <div class="middle">
+                                <div class="inner">
+									<ul>
+									<?php $i=1; foreach ( $collection as $_feaManufacturers ) : ?>
+									<?php
+										
+										if($_feaManufacturers["m_logo"] != "") {
+											$imgPath = Mage::helper('manufacturers')->getResizedUrl($_feaManufacturers["m_logo"],$x,$y,$color);	
+										} else {			
+											$imageFile =  "manufacturers/files/n/i/no_image_available.jpg";
+											$imgPath = Mage::helper('manufacturers')->getResizedUrl($imageFile,$x,$y,$color);
+										}	
+									?>	
+									<li>
+									<a class="image" style="text-decoration:none;" href="<?php echo Mage::helper('manufacturers')->getUrl($_feaManufacturers['identifier']); ?>" title="<?php echo $_feaManufacturers["m_name"]; ?>">
+										<img src="<?php echo $imgPath; ?>" alt="<?php echo $_feaManufacturers["m_name"]; ?>" />
+										<br /><span><?php echo $this->htmlEscape($_feaManufacturers["m_name"]) ?></span>
+									</a>
+									</li>
+									<?php endforeach ?>
+									</ul>
+                                </div>
+                            </div>
+                        </div>
+						<?php
+						$pageLayout = Mage::getStoreConfig('manufacturers/manufacturers/layout');
+						$visibleSlides = 3;
+						if($pageLayout=="page/2columns-left.phtml" || $pageLayout=="page/2columns-right.phtml"){
+							$visibleSlides = 4;	
+						}elseif($pageLayout=="page/1column.phtml"){
+							$visibleSlides = 6;	
+						}
+						?>
+						<script type="text/javascript">
+                            new Carousel($('horizontal_carousel').down('.middle'), $('horizontal_carousel').down('.inner').select('li'), $('horizontal_carousel').select('a'), {
+                                duration: 0.5,
+                                visibleSlides: <?php echo $visibleSlides; ?>,
+                                circular: false
+                            });
+                        </script>
+<?php
+	}
+?>

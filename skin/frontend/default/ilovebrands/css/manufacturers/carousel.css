@@ -1,0 +1,74 @@
+.carousel {
+    overflow: hidden;
+}
+
+.carousel .inner {
+    width: 1000000px;
+}
+
+.carousel .inner span {
+	clear: both;
+	display:block;
+}
+
+.carousel .middle {
+    overflow: auto;
+}
+
+#horizontal_carousel {
+    margin-top: 15px;
+}
+
+#horizontal_carousel .middle {
+    float: left;
+    width: 512px;
+}
+
+#horizontal_carousel .inner img {
+    float: left;
+}
+
+#horizontal_carousel ul {
+  margin: 0;
+  padding:0;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: auto;
+}                      
+
+#horizontal_carousel ul li {
+  height: auto;
+  text-align: center; 
+  padding:12px;
+  list-style:none;   
+  float:left;
+}
+
+#horizontal_carousel .inner li {
+    float: left;
+}
+
+#horizontal_carousel #nav-left{
+    float:left;  
+	width: 32px;
+	height: 175px;
+	background: url(../../images/manufacturers/horizontal/left.png);
+	z-index: 100;
+	cursor: pointer;
+	margin-top: -17px;
+}
+
+#horizontal_carousel #nav-right{
+    float:right;  
+	width: 32px;
+	height: 175px;
+	background: url(../../images/manufacturers/horizontal/right.png);
+	z-index: 100;
+	cursor: pointer;
+	margin-top: -17px;
+}
+
+#horizontal_carousel a:hover {
+    color: #000;
+}

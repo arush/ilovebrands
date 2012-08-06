@@ -1,0 +1,81 @@
+<?php
+/**
+ * Manufacturers extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    Manufacturers
+ * @author     Kamran Rafiq Malik <kamran.malik@unitedsol.net>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+?>
+<?php
+$config = Mage::getModel('manufacturers/image_config');
+$image = Mage::getModel('media/image');
+$image->setConfig($config);	
+?>
+<?php $collection = $this->getAllLeftManufacturers(); ?>
+<?php if ( count($collection) != 0 ) : ?>
+<div class="block block-layered-nav">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <dl id="narrow-by-list2">
+            <dt><?php echo $this->__(Mage::helper('manufacturers')->getMainHeadingText()) ?></dt>
+            <div style="height:10px;"></div>
+            <?php
+				if($this->getRequest()->getModuleName() != "manufacturers") {
+					$_SESSION["manufactureridentifier"] = '';
+				}
+				$selected = '';
+            	if(isset($_SESSION["manufactureridentifier"])){
+            		$manufactureridentifier = $_SESSION["manufactureridentifier"];
+				}else{
+					$manufactureridentifier = "";
+				}
+			?>
+            <select name="shopbymanufacturers" id="shopbymanufacturers" class="shopbymanufacturersddl" onchange="getManufacturer()">
+            <option value="na"><?php echo $this->__('Shop By ') ?><?php echo $this->__(Mage::helper('manufacturers')->getMainHeadingText()) ?></option>
+				<?php $i=0; foreach ( $collection as $_manufacturer ) : ?>
+                <?php
+                	if($manufactureridentifier == $_manufacturer['identifier']) {
+						$selected = 'selected="selected"';
+					} else {
+						$selected = '';
+					}
+				?>
+                    <option value='<?php echo $_manufacturer['identifier']; ?>' <?php echo $selected; ?>><?php echo $this->htmlEscape($_manufacturer["m_name"]) ?> </option>
+                <?php endforeach ?>
+            </select>
+        </dl>
+        <div style="height:10px;"></div>
+    </div>
+</div>
+
+<script language="javascript">
+	function getManufacturer()
+	{
+		var manufactureridentifier = $F('shopbymanufacturers');
+		var pars = 'identifier=' + manufactureridentifier;
+		if(manufactureridentifier != "na") {
+			new Ajax.Request('<?php echo $this->getUrl('manufacturers/view/setManufacturer') ?>',
+			{
+			 method:'GET',
+			 parameters: pars,
+			 onSuccess: function(oXHR){
+			   window.location.replace( oXHR.responseText ); 
+			 },
+			 onFailure: function(){ alert('Something went wrong...') }
+			});
+		}
+	}
+</script>
+
+<?php endif; ?>

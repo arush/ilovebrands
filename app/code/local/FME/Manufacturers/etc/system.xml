@@ -1,0 +1,420 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <manufacturers translate="label" module="manufacturers">
+            <label>Manufacturers</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>123</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>        
+                <manufacturers translate="label comment" module="manufacturers">
+                    <label>Manufacturers List</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<layout translate="label">
+							<label>Page Layout</label>
+							<frontend_type>select</frontend_type>
+							<source_model>manufacturers/Layouts</source_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</layout>
+                        <page_title translate="label">
+                        	<label>Page Title</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </page_title>
+						<main_heading translate="label">
+                        	<label>Main Heading</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(eg: Brands, Manufacturers)</comment>
+                        </main_heading>
+						
+                        <identifier translate="label">
+                        	<label>SEF URL Identifier</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(eg: domain.com/identifier)</comment>
+                        </identifier>
+                        <items_per_page translate="label">
+                        	<label>Manufacturers per page</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Number of media per page (0 for no limit)</comment>
+                        </items_per_page>
+						
+						<show_manufacturers_logo translate="label">
+                        	<label>Show Manufacturers with Logo ?</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>If this is set to yes Brands/Manufacturers shown with logo by default</comment>
+                        </show_manufacturers_logo>
+						
+						<show_manufacturers_with_alphabets translate="label">
+                        	<label>Show Manufacturers with Alphabets Headings ?</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_manufacturers_with_alphabets>
+						
+						<show_manufacturers_view_by translate="label">
+                        	<label>Show Option View By Text/Logo ?</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>If this is set to yes Brands/Manufacturers would not have pagination</comment>
+                        </show_manufacturers_view_by>
+						
+						<logo_width translate="label">
+                            <label>Manufacturer Logo Width ?</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the width of logo</comment>
+                        </logo_width>
+						
+						<logo_height translate="label">
+                            <label>Manufacturer Logo Height ?</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the height of logo</comment>
+                        </logo_height>
+						
+						<logo_background_Color translate="label">
+							<label>Logo Background Color ?</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g (0,0,0) if your images are small in width or height then image should be croped according to original size and blank space should be filled with the given color</comment>
+						</logo_background_Color>
+						
+                        <limit_description translate="label">
+                            <label>Limit of short description</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Number of characters for the short description (0 for no limit)</comment>
+                        </limit_description>
+                        <meta_keywords translate="label">
+                        	<label>META Keywords</label>
+                        	<frontend_type>textarea</frontend_type>
+                        	<sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </meta_keywords>
+                        <meta_description translate="label">
+                        	<label>META Description</label>
+                        	<frontend_type>textarea</frontend_type>
+                        	<sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </meta_description>
+                        <sort_manufacturers>
+                        	<label>Sort Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+							<source_model>manufacturers/Sorts</source_model>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment></comment>
+                        </sort_manufacturers>
+                        <order_manufacturers_by>
+                        	<label>Order Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+							<source_model>manufacturers/Orders</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment></comment>
+                        </order_manufacturers_by>
+                    </fields>
+                </manufacturers>
+				<productpagelogo>
+					<label>Product Detail Page</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enabled translate="label">
+                            <label>Enable Product View Brand Info!</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<product_page_logo_heading translate="label">
+                        	<label>Product Page Heading</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(Text that display on product detail page with Logo eg: (Brand, Manufacturer)</comment>
+                        </product_page_logo_heading>
+                        
+                        <product_page_brand_link translate="label">
+                        	<label>Other Products by Brand Link</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(Link to other products of the brand eg: (See other products by)</comment>
+                        </product_page_brand_link>
+						
+						<product_logo_width translate="label">
+                            <label>Manufacturer Logo Width ?</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the width of logo</comment>
+                        </product_logo_width>
+						
+						<product_logo_height translate="label">
+                            <label>Manufacturer Logo Height ?</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Specify the height of logo</comment>
+                        </product_logo_height>
+						
+						<logo_background_Color translate="label">
+							<label>Logo Background Color ?</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g (0,0,0) if your images are small in width or height then image should be croped according to original size and blank space should be filled with the given color</comment>
+						</logo_background_Color>
+							
+					</fields>
+				</productpagelogo>
+				
+			   <leftnav translate="label comment" module="manufacturers">
+                    <label>Left Navigation Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <viewtype translate="label">
+                            <label>Slider Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>manufacturers/leftnavviewtypes</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                         </viewtype>
+						<numberofmanufacturers translate="label">
+                        	<label>Number of Manfacturers Shown in Left Nav ?</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </numberofmanufacturers>
+                        <sort_left_manufacturers>
+                        	<label>Sort Left Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+				<source_model>manufacturers/Sorts</source_model>
+				<sort_order>13</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </sort_left_manufacturers>
+                        <order_left_manufacturers_by>
+                        	<label>Order Left Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+				<source_model>manufacturers/Orders</source_model>
+				<sort_order>14</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </order_left_manufacturers_by>
+                    </fields>
+               </leftnav>
+			   
+			   <featuredmanufacturers translate="label comment" module="manufacturers">
+                    <label>Featured Manufacturers Block Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<main_heading translate="label">
+                        	<label>Main Heading</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(eg: Featured Brands, Featured Manufacturers)</comment>
+                        </main_heading>
+                        <width translate="label">
+                            <label>Slider Width</label>
+                            <frontend_type>text</frontend_type>
+                        	<sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>(set width of slider according to page layout e.g(One Column = 835, Two Column = 610, Three Column = 410)</comment>
+                         </width>
+						<logo_width translate="label">
+                        	<label>Manfacturers Logo Wdith</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>(Best to keep this below 150 for slider)</comment>
+                        </logo_width>
+						<logo_height translate="label">
+                        	<label>Manfacturers Logo Height</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>(Best to keep this below 150 for slider)</comment>
+                        </logo_height>
+						
+						<logo_background_Color translate="label">
+							<label>Logo Background Color ?</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<comment>e.g (0,0,0) if your images are small in width or height then image should be croped according to original size and blank space should be filled with the given color</comment>
+						</logo_background_Color>
+						
+						<sort_featured_manufacturers>
+                        	<label>Sort Featured Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+				<source_model>manufacturers/Sorts</source_model>
+				<sort_order>13</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </sort_featured_manufacturers>
+                        <order_featured_manufacturers_by>
+                        	<label>Order Featured Manufacturers By</label>
+                        	<frontend_type>select</frontend_type>
+				<source_model>manufacturers/Orders</source_model>
+				<sort_order>14</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </order_featured_manufacturers_by>
+						
+                    </fields>
+					
+               </featuredmanufacturers>
+			   
+			   <importfrommagento translate="label comment" module="manufacturers">
+                    <label>Import from Magento Attribute Code</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <attribute_code translate="label">
+                        	<label>Attribute Code</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(eg: manufacturer) (Note: the import from magento only works if Attribute is a dropdown)</comment>
+                        </attribute_code>
+                    </fields>
+               </importfrommagento>
+			   
+			   <seo translate="label comment" module="manufacturers">
+                    <label>Search Engine Optimizations</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <url_suffix translate="label">
+                        	<label>URL Suffix</label>
+                        	<frontend_type>text</frontend_type>
+                        	<sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>(eg: .html)</comment>
+                        </url_suffix>
+                    </fields>
+               </seo>
+			   
+            </groups>
+        </manufacturers>
+    </sections>
+</config>
