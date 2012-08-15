@@ -880,7 +880,7 @@ class FME_Manufacturers_Adminhtml_ManufacturersController extends Mage_Adminhtml
 				$attributeValue = str_replace($remove, "", $attributeValuesArray[$i]);
 				$reg_ex = "/[[:space:]]/";
 				$replace_word = "-"; 
-				$identifier = preg_replace($reg_ex, $replace_word, $mname);
+				$identifier = preg_replace($reg_ex, $replace_word, $attributeValue);
 				
 				$products = Mage::getModel('catalog/product')
 				->getCollection()

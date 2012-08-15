@@ -37,7 +37,7 @@ Carousel = Class.create(Abstract, {
             visibleSlides:      1,
             controlClassName:   'carousel-control',
             jumperClassName:    'carousel-jumper',
-            disabledClassName:  'carousel-disabled',
+            //disabledClassName:  'carousel-disabled',
             selectedClassName:  'carousel-selected',
             circular:           false,
             wheel:              true,
