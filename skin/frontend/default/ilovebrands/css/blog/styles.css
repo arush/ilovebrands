@@ -1,6 +1,7 @@
 /* skeleton base */
 
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{font:14px/21px "proxima-nova",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}img.scale-with-grid{max-width:100%;height:auto}.remove-bottom{margin-bottom:0 !important}.half-bottom{margin-bottom:10px !important}.add-bottom{margin-bottom:20px !important}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;font-size:100%;font:inherit;/*border:0;vertical-align:baseline*/}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+body{font:14px/21px "proxima-nova",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}img.scale-with-grid{max-width:100%;height:auto}.remove-bottom{margin-bottom:0 !important}.half-bottom{margin-bottom:10px !important}.add-bottom{margin-bottom:20px !important}
 
 /* end skeleton base */
 
@@ -218,7 +219,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 ================================================== */
 
     /* Self Clearing Goodness */
-    .container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+    .container:after { /* content: "\0020"; */ display: block; height: 0; clear: both; visibility: hidden; }
 
     /* Use clearfix class on parent to clear nested columns,
     or wrap each row of columns in a <div class="row"> */
@@ -318,3 +319,159 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 */
 
 /* end skeleton layout */
+
+
+/* ### BLOG WIDE STYLES ### */
+body {
+    font: 0.75em/1.35 Arial,Helvetica,sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    border: 0 none;
+    vertical-align: bottom;
+}*/
+.container {
+    color: #444444;
+}
+.container a {
+    color: #AC2323;
+    text-decoration: underline;
+}
+.container h1, .container h2 {
+    font-size: 25px;
+    margin: 12px 0;
+	font-weight: bold;
+}
+.breadcrumbs, .breadcrumbs li span, .breadcrumbs a {
+    color: #6C6C6C;
+    font: 12px Arial,Helvetica,sans-serif;
+}
+.top-cart .block-title strong {
+    font-weight: bold;
+}
+/* ### SIDEBAR SPECIFIC STYLES (.three.columns) ### */
+.container .three.columns h2 {
+    font-size: 15px;
+    margin: 12px 0 0 0;
+}
+.container .widget_search form {
+    display: inline;	
+}
+.container .widget_search {
+    border: 1px solid #D9D9D9;
+    clear: right;
+    float: right;
+    line-height: 28px;
+    margin-top: 5px;
+	margin-bottom: 20px;
+    white-space: nowrap;
+}
+.container .widget_search label {
+    display: none;
+}
+.container .widget_search input {
+    width: 29px;
+}
+.container .widget_search #s {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: none;
+    color: #444444;
+    display: block;
+    float: left;
+    padding: 7px;
+    width: 196px;
+}
+.container .widget_search button {
+    background: #ffffff; 
+	padding: 5px;
+}
+.container #twitter-2 h2 a {
+    color: #444444;
+    text-decoration: none;
+}
+
+
+/* MAIN CONTENT SPECIFIC STYLES (twelve columns offset-by-three) */
+.container .twelve.columns {
+    width: 673px;
+	margin-left: 0;
+}
+.container .col-main {
+    float: left;
+    width: 100%;
+}
+.container .twelve.columns h3 {
+    font-size: 18px;
+    margin: 12px 0;
+	font-weight: bold;
+}
+.container small, .container .navigation {
+	font-size: 11px;
+	padding-bottom: 20px;
+}
+.container .navigation a {
+	font-size: 11px;
+	color: #444444;
+}
+.container .navigation .alignleft {
+	float: left;
+}
+.container .navigation .alignright {
+	float: right;
+}
+.container .post {
+    clear: both;
+}
+.container .three.columns {
+    width: 242px;
+	float: right;
+	text-align: left;
+	margin: 0;
+}
+.container .offset-by-three {
+    padding-left: 0;
+	text-align: left;
+}
+.container #news-footer {
+    font-size: 11px;
+}
+
+
+/* For Comments Styles */
+.container #respond input {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #D9D9D9;
+    color: #444444;
+    display: inline;
+    float: none;
+    margin: 5px 0;
+    padding: 7px;
+    width: 196px;
+}
+.container #respond textarea {
+    background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #D9D9D9;
+    color: #444444;
+    display: inline;
+    float: none;
+    margin: 5px 0;
+    padding: 7px;
+    width: 100%;
+}
+.container #respond #submit {
+    background-color: #B14E4E;
+	border: none;
+    color: white;
+	padding: 8px;
+	text-transform: uppercase;
+}
+.container p.postmetadata {
+    margin: 10px 0;
+}
+.footer {
+    clear: both;
+}

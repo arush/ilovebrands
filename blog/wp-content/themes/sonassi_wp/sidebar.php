@@ -6,9 +6,7 @@
 ?>
 <!--sidebar-->
 	<div id="sidebar" role="complementary" class="box base-mini">
-    <div class="head">
-			<h4 class="title">News</h4>
-    </div>
+    
     <div class="content">		
 			<ul>
 				<?php 	/* Widgetized sidebar, if you have the plugin installed. */
