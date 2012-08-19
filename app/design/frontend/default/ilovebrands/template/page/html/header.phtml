@@ -193,9 +193,9 @@
 			</div>
 		
 			<div class="store-switcher clearfix">
-		    	<a href="/?___store=ilovebrands_mens_uk" id="men" class="store<?php if (Mage::app()->getStore()->getStoreId() =='9') {echo ' active';} ?>">Men</a>
-		    	<a href="/?___store=ilovebrands_womens_uk" id="women" class="store<?php if (Mage::app()->getStore()->getStoreId() =='6') {echo ' active';} ?>">Women</a>
-		    	<a href="/blog" id="men" class="store<?php /* if ($controller =='blog') { */ echo $controller . ' ' . $module . ' active'; /*} */ ?>">Blog</a>
+		    	<a href="/?___store=ilovebrands_mens_uk" id="men" class="store<?php if (Mage::app()->getStore()->getStoreId() =='9' && $module !=='wordpress') {echo ' active';} ?>">Men</a>
+		    	<a href="/?___store=ilovebrands_womens_uk" id="women" class="store<?php if (Mage::app()->getStore()->getStoreId() =='6' && $module !=='wordpress') {echo ' active';} ?>">Women</a>
+		    	<a href="/blog" id="men" class="store<?php if ($module ==='wordpress') { echo ' active';} ?>">Blog</a>
 		    </div>
 			<?php echo $this->getChildHtml('topMenu'); ?>
 		<?php } ?>
