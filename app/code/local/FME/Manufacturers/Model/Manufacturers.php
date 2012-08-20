@@ -104,7 +104,6 @@ class FME_Manufacturers_Model_Manufacturers extends Mage_Core_Model_Abstract
 					)
 			)
 		->group('main_table.manufacturers_id');
-		
 		return $collection;
 	}
 	

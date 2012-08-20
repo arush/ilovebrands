@@ -32,9 +32,12 @@ $image->setConfig($config);
             <dd style="margin-top:6px;">
                 <ol>
                 <?php $i=0; foreach ( $collection as $_manufacturer ) : ?>
+					<?php 	$mcollection = Mage::getModel('manufacturers/manufacturers')->getProductsCount($_manufacturer['manufacturers_id'])->getData(); 
+							$mcount = $mcollection[0]["products_count"];
+					?>
                     <li>
                         <a class="image" href="<?php echo Mage::helper('manufacturers')->getUrl($_manufacturer['identifier']); ?>" title="<?php echo $_manufacturer["m_name"]; ?>">
-						<?php echo $this->htmlEscape($_manufacturer["m_name"]) ?> 
+						<?php echo $this->htmlEscape($_manufacturer["m_name"]) ?> (<?php echo $mcount; ?>)
                         </a>
                     </li>
                 <?php endforeach ?>

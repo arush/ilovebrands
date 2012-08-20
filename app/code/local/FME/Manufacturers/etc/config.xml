@@ -88,11 +88,6 @@
 						<sort_order>2</sort_order>
 						<action>manufacturersadmin/adminhtml_manufacturers/importManufacturer</action>
 					</importm>
-					<importbycode module="manufacturers">
-						<title>Import By AttributeCode</title>
-						<sort_order>2</sort_order>
-						<action>manufacturersadmin/adminhtml_manufacturers/importbyAttribute</action>
-					</importbycode>
 					<config translate="title">
 						<title>Configuration</title>
 						<sort_order>3</sort_order>
@@ -151,15 +146,6 @@
 			</updates>
 		</layout>
 		<events>
-			<!--<core_block_abstract_prepare_layout_after>
-				<observers>
-					<fme_product_injectTabs>
-						<type>singleton</type>
-						<class>manufacturers/observer_product</class>
-						<method>injectTabs</method>
-					</fme_product_injectTabs>
-				</observers>
-			</core_block_abstract_prepare_layout_after>-->
 			<catalog_product_save_after>
 				<observers>
 					<fme_save_product_data>
