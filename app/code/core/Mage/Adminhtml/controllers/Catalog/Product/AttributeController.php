@@ -165,7 +165,7 @@ class Mage_Adminhtml_Catalog_Product_AttributeController extends Mage_Adminhtml_
             if (!empty($data['option']['value'])) {
                 foreach ($data['option']['value'] as &$options) {
                     foreach ($options as &$label) {
-                        $label = $helperCatalog->escapeHtml($label);
+                      /**  $label = $helperCatalog->escapeHtml($label);*/
                     }
                 }
             }
