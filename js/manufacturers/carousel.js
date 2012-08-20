@@ -37,7 +37,7 @@ Carousel = Class.create(Abstract, {
             visibleSlides:      1,
             controlClassName:   'carousel-control',
             jumperClassName:    'carousel-jumper',
-            disabledClassName:  'carousel-disabled',
+            //disabledClassName:  'carousel-disabled',
             selectedClassName:  'carousel-selected',
             circular:           false,
             wheel:              true,
@@ -83,7 +83,7 @@ Carousel = Class.create(Abstract, {
 	click: function (event) {
 		this.stop();
 		
-		var element = event.findElement('a.carousel-control');
+		var element = event.findElement('a');
 
 		if (!element.hasClassName(this.options.disabledClassName)) {
 			if (element.hasClassName(this.options.controlClassName)) {
