@@ -1,0 +1,66 @@
+<?php
+ /**
+ * GoMage.com
+ *
+ * GoMage Feed Pro
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage.com (http://www.gomage.com)
+ * @author       GoMage.com
+ * @license      http://www.gomage.com/licensing  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 2.1
+ * @since        Class available since Release 2.0
+ */
+	
+	$feed = $this->getFeed();
+	
+	if($data = $this->getFeed()->getContent()){
+		
+		$data = json_decode($data, true);
+		
+	}else{
+		$data = array();
+	}
+	
+	if(empty($data)){
+		$rows_count = 5;
+	}else{
+		$rows_count = count($data);
+	}
+	
+?>
+<?php for($i=0;$i<$rows_count;$i++):?>
+    <tr>
+    	<td><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][order]" value="<?php echo @$data[$i]['order'];?>" /></div></td>
+    	<td ><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][name]" value="<?php echo @$data[$i]['name'];?>" /></div></td>
+    	<td><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][prefix]" value="<?php echo @$data[$i]['prefix'];?>" /></div></td>
+    	<td>
+    		<div style="margin: 2px;">
+    		<select style="width:100%;" onchange="changeValueType(this, <?php echo $i;?>)" name="field[<?php echo $i;?>][type]">
+    			<option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'attribute' ? 'selected="selected"' : '';?> value="attribute"><?php echo $this->__('Attribute')?></option>
+    			<option <?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'static' ? 'selected="selected"' : '';?> value="static"><?php echo $this->__('Static Value')?></option>
+    		</select>
+    		</div>
+    	</td>
+    	<td>
+    		<input style="width:98%;display:<?php echo isset($data[$i]['type']) && $data[$i]['type'] == 'static' ? 'block' : 'none';?>;"  id="mapping-<?php echo $i;?>-static-value" type="text" class="input-text" name="field[<?php echo $i;?>][static_value]" value="<?php echo @$data[$i]['static_value'] ?>" />
+    		<?php echo GoMage_Feed_Block_Adminhtml_Items_Edit_Tab_Content_Csv::getAttributeSelect($i, @$data[$i]['attribute_value'], (isset($data[$i]['type']) && $data[$i]['type'] == 'attribute' || !isset($data[$i]['type'])))?></td>
+    	<td><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][sufix]" value="<?php echo @$data[$i]['sufix'];?>" /></div></td>
+    	<td>
+    		<div style="margin: 2px;">
+    		<select style="width:100%;" name="field[<?php echo $i;?>][output_type]">
+    			<option <?php echo !isset($data[$i]['output_type']) || $data[$i]['output_type'] == '' ? 'selected="selected"' : '';?> value=""><?php echo $this->__('Default')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'int' ? 'selected="selected"' : '';?> value="int"><?php echo $this->__('Integer')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'float' ? 'selected="selected"' : '';?> value="float"><?php echo $this->__('Float')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'striptags' ? 'selected="selected"' : '';?> value="striptags"><?php echo $this->__('Striptags')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'htmlspecialchars' ? 'selected="selected"' : '';?> value="htmlspecialchars"><?php echo $this->__('Encode special chars')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'htmlspecialchars_decode' ? 'selected="selected"' : '';?> value="htmlspecialchars_decode"><?php echo $this->__('Decode special chars')?></option>
+    			<option <?php echo isset($data[$i]['output_type']) && $data[$i]['output_type'] == 'delete_space' ? 'selected="selected"' : '';?> value="delete_space"><?php echo $this->__('Delete Space')?></option>
+    		</select>
+    		</div>
+    	</td>
+    	<td><div style="padding:0 2px;border-color:#AAAAAA #C8C8C8 #C8C8C8 #AAAAAA;border-style:solid;border-width:1px;"><input style="width:100%;border:0;padding:0;" type="text" class="input-text" name="field[<?php echo $i;?>][limit]" value="<?php echo @$data[$i]['limit'];?>" /></div></td>
+    	<td><button onclick="removeMappingRow(this);return false;" class="button"><span><span><?php echo $this->__('Remove')?></span></span></button></td>
+    </tr>
+<?php endfor;?>
