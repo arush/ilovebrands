@@ -44,6 +44,9 @@ $image->setConfig($config);
             <select name="shopbymanufacturers" id="shopbymanufacturers" class="shopbymanufacturersddl" onchange="getManufacturer()">
             <option value="na"><?php echo $this->__('Shop By ') ?><?php echo $this->__(Mage::helper('manufacturers')->getMainHeadingText()) ?></option>
 				<?php $i=0; foreach ( $collection as $_manufacturer ) : ?>
+				<?php $mcollection = Mage::getModel('manufacturers/manufacturers')->getProductsCount($_manufacturer['manufacturers_id'])->getData(); 
+						$mcount = $mcollection[0]["products_count"];
+				?>
                 <?php
                 	if($manufactureridentifier == $_manufacturer['identifier']) {
 						$selected = 'selected="selected"';
@@ -51,7 +54,7 @@ $image->setConfig($config);
 						$selected = '';
 					}
 				?>
-                    <option value='<?php echo $_manufacturer['identifier']; ?>' <?php echo $selected; ?>><?php echo $this->htmlEscape($_manufacturer["m_name"]) ?> </option>
+                    <option value='<?php echo $_manufacturer['identifier']; ?>' <?php echo $selected; ?>><?php echo $this->htmlEscape($_manufacturer["m_name"]) ?> (<?php echo $mcount; ?>)</option>
                 <?php endforeach ?>
             </select>
         </dl>

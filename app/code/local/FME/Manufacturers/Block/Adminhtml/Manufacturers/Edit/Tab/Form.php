@@ -101,7 +101,6 @@ class FME_Manufacturers_Block_Adminhtml_Manufacturers_Edit_Tab_Form extends Mage
           	'label'     => Mage::helper('manufacturers')->__(''),
           	'name'      => 'prid',
 	  		'id'      => 'prid',
-          
       	));
 		
 		$wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
@@ -169,16 +168,29 @@ class FME_Manufacturers_Block_Adminhtml_Manufacturers_Edit_Tab_Form extends Mage
 		  
 		));
 		
+		$fieldset->addField('old_products', 'hidden', array(
+          	'label'     => Mage::helper('manufacturers')->__('old_products'),
+          	'name'      => 'old_products',
+          	'id'   => 'old_products'
+      	)); 
+		
 		$fieldset->addField('my_file', 'hidden', array(
         	'name'        => 'my_file',
     	));
+		
+		$mcollection = Mage::getModel('manufacturers/manufacturers')->getProductsCount($this->getRequest()->getParam('id'))->getData();
+		$mcount = $mcollection[0]["products_ids"];
      
       if ( Mage::getSingleton('adminhtml/session')->getManufacturersData() )
       {
-          $form->setValues(Mage::getSingleton('adminhtml/session')->getManufacturersData());
+	  		$data = Mage::getSingleton('adminhtml/session')->getManufacturersData();
+			$data['old_products'] = $mcount;
+          $form->setValues($data);
           Mage::getSingleton('adminhtml/session')->setManufacturersData(null);
       } elseif ( Mage::registry('manufacturers_data') ) {
-          $form->setValues(Mage::registry('manufacturers_data')->getData());
+	  		$data = Mage::registry('manufacturers_data')->getData();
+			$data['old_products'] = $mcount;
+          $form->setValues($data);
       }
       return parent::_prepareForm();
   }
