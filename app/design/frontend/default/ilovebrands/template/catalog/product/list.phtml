@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Magento
  *
@@ -91,7 +91,12 @@
 	$currentUrl = $this->helper('core/url')->getCurrentUrl();
 	$searchFind = strpos($currentUrl,'catalogsearch');
 	if($searchFind === false) {
-		$_event = $currentCategory->getEvent();
+		if(Mage::app()->getRequest()->getControllerName() == 'manufacturersview') {
+			$_event = false;
+		} else {
+			$_event = $currentCategory->getEvent();
+		}
+		
 	} else {
 		$_event = false;
 	}

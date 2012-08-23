@@ -57,28 +57,7 @@ if($typed=="text"){
     	<?php } ?>
     </ul>
 </div>
-<?php
-	//Number of Manufacturers in one row
-	$logoWidth = Mage::helper('manufacturers')->getLogoWidth();  
-	$pageLayout = Mage::getStoreConfig('manufacturers/manufacturers/layout');
-	if($pageLayout == "page/1column.phtml") {
-		$contentWidth = 900;
-		$_columnCount = floor($contentWidth/$logoWidth);
-	} elseif($pageLayout == "page/2columns-right.phtml") {
-		$contentWidth = 685;
-		$_columnCount = floor($contentWidth/$logoWidth);
-	} elseif($pageLayout == "page/2columns-left.phtml") {
-		$contentWidth = 685;
-		$_columnCount = floor($contentWidth/$logoWidth);
-	} elseif($pageLayout == "page/3columns.phtml") {
-		$contentWidth = 475;
-		$_columnCount = floor($contentWidth/$logoWidth);
-	} else {
-		$contentWidth = 685;
-		$_columnCount = floor($contentWidth/$logoWidth);
-	}
 
-?>
 <?php
 if($showLogo) {
 ?>
@@ -90,7 +69,31 @@ if($showLogo) {
 	<?php else : ?>
     	 <div class="row_main">
         <?php $_collectionSize = count($_productCollection); ?>
+        
+        <?php
+        	//Number of Manufacturers in one row
+			$logoWidth = Mage::helper('manufacturers')->getLogoWidth();  
+			$pageLayout = Mage::getStoreConfig('manufacturers/manufacturers/layout');
+			if($pageLayout == "page/1column.phtml") {
+				$contentWidth = 900;
+				$_columnCount = floor($contentWidth/$logoWidth);
+			} elseif($pageLayout == "page/2columns-right.phtml") {
+				$contentWidth = 685;
+				$_columnCount = floor($contentWidth/$logoWidth);
+			} elseif($pageLayout == "page/2columns-left.phtml") {
+				$contentWidth = 685;
+				$_columnCount = floor($contentWidth/$logoWidth);
+			} elseif($pageLayout == "page/3columns.phtml") {
+				$contentWidth = 475;
+				$_columnCount = floor($contentWidth/$logoWidth);
+			} else {
+				$contentWidth = 685;
+				$_columnCount = floor($contentWidth/$logoWidth);
+			}
 
+		?>
+        
+        
         <?php $_columnCount = floor($_columnCount); $prev_row = "";?>
 		<?php $i=1; foreach ( $_productCollection as $_product ) : ?> 	
         <?php  

@@ -249,15 +249,23 @@ class FME_Manufacturers_Adminhtml_ManufacturersController extends Mage_Adminhtml
 		$select = $read->query($sqry);
 		$attributes = $select->fetchAll();
 		
+		$old_product_ids = $_POST['old_products'];
+		$productIdsString = $_POST['productIds'];
+		$productIdsString = trim($productIdsString, ',');
+		/*echo $sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($productIdsString) and attribute_id = ".$attributes[0]['attribute_id'];
+		echo $productIdsString;
+		echo "<pre>";print_r($_POST);exit;*/
 		if(isset($_POST['productIds'])) {
-			if($productIdsString != '') {
-				$sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($productIdsString) and attribute_id = ".$attributes[0]['attribute_id'];
+			if(!empty($old_product_ids)) {
+				$sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($old_product_ids) and attribute_id = ".$attributes[0]['attribute_id'];
 				$write->query($sql1);
 			}
 		}
 		
+		$productIds = explode(",", $productIdsString);	
 		$Result = array_unique($productIds);
-				
+		$Result_shift = array_shift($Result);
+		
 		 foreach ($Result as $_productId) {
 			$sql2  = "insert into ".$catalog_product_entity_int." (entity_type_id ,attribute_id, store_id, entity_id, `value`) values (4, ".$attributes[0]['attribute_id'].", 0, ".$_productId.", ".Mage::helper('manufacturers')->getBrandsOptionId($brand_id).")";
 			$write->query($sql2);
@@ -855,14 +863,6 @@ class FME_Manufacturers_Adminhtml_ManufacturersController extends Mage_Adminhtml
 		//Get total of attributeValues
 		$countattributeValues = count($attributeValuesArray);
 		
-		/*echo Mage::helper('manufacturers')->getAttributeProducts('Raymarine');
-		
-		echo "<pre>";
-		echo $mlasid;
-		echo "<br>";
-		echo $countattributeValues;
-		print_r($attributeValuesArray);exit;*/
-		
 		//Remove single quote from manufacturer name
 		$remove = array();
 		$remove[] = "'";
@@ -880,7 +880,7 @@ class FME_Manufacturers_Adminhtml_ManufacturersController extends Mage_Adminhtml
 				$attributeValue = str_replace($remove, "", $attributeValuesArray[$i]);
 				$reg_ex = "/[[:space:]]/";
 				$replace_word = "-"; 
-				$identifier = preg_replace($reg_ex, $replace_word, $attributeValue);
+				$identifier = preg_replace($reg_ex, $replace_word, $mname);
 				
 				$products = Mage::getModel('catalog/product')
 				->getCollection()
