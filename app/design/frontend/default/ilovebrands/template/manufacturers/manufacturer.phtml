@@ -39,14 +39,13 @@
 	}
 
 ?>
-<div id="manfacturerwrapper">
+<!--<div id="manfacturerwrapper">
     <div>
     	<img src="<?php echo $imgPath; ?>" class="manfacturerimage" alt="<?php echo $model["m_name"] ?>" border="0" /> 
-        <span class="manfacturertext"><?php echo Mage::helper('manufacturers')->getWysiwygFilter($model["m_details"]); ?></span>
+        <span class="manfacturertext"><?php //echo Mage::helper('manufacturers')->getWysiwygFilter($model["m_details"]); ?></span>
     	<br /> 
 	</div>
-</div>
+</div>-->
 <?php endif; ?>
-<div style="clear:both;"></div>
-<div style="height:10px;"></div>
+<!--<div style="height:10px;"></div>-->
 <?php echo $this->getChildHtml('manufacturer_product_list');?>

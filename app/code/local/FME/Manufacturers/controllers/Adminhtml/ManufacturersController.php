@@ -255,16 +255,19 @@ class FME_Manufacturers_Adminhtml_ManufacturersController extends Mage_Adminhtml
 		/*echo $sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($productIdsString) and attribute_id = ".$attributes[0]['attribute_id'];
 		echo $productIdsString;
 		echo "<pre>";print_r($_POST);exit;*/
-		if(isset($_POST['productIds'])) {
-			if(!empty($old_product_ids)) {
-				$sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($old_product_ids) and attribute_id = ".$attributes[0]['attribute_id'];
-				$write->query($sql1);
-			}
-		}
 		
 		$productIds = explode(",", $productIdsString);	
 		$Result = array_unique($productIds);
 		$Result_shift = array_shift($Result);
+		
+		
+		if(isset($_POST['productIds'])) {
+			if(!empty($productIdsString)) {
+				//echo "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($old_product_ids) and attribute_id = ".$attributes[0]['attribute_id'];
+				$sql1  = "DELETE FROM ".$catalog_product_entity_int." WHERE entity_id in ($productIdsString) and attribute_id = ".$attributes[0]['attribute_id'];
+				$write->query($sql1);
+			}
+		}
 		
 		 foreach ($Result as $_productId) {
 			$sql2  = "insert into ".$catalog_product_entity_int." (entity_type_id ,attribute_id, store_id, entity_id, `value`) values (4, ".$attributes[0]['attribute_id'].", 0, ".$_productId.", ".Mage::helper('manufacturers')->getBrandsOptionId($brand_id).")";

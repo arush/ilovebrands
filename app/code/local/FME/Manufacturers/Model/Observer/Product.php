@@ -43,7 +43,7 @@ class FME_Manufacturers_Model_Observer_Product extends Mage_Core_Model_Mysql4_Ab
 				$con_read = Mage::getSingleton('core/resource')->getConnection('core_read');
 				$con_write = Mage::getSingleton('core/resource')->getConnection('core_write');
 				
-				$cmtsrowqry = "select eav_option_value.value, eav_option_value.option_id from ".$eav_attribute_option." eav_option left outer join ".$eav_attribute_option_value." eav_option_value on eav_option.option_id = eav_option_value.option_id where eav_option.option_id=".$post['product']['manufacturer']." and eav_option_value.store_id = 0;";
+				$cmtsrowqry = "select eav_option_value.value, eav_option_value.option_id from ".$eav_attribute_option." eav_option left outer join ".$eav_attribute_option_value." eav_option_value on eav_option.option_id = eav_option_value.option_id where eav_option.option_id=".$post['product'][$attributeCode]." and eav_option_value.store_id = 0;";
 				$cmtrowselect = $con_read->query($cmtsrowqry);
 				$eav_collection = $cmtrowselect->fetchAll();
 				$brand_id = Mage::helper('manufacturers')->checkExistingManufacturer($eav_collection[0]['option_id'],$eav_collection[0]['value']);
