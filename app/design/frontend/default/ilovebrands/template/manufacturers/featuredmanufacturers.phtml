@@ -64,7 +64,7 @@ $color = Mage::helper('manufacturers')->getFeaturedBlockLogoBackgroundColor();
 										}	
 									?>	
 									<li>
-									<a class="image" style="text-decoration:none;" href="<?php echo Mage::helper('manufacturers')->getUrl($_feaManufacturers['identifier']); ?>" title="<?php echo $_feaManufacturers["m_name"]; ?>">
+									<a class="image" style="text-decoration:none;" href="<?php echo Mage::helper('manufacturers')->getSpecialUrl($_feaManufacturers['identifier']); ?>" title="<?php echo $_feaManufacturers["m_name"]; ?>">
 										<img src="<?php echo $imgPath; ?>" alt="<?php echo $_feaManufacturers["m_name"]; ?>" />
 										<br /><span><?php echo $this->htmlEscape($_feaManufacturers["m_name"]) ?></span>
 									</a>

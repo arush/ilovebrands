@@ -194,6 +194,20 @@ class FME_Manufacturers_Helper_Data extends Mage_Core_Helper_Abstract
 		return $url;
 		
 	}
+	
+	public function getSpecialUrl($identifier = null)
+	{
+		
+		if ( is_null($identifier) ) {
+			$url = Mage::getUrl('') . "brands" . DS . self::getListIdentifier() . self::getSeoUrlSuffix();
+		} else {
+			$url = Mage::getUrl('') . "brands" . DS . $identifier . self::getSeoUrlSuffix();
+		}
+
+		return $url;
+		
+	}
+	
 	public function getSeoUrlSuffix()
 	{
 		return Mage::getStoreConfig(self::XML_PATH_SEO_URL_SUFFIX);

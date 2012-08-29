@@ -172,7 +172,7 @@ if($showLogo) {
 						}
 					}
 				?>
-				<li><a href="<?php echo Mage::helper('manufacturers')->getUrl($_product['identifier']); ?>"><?php echo $this->htmlEscape($_product["m_name"]) ?></a></li>
+				<li><a href="<?php echo Mage::helper('manufacturers')->getSpecialUrl($_product['identifier']); ?>"><?php echo $this->htmlEscape($_product["m_name"]) ?></a></li>
             <?php if($showAlphaHeading){$prev_row = $letter;} endforeach; ?>
         </ul>
         </div>
