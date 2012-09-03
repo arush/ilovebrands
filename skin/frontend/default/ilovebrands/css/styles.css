@@ -12708,8 +12708,8 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 		#nav ul.level0 li.first, #nav ul.level0 li.last, #nav li.level0 level1:hover, #nav li.level1.over, #nav li.level1 ul.level1 a:hover, #nav li.level1 ul.level1 li.over{background: none;}
 		#nav .level0 li.level1 {text-align: left;}
 		#nav li.level0 li.first a{padding: 20px 0 0 20px;}
-		#nav .level0 li.level1 a{padding: 15px 0 0 20px;}
-		#nav .level0 li.last a{padding: 15px 0 0 20px;}
+		#nav .level0 li.level1 a{padding: 5px 0 0 20px;}
+		#nav .level0 li.last a{padding: 5px 0 0 20px;}
 		#nav ul.level0 li.level1{padding: 0;}
 		#nav ul.level1 li a {
 		display: block;
