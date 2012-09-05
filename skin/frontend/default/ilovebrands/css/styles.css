@@ -12656,7 +12656,7 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 			margin-top: 5px;
 		}
 
-		#nav .first a.level-top, #nav .last a.level-top {color:#000;}
+		#nav .first a.level-top, #nav .last a.level-top {color:#444;}
 
 		#nav li.level0:hover, #nav li.over{
 		}
