@@ -4259,8 +4259,6 @@ p.product-image {
 }
 
 .availability-only span, .availability-only a {
-  border-bottom: 1px dashed rgb(117,
-    29, 2);
   color: rgb(0, 0, 0);
   cursor: help;
 }
@@ -4271,6 +4269,9 @@ p.product-image {
   cursor: pointer;
   padding-right: 15px;
   text-decoration: none;
+  color: #D12C01;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .availability-only .expanded {
@@ -4278,13 +4279,14 @@ p.product-image {
 }
 
 .availability-only strong {
-  color: rgb(209, 44, 1);
+  color: #D12C01;
 }
 
 .availability-only-details {
-  margin: 0pt 0pt 7px;
-  border: 1px solid rgb(217,
-    217, 217);
+  margin: 0pt 0pt 7px 12px;
+  border: 1px solid #ACACAC;
+  width: 271px;
+  color: #444;
 }
 
 .availability-only-details thead {
@@ -4297,8 +4299,7 @@ p.product-image {
 }
 
 .availability-only-details th {
-  border-bottom: 1px solid rgb(217,
-    217, 217);
+  border-bottom: 1px solid #ACACAC;
   font-size: 10px;
   text-transform: uppercase;
 }
@@ -10794,7 +10795,7 @@ a.cat-view-now {
 	width: 257px;
 	background: #eaeaea;
 	color: #5e5e5e;
-	border-color: #acacac;
+	border-color: #ACACAC;
 	margin-top: 10px;
 }
 .product-options dd input.input-text{
