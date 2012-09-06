@@ -12265,12 +12265,12 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
 	z-index: 100;
 	position:absolute;
 }
-.header-middle{float: left; padding: 17px 32px;}
+.header-middle{float: left; padding: 17px 2px;}
 .header-contact {text-transform: uppercase;}
 .header-contact img{float: left; margin-bottom: -1px;}
 .header-contact img.visit{margin-top: -2px;}
 .header-contact p{float: left; color: #8c8c8c;}
-.header-contact .header-shipping {color: #ac2323; font-family: ProximaNovaBold; font-size: 24px;}
+.header-contact .header-shipping {color: #ac2323; font-family: ProximaNovaBold; font-size: 19px;}
 
 .header-panel {
   float: right;
