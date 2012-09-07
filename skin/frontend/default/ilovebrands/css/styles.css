@@ -10242,6 +10242,7 @@ button::-moz-focus-inner{border:0;padding:0;margin:0;}
 	box-shadow: 0pt 0px 3px #acacac;
 	border: 1px solid #acacac\9;
 	background: #fff;
+	color: #444;
 }
 
 #nav div ul {
@@ -13465,3 +13466,9 @@ li.active .step-title .number, li.active .step-title h2{cursor: default;}
   text-decoration:line-through;
   color: red;
 }
+
+#nav .last a.level-top {
+    color: white;
+    background-color: red;
+}
+
