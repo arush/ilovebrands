@@ -91,12 +91,7 @@
 	$currentUrl = $this->helper('core/url')->getCurrentUrl();
 	$searchFind = strpos($currentUrl,'catalogsearch');
 	if($searchFind === false) {
-		if($this->getRequest()->getModuleName() == 'manufacturers') {
-			$_event = false;
-		} else {
-			$_event = $currentCategory->getEvent();
-		}
-		
+		$_event = $currentCategory->getEvent();
 	} else {
 		$_event = false;
 	}
@@ -133,7 +128,7 @@
                 <?php echo $this->getPriceHtml($_product, true) ?>
 
 				<!-- ARUSH 28/7/11 ADDED DIV FOR SOLD OUT IMAGE -->
-				<?php /*?>FLO ADD ROLLOVER START<?php */?>
+				<?php /*?>FLO ADD ROLLOVER START
 					<?php if ($_product->isSalable()): ?>
 
 							<div class="ProdImgRollover">
@@ -166,13 +161,13 @@
 
 
 
-								<?php /*WDCA CODE BEGINS*/ ?>
+								<?php /*WDCA CODE BEGINS
 								<?php if(!Mage::getStoreConfigFlag('advanced/modules_disable_output/TBT_Rewards') && Mage::getConfig()->getModuleConfig('TBT_Rewards')->is('active', 'true')) : ?>
 									<?php $predict_points_block = Mage::getBlockSingleton('rewards/product_predictpoints')?>
 									<?php $predict_points_block->setProduct($_product);?>
 									<?php echo $predict_points_block->toHtml()?>
 								<?php endif; ?>
-								<?php /*WDCA CODE ENDS*/ ?>
+								<?php /*WDCA CODE ENDS*
 								<a class="cat-view-now" href="<?php echo $_product->getProductUrl() ?>">View now</a>
 							</div>
 						<!--/a-->
@@ -202,7 +197,7 @@
 									</div>
 								<!-- /a -->
 							<?php endif; ?>
-						<?php /*?>FLO ADD ROLLOVER END<?php */?>
+						<?php /*?>FLO ADD ROLLOVER END<?php
 
                         <?php break;
                         case 'closed': ?>
@@ -228,7 +223,7 @@
                     ?>
                </div>
 
-						<?php endif; ?>
+						<?php endif; ?> */?>
 
 				<!-- END ARUSH 2/11/10 ADDED DIV FOR SOLD OUT IMAGE -->
 
