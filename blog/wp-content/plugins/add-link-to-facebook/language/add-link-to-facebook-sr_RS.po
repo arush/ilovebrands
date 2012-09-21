@@ -1,0 +1,1537 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Link to Facebook\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-09 10:24+0100\n"
+"PO-Revision-Date: 2012-02-15 11:00+0100\n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: Balkanboy Media <hello@balkanboymedia.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Serbian\n"
+"X-Poedit-Country: YUGOSLAVIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /Users/wolfgang/Documents/poedit Übersetzungen/AL2FB\n"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:12
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:661
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:684
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:715
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:716
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:892
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:2191
+msgid "Add Link to Facebook"
+msgstr "Add Link to Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:26
+msgid "Only this user can access the settings:"
+msgstr "Samo ovaj korisnik može pristupiti podešavanjima:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:102
+msgid "Your server may not allow external connections"
+msgstr "Vaš server možda ne dozvoljava eksterne konekcije"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:110
+msgid "Please be aware that comment integration or showing Facebook messages in the widget could harm the privacy of other Facebook users!"
+msgstr "Molimo Vas da imate na umu da integracija komentara ili prikazivanje Facebook poruka u vidžet može narušiti privatnost drugih Facebook korisnika!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:119
+msgid "Authorization"
+msgstr "Autorizacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:124
+msgid "Plugin is authorized"
+msgstr "Dodatak je autorizovan"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:129
+msgid "Links will be added to"
+msgstr "Linkovi će biti dodati u"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:146
+msgid "Authorize"
+msgstr "Odobri"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:161
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1316
+msgid "Donate in EUR"
+msgstr "Donirajte u EUR"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:174
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:279
+msgid "Show"
+msgstr "Prikaži"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:195
+msgid "Easy setup"
+msgstr "Laka podešavanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:204
+msgid "To get an App ID and App Secret you have to create a Facebook application"
+msgstr "Da bi dobili App ID i App Secret morate napraviti Facebook aplikaciju"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:205
+msgid "You have to fill in the following:"
+msgstr "Morate da popunite sledeće:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:208
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:252
+msgid "App Name:"
+msgstr "Ime aplikacije:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:209
+msgid "Anything you like, will appear as \"via ...\" below the message"
+msgstr "Sve što lajkujete, pojaviće se kao \"via ...\" ispod poruke"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:212
+msgid "Website > Site URL:"
+msgstr "Websajt > Sajt URL:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:216
+msgid "Click here to create"
+msgstr "Kliknite ovde da napravite"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:217
+msgid "and navigate to '<em>Apps</em>' and then to '<em>Create New App</em>'"
+msgstr "i idite na '<em>Apps</em>' a onda na '<em>Create New App</em>'"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:222
+msgid "App ID:"
+msgstr "App ID:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:228
+msgid "App Secret:"
+msgstr "App Secret:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:237
+msgid "Access token:"
+msgstr "Access token:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:265
+msgid "Share with all users on this site:"
+msgstr "Delite sa svim korisnicima na ovom sajtu:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:275
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:352
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:433
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:484
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:545
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:594
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:651
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:680
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:709
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:735
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:780
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:816
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:924
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:983
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1243
+msgid "Save"
+msgstr "Sačuvaj"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:296
+msgid "Additional settings"
+msgstr "Dodatna podešavanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:299
+msgid "Picture"
+msgstr "Slika"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:300
+msgid "Page/group"
+msgstr "Stranica/Grupa"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:301
+msgid "Appearance"
+msgstr "Izgled"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:302
+msgid "Comments"
+msgstr "Komentari"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:303
+msgid "Like button"
+msgstr "Like dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:304
+msgid "Like box"
+msgstr "Like box"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:305
+msgid "Comments plugin"
+msgstr "Dodatak za komentare"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:306
+msgid "Face pile"
+msgstr "Face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:307
+msgid "Login"
+msgstr "Prijavljivanje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:308
+msgid "Activity feed"
+msgstr "Novosti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:309
+msgid "Common"
+msgstr "Zajedničko"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:310
+msgid "Misc."
+msgstr "Razno"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:311
+msgid "Admin"
+msgstr "Admin"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:316
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:976
+msgid "Link picture"
+msgstr "Link do slike"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:319
+msgid "Link picture:"
+msgstr "Link do slike:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:321
+msgid "WordPress logo"
+msgstr "WordPress logo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:322
+msgid "First attached image"
+msgstr "Prva nakačena slika"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:323
+msgid "Featured post image"
+msgstr "Izdvojena slika"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:324
+msgid "Let Facebook select"
+msgstr "Neka Facebook izabere"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:325
+msgid "First image in the post"
+msgstr "Prva slika u članku"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:326
+msgid "Avatar of author"
+msgstr "Avatar autora"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:330
+msgid "Image from User Photo plugin"
+msgstr "Slike iz User Photo dodatka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:334
+msgid "Custom picture below"
+msgstr "Prilagođena slika ispod"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:338
+msgid "Custom picture URL:"
+msgstr "Prilagođeni URL slike:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:341
+msgid "At least 50 x 50 pixels"
+msgstr "Barem 50 x 50 piksela"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:345
+msgid "Default picture URL:"
+msgstr "Predefinisani URL slike:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:348
+msgid "Default WordPress logo"
+msgstr "Predefinisani WordPress Logo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:375
+msgid "Facebook page"
+msgstr "Facebook strana"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:378
+msgid "See all pages:"
+msgstr "Vidi sve strane:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:381
+msgid "Requires manage pages permission"
+msgstr "Zahteva permisiju menjanja strane"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:382
+msgid "Check this too if you want to add as page owner"
+msgstr "Štiklirajte i ovo ukoliko želite da dodate kao vlasnik strane"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:386
+msgid "Add to page:"
+msgstr "Dodaj na stranici:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:405
+msgid "Add also to pages:"
+msgstr "Takođe dodaj na stranice:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:425
+msgid "This option is only available in"
+msgstr "Ova opcija je samo dostupna u"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:449
+msgid "Facebook group"
+msgstr "Facebook grupa"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:452
+msgid "Use groups:"
+msgstr "Koristi grupe:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:455
+msgid "Requires user groups permission"
+msgstr "Zahteva permisiju korisnicke grupe"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:464
+msgid "Add to group:"
+msgstr "Dodaj u grupu:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:468
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:574
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1044
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:935
+msgid "None"
+msgstr "Ništa"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:494
+msgid "First authorize the plugin"
+msgstr "Prvo autorizujte dodatak"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:501
+msgid "Link appearance"
+msgstr "Izgled linka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:504
+msgid "Use site title as caption:"
+msgstr "Koristi naslov sajta kao natpis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:511
+msgid "Use excerpt as message:"
+msgstr "Koristi odlomak kao poruku:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:517
+msgid "Text trailer:"
+msgstr "Tekst sufiks:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:520
+msgid "For example \"Read more ...\""
+msgstr "Na primer \"Pročitaj više ...\""
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:524
+msgid "Keep hyperlinks:"
+msgstr "Zadrži hyperlink-ove:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:527
+msgid "The hyperlink title will be removed"
+msgstr "Naslov hyperlink-a će biti izbačen"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:531
+msgid "Add 'Share' link:"
+msgstr "Dodaj 'Podeli' link:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:538
+msgid "Use short URL:"
+msgstr "Koristi kratki URL:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:541
+msgid "If available"
+msgstr "Ukoliko je moguće"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:550
+msgid "Facebook comments"
+msgstr "Facebook komentari"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:553
+msgid "Integrate comments from Facebook:"
+msgstr "Integrišite komentare sa Facebook-a:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:559
+msgid "Post WordPress comments back to Facebook:"
+msgstr "Objavite WordPress komentare nazad na Facebook:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:565
+msgid "Copy comments from Facebook to WordPress:"
+msgstr "Kopiraj komentare sa Facebook-a na WordPress:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:568
+msgid "Enables for example editing of Facebook comments"
+msgstr "Na primer, omogućava menjanje Facebook komentara"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:572
+msgid "Link Facebook comment to:"
+msgstr "Linkuj Facebook komentar na:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:575
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:578
+msgid "Disables displaying of Facebook avatars too"
+msgstr "Onemogućava prikazivanje Facebook avatara takođe"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:576
+msgid "Profile author"
+msgstr "Profil autora"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:577
+msgid "Added link"
+msgstr "Dodati link"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:577
+msgid "Does not work for groups"
+msgstr "Ne radi za grupe"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:582
+msgid "Integrate likes from Facebook:"
+msgstr "Integišite lajkove sa Facebook-a"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:588
+msgid "Show likers below the post text:"
+msgstr "Prikaži lajkere ispod teksta članka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:599
+msgid "Facebook like button"
+msgstr "Facebook like dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:602
+msgid "Show Facebook like button:"
+msgstr "Prikaži Facebook like dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:605
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:640
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:748
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:762
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:904
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:912
+msgid "Documentation"
+msgstr "Dokumentacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:609
+msgid "Layout:"
+msgstr "Raspored"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:611
+msgid "Standard"
+msgstr "Standardno"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:612
+msgid "Button with count"
+msgstr "Dugme sa brojačem"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:613
+msgid "Box with count"
+msgstr "Polje sa brojačem"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:617
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:660
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:695
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:727
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:789
+msgid "Width:"
+msgstr "Širina:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:620
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:663
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:698
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:730
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:747
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:755
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:792
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:799
+msgid "Pixels"
+msgstr "Piksela"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:624
+msgid "Action:"
+msgstr "Akcija:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:626
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:819
+msgid "Like"
+msgstr "Sviđa mi se"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:627
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:819
+msgid "Recommend"
+msgstr "Preporučujem"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:631
+msgid "Show at the top of the post:"
+msgstr "Prikaži na vrhu članka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:637
+msgid "Show Facebook send button:"
+msgstr "Prikaži Facebook pošalji dugme:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:644
+msgid "Combine Facebook like and send buttons:"
+msgstr "Kombinuj Facebook sviđa mi se i pošalji dugmića:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:656
+msgid "Facebook like box"
+msgstr "Facebook like box"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:667
+msgid "Disable like box header:"
+msgstr "Isključi like box zaglavlje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:673
+msgid "Disable like box stream:"
+msgstr "Isključi like box stream:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:685
+msgid "Facebook comments plugin"
+msgstr "Dodatak za Facebook komentare"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:689
+msgid "Number of posts:"
+msgstr "Broj članaka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:702
+msgid "Display automatically after post:"
+msgstr "Prikaži automatski pole članka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:714
+msgid "Facebook face pile"
+msgstr "Facebook face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:718
+msgid "Size:"
+msgstr "Veličina:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:721
+msgid "Small"
+msgstr "Malo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:722
+msgid "Large"
+msgstr "Veliko"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:740
+msgid "Facebook login"
+msgstr "Facebook prijavljivanje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:744
+msgid "Registration width:"
+msgstr "Širina registracije:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:752
+msgid "Login width:"
+msgstr "Širina prijavljivanja:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:759
+msgid "Login registration URL:"
+msgstr "Prijavljivanje - URL registracije:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:766
+msgid "Login redirect URL:"
+msgstr "Prijavljivanje - URL redirekcije:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:772
+msgid "Text or HTML when logged in:"
+msgstr "Tekst ili HTML kada se prijavi:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:785
+msgid "Facebook activity feed"
+msgstr "Facebook novosti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:796
+msgid "Height:"
+msgstr "Visina:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:803
+msgid "Show header:"
+msgstr "Prikaži zaglavlje:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:809
+msgid "Show recommendations:"
+msgstr "Prikaži preporuke:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:821
+msgid "Facebook common"
+msgstr "Facebook slično"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:825
+msgid "Do not show on the home page:"
+msgstr "Ne prikazuj na početnoj strani:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:831
+msgid "Do not show on posts:"
+msgstr "Ne prikazuj u člancima:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:837
+msgid "Do not show on pages:"
+msgstr "Ne prikazuj na stranicama:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:843
+msgid "Do not show in archives:"
+msgstr "Ne prikazuj u arhivama:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:849
+msgid "Do not show in categories:"
+msgstr "Ne prikazuj u kategorijama:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:855
+msgid "Faces:"
+msgstr "Lica:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:861
+msgid "Maximum count of rows:"
+msgstr "Maksimalni broj redova:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:867
+msgid "Font:"
+msgstr "Font:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:881
+msgid "Color scheme:"
+msgstr "Varijante boja:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:883
+msgid "Light"
+msgstr "Svetlo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:884
+msgid "Dark"
+msgstr "Tamno"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:888
+msgid "Border color:"
+msgstr "Boja okvira:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:894
+msgid "Link to:"
+msgstr "Link na:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:897
+msgid "Default the post or page"
+msgstr "Predefinisano članak ili strana"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:901
+msgid "Use Open Graph protocol:"
+msgstr "Open Graph protokol:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:908
+msgid "Open Graph protocol <em>og:type</em>:"
+msgstr "Open Graph protokol <em>og:type</em>:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:911
+msgid "Default 'article'"
+msgstr "Predefinisano 'članak'"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:916
+msgid "Facebook administrators:"
+msgstr "Facebook administratori:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:919
+msgid "Separate multiple administrators by a comma without spaces"
+msgstr "Razdvoji više administratora zarezom bez razmaka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:930
+msgid "Miscelaneous settings"
+msgstr "Razna podešavanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:933
+msgid "Do not add link by default:"
+msgstr "Ne dodaj link podrazumevano:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:939
+msgid "Don't show a summary in the post list:"
+msgstr "Ne prikazuj kratak pregled u listi članaka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:945
+msgid "Add links for new pages:"
+msgstr "Dodaj linkove za nove stranice:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:951
+msgid "Show link to the added link on Facebook:"
+msgstr "Prikaži link na dodati link na Facebook-u:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:957
+msgid "Facebook character encoding:"
+msgstr "Facebook enkoding karaktera:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:960
+msgid "Default UTF-8; do not change if no need"
+msgstr "Predefinisano UTF-8; ne menjajte ukoliko nema potrebe"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:964
+msgid "Facebook locale:"
+msgstr "Facebook lokalitet:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:967
+msgid "Do not change if no need"
+msgstr "Ne menjajte ukoliko nema potrebe"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:971
+msgid "I have donated to this plugin:"
+msgstr "Donirao sam ovaj dodatak:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:977
+msgid "I have rated this plugin:"
+msgstr "Ocenio sam ovaj dodatak:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:991
+msgid "Administrator options"
+msgstr "Administratorska podešavanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:994
+msgid "Facebook communication timeout:"
+msgstr "Konekcija sa Facebook-om je istekla:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:997
+msgid "Seconds"
+msgstr "Sekunde"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:998
+msgid "Default 15 seconds"
+msgstr "Predefinisano 15 sekunde"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1002
+msgid "Do not display notices:"
+msgstr "Ne prikazuj obaveštenja:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1005
+msgid "Except on this page"
+msgstr "Odlomak na ovoj strani"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1009
+msgid "Required capability to use plugin:"
+msgstr "Tražene mogućnosti da bi se koristio dodatak:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1035
+msgid "Required capability to view Facebook comments:"
+msgstr "Tražene mogućnosti da bi se pregledali Facebook komentari:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1056
+msgid "Refresh Facebook comments every:"
+msgstr "Osveži Facebook komentare na svakih:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1059
+msgid "Minutes"
+msgstr "Minuta"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1060
+msgid "Default every 10 minutes"
+msgstr "Predefinisano na svakih 10 minuta"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1064
+msgid "Refresh Facebook comments for:"
+msgstr "Osveži Facebook komentare na :"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1067
+msgid "Days"
+msgstr "Dana"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1068
+msgid "Default 7 days"
+msgstr "Predefinisano 7 dana"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1072
+msgid "Refresh Facebook comments in the background:"
+msgstr "Osveži Facebook komentare u pozadini:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1075
+msgid "Using Wordress cron"
+msgstr "Koristi Wordpress cron"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1079
+msgid "Maximum text length with trailer:"
+msgstr "Maksimalna dužina teksta za sufiks:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1082
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1090
+msgid "Characters"
+msgstr "Karaktera"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1083
+msgid "Default 256 characters"
+msgstr "Predefinisano 256 karaktera"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1087
+msgid "Maximum Facebook text length:"
+msgstr "Maksimalna veličina Facebook teksta:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1091
+msgid "Default 10,000 characters"
+msgstr "Predefinisano 10,000 karaktera"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1095
+msgid "Exclude these custom post types:"
+msgstr "Izostavi ove prilagođene tipove članaka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1098
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1106
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1113
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1121
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1128
+msgid "Separate by commas"
+msgstr "Razdvajati zarezom"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1102
+msgid "Exclude these categories:"
+msgstr "Izostavi ove kategorije:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1103
+msgid "Use category ID's"
+msgstr "Koristi ID kategorija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1110
+msgid "Exclude these tags:"
+msgstr "Izostavi ove tagove:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1117
+msgid "Exclude these authors:"
+msgstr "Izostavi ove autore:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1118
+msgid "Use login names"
+msgstr "Koristi korisnička imena"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1125
+msgid "Add meta box for these custom post types:"
+msgstr "Dodajte meta box-ove za ove prilagođene tipove članaka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1132
+msgid "Do not verify the peer's certificate:"
+msgstr "Ne verifikuj peer sertifikat:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1135
+msgid "Try this in case of cURL error 60"
+msgstr "Pokušaj ovo u slučaju cURL gerror 60"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1139
+msgid "Execute shortcodes in widgets:"
+msgstr "Izvrši shortcode u vidžetima:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1145
+msgid "Do not execute shortcodes for texts:"
+msgstr "Ne izvršavaj shortcode za tekst:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1151
+msgid "Do not execute filters for texts:"
+msgstr "Ne izvršavaj filter za tekst:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1157
+msgid "Do not execute filters for comments:"
+msgstr "Ne izvršavaj filter za komentare:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1163
+msgid "Use Heise social share privacy:"
+msgstr "Koristi Heise social share privatnost:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1169
+msgid "Heise privacy policy URL:"
+msgstr "Url Heise politike pravila:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1175
+msgid "Priority filter 'the_content':"
+msgstr "Prioritetni filter 'the_content':"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1181
+msgid "No asynchronous Facebook script:"
+msgstr "Bez asynchronous Facebook script:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1187
+msgid "Do not include Facebook script:"
+msgstr "Ne ubacuj Facebook skriptu:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1190
+msgid "In case of conflicts with other Facebook plugins"
+msgstr "U slučaju konflikta sa ostalim Facebook dodacima"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1194
+msgid "Clean on deactivate:"
+msgstr "Očisti pri deaktivaciji:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1196
+msgid "Upgrade deactivates the plugin!"
+msgstr "Nadogradnja deaktivira dodatak!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1199
+msgid "All data, except link id's"
+msgstr "Sve podatke, osim id linkova"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1203
+msgid "Additional styling rules (CSS):"
+msgstr "Dodatne pravila stilova (CSS):"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1213
+msgid "Debug options"
+msgstr "Debug opcije"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1216
+msgid "Use site URL as request URI:"
+msgstr "Koristi URL sajta kao zahtev URI:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1222
+msgid "Do not use cURL:"
+msgstr "Ne koristi cURL:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1228
+msgid "Use publish_post action:"
+msgstr "Koristi publish_post akciju:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1234
+msgid "Debug:"
+msgstr "Debug:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1249
+msgid "Only for administrators"
+msgstr "Samo za administratore"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1256
+msgid "No tab pages"
+msgstr "No tab pages"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1299
+msgid "Resources"
+msgstr "Resursi"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1301
+msgid "Setup guide & user manual"
+msgstr "Uputstvo za podešavanje & korisničko uputstvo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1302
+msgid "Frequently asked questions"
+msgstr "Često postavljana pitanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1303
+msgid "Support page"
+msgstr "Strana za podršku"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1304
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1335
+msgid "Debug information"
+msgstr "Debug informacije"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1305
+msgid "About the author"
+msgstr "O autoru"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1306
+msgid "Other plugins"
+msgstr "Ostali dodaci"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1342
+msgid "Name:"
+msgstr "Ime:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1348
+msgid "E-mail:"
+msgstr "E-Mail:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1351
+msgid "Please check if this is a correct, reachable e-mail address"
+msgstr "Molimo Vas da proverite da li je ova adresa dostupna i tačna"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1355
+msgid "Forum topic link:"
+msgstr "Link Forum topika:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1358
+msgid "Mandatory"
+msgstr "Obavezno"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1362
+msgid "Message:"
+msgstr "Poruka:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1365
+msgid "Please describe your problem, even if you did before"
+msgstr "Molimo Vas da opišete vaš problem, čak iako ste to uradili ranije"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1369
+msgid "Did you check if your problem is described in <a href=\"[FAQ]\" target=\"_blank\">the FAQ</a> ?"
+msgstr "Da li ste proveli da li je vaš problem objašnjen na <a href=\"[FAQ]\" target=\"_blank\">ČPP</a> ?"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1374
+msgid "Send"
+msgstr "Pošalji"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:547
+msgid "Settings updated"
+msgstr "Podešavanja ažurirana"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:566
+msgid "Authorized, go posting!"
+msgstr "Autorizovano, počnite da pišete!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:599
+msgid "Forum topic link is mandatory"
+msgstr "Link forum topika je obavezan"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:616
+msgid "Debug information sent"
+msgstr "Debug informacije su poslate"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:621
+msgid "Sending debug information failed"
+msgstr "Slanje debug informacija neuspešno"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:645
+msgid "needs configuration"
+msgstr "potrebno podešavanje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:649
+msgid "needs authorization"
+msgstr "potrebna autorizacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:655
+msgid "should be authorized again to show Facebook messages in the widget"
+msgstr "trebalo bi autorizovati ponovo da prikaže Facebook poruke u vidžetu"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:695
+msgid "If you like the Add Link to Facebook plugin, please rate it on <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>.<br />If the average rating is low, it makes no sense to support this plugin any longer.<br />You can disable this notice by checking the option \"I have rated this plugin\" on the <a href=\"[settings]\">settings page</a>."
+msgstr "Ukoliko vam se sviđa Add Link to Facebook dodatak, molimo vas ocenite na <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>.<br />Ukoliko je srednja ocena niska, nema svrhe pružiti podršku dodatku više.<br />Možete isključiti ovu poruku štiklirajući opciju \"Ocenio sam ovaj dodatak\" na <a href=\"[settings]\">stranici podešavanja</a>."
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:698
+msgid "Through a mishap on the WordPress.org systems, previous ratings for the plugin were lost.<br />If you've rated the plugin in the past, your rating was accidentally removed.<br />So if you would be so kind as to rate the plugin again, I'd appreciate it. Thanks!"
+msgstr "Through a mishap on the WordPress.org systems, previous ratings for the plugin were lost.<br />If you've rated the plugin in the past, your rating was accidentally removed.<br />So if you would be so kind as to rate the plugin again, I'd appreciate it. Thanks!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:715
+msgid "Administration"
+msgstr "Administracija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:737
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:786
+msgid "Do not add link to Facebook"
+msgstr "Ne dodaj link ka Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:789
+msgid "Do not add like button"
+msgstr "Ne dodaj like dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:792
+msgid "Do not integrate comments"
+msgstr "Ne integriši komentare"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:799
+msgid "Update existing Facebook link"
+msgstr "Ažuriraj postojeći Facebook link"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:801
+msgid "Comments and likes will be lost!"
+msgstr "Komentari i lajkovi će biti izgubljeni!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:804
+msgid "Delete existing Facebook link"
+msgstr "Obriši postojeći Facebook link"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:806
+msgid "Link on Facebook"
+msgstr "Link na Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:814
+msgid "Clear error messages"
+msgstr "Očisti poruke o greškama"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:831
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:414
+msgid "Facebook"
+msgstr "Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:856
+msgid "Yes"
+msgstr "Da"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:858
+msgid "No"
+msgstr "Ne"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:869
+msgid "comments"
+msgstr "komentara"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:877
+msgid "likes"
+msgstr "lajkova"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:918
+msgid "No images in the media library for this post"
+msgstr "Nema slika u media biblioteci za ovaj članak"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:924
+msgid "Select link image:"
+msgstr "Obeleži link slike:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:966
+msgid "Custom excerpt"
+msgstr "Prilagođeni odlomak"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:972
+msgid "Custom text"
+msgstr "Prilagođeni tekst"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1831
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1845
+msgid "liked this post"
+msgid_plural "liked this post"
+msgstr[0] "lajkovao ovaj članak"
+msgstr[1] "lajkovali članak"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1853
+msgid "Facebook ID"
+msgstr "Facebook ID"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1858
+msgid "What is my Facebook ID?"
+msgstr "Koji je moj Facebook ID?"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1917
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1999
+msgid "on Facebook"
+msgstr "na Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:2005
+msgid "Liked this post"
+msgstr "Lajkovao ovaj članak"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:504
+msgid "Share"
+msgstr "Podeli"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:658
+msgid "commented on"
+msgstr "komentarisao na"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:859
+msgid "Information"
+msgstr "Informacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1027
+msgid "WordPress user name"
+msgstr "WordPress korisničko ime"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1074
+msgid "Please enable third-party cookies"
+msgstr "Molimo Vas omogućite kolačiće treće strane"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1150
+msgid "Facebook registration failed"
+msgstr "Facebook registracija neuspela"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1157
+msgid "User registration disabled"
+msgstr "Registracija korisnika onemogućena"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1163
+msgid "Facebook e-mail address missing"
+msgstr "Fali Facebook e-mail adresa"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1171
+msgid "E-mail address in use"
+msgstr "E-mail adresa se koristi"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1179
+msgid "Facebook user ID missing"
+msgstr "Fali Facebook korisnički ID"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1267
+msgid "User not found"
+msgstr "Korisnik nije pronađen"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1282
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1291
+msgid "Could not verify Facebook login"
+msgstr "Ne može se verifikovati Facebook prijavljivanje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:336
+msgid "Title:"
+msgstr "Naslov:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:341
+msgid "Show Facebook comments"
+msgstr "Prikaži facebook komentare"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:343
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:352
+msgid "Maximum number:"
+msgstr "Maksimalni broj:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:346
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:359
+msgid "Appearance depends on your theme!"
+msgstr "Izgled zavisi od Vaše teme!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:350
+msgid "Show Facebook messages"
+msgstr "Prikaži Facebook poruke"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:357
+msgid "Show comments on messages"
+msgstr "Prikaži komentare na porukama"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:363
+msgid "Show Facebook like button"
+msgstr "Prikaži Facebook like dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:367
+msgid "Show Facebook like box"
+msgstr "Prikaži Facebook like box"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:371
+msgid "Show Facebook send button"
+msgstr "Prikaži Facebook pošalji dugme"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:375
+msgid "Show Facebook comments plugin"
+msgstr "Prikaži Facebook dodatak za komentare"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:379
+msgid "Show Facebook face pile"
+msgstr "Prikaži Facebook face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:383
+msgid "Show Facebook image/link"
+msgstr "Prikaži Facebook slika/link"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:387
+msgid "Show Facebook registration"
+msgstr "Prikaži Facebook registraciju"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:391
+msgid "Show Facebook login"
+msgstr "Prikaži Facebook prijavljivanje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:395
+msgid "Show Facebook activity feed"
+msgstr "Prikaži Facebook novosti"
+
+#~ msgid "Be sure you to conform to the Facebook Platform Policies"
+#~ msgstr "Stellen Sie sicher, dass Sie die Facebook-Richtlinien einhalten"
+
+#~ msgid "Donate $25 or more to get this feature"
+#~ msgstr "Spenden Sie 25 Dollar oder mehr, um diese Funktion zu erhalten"
+
+#~ msgid "See the FAQ, question U25 for detailed information"
+#~ msgstr "Siehe FAQ Frage U25 für weitere Infos"
+
+#~ msgid "Comment integration, etc. for extra pages is not supported"
+#~ msgstr ""
+#~ "Kommentarintegration etc. für zusätzliche Seiten wird nicht unterstützt"
+
+#~ msgid "Go to dashboard"
+#~ msgstr "Zum Dashboard"
+
+#~ msgid ""
+#~ "I don't want to support this plugin with the Sustainable Plugins "
+#~ "Sponsorship Network:"
+#~ msgstr ""
+#~ "Ich möchte dieses Plugin nicht mit dem \"Sustainable Plugins Sponsorship "
+#~ "Network\" unterstützen"
+
+#~ msgid "Do not collect statistics:"
+#~ msgstr "Keine Statistikdaten übermitteln:"
+
+#~ msgid "Privacy in the Sustainable Plugins Sponsorship Network"
+#~ msgstr "Datenschutz im \"Sustainable Plugins Sponsorship Network\""
+
+#~ msgid "Disable"
+#~ msgstr "Deaktivieren"
+
+#~ msgid "Add as page owner:"
+#~ msgstr "Als Eigentümer der Seite hinzufügen:"
+
+#~ msgid "When checked links will be added as the page"
+#~ msgstr "Wenn markiert, werden Links als Seite hinzugefügt"
+
+#~ msgid "Use iframe in stead of XFBML:"
+#~ msgstr "Benutze iframe anstelle von XFBML:"
+
+#~ msgid "Use shared Facebook application:"
+#~ msgstr "Freigegebene Facebook-Anwendung verwenden:"
+
+#~ msgid "Simple, but less secure"
+#~ msgstr "Einfacher, aber weniger sicher"
+
+#~ msgid "Leave blank to let Facebook choose"
+#~ msgstr "Leer lassen, um Facebook wählen zu lassen"
+
+#~ msgid "Experimental!"
+#~ msgstr "Experimentell!"
