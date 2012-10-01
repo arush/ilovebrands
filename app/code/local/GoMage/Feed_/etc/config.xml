@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<!--
+/**     
+ * GoMage.com
+ *
+ * GoMage Feed Pro
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage.com (http://www.gomage.com)
+ * @author       GoMage.com
+ * @license      http://www.gomage.com/licensing  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 2.1
+ * @since        Class available since Release 1.0
+ */ 
+ -->
+<config>
+    <modules>
+        <GoMage_Feed>
+            <version>2.2</version>
+        </GoMage_Feed>
+    </modules>
+	<frontend>
+        <routers>
+            <gomage_feed>
+                <use>standard</use>
+                <args>
+                    <module>GoMage_Feed</module>
+                    <frontName>feed</frontName>
+                </args>
+            </gomage_feed>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+			<gomage_feed>
+				<use>admin</use>
+				<args>
+					<module>GoMage_Feed</module>
+					<frontName>gomage_feed</frontName>
+				</args>
+			</gomage_feed>
+        </routers>
+    </admin>
+    <adminhtml>
+    	<translate>
+			<modules>
+				<GoMage_Feed>
+					<files>
+						<default>Gomage_Feed.csv</default>
+					</files>
+				</GoMage_Feed>
+			</modules>
+        </translate>
+        <events>             
+            <admin_system_config_changed_section_gomage_activation>
+                <observers>
+                    <feed_collect_totals_after>
+                        <type>model</type>
+                        <class>gomage_feed/observer</class>
+                        <method>checkK</method>
+                    </feed_collect_totals_after>
+                </observers>
+            </admin_system_config_changed_section_gomage_activation>
+        </events>
+        <menu>
+            <catalog>
+            	<children>
+	                <gomage_feed>
+						<title>Feeds</title>
+						<action>gomage_feed/adminhtml_items</action>
+						<sort_order>15</sort_order>
+						<children>
+							<gomage_feed_items>
+								<title>Manage Feeds</title>
+								<action>gomage_feed/adminhtml_items</action>
+								<sort_order>10</sort_order>
+							</gomage_feed_items>
+							<gomage_feed_attributes>
+								<title>Manage Dynamic Attributes</title>
+								<action>gomage_feed/adminhtml_attributes</action>
+								<sort_order>20</sort_order>
+							</gomage_feed_attributes>
+						</children>
+	                </gomage_feed>
+                </children>
+            </catalog>
+        </menu>
+        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <gomage_feedpro>
+                                            <title>GoMage - Feed Pro</title>
+                                        </gomage_feedpro>
+                                        <gomage_activation>
+                                            <title>GoMage - Activation</title>
+                                        </gomage_activation>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>        
+        
+        <acl>
+        	<resources>
+        		<admin>
+        			<children>
+        				<catalog>
+        					<children>
+        						<gomage_feed translate="title">
+									<title>Feeds</title>
+									<children>
+									    <gomage_feed_items>
+										    <title>Manage Feeds</title>
+									    </gomage_feed_items>
+									    <gomage_feed_attributes>
+										    <title>Manage Dynamic Attributes</title>
+									    </gomage_feed_attributes>
+								    </children>
+				                </gomage_feed>
+        					</children>
+        				</catalog>
+        			</children>
+        		</admin>
+        	</resources>
+        </acl>
+        <layout>
+            <updates>
+                <gomage_feed>
+                    <file>gomage-feed.xml</file>
+                </gomage_feed>
+            </updates>
+        </layout>
+	</adminhtml>
+	<global>
+		<models>
+		    <gomage_feed>
+		        <class>GoMage_Feed_Model</class>
+		        <resourceModel>gomage_feed_mysql4</resourceModel>
+		    </gomage_feed>
+		    <gomage_feed_mysql4>
+		        <class>GoMage_Feed_Model_Mysql4</class>
+		        <entities>
+		            <item>
+                        <table>gomage_feed_entity</table>
+		            </item>
+		            <custom_attribute>
+                        <table>gomage_feed_custom_attribute</table>
+		            </custom_attribute>
+		            <custom_attribute_value>
+                        <table>gomage_feed_custom_attribute_value</table>
+		            </custom_attribute_value>
+		        </entities>
+		    </gomage_feed_mysql4>
+		</models>
+		<blocks>
+            <gomage_feed>
+                <class>GoMage_Feed_Block</class>
+            </gomage_feed>
+        </blocks>
+        <resources>
+            <gomage_feed_setup>
+                <setup>
+                    <module>GoMage_Feed</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </gomage_feed_setup>
+            <gomage_feed_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </gomage_feed_write>
+            <gomage_feed_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </gomage_feed_read>
+        </resources>
+        <helpers>
+			<gomage_feed><class>GoMage_Feed_Helper</class></gomage_feed>
+		</helpers>
+	</global>
+	<crontab>
+        <jobs>
+        	<gomage_feed_generate_all>
+                <schedule><cron_expr>01 * * * *</cron_expr></schedule>
+                <run><model>gomage_feed/observer::proccessFeeds</model></run>
+			</gomage_feed_generate_all>
+        </jobs>
+    </crontab>
+</config>
