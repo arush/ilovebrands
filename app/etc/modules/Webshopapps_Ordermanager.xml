@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Webshopapps_Ordermanager>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Webshopapps_Ordermanager>
+    </modules>
+</config>

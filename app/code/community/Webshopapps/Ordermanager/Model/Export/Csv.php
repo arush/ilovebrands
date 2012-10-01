@@ -1,39 +1,30 @@
 <?php
 /**
+ * Magento Webshopapps Order Export Module
+ *
  * NOTICE OF LICENSE
  *
- * The MIT License
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * Copyright (c) 2009 S. Landsbek (slandsbek@gmail.com)
+ * DISCLAIMER
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
- * @package    SLandsbek_SimpleOrderExport
- * @copyright  Copyright (c) 2009 S. Landsbek (slandsbek@gmail.com)
- * @license    http://opensource.org/licenses/mit-license.php  The MIT License
- */
-
-/**
- * Exports orders to csv file. If an order contains multiple ordered items, each item gets
- * added on a separate row.
- */
-class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrderExport_Model_Export_Abstract
+ * @category   Webshopapps
+ * @package    Webshopapps_OrderExport
+ * @copyright  Copyright (c) 2010 Zowta Ltd (http://www.webshopapps.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Genevieve Eddison <sales@webshopapps.com>
+ * */
+class Webshopapps_Ordermanager_Model_Export_Csv extends Webshopapps_Ordermanager_Model_Export_Abstractcsv
 {
     const ENCLOSURE = '"';
     const DELIMITER = ',';
@@ -48,15 +39,15 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
     {
         $fileName = 'order_export_'.date("Ymd_His").'.csv';
         $fp = fopen(Mage::getBaseDir('export').'/'.$fileName, 'w');
-
+        
         $this->writeHeadRow($fp);
         foreach ($orders as $order) {
-            $order = Mage::getModel('sales/order')->load($order);
+        	$order = Mage::getModel('sales/order')->load($order);
             $this->writeOrder($order, $fp);
         }
-
+		
         fclose($fp);
-
+        
         return $fileName;
     }
 
@@ -111,7 +102,8 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
             'Order Shipping',
             'Order Discount',
             'Order Grand Total',
-            'Order Paid',
+            'Order Base Grand Total',
+        	'Order Paid',
             'Order Refunded',
             'Order Due',
             'Total Qty Items Ordered',
@@ -167,7 +159,6 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
     {
         $shippingAddress = !$order->getIsVirtual() ? $order->getShippingAddress() : null;
         $billingAddress = $order->getBillingAddress();
-        
         return array(
             $order->getRealOrderId(),
             Mage::helper('core')->formatDate($order->getCreatedAt(), 'medium', true),
@@ -180,6 +171,7 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
             $this->formatPrice($order->getData('shipping_amount'), $order),
             $this->formatPrice($order->getData('discount_amount'), $order),
             $this->formatPrice($order->getData('grand_total'), $order),
+            $this->formatPrice($order->getData('base_grand_total'), $order),
             $this->formatPrice($order->getData('total_paid'), $order),
             $this->formatPrice($order->getData('total_refunded'), $order),
             $this->formatPrice($order->getData('total_due'), $order),
@@ -218,6 +210,7 @@ class SLandsbek_SimpleOrderExport_Model_Export_Csv extends SLandsbek_SimpleOrder
 	 */
     protected function getOrderItemValues($item, $order, $itemInc=1) 
     {
+    	
         return array(
             $itemInc,
             $item->getName(),

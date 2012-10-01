@@ -1,39 +1,30 @@
 <?php
 /**
+ * Magento Webshopapps Order Export Module
+ *
  * NOTICE OF LICENSE
  *
- * The MIT License
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * Copyright (c) 2009 S. Landsbek (slandsbek@gmail.com)
+ * DISCLAIMER
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
- * @package    SLandsbek_SimpleOrderExport
- * @copyright  Copyright (c) 2009 S. Landsbek (slandsbek@gmail.com)
- * @license    http://opensource.org/licenses/mit-license.php  The MIT License
- */
-
-/**
- * Abstract class to define the interface to export orders and offering helper methods to
- * retrieve data from orders and order items.
- */
-abstract class SLandsbek_SimpleOrderExport_Model_Export_Abstract extends Mage_Core_Model_Abstract
+ * @category   Webshopapps
+ * @package    Webshopapps_OrderExport
+ * @copyright  Copyright (c) 2010 Zowta Ltd (http://www.webshopapps.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @author     Genevieve Eddison <sales@webshopapps.com>
+ * */
+abstract class Webshopapps_Ordermanager_Model_Export_Abstractcsv extends Mage_Core_Model_Abstract
 {
     /**
      * Definition of abstract method to export orders to a file in a specific format in var/export.
@@ -51,11 +42,7 @@ abstract class SLandsbek_SimpleOrderExport_Model_Export_Abstract extends Mage_Co
      */
     protected function getStoreName($order) 
     {
-        $storeId = $order->getStoreId();
-        if (is_null($storeId)) {
-            return $this->getOrder()->getStoreName();
-        }
-        $store = Mage::app()->getStore($storeId);
+        $store = Mage::app()->getStore($order->getStoreId);
         $name = array(
         $store->getWebsite()->getName(),
         $store->getGroup()->getName(),
@@ -190,5 +177,6 @@ abstract class SLandsbek_SimpleOrderExport_Model_Export_Abstract extends Mage_Co
     {
         return $formatter->formatPriceTxt($price);
     }
+    
 }
 ?>
