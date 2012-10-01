@@ -1,0 +1,1615 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Link to Facebook\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-27 21:54+0100\n"
+"PO-Revision-Date: 2012-04-18 12:08+0100\n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Lithuanian\n"
+"X-Poedit-Country: LITHUANIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Textdomain-Support: yes\n"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:12
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:667
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:690
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:721
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:722
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:903
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:2279
+msgid "Add Link to Facebook"
+msgstr "Add Link to Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:26
+msgid "Only this user can access the settings:"
+msgstr "Tik šis vartotojas gali keisti nuostatas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:111
+msgid "Your server may not allow external connections"
+msgstr "Jūsų serveris gali neleisti išorinių prisijungimų"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:122
+msgid "Please be aware that comment integration or showing Facebook messages in the widget could harm the privacy of other Facebook users!"
+msgstr "Žinokite, jog komentarų integracija arba Facebook pranešimų rodymas valdiklyje gali pažeisti kitų Facebook vartotojų privatumą!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:131
+msgid "Authorization"
+msgstr "Prieigos teisė"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:136
+msgid "Plugin is authorized"
+msgstr "Papildinys turi prieigos teisę"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:141
+msgid "Links will be added to"
+msgstr "Nuorodos bus pridėtos į"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:158
+msgid "Authorize"
+msgstr "Suteikti prieigą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:173
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1398
+msgid "Donate in EUR"
+msgstr "Paaukoti Eurais"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:186
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:291
+msgid "Show"
+msgstr "Rodyti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:207
+msgid "Easy setup"
+msgstr "Lengvas diegimas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:216
+msgid "To get an App ID and App Secret you have to create a Facebook application"
+msgstr "Kad gautumėte Taikomosios programos Identifikatorių ir Taikomsios programos Slaptąjį kodą, turite sukurti Facebook programą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:217
+msgid "You have to fill in the following:"
+msgstr "Privalote užpildyti šiuos laukelius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:220
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:264
+msgid "App Name:"
+msgstr "Taikomosios programos Pavadinimas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:221
+msgid "Anything you like, will appear as \"via ...\" below the message"
+msgstr "Bet kas, kas tik norite, bus rodomas kaip  \"per ...\" pranešimo apačioje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:224
+msgid "Website > Site URL:"
+msgstr "Tinklalapis > Tinklalapio Universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:228
+msgid "Click here to create"
+msgstr "Paspauskite čia jeigu norite sukurti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:229
+msgid "and navigate to '<em>Apps</em>' and then to '<em>Create New App</em>'"
+msgstr "ir persikelti į  '<em>Taikomasias programas</em>' o tuomet į '<em>Sukurti Naują Taikomąją programą</em>'"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:234
+msgid "App ID:"
+msgstr "Taikomosios programos Identifikatorius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:240
+msgid "App Secret:"
+msgstr "Taikomosios programos Slaptasis kodas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:249
+msgid "Access token:"
+msgstr "Prieigos raktas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:277
+msgid "Share with all users on this site:"
+msgstr "Pasidalinti su visais šio puslapio vartotojais:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:287
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:364
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:532
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:605
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:661
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:718
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:747
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:776
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:802
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:847
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:883
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:991
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1050
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1324
+msgid "Save"
+msgstr "Įrašyti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:308
+msgid "Additional settings"
+msgstr "Išplėstinės nuostatos"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:311
+msgid "Picture"
+msgstr "Vaizdas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:312
+msgid "Page/group"
+msgstr "Puslapis/grupė"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:313
+msgid "Appearance"
+msgstr "Išvaizda"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:314
+msgid "Comments"
+msgstr "Komentarai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:315
+msgid "Like button"
+msgstr "\"Patinka\" mygtukas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:316
+msgid "Like box"
+msgstr "\"Patinka\" langelis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:317
+msgid "Comments plugin"
+msgstr "Komentarų papildinys"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:318
+msgid "Face pile"
+msgstr "Face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:319
+msgid "Login"
+msgstr "Prisijungimas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:320
+msgid "Activity feed"
+msgstr "Veiklos padavimas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:321
+msgid "Common"
+msgstr "Bendras"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:322
+msgid "Misc."
+msgstr "Įvair."
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:323
+msgid "Admin"
+msgstr "Administratorius"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:328
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:988
+msgid "Link picture"
+msgstr "Pridėti vaizdą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:331
+msgid "Link picture:"
+msgstr "Pridėti vaizdą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:333
+msgid "WordPress logo"
+msgstr "WordPress logotipas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:334
+msgid "First attached image"
+msgstr "Pirmas pridėtas vaizdas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:335
+msgid "Featured post image"
+msgstr "Rodomas įrašo vaizdas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:336
+msgid "Let Facebook select"
+msgstr "Leisti Facebook pasirinkti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:337
+msgid "First image in the post"
+msgstr "Pirmas paveikslėlis įraše"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:338
+msgid "Avatar of author"
+msgstr "Autoriaus pseudoportretas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:342
+msgid "Image from User Photo plugin"
+msgstr "Vaizdas iš User Photo papildinio"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:346
+msgid "Custom picture below"
+msgstr "Individualizuotas paveikslėlis žemiau"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:350
+msgid "Custom picture URL:"
+msgstr "Individualizuoto paveikslėlio universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:353
+msgid "At least 50 x 50 pixels"
+msgstr "Mažiausias dydis - 50x50 taškų"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:357
+msgid "Default picture URL:"
+msgstr "Numatytojo paveikslėlio universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:360
+msgid "Default WordPress logo"
+msgstr "Numatytasis WordPress logotipas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:397
+msgid "Facebook page"
+msgstr "Facebook puslapis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:400
+msgid "See all pages:"
+msgstr "Žiūrėti visus puslapius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:403
+msgid "Requires manage pages permission"
+msgstr "Reikalauja puslapių valdymo leidimo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:404
+msgid "Check this too if you want to add as page owner"
+msgstr "Pažymėkite tai taip pat, jeigu norite pridėti kaip puslapio savininką"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:408
+msgid "Add to page:"
+msgstr "Pridėti į puslapį:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:413
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:434
+msgid "Personal"
+msgstr "Asmeninis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:427
+msgid "Add also to pages:"
+msgstr "Taip pat pridėti į puslapius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:447
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:524
+msgid "This option is only available in"
+msgstr "Ši parinktis įmanoma tik"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:467
+msgid "Facebook group"
+msgstr "Facebook grupėje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:470
+msgid "Use groups:"
+msgstr "Naudoti grupes:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:473
+msgid "Requires user groups permission"
+msgstr "Reikalauja vartotojo grupės leidimo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:491
+msgid "Add to group:"
+msgstr "Pridėti į grupę:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:495
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:641
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1117
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:946
+msgid "None"
+msgstr "Jokią"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:508
+msgid "Add also to groups:"
+msgstr "Taip pat pridėti į grupes:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:542
+msgid "First authorize the plugin"
+msgstr "Pirmiausia įgalioti papildinį"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:549
+msgid "Link appearance"
+msgstr "Nuorodos išvaizda"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:552
+msgid "Use site title as caption:"
+msgstr "Naudoti tinklalapio antraštę kaip pavadinimą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:559
+msgid "Use excerpt as message:"
+msgstr "Naudoti ištrauką kaip pranešimą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:565
+msgid "Text trailer:"
+msgstr "Teksto priesaga:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:568
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:622
+msgid "For example \"Read more ...\""
+msgstr "Pavyzdžiui  \"Skaityti daugiau ...\""
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:572
+msgid "Keep hyperlinks:"
+msgstr "Išlaikyti saitus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:575
+msgid "The hyperlink title will be removed"
+msgstr "Saito antraštė bus pašalinta"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:579
+msgid "Add 'Share' link:"
+msgstr "Pridėti 'Pasidalinti' nuorodą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:586
+msgid "Use short URL:"
+msgstr "Naudoti trumpąją universaliąją nuorodą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:589
+msgid "If available"
+msgstr "Jeigu įmanoma"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:593
+msgid "Privacy:"
+msgstr "Privatumas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:595
+msgid "Default"
+msgstr "Numatytasis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:596
+msgid "Everyone"
+msgstr "Visi"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:597
+msgid "All friends"
+msgstr "Visi draugai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:598
+msgid "Network friends"
+msgstr "Tinklo draugai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:599
+msgid "Friends of friends"
+msgstr "Draugų draugai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:600
+msgid "Only me"
+msgstr "Tik aš"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:601
+msgid "Only works for your personal wall"
+msgstr "Taikoma tik Jūsų asmeninei sienai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:610
+msgid "Facebook comments"
+msgstr "Facebook komentarai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:613
+msgid "Integrate comments from Facebook:"
+msgstr "Integruoti komentarus iš Facebook:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:619
+msgid "Comment trailer:"
+msgstr "Komentarų priesaga:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:626
+msgid "Post WordPress comments back to Facebook:"
+msgstr "Paskelbti WordPress komentarus atgal į Facebook:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:632
+msgid "Copy comments from Facebook to WordPress:"
+msgstr "Kopijuoti komentarus iš Facebook į WordPress:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:635
+msgid "Enables for example editing of Facebook comments"
+msgstr "Suaktyvina, pavyzdžiui, Facebook komentarų redagavimą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:639
+msgid "Link Facebook comment to:"
+msgstr "Susieti Facebook komentarą su:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:642
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:645
+msgid "Disables displaying of Facebook avatars too"
+msgstr "Taip pat išjungia Facebook pseudoportretų rodymą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:643
+msgid "Profile author"
+msgstr "Autoriaus profilis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:644
+msgid "Added link"
+msgstr "Pridėta nuoroda"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:644
+msgid "Does not work for groups"
+msgstr "neveikia grupėms"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:649
+msgid "Integrate likes from Facebook:"
+msgstr "Integruoti 'Patinka' paspaudimus iš Facebook:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:655
+msgid "Show likers below the post text:"
+msgstr "Rodyti mėgstančius asmenis (paspaudiusius 'patinka') žemiau įrašo teksto:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:666
+msgid "Facebook like button"
+msgstr "Facebook 'patinka' mygtukas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:669
+msgid "Show Facebook like button:"
+msgstr "Rodyti Facebook 'Patinka' mygtuką:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:672
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:707
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:815
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:829
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:971
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:979
+msgid "Documentation"
+msgstr "Dokumentacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:676
+msgid "Layout:"
+msgstr "Išdėstymas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:678
+msgid "Standard"
+msgstr "Standartinis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:679
+msgid "Button with count"
+msgstr "Mygtukas su skaičiuokle"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:680
+msgid "Box with count"
+msgstr "Langelis su skaičiuokle"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:684
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:727
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:762
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:794
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:856
+msgid "Width:"
+msgstr "Plotis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:687
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:730
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:765
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:797
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:814
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:822
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:859
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:866
+msgid "Pixels"
+msgstr "Taškais"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:691
+msgid "Action:"
+msgstr "Veiksmas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:693
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:937
+msgid "Like"
+msgstr "Parodyti, kad patinka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:694
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:937
+msgid "Recommend"
+msgstr "Rekomenduoti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:698
+msgid "Show at the top of the post:"
+msgstr "Rodyti įrašo viršuje:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:704
+msgid "Show Facebook send button:"
+msgstr "Rodyti Facebook 'siųsti' mygtuką:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:711
+msgid "Combine Facebook like and send buttons:"
+msgstr "Jungti \"Patinka\" ir \"Siųsti\" mygtukus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:723
+msgid "Facebook like box"
+msgstr "Facebook \"Patikimo langelis\""
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:734
+msgid "Disable like box header:"
+msgstr "Paslėpti 'patikimo' langelio puslapinę antraštę:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:740
+msgid "Disable like box stream:"
+msgstr "Išjungti 'patikimo' langelio srautinį duomenų siuntimą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:752
+msgid "Facebook comments plugin"
+msgstr "Facebook comments papildinys"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:756
+msgid "Number of posts:"
+msgstr "Įrašų skaičius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:769
+msgid "Display automatically after post:"
+msgstr "Automatiškai rodyti po įrašo:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:781
+msgid "Facebook face pile"
+msgstr "Facebook face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:785
+msgid "Size:"
+msgstr "Dydis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:788
+msgid "Small"
+msgstr "Mažas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:789
+msgid "Large"
+msgstr "Didelis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:807
+msgid "Facebook login"
+msgstr "Facebook prisijungimas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:811
+msgid "Registration width:"
+msgstr "Registracijos plotis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:819
+msgid "Login width:"
+msgstr "Prisijungimo plotis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:826
+msgid "Login registration URL:"
+msgstr "Prisijungimo registracijos universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:833
+msgid "Login redirect URL:"
+msgstr "Prisijungimo peradresavimo universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:839
+msgid "Text or HTML when logged in:"
+msgstr "Tekstas arba HTML kodas prisijungus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:852
+msgid "Facebook activity feed"
+msgstr "Facebook Activity Feed"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:863
+msgid "Height:"
+msgstr "Aukštis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:870
+msgid "Show header:"
+msgstr "Rodyti puslapinę antraštę:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:876
+msgid "Show recommendations:"
+msgstr "Rodyti rekomendacijas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:888
+msgid "Facebook common"
+msgstr "Facebook bendrieji"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:892
+msgid "Do not show on the home page:"
+msgstr "Nerodyti namų puslapyje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:898
+msgid "Do not show on posts:"
+msgstr "Nerodyti irašuose:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:904
+msgid "Do not show on pages:"
+msgstr "Nerodyti puslapiuose:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:910
+msgid "Do not show in archives:"
+msgstr "Nerodyti archyvuose:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:916
+msgid "Do not show in categories:"
+msgstr "Nerodyti kategorijose:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:922
+msgid "Faces:"
+msgstr "Veidai:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:928
+msgid "Maximum count of rows:"
+msgstr "Didžiausias eilučių skaičius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:934
+msgid "Font:"
+msgstr "Šriftas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:948
+msgid "Color scheme:"
+msgstr "Spalvų schema:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:950
+msgid "Light"
+msgstr "Šviesi"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:951
+msgid "Dark"
+msgstr "Tamsi"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:955
+msgid "Border color:"
+msgstr "Rėmelio spalva:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:961
+msgid "Link to:"
+msgstr "Susieti su:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:964
+msgid "Default the post or page"
+msgstr "Numatytasis įrašas ar puslapis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:968
+msgid "Use Open Graph protocol:"
+msgstr "Naudoti Open Graph protokolą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:975
+msgid "Open Graph protocol <em>og:type</em>:"
+msgstr "Open Graph protokolas <em>og:tipas</em>:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:978
+msgid "Default 'article'"
+msgstr "Numatytasis straipsnis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:983
+msgid "Facebook administrators:"
+msgstr "Facebook administratoriai:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:986
+msgid "Separate multiple administrators by a comma without spaces"
+msgstr "Atskirti administratorių sąrašą kableliais, be tarpų"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:997
+msgid "Miscelaneous settings"
+msgstr "Įvairios nuostatos"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1000
+msgid "Do not add link by default:"
+msgstr "Nepridėti nuorodos, kaip numatyta:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1006
+msgid "Don't show a summary in the post list:"
+msgstr "Nerodyti jokios santraukos įrašų sąraše:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1012
+msgid "Add links for new pages:"
+msgstr "Pridėti nuorodas naujiems puslapiams:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1018
+msgid "Show link to the added link on Facebook:"
+msgstr "Rodyti nuorodą pridėtai nuorodai Facebook socialiniame tinkle:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1024
+msgid "Facebook character encoding:"
+msgstr "Facebook simbolių kodavimas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1027
+msgid "Default UTF-8; do not change if no need"
+msgstr "Numatytasis UTF-8; nekeiskite jeigu nėra poreikio"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1031
+msgid "Facebook locale:"
+msgstr "Facebook lokalė:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1034
+msgid "Do not change if no need"
+msgstr "Nekeiskite jeigu nėra poreikio"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1038
+msgid "I have donated to this plugin:"
+msgstr "Aš prisidėjau prie šio papildinio plėtojimo (paaukojau):"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1044
+msgid "I have rated this plugin:"
+msgstr "Aš įvertinau šį papildinį:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1058
+msgid "Administrator options"
+msgstr "Administratoriaus Parinktys"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1061
+msgid "Facebook communication timeout:"
+msgstr "Facebook ryšio nutraukimas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1064
+msgid "Seconds"
+msgstr "Sekundėmis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1065
+msgid "Default 15 seconds"
+msgstr "Pagal numatymą - 15 sekundžių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1069
+msgid "Do not display notices:"
+msgstr "Nerodyti įspėjimų:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1072
+msgid "Except on this page"
+msgstr "Išskyrus šiame puslapyje"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1076
+msgid "Required capability to use plugin:"
+msgstr "Reikalinga geba papildinio naudojimui:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1102
+msgid "Hide post submit additions too:"
+msgstr "Taip pat paslėpti įrašo pateikimo pridėjimus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1108
+msgid "Required capability to view Facebook comments:"
+msgstr "Reikalinga geba Facebook komentarų peržiūrėjimui:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1129
+msgid "Refresh Facebook comments every:"
+msgstr "Atnaujinti Facebook komentarus kas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1132
+msgid "Minutes"
+msgstr "Minutes(-čių)"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1133
+msgid "Default every 10 minutes"
+msgstr "Pagal numatymą - kas 10 minučių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1137
+msgid "Refresh Facebook comments for:"
+msgstr "Atnaujinti Facebook komentarus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1140
+msgid "Days"
+msgstr "Dienoms"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1141
+msgid "Default 7 days"
+msgstr "Pagal numatymą - 7 dienoms"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1145
+msgid "Refresh Facebook comments in the background:"
+msgstr "Atnaujinti Facebook komentarus antrame plane:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1148
+msgid "Using Wordress cron"
+msgstr "Naudojant WordPress cron"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1152
+msgid "Maximum text length with trailer:"
+msgstr "Maksimalus teksto ilgis su priesaga:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1155
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1163
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1171
+msgid "Characters"
+msgstr "Simbolių(-iai)"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1156
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1172
+msgid "Default 256 characters"
+msgstr "Pagal numatymą - 256 simboliai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1160
+msgid "Maximum Facebook text length:"
+msgstr "Maksimalus Facebook teksto ilgis:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1164
+msgid "Default 10,000 characters"
+msgstr "Pagal numatymą - 10,000 simbolių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1168
+msgid "Maximum comment length with trailer:"
+msgstr "Maksimalus komentaro ilgis su priesaga:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1176
+msgid "Exclude these custom post types:"
+msgstr "Išskirti šiuos individualizuotus įrašų tipus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1179
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1187
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1194
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1202
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1209
+msgid "Separate by commas"
+msgstr "Atskirti kableliais"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1183
+msgid "Exclude these categories:"
+msgstr "Išskirti šias kategorijas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1184
+msgid "Use category ID's"
+msgstr "Naudoti kategorijos identifikatorių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1191
+msgid "Exclude these tags:"
+msgstr "Išskirti šias gaires:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1198
+msgid "Exclude these authors:"
+msgstr "Išskirti šiuos autorius:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1199
+msgid "Use login names"
+msgstr "Naudoti prisijungimo vardus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1206
+msgid "Add meta box for these custom post types:"
+msgstr "Pridėti meta langelį šiems individualizuotiems įrašų tipams:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1213
+msgid "Do not verify the peer's certificate:"
+msgstr "Netvirtinti lygiarangio sertifikato:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1216
+msgid "Try this in case of cURL error 60"
+msgstr "Bandykite tai, jeigu įvyksta cURL klaida 60"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1220
+msgid "Execute shortcodes in widgets:"
+msgstr "Valdikliuose išskirti trumpuosius kodus:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1226
+msgid "Do not execute shortcodes for texts:"
+msgstr "Neišskirti trumpųjų kodų tekstams:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1232
+msgid "Do not execute filters for texts:"
+msgstr "Neišskirti filtrų tekstams:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1238
+msgid "Do not execute filters for comments:"
+msgstr "Neišskirti filtrų komentarams:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1244
+msgid "Use Heise social share privacy:"
+msgstr "Naudoti Heise socialinio dalinimosi privatumą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1250
+msgid "Heise privacy policy URL:"
+msgstr "Heise privatumo taisyklių universalioji nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1256
+msgid "Priority filter 'the_content':"
+msgstr "Pirminis filtras 'the_content':"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1262
+msgid "No asynchronous Facebook script:"
+msgstr "Jokių asinchroninių Facebook skriptų:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1268
+msgid "Do not include Facebook script:"
+msgstr "Neįtraukti Facebook skripto:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1271
+msgid "In case of conflicts with other Facebook plugins"
+msgstr "Dėl galimų konfliktų su kitais Facebook papildiniais"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1275
+msgid "Clean on deactivate:"
+msgstr "Išvalyti deaktyvuojant:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1277
+msgid "Upgrade deactivates the plugin!"
+msgstr "Naujovinimas deaktyvuoja papildinį!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1280
+msgid "All data, except link id's"
+msgstr "Visus duomenis, išskyrus nuorodos identifikatorius"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1284
+msgid "Additional styling rules (CSS):"
+msgstr "Pridėtinės stiliaus taisyklės (CSS):"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1294
+msgid "Debug options"
+msgstr "Derinimo parinktys"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1297
+msgid "Use site URL as request URI:"
+msgstr "Naudoti tinklalapio universaliąją nuorodą kaip reikalaujamą URI:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1303
+msgid "Do not use cURL:"
+msgstr "Nenaudoti cURL:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1309
+msgid "Use publish_post action:"
+msgstr "Naudoti publish_post veiksmą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1315
+msgid "Debug:"
+msgstr "Derinti:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1330
+msgid "Only for administrators"
+msgstr "Tik administratoriams"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1337
+msgid "No tab pages"
+msgstr "Jokių kortelių puslapių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1380
+msgid "Resources"
+msgstr "Ištekliai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1382
+msgid "Setup guide & user manual"
+msgstr "Diegimo vadovas ir vartojimo instrukcijos"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1383
+msgid "Frequently asked questions"
+msgstr "Dažniausiai užduodami klausimai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1384
+msgid "Pro version"
+msgstr "Pro versija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1385
+msgid "Support page"
+msgstr "Pagalbos puslapis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1386
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1425
+msgid "Debug information"
+msgstr "Derinimo informacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1387
+msgid "About the author"
+msgstr "Apie autorių"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1388
+msgid "Other plugins"
+msgstr "Kiti papildiniai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1432
+msgid "Name:"
+msgstr "Vardas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1438
+msgid "E-mail:"
+msgstr "Elektroninio pašto adresas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1441
+msgid "Please check if this is a correct, reachable e-mail address"
+msgstr "Prašome įsitikinti, jog tai yra teisingas elektroninio pašto adresas kuriuo galima su Jumis susisiekti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1445
+msgid "Forum topic link:"
+msgstr "Forumo temos nuoroda:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1448
+msgid "Mandatory"
+msgstr "Privalomas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1452
+msgid "Message:"
+msgstr "Pranešimas:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1455
+msgid "Please describe your problem, even if you did before"
+msgstr "Prašome apibūdinti savo problemą, net jeigu jau darėte tai anksčiau"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1459
+msgid "Did you check if your problem is described in <a href=\"[FAQ]\" target=\"_blank\">the FAQ</a> ?"
+msgstr "Ar įsitikinote, jog problema nėra aprašyta <a href=\"[FAQ]\" target=\"_blank\">dažniausiai užduodamuose klausimuose</a> ?"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-admin.php:1464
+msgid "Send"
+msgstr "Siųsti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:553
+msgid "Settings updated"
+msgstr "Nuostatos atnaujintos"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:572
+msgid "Authorized, go posting!"
+msgstr "Prieiga patvirtinta, pirmyn - rašykite!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:605
+msgid "Forum topic link is mandatory"
+msgstr "Forumo temos nuoroda yra privaloma"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:622
+msgid "Debug information sent"
+msgstr "Derinimo informacija išsiųsta"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:627
+msgid "Sending debug information failed"
+msgstr "Derinimo informacijos siuntimas nepavyko"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:651
+msgid "needs configuration"
+msgstr "reikia konfigūruoti"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:655
+msgid "needs authorization"
+msgstr "reikia suteikti prieigą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:661
+msgid "should be authorized again to show Facebook messages in the widget"
+msgstr "prieiga turėtų būti patvirinta dar kartą, norint valdiklyje rodyti Facebook pranešimus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:701
+msgid "If you like the Add Link to Facebook plugin, please rate it on <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>.<br />If the average rating is low, it makes no sense to support this plugin any longer.<br />You can disable this notice by checking the option \"I have rated this plugin\" on the <a href=\"[settings]\">settings page</a>."
+msgstr "Jeigu Jums patinka Add Link to Facebook papildinys, prašome jį įvertinti <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>. <br />Nėra tikslo toliau plėtoti papildinį, jeigu vidutinis įvertinimas WordPress.org tinklapyje yra žemas. <br /> Jūs galite panaikinti šį pranešimą, pažymėdamas parinktį \"Aš įvertinau šį papildinį\" <a href=\"[settings]\">nuostatų puslapyje</a>."
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:704
+msgid "Through a mishap on the WordPress.org systems, previous ratings for the plugin were lost.<br />If you've rated the plugin in the past, your rating was accidentally removed.<br />So if you would be so kind as to rate the plugin again, I'd appreciate it. Thanks!"
+msgstr "Dėl nelaimingų atsitikimų, įtakojusių WordPress.org sistemą, ankstesni  papildinio įvertinimai yra prarasti. <br /> Net jeigu įvertinote šį papildinį anksčiau, Jūsų įvertinimas buvo nenoromis ištrintas. <br /> Todėl man būtų labai smagu, jeigu galėtumėte įvertinti šį papildinį dar kartą. Aš labai vertinu gerus Jūsų darbus. Ačiū!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:721
+msgid "Administration"
+msgstr "Administracija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:743
+msgid "Settings"
+msgstr "Nuostatos"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:797
+msgid "Do not add link to Facebook"
+msgstr "Nepridėti nuroodos į Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:800
+msgid "Do not add like button"
+msgstr "Nepridėti 'patinka' mygtuko"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:803
+msgid "Do not integrate comments"
+msgstr "Neintegruoti komentarų"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:810
+msgid "Update existing Facebook link"
+msgstr "Atnaujinti egzistuojančią Facebook nuroodą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:812
+msgid "Comments and likes will be lost!"
+msgstr "Komentarai ir 'patinka' paspaudimai bus prarasti!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:815
+msgid "Delete existing Facebook link"
+msgstr "Ištrinti egzistuojančią Facebook nuorodą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:817
+msgid "Link on Facebook"
+msgstr "Nuoroda Facebook socialiniame tinkle"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:825
+msgid "Clear error messages"
+msgstr "Išvalyti klaidų pranešimus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:842
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:436
+msgid "Facebook"
+msgstr "Facebook"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:867
+msgid "Yes"
+msgstr "Taip"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:869
+msgid "No"
+msgstr "Ne"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:880
+msgid "comments"
+msgstr "komentarai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:888
+msgid "likes"
+msgstr "'patinka' paspaudimai"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:929
+msgid "No images in the media library for this post"
+msgstr "Medijos galerijoje nėra vaizdų šiam įrašui"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:935
+msgid "Select link image:"
+msgstr "Pasirinkite nuorodos vaizdą:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:978
+msgid "Custom excerpt"
+msgstr "Individualizuota ištrauka"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:984
+msgid "Custom text"
+msgstr "Individualizuotas tekstas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1875
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1889
+msgid "liked this post"
+msgid_plural "liked this post"
+msgstr[0] "paspaudė 'patinka' šiam įrašui"
+msgstr[1] "paspaudė 'patinka' šiam įrašui"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1897
+msgid "Facebook ID"
+msgstr "Facebook identifikatorius"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1902
+msgid "What is my Facebook ID?"
+msgstr "Kas yra mano Facebook identifikatorius?"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:1959
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:2072
+msgid "on Facebook"
+msgstr "Facebook socialiniame tinkle"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-class.php:2078
+msgid "Liked this post"
+msgstr "Paspaudė 'patinka' šiam įrašui"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:518
+msgid "Website"
+msgstr "Tinklalapis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:544
+msgid "Share"
+msgstr "Dalintis"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:723
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:776
+msgid "commented on"
+msgstr "komentuota"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:977
+msgid "Information"
+msgstr "Informacija"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1145
+msgid "WordPress user name"
+msgstr "WordPress varototojo vardas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1192
+msgid "Please enable third-party cookies"
+msgstr "Prašome suaktyvinti trečiosios šalies slapukus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1268
+msgid "Facebook registration failed"
+msgstr "Facebook registracija nepavyko"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1275
+msgid "User registration disabled"
+msgstr "Vartotojo registracija išjungta"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1281
+msgid "Facebook e-mail address missing"
+msgstr "Trūksta Facebook elektroninio pašto adreso"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1289
+msgid "E-mail address in use"
+msgstr "Elektroninio pašto adresas naudojamas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1297
+msgid "Facebook user ID missing"
+msgstr "Trūksta Facebook vartotojo indentifikatoriaus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1385
+msgid "User not found"
+msgstr "Vartotojas nerastas"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1400
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-int.php:1409
+msgid "Could not verify Facebook login"
+msgstr "Nepavyko patvirtinti Facebook prisijungimo"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:336
+msgid "Title:"
+msgstr "Antraštė"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:341
+msgid "Show Facebook comments"
+msgstr "Rodyti Facebook komentarus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:343
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:352
+msgid "Maximum number:"
+msgstr "Daugiausiai:"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:346
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:359
+msgid "Appearance depends on your theme!"
+msgstr "Išvaizda priklauso nuo Jūsų pasirinkto apipavidalinimo!"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:350
+msgid "Show Facebook messages"
+msgstr "Rodyti Facebook pranešimus"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:357
+msgid "Show comments on messages"
+msgstr "Rodyti komentarus pranešimuose"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:363
+msgid "Show Facebook like button"
+msgstr "Rodyti Facebook 'patinka' mygtuką"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:367
+msgid "Show Facebook like box"
+msgstr "Rodyti Facebook 'patinka' langelį"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:371
+msgid "Show Facebook send button"
+msgstr "Rodyti Facebook 'siuntimo' mygtuką"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:375
+msgid "Show Facebook comments plugin"
+msgstr "Rodyti Facebook komentarų papildinį"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:379
+msgid "Show Facebook face pile"
+msgstr "Rodyti Facebook face pile"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:383
+msgid "Show Facebook image/link"
+msgstr "Rodyti Facebook vaizdą/nuorodą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:387
+msgid "Show Facebook registration"
+msgstr "Rodyti Facebook registraciją"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:391
+msgid "Show Facebook login"
+msgstr "Rodyti Facebook prisijungimą"
+
+#: /Users/wolfgang/Documents/poedit
+#: UÌbersetzungen/AL2FB/add-link-to-facebook/add-link-to-facebook-widget.php:395
+msgid "Show Facebook activity feed"
+msgstr "Rodyti Facebook veiklos padavimą"
+
+#~ msgid "Be sure you to conform to the Facebook Platform Policies"
+#~ msgstr "Stellen Sie sicher, dass Sie die Facebook-Richtlinien einhalten"
+
+#~ msgid "Donate $25 or more to get this feature"
+#~ msgstr "Spenden Sie 25 Dollar oder mehr, um diese Funktion zu erhalten"
+
+#~ msgid "See the FAQ, question U25 for detailed information"
+#~ msgstr "Siehe FAQ Frage U25 für weitere Infos"
+
+#~ msgid "Comment integration, etc. for extra pages is not supported"
+#~ msgstr ""
+#~ "Kommentarintegration etc. für zusätzliche Seiten wird nicht unterstützt"
+
+#~ msgid "Go to dashboard"
+#~ msgstr "Zum Dashboard"
+
+#~ msgid ""
+#~ "I don't want to support this plugin with the Sustainable Plugins "
+#~ "Sponsorship Network:"
+#~ msgstr ""
+#~ "Ich möchte dieses Plugin nicht mit dem \"Sustainable Plugins Sponsorship "
+#~ "Network\" unterstützen"
+
+#~ msgid "Do not collect statistics:"
+#~ msgstr "Keine Statistikdaten übermitteln:"
+
+#~ msgid "Privacy in the Sustainable Plugins Sponsorship Network"
+#~ msgstr "Datenschutz im \"Sustainable Plugins Sponsorship Network\""
+
+#~ msgid "Disable"
+#~ msgstr "Deaktivieren"
+
+#~ msgid "Add as page owner:"
+#~ msgstr "Als Eigentümer der Seite hinzufügen:"
+
+#~ msgid "When checked links will be added as the page"
+#~ msgstr "Wenn markiert, werden Links als Seite hinzugefügt"
+
+#~ msgid "Use iframe in stead of XFBML:"
+#~ msgstr "Benutze iframe anstelle von XFBML:"
+
+#~ msgid "Use shared Facebook application:"
+#~ msgstr "Freigegebene Facebook-Anwendung verwenden:"
+
+#~ msgid "Simple, but less secure"
+#~ msgstr "Einfacher, aber weniger sicher"
+
+#~ msgid "Leave blank to let Facebook choose"
+#~ msgstr "Leer lassen, um Facebook wählen zu lassen"
+
+#~ msgid "Experimental!"
+#~ msgstr "Experimentell!"

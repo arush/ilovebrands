@@ -1,0 +1,1440 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Add Link to Facebook v1.127\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-02-05 09:13+0100\n"
+"Last-Translator: Marcel Bokhorst\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Poedit-Language: Slovak\n"
+"X-Poedit-Country: SLOVAKIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:12
+#: add-link-to-facebook-class.php:782
+#: add-link-to-facebook-class.php:805
+#: add-link-to-facebook-class.php:836
+#: add-link-to-facebook-class.php:837
+#: add-link-to-facebook-class.php:1354
+#: add-link-to-facebook-class.php:3531
+msgid "Add Link to Facebook"
+msgstr "Pridať odkaz na Facebook"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:29
+msgid "Only this user can access the settings:"
+msgstr "Iba tento typ užívateľa môže meniť nastavenia:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:90
+msgid "Your server may not allow external connections"
+msgstr "Váš server nepovoľuje externé spojenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:98
+msgid "Please be aware that comment integration or showing Facebook messages in the widget could harm the privacy of other Facebook users!"
+msgstr "Majte prosím na pamäti, že zobrazenie správ z Facebooku môže narúšať súkromie užívateľov tejto sociálnej siete!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:106
+msgid "Authorization"
+msgstr "Autorizácia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:111
+msgid "Plugin is authorized"
+msgstr "Plugin je autorizovaný"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:116
+msgid "Links will be added to"
+msgstr "Odkazy budu pridané do"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:133
+msgid "Authorize"
+msgstr "Autorizovať"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:147
+#: add-link-to-facebook-admin.php:1218
+msgid "Donate in EUR"
+msgstr "Poslať finančný príspevok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:158
+#: add-link-to-facebook-admin.php:256
+msgid "Show"
+msgstr "Ukáž"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:177
+msgid "Easy setup"
+msgstr "Základné nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:186
+msgid "To get an App ID and App Secret you have to create a Facebook application"
+msgstr "Pre získanie App ID a App secret musíte vytvoriť facebook aplikáciu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:187
+msgid "You have to fill in the following:"
+msgstr "Vyplňte nasledovné:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:190
+#: add-link-to-facebook-admin.php:229
+msgid "App Name:"
+msgstr "Názov aplikácie:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:191
+msgid "Anything you like, will appear as \"via ...\" below the message"
+msgstr "Fantázii sa medze nekladú, môžete sem dať čo chcete"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:194
+msgid "Website > Site URL:"
+msgstr "Web stránka > URL:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:198
+msgid "Click here to create"
+msgstr "Kliknite pre vytvorenie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:199
+msgid "and navigate to '<em>Apps</em>' and then to '<em>Create New App</em>\\"
+msgstr "a prejdite na  '<em>Aplikácie</em>' a potom na '<em>Vytvoriť novú aplikáciu</em>\\"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:204
+msgid "App ID:"
+msgstr "ID aplikácie:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:210
+msgid "App Secret:"
+msgstr "App Secret:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:217
+msgid "Access token:"
+msgstr "Prístupový kód:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:242
+msgid "Share with all users on this site:"
+msgstr "Zdieľať so všetkými užívateľmi na tejto stránke:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:252
+#: add-link-to-facebook-admin.php:325
+#: add-link-to-facebook-admin.php:374
+#: add-link-to-facebook-admin.php:412
+#: add-link-to-facebook-admin.php:470
+#: add-link-to-facebook-admin.php:519
+#: add-link-to-facebook-admin.php:576
+#: add-link-to-facebook-admin.php:605
+#: add-link-to-facebook-admin.php:634
+#: add-link-to-facebook-admin.php:660
+#: add-link-to-facebook-admin.php:705
+#: add-link-to-facebook-admin.php:741
+#: add-link-to-facebook-admin.php:849
+#: add-link-to-facebook-admin.php:902
+#: add-link-to-facebook-admin.php:1150
+msgid "Save"
+msgstr "Uložiť"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:273
+msgid "Additional settings"
+msgstr "Pokročilé nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:276
+msgid "Picture"
+msgstr "Obrázok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:277
+msgid "Page/group"
+msgstr "Stránka/skupina"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:278
+msgid "Appearance"
+msgstr "Zobrazenie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:279
+msgid "Comments"
+msgstr "Komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:280
+msgid "Like button"
+msgstr "Tlačidlo Páči sa mi to"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:281
+msgid "Like box"
+msgstr "Like rámček"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:282
+msgid "Comments plugin"
+msgstr "Plugin pre komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:283
+msgid "Face pile"
+msgstr "Náhľady"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:284
+msgid "Login"
+msgstr "Prihlásenie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:285
+msgid "Activity feed"
+msgstr "Kanál aktivity"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:286
+msgid "Common"
+msgstr "Všeobecné"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:287
+msgid "Misc."
+msgstr "Ďalšie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:288
+msgid "Admin"
+msgstr "Admin"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:293
+#: add-link-to-facebook-class.php:1434
+msgid "Link picture"
+msgstr "Voľba obrázku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:296
+msgid "Link picture:"
+msgstr "Zvoliť obrázok:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:298
+msgid "WordPress logo"
+msgstr "WordPress logo"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:299
+msgid "First attached image"
+msgstr "Prvý pripojený obrázok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:300
+msgid "Featured post image"
+msgstr "Predvolený obrázok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:301
+msgid "Let Facebook select"
+msgstr "Facebook to spraví za Vás"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:302
+msgid "First image in the post"
+msgstr "Prvý obrázok v príspevku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:303
+msgid "Avatar of author"
+msgstr "Avatar autora"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:305
+msgid "Image from User Photo plugin"
+msgstr "Obrázok z ..."
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:307
+msgid "Custom picture below"
+msgstr "Zvolím si vlastný"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:311
+msgid "Custom picture URL:"
+msgstr "URL Vášho obrázku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:314
+msgid "At least 50 x 50 pixels"
+msgstr "Najmenej 50 x 50 pixelov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:318
+msgid "Default picture URL:"
+msgstr "Predvolená URL obrázku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:321
+msgid "Default WordPress logo"
+msgstr "Predvolené WordPress logo"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:344
+msgid "Facebook page"
+msgstr "Stránka na Facebooku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:347
+msgid "See all pages:"
+msgstr "Ukázať všetky stránky:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:350
+msgid "Requires manage pages permission"
+msgstr "Požaduje povolenie na správu stránok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:354
+msgid "Add to page:"
+msgstr "Pridať na stránku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:378
+msgid "Facebook group"
+msgstr "skupinu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:381
+msgid "Use groups:"
+msgstr "Používať skupiny:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:384
+msgid "Requires user groups permission"
+msgstr "Vyžaduje sa povolenie na správu užívateľských skupín"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:392
+msgid "Add to group:"
+msgstr "Pridať do skupiny:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:396
+#: add-link-to-facebook-admin.php:499
+#: add-link-to-facebook-admin.php:961
+#: add-link-to-facebook-class.php:1396
+msgid "None"
+msgstr "Nič"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:421
+msgid "First authorize the plugin"
+msgstr "Najprv autorizujte plugin"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:426
+msgid "Link appearance"
+msgstr "Zobrazenie odkazu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:429
+msgid "Use site title as caption:"
+msgstr "Použiť názov stránky ako nadpis:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:436
+msgid "Use excerpt as message:"
+msgstr "Použiť výňatok ako správu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:442
+msgid "Text trailer:"
+msgstr "Ukážka textu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:445
+msgid "For example \"Read more ...\""
+msgstr "Napríklad \"bla bla bla ...\""
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:449
+msgid "Keep hyperlinks:"
+msgstr "Zachovať hyper-odkazy:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:452
+msgid "The hyperlink title will be removed"
+msgstr "Titulok odkazu bude odstránený"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:456
+msgid "Add 'Share' link:"
+msgstr "Pridať 'Zdieľanie' odkazu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:463
+msgid "Use short URL:"
+msgstr "Použiť skrátenú URL:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:466
+msgid "If available"
+msgstr "Ak je dostupné"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:475
+msgid "Facebook comments"
+msgstr "Facebook komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:478
+msgid "Integrate comments from Facebook:"
+msgstr "Zjednotiť komentáre z Facebooku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:484
+msgid "Post WordPress comments back to Facebook:"
+msgstr "Odoslať WordPress komentáre späť na Facebook:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:490
+msgid "Copy comments from Facebook to WordPress:"
+msgstr "Kopírovať komentáre z Facebooku do WordPressu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:493
+msgid "Enables for example editing of Facebook comments"
+msgstr "Zapína napríklad úpravu facebook komentárov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:497
+msgid "Link Facebook comment to:"
+msgstr "Odkázať facebook komentár na:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:500
+#: add-link-to-facebook-admin.php:503
+msgid "Disables displaying of Facebook avatars too"
+msgstr "Vypnúť zobrazovania avatarov na Facebooku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:501
+msgid "Profile author"
+msgstr "Profil autora"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:502
+msgid "Added link"
+msgstr "Odkaz pridaný"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:507
+msgid "Integrate likes from Facebook:"
+msgstr "Integrovať lajky z Facebooku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:513
+msgid "Show likers below the post text:"
+msgstr "Ukázať, kto dal lajk pod príspevkom:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:524
+msgid "Facebook like button"
+msgstr "Zobrazenie tlačidla like"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:527
+msgid "Show Facebook like button:"
+msgstr "Zobraziť tlačidlo like:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:530
+#: add-link-to-facebook-admin.php:565
+#: add-link-to-facebook-admin.php:673
+#: add-link-to-facebook-admin.php:687
+#: add-link-to-facebook-admin.php:829
+#: add-link-to-facebook-admin.php:837
+msgid "Documentation"
+msgstr "Dokumentácia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:534
+msgid "Layout:"
+msgstr "Rozloženie:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:536
+msgid "Standard"
+msgstr "Štandardné"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:537
+msgid "Button with count"
+msgstr "Tlačidlo s počítadlom"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:538
+msgid "Box with count"
+msgstr "Box s počítadlom"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:542
+#: add-link-to-facebook-admin.php:585
+#: add-link-to-facebook-admin.php:620
+#: add-link-to-facebook-admin.php:652
+#: add-link-to-facebook-admin.php:714
+msgid "Width:"
+msgstr "Šírka:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:545
+#: add-link-to-facebook-admin.php:588
+#: add-link-to-facebook-admin.php:623
+#: add-link-to-facebook-admin.php:655
+#: add-link-to-facebook-admin.php:672
+#: add-link-to-facebook-admin.php:680
+#: add-link-to-facebook-admin.php:717
+#: add-link-to-facebook-admin.php:724
+msgid "Pixels"
+msgstr "Pixelov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:549
+msgid "Action:"
+msgstr "Akcia:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:551
+#: add-link-to-facebook-class.php:2553
+msgid "Like"
+msgstr "Páči sa mi to"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:552
+#: add-link-to-facebook-class.php:2553
+msgid "Recommend"
+msgstr "Odporučiť"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:556
+msgid "Show at the top of the post:"
+msgstr "Zobraziť na vrchu príspevku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:562
+msgid "Show Facebook send button:"
+msgstr "Zobraziť tlačidlo Odoslať:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:569
+msgid "Combine Facebook like and send buttons:"
+msgstr "Skĺbiť tlačidlá Páči sa mi to a Odoslať:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:581
+msgid "Facebook like box"
+msgstr "Nastavenia like rámčeku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:592
+msgid "Disable like box header:"
+msgstr "Vypnúť hlavičku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:598
+msgid "Disable like box stream:"
+msgstr "Vypnúť stream:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:610
+msgid "Facebook comments plugin"
+msgstr "Facebook plugin pre komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:614
+msgid "Number of posts:"
+msgstr "Počet príspevkov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:627
+msgid "Display automatically after post:"
+msgstr "Zobraziť automaticky za príspevkom:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:639
+msgid "Facebook face pile"
+msgstr "Facebook náhľady"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:643
+msgid "Size:"
+msgstr "Veľkosť:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:646
+msgid "Small"
+msgstr "Malá"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:647
+msgid "Large"
+msgstr "Veľká"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:665
+msgid "Facebook login"
+msgstr "Facebook prihlasovacie meno"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:669
+msgid "Registration width:"
+msgstr "Šírka:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:677
+msgid "Login width:"
+msgstr "Šírka:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:684
+msgid "Login registration URL:"
+msgstr "URL pre registráciu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:691
+msgid "Login redirect URL:"
+msgstr "Presmerovať na URL:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:697
+msgid "Text or HTML when logged in:"
+msgstr "Text alebo HTML po prihlásení:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:710
+msgid "Facebook activity feed"
+msgstr "Facebook aktivita kanálu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:721
+msgid "Height:"
+msgstr "Výška:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:728
+msgid "Show header:"
+msgstr "Zobraziť hlavičku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:734
+msgid "Show recommendations:"
+msgstr "Zobraziť odporúčania:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:746
+msgid "Facebook common"
+msgstr "Facebook všeobecné nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:750
+msgid "Do not show on the home page:"
+msgstr "Nezobrazovať na domovskej stránke:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:756
+msgid "Do not show on posts:"
+msgstr "Nezobrazovať v článkoch:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:762
+msgid "Do not show on pages:"
+msgstr "Nezobrazovať na stránkach:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:768
+msgid "Do not show in archives:"
+msgstr "Nezobrazovať v archíve:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:774
+msgid "Do not show in categories:"
+msgstr "Nezobrazovať v kategóriách:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:780
+msgid "Faces:"
+msgstr "Tváre:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:786
+msgid "Maximum count of rows:"
+msgstr "Maximálny počet riadkov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:792
+msgid "Font:"
+msgstr "Písmo:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:806
+msgid "Color scheme:"
+msgstr "Farba schémy:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:808
+msgid "Light"
+msgstr "Svetlá"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:809
+msgid "Dark"
+msgstr "Tmavá"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:813
+msgid "Border color:"
+msgstr "Farba rámu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:819
+msgid "Link to:"
+msgstr "Odkázať na:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:822
+msgid "Default the post or page"
+msgstr "Nastaviť stránku alebo článok ako štandardný"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:826
+msgid "Use Open Graph protocol:"
+msgstr "Použiť Open Graph protocol:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:833
+msgid "Open Graph protocol <em>og:type</em>:"
+msgstr "Open Graph protocol <em>og:type</em>:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:836
+msgid "Default 'article\\"
+msgstr "Predvolený 'článok\\"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:841
+msgid "Facebook administrators:"
+msgstr "Facebook administrátori:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:844
+msgid "Separate multiple administrators by a comma without spaces"
+msgstr "Administrátorov oddeľujte čiarkov, za čiarku nedávajte medzeru"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:855
+msgid "Miscelaneous settings"
+msgstr "Ďalšie nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:858
+msgid "Do not add link by default:"
+msgstr "Nepridávať odkazy štandardne:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:864
+msgid "Don't show a summary in the post list:"
+msgstr "Nezobraziť súhrn v zozname príspevkov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:870
+msgid "Add links for new pages:"
+msgstr "Pridať odkazy pre nové stránky:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:876
+msgid "Facebook character encoding:"
+msgstr "Facebook kódovanie znakov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:879
+msgid "Default UTF-8; do not change if no need"
+msgstr "Štandardne UTF-8; ak netreba, nemeňte"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:883
+msgid "Facebook locale:"
+msgstr "Facebook v jazyku:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:886
+msgid "Do not change if no need"
+msgstr "Nemeňte, ak to nie je nutné"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:890
+msgid "I have donated to this plugin:"
+msgstr "Podporil som finančne tento plugin:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:896
+msgid "I have rated this plugin:"
+msgstr "Ohodnotil som tento plugin:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:908
+msgid "Administrator options"
+msgstr "Administrátorské nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:911
+msgid "Facebook communication timeout:"
+msgstr "Facebook "
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:914
+msgid "Seconds"
+msgstr "sekúnd"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:915
+msgid "Default 15 seconds"
+msgstr "Štandardne 15 sekúnd"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:919
+msgid "Do not display notices:"
+msgstr "Nezobrazovať poznámky:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:922
+msgid "Except on this page"
+msgstr "S výnimkou tejto stránky"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:926
+msgid "Required capability to use plugin:"
+msgstr "Používanie pluginu vyžaduje špeciálnu kvalifikáciu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:952
+msgid "Required capability to view Facebook comments:"
+msgstr "Požaduje sa kvalifikácia na prezeranie Facebook komentárov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:973
+msgid "Refresh Facebook comments every:"
+msgstr "Obnoviť komentáre každých:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:976
+msgid "Minutes"
+msgstr "Minút"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:977
+msgid "Default every 10 minutes"
+msgstr "Štandardne každých 10 minút"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:981
+msgid "Refresh Facebook comments for:"
+msgstr "Obnovovať komentáre po dobu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:984
+msgid "Days"
+msgstr "dní"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:985
+msgid "Default 7 days"
+msgstr "Štandardne 7 dní"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:989
+msgid "Refresh Facebook comments in the background:"
+msgstr "Obnovovať komentáre na pozadí:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:992
+msgid "Using Wordress cron"
+msgstr "Použitím Wordpress cronu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:996
+msgid "Maximum text length with trailer:"
+msgstr "Maximálna dĺžka textu s"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:999
+#: add-link-to-facebook-admin.php:1007
+msgid "Characters"
+msgstr "Znakov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1000
+msgid "Default 256 characters"
+msgstr "Štandardne 256 znakov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1004
+msgid "Maximum Facebook text length:"
+msgstr "Maximálna dĺžka textu:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1008
+msgid "Default 10,000 characters"
+msgstr "Štandardne 10 000 znakov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1012
+msgid "Exclude these custom post types:"
+msgstr "Vylúčiť tieto typy príspevkov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1015
+#: add-link-to-facebook-admin.php:1023
+#: add-link-to-facebook-admin.php:1030
+#: add-link-to-facebook-admin.php:1038
+#: add-link-to-facebook-admin.php:1045
+msgid "Separate by commas"
+msgstr "Oddeľte čiarkov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1019
+msgid "Exclude these categories:"
+msgstr "Vylúčiť tieto kategórie:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1020
+msgid "Use category ID's"
+msgstr "Použiť ID kategórií"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1027
+msgid "Exclude these tags:"
+msgstr "Vylúčiť tieto štítky:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1034
+msgid "Exclude these authors:"
+msgstr "Vylúčiť týchto autorov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1035
+msgid "Use login names"
+msgstr "Používať prihlasovacie mená"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1042
+msgid "Add meta box for these custom post types:"
+msgstr "Pridať meta box pre tieto typy príspevkov:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1049
+msgid "Do not verify the peer's certificate:"
+msgstr "Neoverovať certifikát klienta:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1052
+msgid "Try this in case of cURL error 60"
+msgstr "Vyskúšaje to, ak vám ukazuje cURL chybu č.60"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1056
+msgid "Execute shortcodes in widgets:"
+msgstr "Spustiť shortcodes vo widgetoch:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1062
+msgid "Do not execute shortcodes for texts:"
+msgstr "Nespúšťať shortcodes pre text:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1068
+msgid "Do not execute filters for texts:"
+msgstr "Nespúšťať filtre pre text:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1074
+msgid "Do not execute filters for comments:"
+msgstr "Nespúšťať filtre pre komentáre:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1080
+msgid "Use Heise social share privacy:"
+msgstr "Použiť Heise pre ochranu súkromia:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1086
+msgid "Heise privacy policy URL:"
+msgstr "Heise ochrana osobných údajov URL:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1092
+msgid "Priority filter 'the_content':"
+msgstr "Filter dôležitosti 'obsahu':"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1098
+msgid "Do not include Facebook script:"
+msgstr "Nevkladať Facebook skript:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1101
+msgid "In case of conflicts with other Facebook plugins"
+msgstr "Pre prípad konfliktu s inými Facebook pluginmi"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1105
+msgid "Clean on deactivate:"
+msgstr "Úplná deaktivácia:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1107
+msgid "Upgrade deactivates the plugin!"
+msgstr "Aktualizácia vypne plugin!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1110
+msgid "All data, except link id's"
+msgstr "Všetky údaje. s výnimkou ID odkazov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1114
+msgid "Additional styling rules (CSS):"
+msgstr "Kaskádové štýly (CSS):"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1122
+msgid "Debug options"
+msgstr "Možnosti ladenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1125
+msgid "Use site URL as request URI:"
+msgstr "Použiť URL adresu ako požiadavku URI:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1131
+msgid "Do not use cURL:"
+msgstr "Nepoužívať cURL:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1137
+msgid "Use publish_post action:"
+msgstr "Vykonať akciu publikovať_článok:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1143
+msgid "Debug:"
+msgstr "Ladenie:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1155
+msgid "Only for administrators"
+msgstr "Len pre adminov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1160
+msgid "No tab pages"
+msgstr "Nezobrazovať na kartách"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1203
+msgid "Resources"
+msgstr "Zdroje"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1205
+msgid "Setup guide & user manual"
+msgstr "Užívateľský manuál"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1206
+msgid "Frequently asked questions"
+msgstr "Často kladené otázky"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1207
+msgid "Support page"
+msgstr "Podporná stránka"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1208
+#: add-link-to-facebook-admin.php:1235
+msgid "Debug information"
+msgstr "Info o ladení"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1209
+msgid "About the author"
+msgstr "O autorovi"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1210
+msgid "Other plugins"
+msgstr "Ďalšie pluginy"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1242
+msgid "Name:"
+msgstr "Meno:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1248
+msgid "E-mail:"
+msgstr "Email:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1251
+msgid "Please check if this is a correct, reachable e-mail address"
+msgstr "Prosím skontrolujte, či je emailová adresa skutočne funkčná"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1255
+msgid "Message:"
+msgstr "Správa:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1258
+msgid "Please describe your problem, even if you did before"
+msgstr "Opíšte prosím svoj problém"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1263
+msgid "Did you check if your problem is described in <a href=\"[FAQ]\" target=\"_blank\">the FAQ</a> ?"
+msgstr "Pozreli ste sa či sa nenachádza odpoveď na Vašu otázku vo <a href=\"[FAQ]\" target=\"_blank\">FAQ</a> ?"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-admin.php:1269
+msgid "Send"
+msgstr "Odoslané"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:674
+msgid "Settings updated"
+msgstr "Nastavenia uložené:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:694
+msgid "Authorized, go posting!"
+msgstr "Autorizované, môžete začať!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:738
+msgid "Debug information sent"
+msgstr "Info o ladení chýb odoslané"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:743
+msgid "Sending debug information failed"
+msgstr "Odosielanie informácií o ladení chýb zlyhalo"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:766
+msgid "needs configuration"
+msgstr "vyžaduje konfiguráciu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:770
+msgid "needs authorization"
+msgstr "vyžaduje autorizáciu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:776
+msgid "should be authorized again to show Facebook messages in the widget"
+msgstr "malo by byť autorizované znova, pre zobrazenie Facebook správ vo widgete"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:816
+msgid "If you like the Add Link to Facebook plugin, please rate it on <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>.<br />If the average rating is low, it makes no sense to support this plugin any longer.<br />You can disable this notice by checking the option \"I have rated this plugin\" on the <a href=\"[settings]\">settings page</a>."
+msgstr "Ak sa Vám páči Add Link to Facebook plugin, prosím ohodnoťte ho na <a href=\"[wordpress]\" target=\"_blank\">wordpress.org</a>.<br /> Ak je priemerné hodnotenie pluginu nízke, môžte mu práve vy zlepšiť reputáciu. <br /> Toto upozornenie si môžete vypnúť zaškrtnutím možnosti  \"I have rated this plugin\" v <a href=\"[settings]\">nastaveniach</a>."
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:819
+msgid "Through a mishap on the WordPress.org systems, previous ratings for the plugin were lost.<br />If you've rated the plugin in the past, your rating was accidentally removed.<br />So if you would be so kind as to rate the plugin again, I'd appreciate it. Thanks!"
+msgstr "Predošlé hodnotenie tohoto pluginu na WordPress.org boli stratené.<br /> Ak ste v minulosti hodnotili tento plugin, Váš ohlas bol náhodou odstránený.<br /> Ak sa rozhodnete ohodnotiť plugin znova, budem len a len rád. Ďakujem!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:836
+msgid "Administration"
+msgstr "Administrácia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:858
+msgid "Settings"
+msgstr "Nastavenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1256
+msgid "Do not add link to Facebook"
+msgstr "Nepridávať odkaz na Facebook"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1259
+msgid "Do not add like button"
+msgstr "Nepridávať tlačidlo Páči sa mi to"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1262
+msgid "Do not integrate comments"
+msgstr "Neintegrovať komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1267
+msgid "Update existing Facebook link"
+msgstr "Upraviť existujúci Facebook odkaz"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1269
+msgid "Comments and likes will be lost!"
+msgstr "Komentáre a lajky budú stratené!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1272
+msgid "Delete existing Facebook link"
+msgstr "Zmazať existujúci Facebook link"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1274
+msgid "Link on Facebook"
+msgstr "Odkaz na Facebook"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1279
+msgid "Clear error messages"
+msgstr "Vyčistiť chybové hlásenia"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1294
+msgid "Facebook"
+msgstr "Facebook"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1319
+msgid "Yes"
+msgstr "Áno"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1321
+msgid "No"
+msgstr "Nie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1332
+msgid "comments"
+msgstr "komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1339
+msgid "likes"
+msgstr "lajky"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1379
+msgid "No images in the media library for this post"
+msgstr "Žiadne obrázky v mediálnej knižnici pre tento príspevok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1385
+msgid "Select link image:"
+msgstr "Zvoliť odkaz na obrázok:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1424
+msgid "Custom exerpt"
+msgstr "Vlastný výňatok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1430
+msgid "Custom text"
+msgstr "Vlastný text"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:1930
+msgid "Share"
+msgstr "Zdieľať"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2087
+msgid "commented on"
+msgstr "komentoval(a)"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2475
+#: add-link-to-facebook-class.php:2487
+msgid "liked this post"
+msgid_plural "liked this post"
+msgstr[0] "sa páči tento príspevok"
+msgstr[1] "sa páči tento príspevok"
+msgstr[2] "sa páči tento príspevok"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2593
+msgid "Information"
+msgstr "Informácie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2761
+msgid "WordPress user name"
+msgstr "Wordpress užívateľské meno"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2808
+msgid "Please enable third-party cookies"
+msgstr "Prosím, povoľte cookies"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2874
+msgid "Facebook registration failed"
+msgstr "Registrácia sa nepodarila"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2881
+msgid "User registration disabled"
+msgstr "Registrácia užívateľov vypnutá"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2887
+msgid "Facebook e-mail address missing"
+msgstr "Chýba facebook email"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2895
+msgid "E-mail address in use"
+msgstr "Email sa už používa"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2903
+msgid "Facebook user ID missing"
+msgstr "Chýba Facebook užívateľské ID"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:2990
+msgid "User not found"
+msgstr "Užívateľ nenájdený"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:3005
+#: add-link-to-facebook-class.php:3014
+msgid "Could not verify Facebook login"
+msgstr "Nepodarilo sa overiť Facebook login"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:3066
+msgid "Facebook ID"
+msgstr "Facebook ID"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:3071
+msgid "What is my Facebook ID?"
+msgstr "Aké je moje Facebook ID?"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:3126
+#: add-link-to-facebook-class.php:3201
+msgid "on Facebook"
+msgstr "na Facebooku"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-class.php:3207
+msgid "Liked this post"
+msgstr "sa páči tento príspevok"
+
+#@ default
+#: add-link-to-facebook-widget.php:338
+msgid "Title:"
+msgstr "Nadpis:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:343
+msgid "Show Facebook comments"
+msgstr "Zobraziť Facebook komentáre"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:345
+#: add-link-to-facebook-widget.php:354
+msgid "Maximum number:"
+msgstr "Maximálny počet:"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:348
+#: add-link-to-facebook-widget.php:361
+msgid "Appearance depends on your theme!"
+msgstr "Zobrazenie závisí od vašej témy!"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:352
+msgid "Show Facebook messages"
+msgstr "Zobraziť Facebook správy"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:359
+msgid "Show comments on messages"
+msgstr "Zobraziť komentáre v správach"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:365
+msgid "Show Facebook like button"
+msgstr "Zobraziť Facebook Páči sa mi to tlačidlo"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:369
+msgid "Show Facebook like box"
+msgstr "Zobraziť Facebook Páči sa mi to box"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:373
+msgid "Show Facebook send button"
+msgstr "Zobraziť Facebook Odoslať tlačidlo"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:377
+msgid "Show Facebook comments plugin"
+msgstr "Zobraziť Facebook plugin komentárov"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:381
+msgid "Show Facebook face pile"
+msgstr "Zobraziť Facebook náhľady"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:385
+msgid "Show Facebook image/link"
+msgstr "Zobraziť Facebook obrázok/odkaz"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:389
+msgid "Show Facebook registration"
+msgstr "Zobraziť Facebook registráciu"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:393
+msgid "Show Facebook login"
+msgstr "Zobraziť Facebook prihlásenie"
+
+#@ add-link-to-facebook
+#: add-link-to-facebook-widget.php:397
+msgid "Show Facebook activity feed"
+msgstr "Zobraziť Facebook aktivitu kanálu"
+
